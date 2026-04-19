@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-upgrade-history-structure.json",
+  "name": "UpgradeHistory",
+  "description": "History of the last 10 Upgrades and Upgrade Eligibility Checks.",
+  "type": "object",
+  "properties": {
+    "UpgradeName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeName"
+        },
+        {
+          "description": "A string that describes the update briefly"
+        }
+      ]
+    },
+    "StartTimestamp": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StartTimestamp"
+        },
+        {
+          "description": "UTC Timestamp at which the Upgrade API call was made in \"yyyy-MM-ddTHH:mm:ssZ\" format."
+        }
+      ]
+    },
+    "UpgradeStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeStatus"
+        },
+        {
+          "description": " The overall status of the update. The status can take one of the following values: <ul> <li>In Progress</li> <li>Succeeded</li> <li>Succeeded with Issues</li> <li>Failed</li> </ul> "
+        }
+      ]
+    },
+    "StepsList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeStepsList"
+        },
+        {
+          "description": " A list of <code> <a>UpgradeStepItem</a> </code> s representing information about each step performed as pard of a specific Upgrade or Upgrade Eligibility Check. "
+        }
+      ]
+    }
+  }
+}

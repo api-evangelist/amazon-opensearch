@@ -1,0 +1,6 @@
+{
+  "PackageID": "resource-abc123",
+  "PackageSource": "example-ref",
+  "PackageDescription": "example-string",
+  "CommitMessage": "example-string"
+}

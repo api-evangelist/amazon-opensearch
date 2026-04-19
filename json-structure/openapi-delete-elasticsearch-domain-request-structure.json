@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-delete-elasticsearch-domain-request-structure.json",
+  "name": "DeleteElasticsearchDomainRequest",
+  "description": "Container for the parameters to the <code><a>DeleteElasticsearchDomain</a></code> operation. Specifies the name of the Elasticsearch domain that you want to delete.",
+  "type": "object",
+  "properties": {}
+}

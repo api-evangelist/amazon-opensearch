@@ -1,0 +1,5 @@
+{
+  "DomainName": "example-ref",
+  "TargetVersion": "1.0.0",
+  "PerformCheckOnly": "example-string"
+}

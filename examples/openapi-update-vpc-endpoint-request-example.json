@@ -1,0 +1,4 @@
+{
+  "VpcEndpointId": "resource-abc123",
+  "VpcOptions": "example-string"
+}

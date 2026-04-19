@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-get-upgrade-status-request-schema.json",
+  "title": "GetUpgradeStatusRequest",
+  "description": " Container for request parameters to <code> <a>GetUpgradeStatus</a> </code> operation. ",
+  "type": "object",
+  "properties": {}
+}

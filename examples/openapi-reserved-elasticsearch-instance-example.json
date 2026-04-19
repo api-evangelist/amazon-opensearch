@@ -1,0 +1,15 @@
+{
+  "ReservationName": "my-resource",
+  "ReservedElasticsearchInstanceId": "resource-abc123",
+  "ReservedElasticsearchInstanceOfferingId": "resource-abc123",
+  "ElasticsearchInstanceType": "standard",
+  "StartTime": "example-string",
+  "Duration": "example-string",
+  "FixedPrice": "example-string",
+  "UsagePrice": "example-string",
+  "CurrencyCode": "example-string",
+  "ElasticsearchInstanceCount": "example-string",
+  "State": "example-string",
+  "PaymentOption": "example-string",
+  "RecurringCharges": "example-string"
+}

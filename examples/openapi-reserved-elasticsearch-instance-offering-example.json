@@ -1,0 +1,10 @@
+{
+  "ReservedElasticsearchInstanceOfferingId": "resource-abc123",
+  "ElasticsearchInstanceType": "standard",
+  "Duration": "example-string",
+  "FixedPrice": "example-string",
+  "UsagePrice": "example-string",
+  "CurrencyCode": "example-string",
+  "PaymentOption": "example-string",
+  "RecurringCharges": "example-string"
+}

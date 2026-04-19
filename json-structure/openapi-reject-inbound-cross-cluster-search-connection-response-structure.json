@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-reject-inbound-cross-cluster-search-connection-response-structure.json",
+  "name": "RejectInboundCrossClusterSearchConnectionResponse",
+  "description": "The result of a <code><a>RejectInboundCrossClusterSearchConnection</a></code> operation. Contains details of rejected inbound connection.",
+  "type": "object",
+  "properties": {
+    "CrossClusterSearchConnection": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InboundCrossClusterSearchConnection"
+        },
+        {
+          "description": "Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of rejected inbound connection. "
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "ChangeId": "resource-abc123",
+  "StartTime": "example-string",
+  "Status": "active",
+  "PendingProperties": "example-string",
+  "CompletedProperties": "example-string",
+  "TotalNumberOfStages": "example-string",
+  "ChangeProgressStages": "example-string"
+}

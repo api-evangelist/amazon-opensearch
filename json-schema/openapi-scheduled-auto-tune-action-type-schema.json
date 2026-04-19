@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-scheduled-auto-tune-action-type-schema.json",
+  "title": "ScheduledAutoTuneActionType",
+  "description": "Specifies Auto-Tune action type. Valid values are JVM_HEAP_SIZE_TUNING and JVM_YOUNG_GEN_TUNING. ",
+  "type": "string",
+  "enum": [
+    "JVM_HEAP_SIZE_TUNING",
+    "JVM_YOUNG_GEN_TUNING"
+  ]
+}

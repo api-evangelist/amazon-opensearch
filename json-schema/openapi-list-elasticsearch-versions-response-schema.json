@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-list-elasticsearch-versions-response-schema.json",
+  "title": "ListElasticsearchVersionsResponse",
+  "description": " Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "ElasticsearchVersions": {
+      "$ref": "#/components/schemas/ElasticsearchVersionList"
+    },
+    "NextToken": {
+      "$ref": "#/components/schemas/NextToken"
+    }
+  }
+}

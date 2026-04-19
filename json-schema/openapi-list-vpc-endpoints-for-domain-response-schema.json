@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-list-vpc-endpoints-for-domain-response-schema.json",
+  "title": "ListVpcEndpointsForDomainResponse",
+  "description": "Container for response parameters to the <code><a>ListVpcEndpointsForDomain</a></code> operation. Returns a list containing summarized details of the VPC endpoints.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointSummaryList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointSummaryList"
+        },
+        {
+          "description": "Provides list of <code>VpcEndpointSummary</code> summarizing details of the VPC endpoints."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "Information about each endpoint associated with the domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpointSummaryList",
+    "NextToken"
+  ]
+}

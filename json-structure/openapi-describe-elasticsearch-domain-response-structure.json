@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-elasticsearch-domain-response-structure.json",
+  "name": "DescribeElasticsearchDomainResponse",
+  "description": "The result of a <code>DescribeElasticsearchDomain</code> request. Contains the status of the domain specified in the request.",
+  "type": "object",
+  "properties": {
+    "DomainStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchDomainStatus"
+        },
+        {
+          "description": "The current status of the Elasticsearch domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "DomainStatus"
+  ]
+}

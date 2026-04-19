@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-domain-package-details-list-schema.json",
+  "title": "DomainPackageDetailsList",
+  "description": "DomainPackageDetailsList schema from Amazon OpenSearch Service API",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/DomainPackageDetails"
+  }
+}

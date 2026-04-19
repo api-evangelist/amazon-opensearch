@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-snapshot-options-status-schema.json",
+  "title": "SnapshotOptionsStatus",
+  "description": "Status of a daily automated snapshot.",
+  "type": "object",
+  "properties": {
+    "Options": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SnapshotOptions"
+        },
+        {
+          "description": "Specifies the daily snapshot options specified for the Elasticsearch domain."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OptionStatus"
+        },
+        {
+          "description": "Specifies the status of a daily automated snapshot."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Options",
+    "Status"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-update-vpc-endpoint-response-structure.json",
+  "name": "UpdateVpcEndpointResponse",
+  "description": "Contains the configuration and status of the VPC endpoint being updated.",
+  "type": "object",
+  "properties": {
+    "VpcEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpoint"
+        },
+        {
+          "description": "The endpoint to be updated."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpoint"
+  ]
+}

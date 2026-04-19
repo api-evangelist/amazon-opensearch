@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-principal-type-structure.json",
+  "name": "PrincipalType",
+  "description": "Specifies the type of AWS account permitted to manage VPC endpoints.: <ul> <li>AWS_ACCOUNT: Indicates that the account is owned by an AWS user.</li> <li>AWS_SERVICE: Indicates the the account is owned by an AWS service.</li> </ul> ",
+  "type": "string",
+  "enum": [
+    "AWS_ACCOUNT",
+    "AWS_SERVICE"
+  ]
+}

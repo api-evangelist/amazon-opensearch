@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-reserved-elasticsearch-instance-schema.json",
+  "title": "ReservedElasticsearchInstance",
+  "description": "Details of a reserved Elasticsearch instance.",
+  "type": "object",
+  "properties": {
+    "ReservationName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReservationToken"
+        },
+        {
+          "description": "The customer-specified identifier to track this reservation."
+        }
+      ]
+    },
+    "ReservedElasticsearchInstanceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GUID"
+        },
+        {
+          "description": "The unique identifier for the reservation."
+        }
+      ]
+    },
+    "ReservedElasticsearchInstanceOfferingId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The offering identifier."
+        }
+      ]
+    },
+    "ElasticsearchInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ESPartitionInstanceType"
+        },
+        {
+          "description": "The Elasticsearch instance type offered by the reserved instance offering."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpdateTimestamp"
+        },
+        {
+          "description": "The time the reservation started."
+        }
+      ]
+    },
+    "Duration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The duration, in seconds, for which the Elasticsearch instance is reserved."
+        }
+      ]
+    },
+    "FixedPrice": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "The upfront fixed charge you will paid to purchase the specific reserved Elasticsearch instance offering. "
+        }
+      ]
+    },
+    "UsagePrice": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "The rate you are charged for each hour for the domain that is using this reserved instance."
+        }
+      ]
+    },
+    "CurrencyCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The currency code for the reserved Elasticsearch instance offering."
+        }
+      ]
+    },
+    "ElasticsearchInstanceCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The number of Elasticsearch instances that have been reserved."
+        }
+      ]
+    },
+    "State": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The state of the reserved Elasticsearch instance."
+        }
+      ]
+    },
+    "PaymentOption": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReservedElasticsearchInstancePaymentOption"
+        },
+        {
+          "description": "The payment option as defined in the reserved Elasticsearch instance offering."
+        }
+      ]
+    },
+    "RecurringCharges": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RecurringChargeList"
+        },
+        {
+          "description": "The charge to your account regardless of whether you are creating any domains using the instance offering."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "UpgradeStep": "example-string",
+  "UpgradeStepStatus": "active",
+  "Issues": "example-string",
+  "ProgressPercent": "example-string"
+}

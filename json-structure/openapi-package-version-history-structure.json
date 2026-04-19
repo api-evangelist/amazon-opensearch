@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-package-version-history-structure.json",
+  "name": "PackageVersionHistory",
+  "description": "Details of a package version.",
+  "type": "object",
+  "properties": {
+    "PackageVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageVersion"
+        },
+        {
+          "description": "Version of the package."
+        }
+      ]
+    },
+    "CommitMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CommitMessage"
+        },
+        {
+          "description": "A message associated with the version."
+        }
+      ]
+    },
+    "CreatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CreatedAt"
+        },
+        {
+          "description": "Timestamp which tells creation time of the package version."
+        }
+      ]
+    }
+  }
+}

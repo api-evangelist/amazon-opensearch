@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-get-package-version-history-request-structure.json",
+  "name": "GetPackageVersionHistoryRequest",
+  "description": " Container for request parameters to <code> <a>GetPackageVersionHistory</a> </code> operation. ",
+  "type": "object",
+  "properties": {}
+}

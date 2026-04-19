@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-authorize-vpc-endpoint-access-request-schema.json",
+  "title": "AuthorizeVpcEndpointAccessRequest",
+  "description": "Container for request parameters to the <code><a>AuthorizeVpcEndpointAccess</a></code> operation. Specifies the account to be permitted to manage VPC endpoints against the domain.",
+  "type": "object",
+  "properties": {
+    "Account": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AWSAccount"
+        },
+        {
+          "description": "The account ID to grant access to."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Account"
+  ]
+}

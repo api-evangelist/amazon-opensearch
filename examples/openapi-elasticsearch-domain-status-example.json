@@ -1,0 +1,17 @@
+{
+  "DomainId": "resource-abc123",
+  "DomainName": "my-resource",
+  "ARN": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "Created": "example-string",
+  "Deleted": "example-string",
+  "Endpoint": "example-string",
+  "Endpoints": "example-string",
+  "Processing": "example-string",
+  "UpgradeProcessing": "example-string",
+  "ElasticsearchVersion": "example-ref",
+  "ElasticsearchClusterConfig": "example-string",
+  "EBSOptions": "example-string",
+  "AccessPolicies": "example-string",
+  "SnapshotOptions": "example-string",
+  "VPCOptions": "example-string"
+}

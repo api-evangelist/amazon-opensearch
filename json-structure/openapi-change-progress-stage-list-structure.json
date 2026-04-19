@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-change-progress-stage-list-structure.json",
+  "name": "ChangeProgressStageList",
+  "description": "The list of progress stages of a specific domain configuration change.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ChangeProgressStage"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "CurrentVersion": "1.0.0",
+  "NewVersion": "1.0.0",
+  "UpdateAvailable": "example-string",
+  "Cancellable": "example-string",
+  "UpdateStatus": "active",
+  "Description": "example-string",
+  "AutomatedUpdateDate": "example-string",
+  "OptionalDeployment": "example-string"
+}

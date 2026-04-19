@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-elasticsearch-version-status-schema.json",
+  "title": "ElasticsearchVersionStatus",
+  "description": " Status of the Elasticsearch version options for the specified Elasticsearch domain.",
+  "type": "object",
+  "properties": {
+    "Options": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchVersionString"
+        },
+        {
+          "description": " Specifies the Elasticsearch version for the specified Elasticsearch domain."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OptionStatus"
+        },
+        {
+          "description": " Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Options",
+    "Status"
+  ]
+}

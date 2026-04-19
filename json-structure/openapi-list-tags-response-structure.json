@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-list-tags-response-structure.json",
+  "name": "ListTagsResponse",
+  "description": "The result of a <code>ListTags</code> operation. Contains tags for all requested Elasticsearch domains.",
+  "type": "object",
+  "properties": {
+    "TagList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagList"
+        },
+        {
+          "description": " List of <code>Tag</code> for the requested Elasticsearch domain."
+        }
+      ]
+    }
+  }
+}

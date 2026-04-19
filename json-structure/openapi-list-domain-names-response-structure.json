@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-list-domain-names-response-structure.json",
+  "name": "ListDomainNamesResponse",
+  "description": "The result of a <code>ListDomainNames</code> operation. Contains the names of all domains owned by this account and their respective engine types.",
+  "type": "object",
+  "properties": {
+    "DomainNames": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainInfoList"
+        },
+        {
+          "description": "List of domain names and respective engine types."
+        }
+      ]
+    }
+  }
+}

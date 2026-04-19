@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-delete-outbound-cross-cluster-search-connection-response-structure.json",
+  "name": "DeleteOutboundCrossClusterSearchConnectionResponse",
+  "description": "The result of a <code><a>DeleteOutboundCrossClusterSearchConnection</a></code> operation. Contains details of deleted outbound connection.",
+  "type": "object",
+  "properties": {
+    "CrossClusterSearchConnection": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutboundCrossClusterSearchConnection"
+        },
+        {
+          "description": "Specifies the <code><a>OutboundCrossClusterSearchConnection</a></code> of deleted outbound connection. "
+        }
+      ]
+    }
+  }
+}

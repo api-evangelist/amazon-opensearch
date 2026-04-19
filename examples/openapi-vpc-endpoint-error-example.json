@@ -1,0 +1,5 @@
+{
+  "VpcEndpointId": "resource-abc123",
+  "ErrorCode": "example-string",
+  "ErrorMessage": "example-string"
+}

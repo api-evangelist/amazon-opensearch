@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-create-package-request-structure.json",
+  "name": "CreatePackageRequest",
+  "description": " Container for request parameters to <code> <a>CreatePackage</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "PackageName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageName"
+        },
+        {
+          "description": "Unique identifier for the package."
+        }
+      ]
+    },
+    "PackageType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageType"
+        },
+        {
+          "description": "Type of package. Currently supports only TXT-DICTIONARY."
+        }
+      ]
+    },
+    "PackageDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageDescription"
+        },
+        {
+          "description": "Description of the package."
+        }
+      ]
+    },
+    "PackageSource": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageSource"
+        },
+        {
+          "description": "The customer S3 location <code>PackageSource</code> for importing the package."
+        }
+      ]
+    }
+  },
+  "required": [
+    "PackageName",
+    "PackageType",
+    "PackageSource"
+  ]
+}

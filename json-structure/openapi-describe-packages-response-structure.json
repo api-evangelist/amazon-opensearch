@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-packages-response-structure.json",
+  "name": "DescribePackagesResponse",
+  "description": " Container for response returned by <code> <a>DescribePackages</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "PackageDetailsList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageDetailsList"
+        },
+        {
+          "description": "List of <code>PackageDetails</code> objects."
+        }
+      ]
+    },
+    "NextToken": {
+      "$ref": "#/components/schemas/String"
+    }
+  }
+}

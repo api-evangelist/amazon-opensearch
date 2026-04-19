@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-outbound-cross-cluster-search-connection-status-code-structure.json",
+  "name": "OutboundCrossClusterSearchConnectionStatusCode",
+  "description": "OutboundCrossClusterSearchConnectionStatusCode schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "PENDING_ACCEPTANCE",
+    "VALIDATING",
+    "VALIDATION_FAILED",
+    "PROVISIONING",
+    "ACTIVE",
+    "REJECTED",
+    "DELETING",
+    "DELETED"
+  ]
+}

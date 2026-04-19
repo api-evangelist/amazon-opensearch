@@ -1,0 +1,1134 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "opensearch": "https://opensearch.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ARN": {
+      "@id": "opensearch:ARN",
+      "@type": "xsd:string"
+    },
+    "AWSAccount": "opensearch:AWSAccount",
+    "AcceptInboundCrossClusterSearchConnectionRequest": "opensearch:AcceptInboundCrossClusterSearchConnectionRequest",
+    "AcceptInboundCrossClusterSearchConnectionResponse": "opensearch:AcceptInboundCrossClusterSearchConnectionResponse",
+    "AccessDeniedException": "opensearch:AccessDeniedException",
+    "AccessPoliciesStatus": "opensearch:AccessPoliciesStatus",
+    "AddTagsRequest": "opensearch:AddTagsRequest",
+    "AdditionalLimit": "opensearch:AdditionalLimit",
+    "AdditionalLimitList": "opensearch:AdditionalLimitList",
+    "AdvancedOptions": {
+      "@id": "opensearch:AdvancedOptions",
+      "@type": "xsd:string"
+    },
+    "AdvancedOptionsStatus": "opensearch:AdvancedOptionsStatus",
+    "AdvancedSecurityOptions": {
+      "@id": "opensearch:AdvancedSecurityOptions",
+      "@type": "xsd:string"
+    },
+    "AdvancedSecurityOptionsInput": "opensearch:AdvancedSecurityOptionsInput",
+    "AdvancedSecurityOptionsStatus": "opensearch:AdvancedSecurityOptionsStatus",
+    "AssociatePackageRequest": "opensearch:AssociatePackageRequest",
+    "AssociatePackageResponse": "opensearch:AssociatePackageResponse",
+    "AuthorizeVpcEndpointAccessRequest": "opensearch:AuthorizeVpcEndpointAccessRequest",
+    "AuthorizeVpcEndpointAccessResponse": "opensearch:AuthorizeVpcEndpointAccessResponse",
+    "AuthorizedPrincipal": {
+      "@id": "opensearch:AuthorizedPrincipal",
+      "@type": "xsd:string"
+    },
+    "AuthorizedPrincipalList": {
+      "@id": "opensearch:AuthorizedPrincipalList",
+      "@type": "xsd:string"
+    },
+    "AutoTune": "opensearch:AutoTune",
+    "AutoTuneDate": "opensearch:AutoTuneDate",
+    "AutoTuneDesiredState": "opensearch:AutoTuneDesiredState",
+    "AutoTuneDetails": {
+      "@id": "opensearch:AutoTuneDetails",
+      "@type": "xsd:string"
+    },
+    "AutoTuneList": "opensearch:AutoTuneList",
+    "AutoTuneMaintenanceSchedule": "opensearch:AutoTuneMaintenanceSchedule",
+    "AutoTuneMaintenanceScheduleList": "opensearch:AutoTuneMaintenanceScheduleList",
+    "AutoTuneOptions": {
+      "@id": "opensearch:AutoTuneOptions",
+      "@type": "xsd:string"
+    },
+    "AutoTuneOptionsInput": "opensearch:AutoTuneOptionsInput",
+    "AutoTuneOptionsOutput": "opensearch:AutoTuneOptionsOutput",
+    "AutoTuneOptionsStatus": "opensearch:AutoTuneOptionsStatus",
+    "AutoTuneState": "opensearch:AutoTuneState",
+    "AutoTuneStatus": "opensearch:AutoTuneStatus",
+    "AutoTuneType": {
+      "@id": "opensearch:AutoTuneType",
+      "@type": "xsd:string"
+    },
+    "BackendRole": "opensearch:BackendRole",
+    "BaseException": "opensearch:BaseException",
+    "Boolean": "opensearch:Boolean",
+    "CancelElasticsearchServiceSoftwareUpdateRequest": "opensearch:CancelElasticsearchServiceSoftwareUpdateRequest",
+    "CancelElasticsearchServiceSoftwareUpdateResponse": "opensearch:CancelElasticsearchServiceSoftwareUpdateResponse",
+    "ChangeProgressDetails": {
+      "@id": "opensearch:ChangeProgressDetails",
+      "@type": "xsd:string"
+    },
+    "ChangeProgressStage": "opensearch:ChangeProgressStage",
+    "ChangeProgressStageList": "opensearch:ChangeProgressStageList",
+    "ChangeProgressStageName": "opensearch:ChangeProgressStageName",
+    "ChangeProgressStageStatus": "opensearch:ChangeProgressStageStatus",
+    "ChangeProgressStatusDetails": "opensearch:ChangeProgressStatusDetails",
+    "ClientToken": {
+      "@id": "opensearch:ClientToken",
+      "@type": "xsd:string"
+    },
+    "CloudWatchLogsLogGroupArn": {
+      "@id": "opensearch:CloudWatchLogsLogGroupArn",
+      "@type": "xsd:string"
+    },
+    "CognitoOptions": {
+      "@id": "opensearch:CognitoOptions",
+      "@type": "xsd:string"
+    },
+    "CognitoOptionsStatus": "opensearch:CognitoOptionsStatus",
+    "ColdStorageOptions": {
+      "@id": "opensearch:ColdStorageOptions",
+      "@type": "xsd:string"
+    },
+    "CommitMessage": {
+      "@id": "opensearch:CommitMessage",
+      "@type": "xsd:string"
+    },
+    "CompatibleElasticsearchVersionsList": "opensearch:CompatibleElasticsearchVersionsList",
+    "CompatibleVersionsMap": "opensearch:CompatibleVersionsMap",
+    "ConflictException": "opensearch:ConflictException",
+    "ConnectionAlias": {
+      "@id": "opensearch:ConnectionAlias",
+      "@type": "xsd:string"
+    },
+    "CreateElasticsearchDomainRequest": "opensearch:CreateElasticsearchDomainRequest",
+    "CreateElasticsearchDomainResponse": "opensearch:CreateElasticsearchDomainResponse",
+    "CreateOutboundCrossClusterSearchConnectionRequest": "opensearch:CreateOutboundCrossClusterSearchConnectionRequest",
+    "CreateOutboundCrossClusterSearchConnectionResponse": "opensearch:CreateOutboundCrossClusterSearchConnectionResponse",
+    "CreatePackageRequest": "opensearch:CreatePackageRequest",
+    "CreatePackageResponse": "opensearch:CreatePackageResponse",
+    "CreateVpcEndpointRequest": "opensearch:CreateVpcEndpointRequest",
+    "CreateVpcEndpointResponse": "opensearch:CreateVpcEndpointResponse",
+    "CreatedAt": {
+      "@id": "opensearch:CreatedAt",
+      "@type": "xsd:string"
+    },
+    "CrossClusterSearchConnectionId": {
+      "@id": "opensearch:CrossClusterSearchConnectionId",
+      "@type": "xsd:string"
+    },
+    "CrossClusterSearchConnectionStatusMessage": "opensearch:CrossClusterSearchConnectionStatusMessage",
+    "DeleteElasticsearchDomainRequest": "opensearch:DeleteElasticsearchDomainRequest",
+    "DeleteElasticsearchDomainResponse": "opensearch:DeleteElasticsearchDomainResponse",
+    "DeleteInboundCrossClusterSearchConnectionRequest": "opensearch:DeleteInboundCrossClusterSearchConnectionRequest",
+    "DeleteInboundCrossClusterSearchConnectionResponse": "opensearch:DeleteInboundCrossClusterSearchConnectionResponse",
+    "DeleteOutboundCrossClusterSearchConnectionRequest": "opensearch:DeleteOutboundCrossClusterSearchConnectionRequest",
+    "DeleteOutboundCrossClusterSearchConnectionResponse": "opensearch:DeleteOutboundCrossClusterSearchConnectionResponse",
+    "DeletePackageRequest": "opensearch:DeletePackageRequest",
+    "DeletePackageResponse": "opensearch:DeletePackageResponse",
+    "DeleteVpcEndpointRequest": "opensearch:DeleteVpcEndpointRequest",
+    "DeleteVpcEndpointResponse": "opensearch:DeleteVpcEndpointResponse",
+    "DeploymentCloseDateTimeStamp": "opensearch:DeploymentCloseDateTimeStamp",
+    "DeploymentStatus": "opensearch:DeploymentStatus",
+    "DeploymentType": {
+      "@id": "opensearch:DeploymentType",
+      "@type": "xsd:string"
+    },
+    "DescribeDomainAutoTunesRequest": "opensearch:DescribeDomainAutoTunesRequest",
+    "DescribeDomainAutoTunesResponse": "opensearch:DescribeDomainAutoTunesResponse",
+    "DescribeDomainChangeProgressRequest": "opensearch:DescribeDomainChangeProgressRequest",
+    "DescribeDomainChangeProgressResponse": "opensearch:DescribeDomainChangeProgressResponse",
+    "DescribeElasticsearchDomainConfigRequest": "opensearch:DescribeElasticsearchDomainConfigRequest",
+    "DescribeElasticsearchDomainConfigResponse": "opensearch:DescribeElasticsearchDomainConfigResponse",
+    "DescribeElasticsearchDomainRequest": "opensearch:DescribeElasticsearchDomainRequest",
+    "DescribeElasticsearchDomainResponse": "opensearch:DescribeElasticsearchDomainResponse",
+    "DescribeElasticsearchDomainsRequest": "opensearch:DescribeElasticsearchDomainsRequest",
+    "DescribeElasticsearchDomainsResponse": "opensearch:DescribeElasticsearchDomainsResponse",
+    "DescribeElasticsearchInstanceTypeLimitsRequest": "opensearch:DescribeElasticsearchInstanceTypeLimitsRequest",
+    "DescribeElasticsearchInstanceTypeLimitsResponse": "opensearch:DescribeElasticsearchInstanceTypeLimitsResponse",
+    "DescribeInboundCrossClusterSearchConnectionsRequest": "opensearch:DescribeInboundCrossClusterSearchConnectionsRequest",
+    "DescribeInboundCrossClusterSearchConnectionsResponse": "opensearch:DescribeInboundCrossClusterSearchConnectionsResponse",
+    "DescribeOutboundCrossClusterSearchConnectionsRequest": "opensearch:DescribeOutboundCrossClusterSearchConnectionsRequest",
+    "DescribeOutboundCrossClusterSearchConnectionsResponse": "opensearch:DescribeOutboundCrossClusterSearchConnectionsResponse",
+    "DescribePackagesFilter": "opensearch:DescribePackagesFilter",
+    "DescribePackagesFilterList": "opensearch:DescribePackagesFilterList",
+    "DescribePackagesFilterName": "opensearch:DescribePackagesFilterName",
+    "DescribePackagesFilterValue": "opensearch:DescribePackagesFilterValue",
+    "DescribePackagesFilterValues": "opensearch:DescribePackagesFilterValues",
+    "DescribePackagesRequest": "opensearch:DescribePackagesRequest",
+    "DescribePackagesResponse": "opensearch:DescribePackagesResponse",
+    "DescribeReservedElasticsearchInstanceOfferingsRequest": "opensearch:DescribeReservedElasticsearchInstanceOfferingsRequest",
+    "DescribeReservedElasticsearchInstanceOfferingsResponse": "opensearch:DescribeReservedElasticsearchInstanceOfferingsResponse",
+    "DescribeReservedElasticsearchInstancesRequest": "opensearch:DescribeReservedElasticsearchInstancesRequest",
+    "DescribeReservedElasticsearchInstancesResponse": "opensearch:DescribeReservedElasticsearchInstancesResponse",
+    "DescribeVpcEndpointsRequest": "opensearch:DescribeVpcEndpointsRequest",
+    "DescribeVpcEndpointsResponse": "opensearch:DescribeVpcEndpointsResponse",
+    "Description": {
+      "@id": "opensearch:Description",
+      "@type": "xsd:string"
+    },
+    "DisableTimestamp": "opensearch:DisableTimestamp",
+    "DisabledOperationException": "opensearch:DisabledOperationException",
+    "DissociatePackageRequest": "opensearch:DissociatePackageRequest",
+    "DissociatePackageResponse": "opensearch:DissociatePackageResponse",
+    "DomainArn": {
+      "@id": "opensearch:DomainArn",
+      "@type": "xsd:string"
+    },
+    "DomainEndpointOptions": {
+      "@id": "opensearch:DomainEndpointOptions",
+      "@type": "xsd:string"
+    },
+    "DomainEndpointOptionsStatus": "opensearch:DomainEndpointOptionsStatus",
+    "DomainId": {
+      "@id": "opensearch:DomainId",
+      "@type": "xsd:string"
+    },
+    "DomainInfo": "opensearch:DomainInfo",
+    "DomainInfoList": "opensearch:DomainInfoList",
+    "DomainInformation": "opensearch:DomainInformation",
+    "DomainName": {
+      "@id": "opensearch:DomainName",
+      "@type": "xsd:string"
+    },
+    "DomainNameFqdn": "opensearch:DomainNameFqdn",
+    "DomainNameList": "opensearch:DomainNameList",
+    "DomainPackageDetails": {
+      "@id": "opensearch:DomainPackageDetails",
+      "@type": "xsd:string"
+    },
+    "DomainPackageDetailsList": {
+      "@id": "opensearch:DomainPackageDetailsList",
+      "@type": "xsd:string"
+    },
+    "DomainPackageStatus": {
+      "@id": "opensearch:DomainPackageStatus",
+      "@type": "xsd:string"
+    },
+    "Double": "opensearch:Double",
+    "DryRun": {
+      "@id": "opensearch:DryRun",
+      "@type": "xsd:string"
+    },
+    "DryRunResults": {
+      "@id": "opensearch:DryRunResults",
+      "@type": "xsd:string"
+    },
+    "Duration": {
+      "@id": "opensearch:Duration",
+      "@type": "xsd:string"
+    },
+    "DurationValue": "opensearch:DurationValue",
+    "EBSOptions": {
+      "@id": "opensearch:EBSOptions",
+      "@type": "xsd:string"
+    },
+    "EBSOptionsStatus": "opensearch:EBSOptionsStatus",
+    "ESPartitionInstanceType": "opensearch:ESPartitionInstanceType",
+    "ESWarmPartitionInstanceType": "opensearch:ESWarmPartitionInstanceType",
+    "ElasticsearchClusterConfig": {
+      "@id": "opensearch:ElasticsearchClusterConfig",
+      "@type": "xsd:string"
+    },
+    "ElasticsearchClusterConfigStatus": "opensearch:ElasticsearchClusterConfigStatus",
+    "ElasticsearchDomainConfig": "opensearch:ElasticsearchDomainConfig",
+    "ElasticsearchDomainStatus": "opensearch:ElasticsearchDomainStatus",
+    "ElasticsearchDomainStatusList": "opensearch:ElasticsearchDomainStatusList",
+    "ElasticsearchInstanceTypeList": "opensearch:ElasticsearchInstanceTypeList",
+    "ElasticsearchVersionList": "opensearch:ElasticsearchVersionList",
+    "ElasticsearchVersionStatus": "opensearch:ElasticsearchVersionStatus",
+    "ElasticsearchVersionString": "opensearch:ElasticsearchVersionString",
+    "EncryptionAtRestOptions": {
+      "@id": "opensearch:EncryptionAtRestOptions",
+      "@type": "xsd:string"
+    },
+    "EncryptionAtRestOptionsStatus": "opensearch:EncryptionAtRestOptionsStatus",
+    "Endpoint": {
+      "@id": "opensearch:Endpoint",
+      "@type": "xsd:string"
+    },
+    "EndpointsMap": "opensearch:EndpointsMap",
+    "EngineType": {
+      "@id": "opensearch:EngineType",
+      "@type": "xsd:string"
+    },
+    "ErrorDetails": {
+      "@id": "opensearch:ErrorDetails",
+      "@type": "xsd:string"
+    },
+    "ErrorMessage": {
+      "@id": "opensearch:ErrorMessage",
+      "@type": "xsd:string"
+    },
+    "ErrorType": {
+      "@id": "opensearch:ErrorType",
+      "@type": "xsd:string"
+    },
+    "Filter": "opensearch:Filter",
+    "FilterList": "opensearch:FilterList",
+    "GUID": "opensearch:GUID",
+    "GetCompatibleElasticsearchVersionsRequest": "opensearch:GetCompatibleElasticsearchVersionsRequest",
+    "GetCompatibleElasticsearchVersionsResponse": "opensearch:GetCompatibleElasticsearchVersionsResponse",
+    "GetPackageVersionHistoryRequest": "opensearch:GetPackageVersionHistoryRequest",
+    "GetPackageVersionHistoryResponse": "opensearch:GetPackageVersionHistoryResponse",
+    "GetUpgradeHistoryRequest": "opensearch:GetUpgradeHistoryRequest",
+    "GetUpgradeHistoryResponse": "opensearch:GetUpgradeHistoryResponse",
+    "GetUpgradeStatusRequest": "opensearch:GetUpgradeStatusRequest",
+    "GetUpgradeStatusResponse": "opensearch:GetUpgradeStatusResponse",
+    "IdentityPoolId": {
+      "@id": "opensearch:IdentityPoolId",
+      "@type": "xsd:string"
+    },
+    "InboundCrossClusterSearchConnection": "opensearch:InboundCrossClusterSearchConnection",
+    "InboundCrossClusterSearchConnectionStatus": "opensearch:InboundCrossClusterSearchConnectionStatus",
+    "InboundCrossClusterSearchConnectionStatusCode": "opensearch:InboundCrossClusterSearchConnectionStatusCode",
+    "InboundCrossClusterSearchConnections": "opensearch:InboundCrossClusterSearchConnections",
+    "InstanceCount": {
+      "@id": "opensearch:InstanceCount",
+      "@type": "xsd:string"
+    },
+    "InstanceCountLimits": {
+      "@id": "opensearch:InstanceCountLimits",
+      "@type": "xsd:string"
+    },
+    "InstanceLimits": {
+      "@id": "opensearch:InstanceLimits",
+      "@type": "xsd:string"
+    },
+    "InstanceRole": "opensearch:InstanceRole",
+    "Integer": "opensearch:Integer",
+    "IntegerClass": "opensearch:IntegerClass",
+    "InternalException": "opensearch:InternalException",
+    "InvalidPaginationTokenException": "opensearch:InvalidPaginationTokenException",
+    "InvalidTypeException": "opensearch:InvalidTypeException",
+    "Issue": "opensearch:Issue",
+    "Issues": {
+      "@id": "opensearch:Issues",
+      "@type": "xsd:string"
+    },
+    "KmsKeyId": {
+      "@id": "opensearch:KmsKeyId",
+      "@type": "xsd:string"
+    },
+    "LastUpdated": {
+      "@id": "opensearch:LastUpdated",
+      "@type": "xsd:string"
+    },
+    "LimitExceededException": "opensearch:LimitExceededException",
+    "LimitName": {
+      "@id": "opensearch:LimitName",
+      "@type": "xsd:string"
+    },
+    "LimitValue": "opensearch:LimitValue",
+    "LimitValueList": "opensearch:LimitValueList",
+    "Limits": "opensearch:Limits",
+    "LimitsByRole": {
+      "@id": "opensearch:LimitsByRole",
+      "@type": "xsd:string"
+    },
+    "ListDomainNamesRequest": "opensearch:ListDomainNamesRequest",
+    "ListDomainNamesResponse": "opensearch:ListDomainNamesResponse",
+    "ListDomainsForPackageRequest": "opensearch:ListDomainsForPackageRequest",
+    "ListDomainsForPackageResponse": "opensearch:ListDomainsForPackageResponse",
+    "ListElasticsearchInstanceTypesRequest": "opensearch:ListElasticsearchInstanceTypesRequest",
+    "ListElasticsearchInstanceTypesResponse": "opensearch:ListElasticsearchInstanceTypesResponse",
+    "ListElasticsearchVersionsRequest": "opensearch:ListElasticsearchVersionsRequest",
+    "ListElasticsearchVersionsResponse": "opensearch:ListElasticsearchVersionsResponse",
+    "ListPackagesForDomainRequest": "opensearch:ListPackagesForDomainRequest",
+    "ListPackagesForDomainResponse": "opensearch:ListPackagesForDomainResponse",
+    "ListTagsRequest": "opensearch:ListTagsRequest",
+    "ListTagsResponse": "opensearch:ListTagsResponse",
+    "ListVpcEndpointAccessRequest": "opensearch:ListVpcEndpointAccessRequest",
+    "ListVpcEndpointAccessResponse": "opensearch:ListVpcEndpointAccessResponse",
+    "ListVpcEndpointsForDomainRequest": "opensearch:ListVpcEndpointsForDomainRequest",
+    "ListVpcEndpointsForDomainResponse": "opensearch:ListVpcEndpointsForDomainResponse",
+    "ListVpcEndpointsRequest": "opensearch:ListVpcEndpointsRequest",
+    "ListVpcEndpointsResponse": "opensearch:ListVpcEndpointsResponse",
+    "LogPublishingOption": "opensearch:LogPublishingOption",
+    "LogPublishingOptions": {
+      "@id": "opensearch:LogPublishingOptions",
+      "@type": "xsd:string"
+    },
+    "LogPublishingOptionsStatus": "opensearch:LogPublishingOptionsStatus",
+    "LogType": "opensearch:LogType",
+    "MasterUserOptions": {
+      "@id": "opensearch:MasterUserOptions",
+      "@type": "xsd:string"
+    },
+    "MaxResults": {
+      "@id": "opensearch:MaxResults",
+      "@type": "xsd:string"
+    },
+    "MaximumInstanceCount": {
+      "@id": "opensearch:MaximumInstanceCount",
+      "@type": "xsd:string"
+    },
+    "Message": {
+      "@id": "opensearch:Message",
+      "@type": "xsd:string"
+    },
+    "MinimumInstanceCount": {
+      "@id": "opensearch:MinimumInstanceCount",
+      "@type": "xsd:string"
+    },
+    "NextToken": {
+      "@id": "opensearch:NextToken",
+      "@type": "xsd:string"
+    },
+    "NodeToNodeEncryptionOptions": {
+      "@id": "opensearch:NodeToNodeEncryptionOptions",
+      "@type": "xsd:string"
+    },
+    "NodeToNodeEncryptionOptionsStatus": "opensearch:NodeToNodeEncryptionOptionsStatus",
+    "NonEmptyString": "opensearch:NonEmptyString",
+    "OptionState": "opensearch:OptionState",
+    "OptionStatus": "opensearch:OptionStatus",
+    "OutboundCrossClusterSearchConnection": "opensearch:OutboundCrossClusterSearchConnection",
+    "OutboundCrossClusterSearchConnectionStatus": "opensearch:OutboundCrossClusterSearchConnectionStatus",
+    "OutboundCrossClusterSearchConnectionStatusCode": "opensearch:OutboundCrossClusterSearchConnectionStatusCode",
+    "OutboundCrossClusterSearchConnections": "opensearch:OutboundCrossClusterSearchConnections",
+    "OverallChangeStatus": "opensearch:OverallChangeStatus",
+    "OwnerId": {
+      "@id": "opensearch:OwnerId",
+      "@type": "xsd:string"
+    },
+    "PackageDescription": {
+      "@id": "opensearch:PackageDescription",
+      "@type": "xsd:string"
+    },
+    "PackageDetails": {
+      "@id": "opensearch:PackageDetails",
+      "@type": "xsd:string"
+    },
+    "PackageDetailsList": {
+      "@id": "opensearch:PackageDetailsList",
+      "@type": "xsd:string"
+    },
+    "PackageID": {
+      "@id": "opensearch:PackageID",
+      "@type": "xsd:string"
+    },
+    "PackageName": {
+      "@id": "opensearch:PackageName",
+      "@type": "xsd:string"
+    },
+    "PackageSource": {
+      "@id": "opensearch:PackageSource",
+      "@type": "xsd:string"
+    },
+    "PackageStatus": {
+      "@id": "opensearch:PackageStatus",
+      "@type": "xsd:string"
+    },
+    "PackageType": {
+      "@id": "opensearch:PackageType",
+      "@type": "xsd:string"
+    },
+    "PackageVersion": {
+      "@id": "opensearch:PackageVersion",
+      "@type": "xsd:string"
+    },
+    "PackageVersionHistory": "opensearch:PackageVersionHistory",
+    "PackageVersionHistoryList": {
+      "@id": "opensearch:PackageVersionHistoryList",
+      "@type": "xsd:string"
+    },
+    "Password": "opensearch:Password",
+    "PolicyDocument": "opensearch:PolicyDocument",
+    "PrincipalType": {
+      "@id": "opensearch:PrincipalType",
+      "@type": "xsd:string"
+    },
+    "PurchaseReservedElasticsearchInstanceOfferingRequest": "opensearch:PurchaseReservedElasticsearchInstanceOfferingRequest",
+    "PurchaseReservedElasticsearchInstanceOfferingResponse": "opensearch:PurchaseReservedElasticsearchInstanceOfferingResponse",
+    "RecurringCharge": "opensearch:RecurringCharge",
+    "RecurringChargeList": "opensearch:RecurringChargeList",
+    "ReferencePath": {
+      "@id": "opensearch:ReferencePath",
+      "@type": "xsd:string"
+    },
+    "Region": {
+      "@id": "opensearch:Region",
+      "@type": "xsd:string"
+    },
+    "RejectInboundCrossClusterSearchConnectionRequest": "opensearch:RejectInboundCrossClusterSearchConnectionRequest",
+    "RejectInboundCrossClusterSearchConnectionResponse": "opensearch:RejectInboundCrossClusterSearchConnectionResponse",
+    "RemoveTagsRequest": "opensearch:RemoveTagsRequest",
+    "ReservationToken": "opensearch:ReservationToken",
+    "ReservedElasticsearchInstance": "opensearch:ReservedElasticsearchInstance",
+    "ReservedElasticsearchInstanceList": "opensearch:ReservedElasticsearchInstanceList",
+    "ReservedElasticsearchInstanceOffering": "opensearch:ReservedElasticsearchInstanceOffering",
+    "ReservedElasticsearchInstanceOfferingList": "opensearch:ReservedElasticsearchInstanceOfferingList",
+    "ReservedElasticsearchInstancePaymentOption": "opensearch:ReservedElasticsearchInstancePaymentOption",
+    "ResourceAlreadyExistsException": "opensearch:ResourceAlreadyExistsException",
+    "ResourceNotFoundException": "opensearch:ResourceNotFoundException",
+    "RevokeVpcEndpointAccessRequest": "opensearch:RevokeVpcEndpointAccessRequest",
+    "RevokeVpcEndpointAccessResponse": "opensearch:RevokeVpcEndpointAccessResponse",
+    "RoleArn": {
+      "@id": "opensearch:RoleArn",
+      "@type": "xsd:string"
+    },
+    "RollbackOnDisable": {
+      "@id": "opensearch:RollbackOnDisable",
+      "@type": "xsd:string"
+    },
+    "S3BucketName": {
+      "@id": "opensearch:S3BucketName",
+      "@type": "xsd:string"
+    },
+    "S3Key": {
+      "@id": "opensearch:S3Key",
+      "@type": "xsd:string"
+    },
+    "SAMLEntityId": "opensearch:SAMLEntityId",
+    "SAMLIdp": "opensearch:SAMLIdp",
+    "SAMLMetadata": "opensearch:SAMLMetadata",
+    "SAMLOptionsInput": "opensearch:SAMLOptionsInput",
+    "SAMLOptionsOutput": "opensearch:SAMLOptionsOutput",
+    "ScheduledAutoTuneActionType": "opensearch:ScheduledAutoTuneActionType",
+    "ScheduledAutoTuneDescription": "opensearch:ScheduledAutoTuneDescription",
+    "ScheduledAutoTuneDetails": {
+      "@id": "opensearch:ScheduledAutoTuneDetails",
+      "@type": "xsd:string"
+    },
+    "ScheduledAutoTuneSeverityType": "opensearch:ScheduledAutoTuneSeverityType",
+    "ServiceSoftwareOptions": {
+      "@id": "opensearch:ServiceSoftwareOptions",
+      "@type": "xsd:string"
+    },
+    "ServiceUrl": "opensearch:ServiceUrl",
+    "SnapshotOptions": {
+      "@id": "opensearch:SnapshotOptions",
+      "@type": "xsd:string"
+    },
+    "SnapshotOptionsStatus": "opensearch:SnapshotOptionsStatus",
+    "StartAt": {
+      "@id": "opensearch:StartAt",
+      "@type": "xsd:string"
+    },
+    "StartElasticsearchServiceSoftwareUpdateRequest": "opensearch:StartElasticsearchServiceSoftwareUpdateRequest",
+    "StartElasticsearchServiceSoftwareUpdateResponse": "opensearch:StartElasticsearchServiceSoftwareUpdateResponse",
+    "StartTimestamp": {
+      "@id": "opensearch:StartTimestamp",
+      "@type": "xsd:string"
+    },
+    "StorageSubTypeName": {
+      "@id": "opensearch:StorageSubTypeName",
+      "@type": "xsd:string"
+    },
+    "StorageType": "opensearch:StorageType",
+    "StorageTypeLimit": "opensearch:StorageTypeLimit",
+    "StorageTypeLimitList": "opensearch:StorageTypeLimitList",
+    "StorageTypeList": "opensearch:StorageTypeList",
+    "StorageTypeName": {
+      "@id": "opensearch:StorageTypeName",
+      "@type": "xsd:string"
+    },
+    "String": "opensearch:String",
+    "StringList": "opensearch:StringList",
+    "TLSSecurityPolicy": {
+      "@id": "opensearch:TLSSecurityPolicy",
+      "@type": "xsd:string"
+    },
+    "Tag": "opensearch:Tag",
+    "TagKey": "opensearch:TagKey",
+    "TagList": {
+      "@id": "opensearch:TagList",
+      "@type": "xsd:string"
+    },
+    "TagValue": "opensearch:TagValue",
+    "TimeUnit": "opensearch:TimeUnit",
+    "TotalNumberOfStages": {
+      "@id": "opensearch:TotalNumberOfStages",
+      "@type": "xsd:string"
+    },
+    "UIntValue": "opensearch:UIntValue",
+    "UpdateElasticsearchDomainConfigRequest": "opensearch:UpdateElasticsearchDomainConfigRequest",
+    "UpdateElasticsearchDomainConfigResponse": "opensearch:UpdateElasticsearchDomainConfigResponse",
+    "UpdatePackageRequest": "opensearch:UpdatePackageRequest",
+    "UpdatePackageResponse": "opensearch:UpdatePackageResponse",
+    "UpdateTimestamp": "opensearch:UpdateTimestamp",
+    "UpdateVpcEndpointRequest": "opensearch:UpdateVpcEndpointRequest",
+    "UpdateVpcEndpointResponse": "opensearch:UpdateVpcEndpointResponse",
+    "UpgradeElasticsearchDomainRequest": "opensearch:UpgradeElasticsearchDomainRequest",
+    "UpgradeElasticsearchDomainResponse": "opensearch:UpgradeElasticsearchDomainResponse",
+    "UpgradeHistory": "opensearch:UpgradeHistory",
+    "UpgradeHistoryList": "opensearch:UpgradeHistoryList",
+    "UpgradeName": {
+      "@id": "opensearch:UpgradeName",
+      "@type": "xsd:string"
+    },
+    "UpgradeStatus": {
+      "@id": "opensearch:UpgradeStatus",
+      "@type": "xsd:string"
+    },
+    "UpgradeStep": {
+      "@id": "opensearch:UpgradeStep",
+      "@type": "xsd:string"
+    },
+    "UpgradeStepItem": "opensearch:UpgradeStepItem",
+    "UpgradeStepsList": "opensearch:UpgradeStepsList",
+    "UserPoolId": {
+      "@id": "opensearch:UserPoolId",
+      "@type": "xsd:string"
+    },
+    "Username": "opensearch:Username",
+    "VPCDerivedInfo": "opensearch:VPCDerivedInfo",
+    "VPCDerivedInfoStatus": "opensearch:VPCDerivedInfoStatus",
+    "VPCOptions": {
+      "@id": "opensearch:VPCOptions",
+      "@type": "xsd:string"
+    },
+    "ValidationException": "opensearch:ValidationException",
+    "ValueStringList": "opensearch:ValueStringList",
+    "VolumeType": {
+      "@id": "opensearch:VolumeType",
+      "@type": "xsd:string"
+    },
+    "VpcEndpoint": {
+      "@id": "opensearch:VpcEndpoint",
+      "@type": "xsd:string"
+    },
+    "VpcEndpointError": "opensearch:VpcEndpointError",
+    "VpcEndpointErrorCode": "opensearch:VpcEndpointErrorCode",
+    "VpcEndpointErrorList": "opensearch:VpcEndpointErrorList",
+    "VpcEndpointId": {
+      "@id": "opensearch:VpcEndpointId",
+      "@type": "xsd:string"
+    },
+    "VpcEndpointIdList": "opensearch:VpcEndpointIdList",
+    "VpcEndpointStatus": "opensearch:VpcEndpointStatus",
+    "VpcEndpointSummary": {
+      "@id": "opensearch:VpcEndpointSummary",
+      "@type": "xsd:string"
+    },
+    "VpcEndpointSummaryList": {
+      "@id": "opensearch:VpcEndpointSummaryList",
+      "@type": "xsd:string"
+    },
+    "VpcEndpoints": {
+      "@id": "opensearch:VpcEndpoints",
+      "@type": "xsd:string"
+    },
+    "ZoneAwarenessConfig": {
+      "@id": "opensearch:ZoneAwarenessConfig",
+      "@type": "xsd:string"
+    },
+    "AccessPolicies": {
+      "@id": "opensearch:AccessPolicies",
+      "@type": "xsd:string"
+    },
+    "Account": {
+      "@id": "opensearch:Account",
+      "@type": "xsd:string"
+    },
+    "Action": {
+      "@id": "opensearch:Action",
+      "@type": "xsd:string"
+    },
+    "ActionType": {
+      "@id": "opensearch:ActionType",
+      "@type": "xsd:string"
+    },
+    "AdditionalLimits": {
+      "@id": "opensearch:AdditionalLimits",
+      "@type": "xsd:string"
+    },
+    "AnonymousAuthDisableDate": {
+      "@id": "opensearch:AnonymousAuthDisableDate",
+      "@type": "xsd:string"
+    },
+    "AnonymousAuthEnabled": {
+      "@id": "opensearch:AnonymousAuthEnabled",
+      "@type": "xsd:string"
+    },
+    "AutoTunes": {
+      "@id": "opensearch:AutoTunes",
+      "@type": "xsd:string"
+    },
+    "AutomatedSnapshotStartHour": {
+      "@id": "opensearch:AutomatedSnapshotStartHour",
+      "@type": "xsd:string"
+    },
+    "AutomatedUpdateDate": {
+      "@id": "opensearch:AutomatedUpdateDate",
+      "@type": "xsd:string"
+    },
+    "AvailabilityZoneCount": {
+      "@id": "opensearch:AvailabilityZoneCount",
+      "@type": "xsd:string"
+    },
+    "AvailabilityZones": {
+      "@id": "opensearch:AvailabilityZones",
+      "@type": "xsd:string"
+    },
+    "AvailablePackageVersion": {
+      "@id": "opensearch:AvailablePackageVersion",
+      "@type": "xsd:string"
+    },
+    "Cancellable": {
+      "@id": "opensearch:Cancellable",
+      "@type": "xsd:string"
+    },
+    "ChangeId": {
+      "@id": "opensearch:ChangeId",
+      "@type": "xsd:string"
+    },
+    "ChangeProgressStages": {
+      "@id": "opensearch:ChangeProgressStages",
+      "@type": "xsd:string"
+    },
+    "ChangeProgressStatus": {
+      "@id": "opensearch:ChangeProgressStatus",
+      "@type": "xsd:string"
+    },
+    "CompatibleElasticsearchVersions": {
+      "@id": "opensearch:CompatibleElasticsearchVersions",
+      "@type": "xsd:string"
+    },
+    "CompletedProperties": {
+      "@id": "opensearch:CompletedProperties",
+      "@type": "xsd:string"
+    },
+    "ConnectionStatus": {
+      "@id": "opensearch:ConnectionStatus",
+      "@type": "xsd:string"
+    },
+    "Created": {
+      "@id": "opensearch:Created",
+      "@type": "xsd:string"
+    },
+    "CreationDate": {
+      "@id": "opensearch:CreationDate",
+      "@type": "xsd:string"
+    },
+    "CronExpressionForRecurrence": {
+      "@id": "opensearch:CronExpressionForRecurrence",
+      "@type": "xsd:string"
+    },
+    "CrossClusterSearchConnection": {
+      "@id": "opensearch:CrossClusterSearchConnection",
+      "@type": "xsd:string"
+    },
+    "CrossClusterSearchConnections": {
+      "@id": "opensearch:CrossClusterSearchConnections",
+      "@type": "xsd:string"
+    },
+    "CurrencyCode": {
+      "@id": "opensearch:CurrencyCode",
+      "@type": "xsd:string"
+    },
+    "CurrentVersion": {
+      "@id": "opensearch:CurrentVersion",
+      "@type": "xsd:string"
+    },
+    "CustomEndpoint": {
+      "@id": "opensearch:CustomEndpoint",
+      "@type": "xsd:string"
+    },
+    "CustomEndpointCertificateArn": {
+      "@id": "opensearch:CustomEndpointCertificateArn",
+      "@type": "xsd:string"
+    },
+    "CustomEndpointEnabled": {
+      "@id": "opensearch:CustomEndpointEnabled",
+      "@type": "xsd:string"
+    },
+    "Date": {
+      "@id": "opensearch:Date",
+      "@type": "xsd:string"
+    },
+    "DedicatedMasterCount": {
+      "@id": "opensearch:DedicatedMasterCount",
+      "@type": "xsd:string"
+    },
+    "DedicatedMasterEnabled": {
+      "@id": "opensearch:DedicatedMasterEnabled",
+      "@type": "xsd:string"
+    },
+    "DedicatedMasterType": {
+      "@id": "opensearch:DedicatedMasterType",
+      "@type": "xsd:string"
+    },
+    "Deleted": {
+      "@id": "opensearch:Deleted",
+      "@type": "xsd:string"
+    },
+    "DesiredState": {
+      "@id": "opensearch:DesiredState",
+      "@type": "xsd:string"
+    },
+    "DestinationDomainInfo": {
+      "@id": "opensearch:DestinationDomainInfo",
+      "@type": "xsd:string"
+    },
+    "DomainConfig": {
+      "@id": "opensearch:DomainConfig",
+      "@type": "xsd:string"
+    },
+    "DomainNames": {
+      "@id": "opensearch:DomainNames",
+      "@type": "xsd:string"
+    },
+    "DomainStatus": {
+      "@id": "opensearch:DomainStatus",
+      "@type": "xsd:string"
+    },
+    "DomainStatusList": {
+      "@id": "opensearch:DomainStatusList",
+      "@type": "xsd:string"
+    },
+    "EBSEnabled": {
+      "@id": "opensearch:EBSEnabled",
+      "@type": "xsd:string"
+    },
+    "ElasticsearchInstanceCount": {
+      "@id": "opensearch:ElasticsearchInstanceCount",
+      "@type": "xsd:string"
+    },
+    "ElasticsearchInstanceType": {
+      "@id": "opensearch:ElasticsearchInstanceType",
+      "@type": "xsd:string"
+    },
+    "ElasticsearchInstanceTypes": {
+      "@id": "opensearch:ElasticsearchInstanceTypes",
+      "@type": "xsd:string"
+    },
+    "ElasticsearchVersion": {
+      "@id": "opensearch:ElasticsearchVersion",
+      "@type": "xsd:string"
+    },
+    "ElasticsearchVersions": {
+      "@id": "opensearch:ElasticsearchVersions",
+      "@type": "xsd:string"
+    },
+    "Enabled": {
+      "@id": "opensearch:Enabled",
+      "@type": "xsd:string"
+    },
+    "Endpoints": {
+      "@id": "opensearch:Endpoints",
+      "@type": "xsd:string"
+    },
+    "EnforceHTTPS": {
+      "@id": "opensearch:EnforceHTTPS",
+      "@type": "xsd:string"
+    },
+    "EntityId": {
+      "@id": "opensearch:EntityId",
+      "@type": "xsd:string"
+    },
+    "ErrorCode": {
+      "@id": "opensearch:ErrorCode",
+      "@type": "xsd:string"
+    },
+    "Filters": {
+      "@id": "opensearch:Filters",
+      "@type": "xsd:string"
+    },
+    "FixedPrice": {
+      "@id": "opensearch:FixedPrice",
+      "@type": "xsd:string"
+    },
+    "Idp": {
+      "@id": "opensearch:Idp",
+      "@type": "xsd:string"
+    },
+    "InstanceType": {
+      "@id": "opensearch:InstanceType",
+      "@type": "xsd:string"
+    },
+    "InternalUserDatabaseEnabled": {
+      "@id": "opensearch:InternalUserDatabaseEnabled",
+      "@type": "xsd:string"
+    },
+    "Iops": {
+      "@id": "opensearch:Iops",
+      "@type": "xsd:string"
+    },
+    "Key": {
+      "@id": "opensearch:Key",
+      "@type": "xsd:string"
+    },
+    "LastUpdatedAt": {
+      "@id": "opensearch:LastUpdatedAt",
+      "@type": "xsd:string"
+    },
+    "LimitValues": {
+      "@id": "opensearch:LimitValues",
+      "@type": "xsd:string"
+    },
+    "MaintenanceSchedules": {
+      "@id": "opensearch:MaintenanceSchedules",
+      "@type": "xsd:string"
+    },
+    "MasterBackendRole": {
+      "@id": "opensearch:MasterBackendRole",
+      "@type": "xsd:string"
+    },
+    "MasterUserARN": {
+      "@id": "opensearch:MasterUserARN",
+      "@type": "xsd:string"
+    },
+    "MasterUserName": {
+      "@id": "opensearch:MasterUserName",
+      "@type": "xsd:string"
+    },
+    "MasterUserPassword": {
+      "@id": "opensearch:MasterUserPassword",
+      "@type": "xsd:string"
+    },
+    "MetadataContent": {
+      "@id": "opensearch:MetadataContent",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "opensearch:Name",
+      "@type": "xsd:string"
+    },
+    "NewVersion": {
+      "@id": "opensearch:NewVersion",
+      "@type": "xsd:string"
+    },
+    "OptionalDeployment": {
+      "@id": "opensearch:OptionalDeployment",
+      "@type": "xsd:string"
+    },
+    "Options": {
+      "@id": "opensearch:Options",
+      "@type": "xsd:string"
+    },
+    "PaymentOption": {
+      "@id": "opensearch:PaymentOption",
+      "@type": "xsd:string"
+    },
+    "PendingDeletion": {
+      "@id": "opensearch:PendingDeletion",
+      "@type": "xsd:string"
+    },
+    "PendingProperties": {
+      "@id": "opensearch:PendingProperties",
+      "@type": "xsd:string"
+    },
+    "PerformCheckOnly": {
+      "@id": "opensearch:PerformCheckOnly",
+      "@type": "xsd:string"
+    },
+    "Principal": {
+      "@id": "opensearch:Principal",
+      "@type": "xsd:string"
+    },
+    "Processing": {
+      "@id": "opensearch:Processing",
+      "@type": "xsd:string"
+    },
+    "ProgressPercent": {
+      "@id": "opensearch:ProgressPercent",
+      "@type": "xsd:string"
+    },
+    "RecurringChargeAmount": {
+      "@id": "opensearch:RecurringChargeAmount",
+      "@type": "xsd:string"
+    },
+    "RecurringChargeFrequency": {
+      "@id": "opensearch:RecurringChargeFrequency",
+      "@type": "xsd:string"
+    },
+    "RecurringCharges": {
+      "@id": "opensearch:RecurringCharges",
+      "@type": "xsd:string"
+    },
+    "ReservationName": {
+      "@id": "opensearch:ReservationName",
+      "@type": "xsd:string"
+    },
+    "ReservedElasticsearchInstanceId": {
+      "@id": "opensearch:ReservedElasticsearchInstanceId",
+      "@type": "xsd:string"
+    },
+    "ReservedElasticsearchInstanceOfferingId": {
+      "@id": "opensearch:ReservedElasticsearchInstanceOfferingId",
+      "@type": "xsd:string"
+    },
+    "ReservedElasticsearchInstanceOfferings": {
+      "@id": "opensearch:ReservedElasticsearchInstanceOfferings",
+      "@type": "xsd:string"
+    },
+    "ReservedElasticsearchInstances": {
+      "@id": "opensearch:ReservedElasticsearchInstances",
+      "@type": "xsd:string"
+    },
+    "RolesKey": {
+      "@id": "opensearch:RolesKey",
+      "@type": "xsd:string"
+    },
+    "SAMLOptions": {
+      "@id": "opensearch:SAMLOptions",
+      "@type": "xsd:string"
+    },
+    "SecurityGroupIds": {
+      "@id": "opensearch:SecurityGroupIds",
+      "@type": "xsd:string"
+    },
+    "SessionTimeoutMinutes": {
+      "@id": "opensearch:SessionTimeoutMinutes",
+      "@type": "xsd:string"
+    },
+    "Severity": {
+      "@id": "opensearch:Severity",
+      "@type": "xsd:string"
+    },
+    "SourceDomainInfo": {
+      "@id": "opensearch:SourceDomainInfo",
+      "@type": "xsd:string"
+    },
+    "SourceVersion": {
+      "@id": "opensearch:SourceVersion",
+      "@type": "xsd:string"
+    },
+    "StartTime": {
+      "@id": "opensearch:StartTime",
+      "@type": "xsd:string"
+    },
+    "State": {
+      "@id": "opensearch:State",
+      "@type": "xsd:string"
+    },
+    "Status": {
+      "@id": "opensearch:Status",
+      "@type": "xsd:string"
+    },
+    "StatusCode": {
+      "@id": "opensearch:StatusCode",
+      "@type": "xsd:string"
+    },
+    "StepStatus": {
+      "@id": "opensearch:StepStatus",
+      "@type": "xsd:string"
+    },
+    "StepsList": {
+      "@id": "opensearch:StepsList",
+      "@type": "xsd:string"
+    },
+    "StorageTypeLimits": {
+      "@id": "opensearch:StorageTypeLimits",
+      "@type": "xsd:string"
+    },
+    "StorageTypes": {
+      "@id": "opensearch:StorageTypes",
+      "@type": "xsd:string"
+    },
+    "SubjectKey": {
+      "@id": "opensearch:SubjectKey",
+      "@type": "xsd:string"
+    },
+    "SubnetIds": {
+      "@id": "opensearch:SubnetIds",
+      "@type": "xsd:string"
+    },
+    "TagKeys": {
+      "@id": "opensearch:TagKeys",
+      "@type": "xsd:string"
+    },
+    "TargetVersion": {
+      "@id": "opensearch:TargetVersion",
+      "@type": "xsd:string"
+    },
+    "TargetVersions": {
+      "@id": "opensearch:TargetVersions",
+      "@type": "xsd:string"
+    },
+    "Throughput": {
+      "@id": "opensearch:Throughput",
+      "@type": "xsd:string"
+    },
+    "Unit": {
+      "@id": "opensearch:Unit",
+      "@type": "xsd:string"
+    },
+    "UpdateAvailable": {
+      "@id": "opensearch:UpdateAvailable",
+      "@type": "xsd:string"
+    },
+    "UpdateDate": {
+      "@id": "opensearch:UpdateDate",
+      "@type": "xsd:string"
+    },
+    "UpdateStatus": {
+      "@id": "opensearch:UpdateStatus",
+      "@type": "xsd:string"
+    },
+    "UpdateVersion": {
+      "@id": "opensearch:UpdateVersion",
+      "@type": "xsd:string"
+    },
+    "UpgradeHistories": {
+      "@id": "opensearch:UpgradeHistories",
+      "@type": "xsd:string"
+    },
+    "UpgradeProcessing": {
+      "@id": "opensearch:UpgradeProcessing",
+      "@type": "xsd:string"
+    },
+    "UpgradeStepStatus": {
+      "@id": "opensearch:UpgradeStepStatus",
+      "@type": "xsd:string"
+    },
+    "UsagePrice": {
+      "@id": "opensearch:UsagePrice",
+      "@type": "xsd:string"
+    },
+    "VPCId": {
+      "@id": "opensearch:VPCId",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "opensearch:Value",
+      "@type": "xsd:string"
+    },
+    "Values": {
+      "@id": "opensearch:Values",
+      "@type": "xsd:string"
+    },
+    "VolumeSize": {
+      "@id": "opensearch:VolumeSize",
+      "@type": "xsd:string"
+    },
+    "VpcEndpointErrors": {
+      "@id": "opensearch:VpcEndpointErrors",
+      "@type": "xsd:string"
+    },
+    "VpcEndpointIds": {
+      "@id": "opensearch:VpcEndpointIds",
+      "@type": "xsd:string"
+    },
+    "VpcEndpointOwner": {
+      "@id": "opensearch:VpcEndpointOwner",
+      "@type": "xsd:string"
+    },
+    "VpcOptions": {
+      "@id": "opensearch:VpcOptions",
+      "@type": "xsd:string"
+    },
+    "WarmCount": {
+      "@id": "opensearch:WarmCount",
+      "@type": "xsd:string"
+    },
+    "WarmEnabled": {
+      "@id": "opensearch:WarmEnabled",
+      "@type": "xsd:string"
+    },
+    "WarmType": {
+      "@id": "opensearch:WarmType",
+      "@type": "xsd:string"
+    },
+    "ZoneAwarenessEnabled": {
+      "@id": "opensearch:ZoneAwarenessEnabled",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-auto-tune-list-structure.json",
+  "name": "AutoTuneList",
+  "description": "AutoTuneList schema from Amazon OpenSearch Service API",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/AutoTune"
+  }
+}

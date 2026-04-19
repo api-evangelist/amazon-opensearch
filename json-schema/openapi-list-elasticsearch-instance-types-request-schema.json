@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-list-elasticsearch-instance-types-request-schema.json",
+  "title": "ListElasticsearchInstanceTypesRequest",
+  "description": " Container for the parameters to the <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. ",
+  "type": "object",
+  "properties": {}
+}

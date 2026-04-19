@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-list-vpc-endpoint-access-response-structure.json",
+  "name": "ListVpcEndpointAccessResponse",
+  "description": "Container for response parameters to the <code><a>ListVpcEndpointAccess</a></code> operation. Returns a list of accounts id and account type authorized to manage VPC endpoints.",
+  "type": "object",
+  "properties": {
+    "AuthorizedPrincipalList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AuthorizedPrincipalList"
+        },
+        {
+          "description": "List of <code>AuthorizedPrincipal</code> describing the details of the permissions to manage VPC endpoints against the specified domain."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "Provides an identifier to allow retrieval of paginated results."
+        }
+      ]
+    }
+  },
+  "required": [
+    "AuthorizedPrincipalList",
+    "NextToken"
+  ]
+}

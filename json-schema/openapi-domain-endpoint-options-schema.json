@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-domain-endpoint-options-schema.json",
+  "title": "DomainEndpointOptions",
+  "description": "Options to configure endpoint for the Elasticsearch domain.",
+  "type": "object",
+  "properties": {
+    "EnforceHTTPS": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Specify if only HTTPS endpoint should be enabled for the Elasticsearch domain."
+        }
+      ]
+    },
+    "TLSSecurityPolicy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TLSSecurityPolicy"
+        },
+        {
+          "description": "Specify the TLS security policy that needs to be applied to the HTTPS endpoint of Elasticsearch domain. <br/> It can be one of the following values: <ul> <li><b>Policy-Min-TLS-1-0-2019-07: </b> TLS security policy which supports TLSv1.0 and higher.</li> <li><b>Policy-Min-TLS-1-2-2019-07: </b> TLS security policy which supports only TLSv1.2</li> </ul> "
+        }
+      ]
+    },
+    "CustomEndpointEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Specify if custom endpoint should be enabled for the Elasticsearch domain."
+        }
+      ]
+    },
+    "CustomEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainNameFqdn"
+        },
+        {
+          "description": "Specify the fully qualified domain for your custom endpoint."
+        }
+      ]
+    },
+    "CustomEndpointCertificateArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ARN"
+        },
+        {
+          "description": "Specify ACM certificate ARN for your custom endpoint."
+        }
+      ]
+    }
+  }
+}

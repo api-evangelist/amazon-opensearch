@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-packages-filter-name-structure.json",
+  "name": "DescribePackagesFilterName",
+  "description": "DescribePackagesFilterName schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "PackageID",
+    "PackageName",
+    "PackageStatus"
+  ]
+}

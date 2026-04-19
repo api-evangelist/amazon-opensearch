@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-outbound-cross-cluster-search-connections-request-structure.json",
+  "name": "DescribeOutboundCrossClusterSearchConnectionsRequest",
+  "description": "Container for the parameters to the <code><a>DescribeOutboundCrossClusterSearchConnections</a></code> operation.",
+  "type": "object",
+  "properties": {
+    "Filters": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FilterList"
+        },
+        {
+          "description": " A list of filters used to match properties for outbound cross-cluster search connection. Available <code><a>Filter</a></code> names for this operation are: <ul> <li>cross-cluster-search-connection-id</li> <li>destination-domain-info.domain-name</li> <li>destination-domain-info.owner-id</li> <li>destination-domain-info.region</li> <li>source-domain-info.domain-name</li> </ul> "
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MaxResults"
+        },
+        {
+          "description": "Set this value to limit the number of results returned. If not specified, defaults to 100."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": " NextToken is sent in case the earlier API call results contain the NextToken. It is used for pagination."
+        }
+      ]
+    }
+  }
+}

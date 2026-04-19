@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-vpc-endpoint-structure.json",
+  "name": "VpcEndpoint",
+  "description": "The connection endpoint for connecting to an Amazon OpenSearch Service domain through a proxy.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointId"
+        },
+        {
+          "description": "The unique identifier of the endpoint."
+        }
+      ]
+    },
+    "VpcEndpointOwner": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AWSAccount"
+        },
+        {
+          "description": "The creator of the endpoint."
+        }
+      ]
+    },
+    "DomainArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the domain associated with the endpoint."
+        }
+      ]
+    },
+    "VpcOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VPCDerivedInfo"
+        },
+        {
+          "description": "Options to specify the subnets and security groups for an Amazon OpenSearch Service VPC endpoint."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointStatus"
+        },
+        {
+          "description": "The current status of the endpoint."
+        }
+      ]
+    },
+    "Endpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Endpoint"
+        },
+        {
+          "description": "The connection endpoint ID for connecting to the domain."
+        }
+      ]
+    }
+  }
+}

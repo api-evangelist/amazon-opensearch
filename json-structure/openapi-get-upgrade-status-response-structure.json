@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-get-upgrade-status-response-structure.json",
+  "name": "GetUpgradeStatusResponse",
+  "description": " Container for response returned by <code> <a>GetUpgradeStatus</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "UpgradeStep": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeStep"
+        },
+        {
+          "description": " Represents one of 3 steps that an Upgrade or Upgrade Eligibility Check does through: <ul> <li>PreUpgradeCheck</li> <li>Snapshot</li> <li>Upgrade</li> </ul> "
+        }
+      ]
+    },
+    "StepStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeStatus"
+        },
+        {
+          "description": " One of 4 statuses that a step can go through returned as part of the <code> <a>GetUpgradeStatusResponse</a> </code> object. The status can take one of the following values: <ul> <li>In Progress</li> <li>Succeeded</li> <li>Succeeded with Issues</li> <li>Failed</li> </ul> "
+        }
+      ]
+    },
+    "UpgradeName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeName"
+        },
+        {
+          "description": "A string that describes the update briefly"
+        }
+      ]
+    }
+  }
+}

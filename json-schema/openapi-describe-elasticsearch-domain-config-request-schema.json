@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-elasticsearch-domain-config-request-schema.json",
+  "title": "DescribeElasticsearchDomainConfigRequest",
+  "description": " Container for the parameters to the <code>DescribeElasticsearchDomainConfig</code> operation. Specifies the domain name for which you want configuration information.",
+  "type": "object",
+  "properties": {}
+}

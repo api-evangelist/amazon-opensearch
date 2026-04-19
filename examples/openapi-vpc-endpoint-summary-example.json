@@ -1,0 +1,6 @@
+{
+  "VpcEndpointId": "resource-abc123",
+  "VpcEndpointOwner": "example-string",
+  "DomainArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "Status": "active"
+}

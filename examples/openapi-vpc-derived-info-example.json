@@ -1,0 +1,6 @@
+{
+  "VPCId": "resource-abc123",
+  "SubnetIds": "resource-abc123",
+  "AvailabilityZones": "example-string",
+  "SecurityGroupIds": "resource-abc123"
+}

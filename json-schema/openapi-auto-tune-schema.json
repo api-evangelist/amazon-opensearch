@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-auto-tune-schema.json",
+  "title": "AutoTune",
+  "description": "Specifies Auto-Tune type and Auto-Tune action details. ",
+  "type": "object",
+  "properties": {
+    "AutoTuneType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AutoTuneType"
+        },
+        {
+          "description": "Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. "
+        }
+      ]
+    },
+    "AutoTuneDetails": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AutoTuneDetails"
+        },
+        {
+          "description": "Specifies details of the Auto-Tune action. See the <a href=\"https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html\" target=\"_blank\">Developer Guide</a> for more information. "
+        }
+      ]
+    }
+  }
+}

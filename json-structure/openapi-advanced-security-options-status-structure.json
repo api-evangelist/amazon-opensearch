@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-advanced-security-options-status-structure.json",
+  "name": "AdvancedSecurityOptionsStatus",
+  "description": " Specifies the status of advanced security options for the specified Elasticsearch domain.",
+  "type": "object",
+  "properties": {
+    "Options": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AdvancedSecurityOptions"
+        },
+        {
+          "description": " Specifies advanced security options for the specified Elasticsearch domain."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OptionStatus"
+        },
+        {
+          "description": " Status of the advanced security options for the specified Elasticsearch domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Options",
+    "Status"
+  ]
+}

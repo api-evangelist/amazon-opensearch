@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-create-outbound-cross-cluster-search-connection-response-structure.json",
+  "name": "CreateOutboundCrossClusterSearchConnectionResponse",
+  "description": "The result of a <code><a>CreateOutboundCrossClusterSearchConnection</a></code> request. Contains the details of the newly created cross-cluster search connection.",
+  "type": "object",
+  "properties": {
+    "SourceDomainInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainInformation"
+        },
+        {
+          "description": "Specifies the <code><a>DomainInformation</a></code> for the source Elasticsearch domain."
+        }
+      ]
+    },
+    "DestinationDomainInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainInformation"
+        },
+        {
+          "description": "Specifies the <code><a>DomainInformation</a></code> for the destination Elasticsearch domain."
+        }
+      ]
+    },
+    "ConnectionAlias": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConnectionAlias"
+        },
+        {
+          "description": "Specifies the connection alias provided during the create connection request."
+        }
+      ]
+    },
+    "ConnectionStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutboundCrossClusterSearchConnectionStatus"
+        },
+        {
+          "description": "Specifies the <code><a>OutboundCrossClusterSearchConnectionStatus</a></code> for the newly created connection."
+        }
+      ]
+    },
+    "CrossClusterSearchConnectionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CrossClusterSearchConnectionId"
+        },
+        {
+          "description": "Unique id for the created outbound connection, which is used for subsequent operations on connection."
+        }
+      ]
+    }
+  }
+}

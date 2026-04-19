@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-compatible-elasticsearch-versions-list-schema.json",
+  "title": "CompatibleElasticsearchVersionsList",
+  "description": "CompatibleElasticsearchVersionsList schema from Amazon OpenSearch Service API",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/CompatibleVersionsMap"
+  }
+}

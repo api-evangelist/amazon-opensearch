@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-accept-inbound-cross-cluster-search-connection-response-schema.json",
+  "title": "AcceptInboundCrossClusterSearchConnectionResponse",
+  "description": "The result of a <code><a>AcceptInboundCrossClusterSearchConnection</a></code> operation. Contains details of accepted inbound connection.",
+  "type": "object",
+  "properties": {
+    "CrossClusterSearchConnection": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InboundCrossClusterSearchConnection"
+        },
+        {
+          "description": "Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of accepted inbound connection. "
+        }
+      ]
+    }
+  }
+}

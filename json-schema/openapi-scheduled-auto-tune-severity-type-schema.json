@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-scheduled-auto-tune-severity-type-schema.json",
+  "title": "ScheduledAutoTuneSeverityType",
+  "description": "Specifies Auto-Tune action severity. Valid values are LOW, MEDIUM and HIGH. ",
+  "type": "string",
+  "enum": [
+    "LOW",
+    "MEDIUM",
+    "HIGH"
+  ]
+}

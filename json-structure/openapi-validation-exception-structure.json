@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-validation-exception-structure.json",
+  "name": "ValidationException",
+  "description": "ValidationException schema from Amazon OpenSearch Service API"
+}

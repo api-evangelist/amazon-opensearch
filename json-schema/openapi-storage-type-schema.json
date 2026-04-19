@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-storage-type-schema.json",
+  "title": "StorageType",
+  "description": "StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. ",
+  "type": "object",
+  "properties": {
+    "StorageTypeName": {
+      "$ref": "#/components/schemas/StorageTypeName"
+    },
+    "StorageSubTypeName": {
+      "$ref": "#/components/schemas/StorageSubTypeName"
+    },
+    "StorageTypeLimits": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StorageTypeLimitList"
+        },
+        {
+          "description": "List of limits that are applicable for given storage type. "
+        }
+      ]
+    }
+  }
+}

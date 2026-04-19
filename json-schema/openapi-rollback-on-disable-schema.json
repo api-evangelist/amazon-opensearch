@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-rollback-on-disable-schema.json",
+  "title": "RollbackOnDisable",
+  "description": "Specifies the rollback state while disabling Auto-Tune for the domain. Valid values are NO_ROLLBACK, DEFAULT_ROLLBACK.",
+  "type": "string",
+  "enum": [
+    "NO_ROLLBACK",
+    "DEFAULT_ROLLBACK"
+  ]
+}

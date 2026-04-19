@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-create-vpc-endpoint-response-structure.json",
+  "name": "CreateVpcEndpointResponse",
+  "description": "Container for response parameters to the <code><a>CreateVpcEndpoint</a></code> operation. Contains the configuration and status of the VPC Endpoint being created.",
+  "type": "object",
+  "properties": {
+    "VpcEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpoint"
+        },
+        {
+          "description": "Information about the newly created VPC endpoint."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpoint"
+  ]
+}

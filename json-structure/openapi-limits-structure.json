@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-limits-structure.json",
+  "name": "Limits",
+  "description": " Limits for given InstanceType and for each of it's role. <br/> Limits contains following <code> <a>StorageTypes,</a> </code> <code> <a>InstanceLimits</a> </code> and <code> <a>AdditionalLimits</a> </code> ",
+  "type": "object",
+  "properties": {
+    "StorageTypes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StorageTypeList"
+        },
+        {
+          "description": "StorageType represents the list of storage related types and attributes that are available for given InstanceType. "
+        }
+      ]
+    },
+    "InstanceLimits": {
+      "$ref": "#/components/schemas/InstanceLimits"
+    },
+    "AdditionalLimits": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AdditionalLimitList"
+        },
+        {
+          "description": " List of additional limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . "
+        }
+      ]
+    }
+  }
+}

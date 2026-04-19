@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-list-domains-for-package-response-structure.json",
+  "name": "ListDomainsForPackageResponse",
+  "description": " Container for response parameters to <code> <a>ListDomainsForPackage</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "DomainPackageDetailsList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainPackageDetailsList"
+        },
+        {
+          "description": "List of <code>DomainPackageDetails</code> objects."
+        }
+      ]
+    },
+    "NextToken": {
+      "$ref": "#/components/schemas/String"
+    }
+  }
+}

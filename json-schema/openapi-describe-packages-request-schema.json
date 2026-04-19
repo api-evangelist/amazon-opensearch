@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-packages-request-schema.json",
+  "title": "DescribePackagesRequest",
+  "description": " Container for request parameters to <code> <a>DescribePackage</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "Filters": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DescribePackagesFilterList"
+        },
+        {
+          "description": "Only returns packages that match the <code>DescribePackagesFilterList</code> values."
+        }
+      ]
+    },
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MaxResults"
+        },
+        {
+          "description": "Limits results to a maximum number of packages."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If provided, returns results for the next page."
+        }
+      ]
+    }
+  }
+}

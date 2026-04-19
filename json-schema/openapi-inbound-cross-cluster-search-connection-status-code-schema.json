@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-inbound-cross-cluster-search-connection-status-code-schema.json",
+  "title": "InboundCrossClusterSearchConnectionStatusCode",
+  "description": "InboundCrossClusterSearchConnectionStatusCode schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "PENDING_ACCEPTANCE",
+    "APPROVED",
+    "REJECTING",
+    "REJECTED",
+    "DELETING",
+    "DELETED"
+  ]
+}

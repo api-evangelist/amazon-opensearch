@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-elasticsearch-instance-type-limits-request-structure.json",
+  "name": "DescribeElasticsearchInstanceTypeLimitsRequest",
+  "description": " Container for the parameters to <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. ",
+  "type": "object",
+  "properties": {}
+}

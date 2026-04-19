@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-get-package-version-history-response-structure.json",
+  "name": "GetPackageVersionHistoryResponse",
+  "description": " Container for response returned by <code> <a>GetPackageVersionHistory</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "PackageID": {
+      "$ref": "#/components/schemas/PackageID"
+    },
+    "PackageVersionHistoryList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageVersionHistoryList"
+        },
+        {
+          "description": "List of <code>PackageVersionHistory</code> objects."
+        }
+      ]
+    },
+    "NextToken": {
+      "$ref": "#/components/schemas/String"
+    }
+  }
+}

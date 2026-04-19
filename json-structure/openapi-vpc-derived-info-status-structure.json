@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-vpc-derived-info-status-structure.json",
+  "name": "VPCDerivedInfoStatus",
+  "description": " Status of the VPC options for the specified Elasticsearch domain.",
+  "type": "object",
+  "properties": {
+    "Options": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VPCDerivedInfo"
+        },
+        {
+          "description": " Specifies the VPC options for the specified Elasticsearch domain."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OptionStatus"
+        },
+        {
+          "description": " Specifies the status of the VPC options for the specified Elasticsearch domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Options",
+    "Status"
+  ]
+}

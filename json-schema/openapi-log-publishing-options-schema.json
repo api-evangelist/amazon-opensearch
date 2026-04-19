@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-log-publishing-options-schema.json",
+  "title": "LogPublishingOptions",
+  "description": "LogPublishingOptions schema from Amazon OpenSearch Service API",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/LogPublishingOption"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-cancel-elasticsearch-service-software-update-response-schema.json",
+  "title": "CancelElasticsearchServiceSoftwareUpdateResponse",
+  "description": "The result of a <code>CancelElasticsearchServiceSoftwareUpdate</code> operation. Contains the status of the update.",
+  "type": "object",
+  "properties": {
+    "ServiceSoftwareOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceSoftwareOptions"
+        },
+        {
+          "description": "The current status of the Elasticsearch service software update."
+        }
+      ]
+    }
+  }
+}

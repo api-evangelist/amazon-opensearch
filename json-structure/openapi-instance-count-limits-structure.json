@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-instance-count-limits-structure.json",
+  "name": "InstanceCountLimits",
+  "description": " InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. ",
+  "type": "object",
+  "properties": {
+    "MinimumInstanceCount": {
+      "$ref": "#/components/schemas/MinimumInstanceCount"
+    },
+    "MaximumInstanceCount": {
+      "$ref": "#/components/schemas/MaximumInstanceCount"
+    }
+  }
+}

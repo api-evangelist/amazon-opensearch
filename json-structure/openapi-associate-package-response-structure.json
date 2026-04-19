@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-associate-package-response-structure.json",
+  "name": "AssociatePackageResponse",
+  "description": " Container for response returned by <code> <a>AssociatePackage</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "DomainPackageDetails": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainPackageDetails"
+        },
+        {
+          "description": "<code>DomainPackageDetails</code>"
+        }
+      ]
+    }
+  }
+}

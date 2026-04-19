@@ -1,0 +1,11 @@
+{
+  "PackageID": "resource-abc123",
+  "PackageName": "my-resource",
+  "PackageType": "standard",
+  "LastUpdated": "example-string",
+  "DomainName": "my-resource",
+  "DomainPackageStatus": "active",
+  "PackageVersion": "example-ref",
+  "ReferencePath": "example-string",
+  "ErrorDetails": "example-string"
+}

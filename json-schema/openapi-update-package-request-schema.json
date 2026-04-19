@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-update-package-request-schema.json",
+  "title": "UpdatePackageRequest",
+  "description": " Container for request parameters to <code> <a>UpdatePackage</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "PackageID": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageID"
+        },
+        {
+          "description": "Unique identifier for the package."
+        }
+      ]
+    },
+    "PackageSource": {
+      "$ref": "#/components/schemas/PackageSource"
+    },
+    "PackageDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PackageDescription"
+        },
+        {
+          "description": "New description of the package."
+        }
+      ]
+    },
+    "CommitMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CommitMessage"
+        },
+        {
+          "description": "An info message for the new version which will be shown as part of <code>GetPackageVersionHistoryResponse</code>."
+        }
+      ]
+    }
+  },
+  "required": [
+    "PackageID",
+    "PackageSource"
+  ]
+}

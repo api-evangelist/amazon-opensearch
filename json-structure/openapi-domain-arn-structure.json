@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-domain-arn-structure.json",
+  "name": "DomainArn",
+  "description": "DomainArn schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "pattern": "arn:aws[a-z\\-]*:[a-z]+:[a-z0-9\\-]+:[0-9]+:domain\\/[a-z0-9\\-]+"
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-elasticsearch-cluster-config-structure.json",
+  "name": "ElasticsearchClusterConfig",
+  "description": "Specifies the configuration for the domain cluster, such as the type and number of instances.",
+  "type": "object",
+  "properties": {
+    "InstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ESPartitionInstanceType"
+        },
+        {
+          "description": "The instance type for an Elasticsearch cluster. UltraWarm instance types are not supported for data instances."
+        }
+      ]
+    },
+    "InstanceCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IntegerClass"
+        },
+        {
+          "description": "The number of instances in the specified domain cluster."
+        }
+      ]
+    },
+    "DedicatedMasterEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "A boolean value to indicate whether a dedicated master node is enabled. See <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes\" target=\"_blank\">About Dedicated Master Nodes</a> for more information."
+        }
+      ]
+    },
+    "ZoneAwarenessEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "A boolean value to indicate whether zone awareness is enabled. See <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness\" target=\"_blank\">About Zone Awareness</a> for more information."
+        }
+      ]
+    },
+    "ZoneAwarenessConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ZoneAwarenessConfig"
+        },
+        {
+          "description": "Specifies the zone awareness configuration for a domain when zone awareness is enabled."
+        }
+      ]
+    },
+    "DedicatedMasterType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ESPartitionInstanceType"
+        },
+        {
+          "description": "The instance type for a dedicated master node."
+        }
+      ]
+    },
+    "DedicatedMasterCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IntegerClass"
+        },
+        {
+          "description": "Total number of dedicated master nodes, active and on standby, for the cluster."
+        }
+      ]
+    },
+    "WarmEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "True to enable warm storage."
+        }
+      ]
+    },
+    "WarmType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ESWarmPartitionInstanceType"
+        },
+        {
+          "description": "The instance type for the Elasticsearch cluster's warm nodes."
+        }
+      ]
+    },
+    "WarmCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IntegerClass"
+        },
+        {
+          "description": "The number of warm nodes in the cluster."
+        }
+      ]
+    },
+    "ColdStorageOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ColdStorageOptions"
+        },
+        {
+          "description": "Specifies the <code>ColdStorageOptions</code> config for Elasticsearch Domain"
+        }
+      ]
+    }
+  }
+}

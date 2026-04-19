@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-vpc-endpoints-response-schema.json",
+  "title": "DescribeVpcEndpointsResponse",
+  "description": "Container for response parameters to the <code><a>DescribeVpcEndpoints</a></code> operation. Returns a list containing configuration details and status of the VPC Endpoints as well as a list containing error responses of the endpoints that could not be described",
+  "type": "object",
+  "properties": {
+    "VpcEndpoints": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpoints"
+        },
+        {
+          "description": "Information about each requested VPC endpoint."
+        }
+      ]
+    },
+    "VpcEndpointErrors": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointErrorList"
+        },
+        {
+          "description": "Any errors associated with the request."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpoints",
+    "VpcEndpointErrors"
+  ]
+}

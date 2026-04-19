@@ -1,0 +1,7 @@
+{
+  "Enabled": "example-string",
+  "InternalUserDatabaseEnabled": "example-string",
+  "MasterUserOptions": "example-string",
+  "SAMLOptions": "example-string",
+  "AnonymousAuthEnabled": "example-string"
+}

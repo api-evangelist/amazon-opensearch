@@ -1,0 +1,5 @@
+{
+  "StorageTypes": "standard",
+  "InstanceLimits": "example-ref",
+  "AdditionalLimits": "example-string"
+}

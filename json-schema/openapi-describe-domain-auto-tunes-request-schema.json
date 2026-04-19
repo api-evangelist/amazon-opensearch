@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-domain-auto-tunes-request-schema.json",
+  "title": "DescribeDomainAutoTunesRequest",
+  "description": "Container for the parameters to the <code>DescribeDomainAutoTunes</code> operation.",
+  "type": "object",
+  "properties": {
+    "MaxResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MaxResults"
+        },
+        {
+          "description": "Set this value to limit the number of results returned. If not specified, defaults to 100."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "NextToken is sent in case the earlier API call results contain the NextToken. It is used for pagination."
+        }
+      ]
+    }
+  }
+}

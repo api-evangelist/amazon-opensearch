@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-option-status-schema.json",
+  "title": "OptionStatus",
+  "description": "Provides the current status of the entity.",
+  "type": "object",
+  "properties": {
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpdateTimestamp"
+        },
+        {
+          "description": "Timestamp which tells the creation date for the entity."
+        }
+      ]
+    },
+    "UpdateDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpdateTimestamp"
+        },
+        {
+          "description": "Timestamp which tells the last updated time for the entity."
+        }
+      ]
+    },
+    "UpdateVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UIntValue"
+        },
+        {
+          "description": "Specifies the latest version for the entity."
+        }
+      ]
+    },
+    "State": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OptionState"
+        },
+        {
+          "description": "Provides the <code>OptionState</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "PendingDeletion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Indicates whether the Elasticsearch domain is being deleted."
+        }
+      ]
+    }
+  },
+  "required": [
+    "CreationDate",
+    "UpdateDate",
+    "State"
+  ]
+}

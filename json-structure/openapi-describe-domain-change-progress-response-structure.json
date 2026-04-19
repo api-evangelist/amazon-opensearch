@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-domain-change-progress-response-structure.json",
+  "name": "DescribeDomainChangeProgressResponse",
+  "description": "The result of a <code>DescribeDomainChangeProgress</code> request. Contains the progress information of the requested domain change. ",
+  "type": "object",
+  "properties": {
+    "ChangeProgressStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeProgressStatusDetails"
+        },
+        {
+          "description": "Progress information for the configuration change that is requested in the <code>DescribeDomainChangeProgress</code> request. "
+        }
+      ]
+    }
+  }
+}

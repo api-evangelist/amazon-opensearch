@@ -1,0 +1,9 @@
+{
+  "Enabled": "example-string",
+  "Idp": "resource-abc123",
+  "MasterUserName": "my-resource",
+  "MasterBackendRole": "example-string",
+  "SubjectKey": "example-string",
+  "RolesKey": "example-string",
+  "SessionTimeoutMinutes": "example-string"
+}

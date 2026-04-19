@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-associate-package-request-structure.json",
+  "name": "AssociatePackageRequest",
+  "description": " Container for request parameters to <code> <a>AssociatePackage</a> </code> operation. ",
+  "type": "object",
+  "properties": {}
+}

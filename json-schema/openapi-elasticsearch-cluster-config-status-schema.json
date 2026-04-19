@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-elasticsearch-cluster-config-status-schema.json",
+  "title": "ElasticsearchClusterConfigStatus",
+  "description": " Specifies the configuration status for the specified Elasticsearch domain.",
+  "type": "object",
+  "properties": {
+    "Options": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchClusterConfig"
+        },
+        {
+          "description": " Specifies the cluster configuration for the specified Elasticsearch domain."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OptionStatus"
+        },
+        {
+          "description": " Specifies the status of the configuration for the specified Elasticsearch domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Options",
+    "Status"
+  ]
+}

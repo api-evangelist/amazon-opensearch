@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-node-to-node-encryption-options-structure.json",
+  "name": "NodeToNodeEncryptionOptions",
+  "description": "Specifies the node-to-node encryption options.",
+  "type": "object",
+  "properties": {
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Specify true to enable node-to-node encryption."
+        }
+      ]
+    }
+  }
+}

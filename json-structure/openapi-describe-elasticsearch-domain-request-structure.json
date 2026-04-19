@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-elasticsearch-domain-request-structure.json",
+  "name": "DescribeElasticsearchDomainRequest",
+  "description": "Container for the parameters to the <code><a>DescribeElasticsearchDomain</a></code> operation.",
+  "type": "object",
+  "properties": {}
+}

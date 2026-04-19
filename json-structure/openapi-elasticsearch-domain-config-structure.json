@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-elasticsearch-domain-config-structure.json",
+  "name": "ElasticsearchDomainConfig",
+  "description": "The configuration of an Elasticsearch domain.",
+  "type": "object",
+  "properties": {
+    "ElasticsearchVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchVersionStatus"
+        },
+        {
+          "description": "String of format X.Y to specify version for the Elasticsearch domain."
+        }
+      ]
+    },
+    "ElasticsearchClusterConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchClusterConfigStatus"
+        },
+        {
+          "description": "Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "EBSOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EBSOptionsStatus"
+        },
+        {
+          "description": "Specifies the <code>EBSOptions</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "AccessPolicies": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AccessPoliciesStatus"
+        },
+        {
+          "description": "IAM access policy as a JSON-formatted string."
+        }
+      ]
+    },
+    "SnapshotOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SnapshotOptionsStatus"
+        },
+        {
+          "description": "Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "VPCOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VPCDerivedInfoStatus"
+        },
+        {
+          "description": "The <code>VPCOptions</code> for the specified domain. For more information, see <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html\" target=\"_blank\">VPC Endpoints for Amazon Elasticsearch Service Domains</a>."
+        }
+      ]
+    },
+    "CognitoOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CognitoOptionsStatus"
+        },
+        {
+          "description": "The <code>CognitoOptions</code> for the specified domain. For more information, see <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html\" target=\"_blank\">Amazon Cognito Authentication for Kibana</a>."
+        }
+      ]
+    },
+    "EncryptionAtRestOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionAtRestOptionsStatus"
+        },
+        {
+          "description": "Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "NodeToNodeEncryptionOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NodeToNodeEncryptionOptionsStatus"
+        },
+        {
+          "description": "Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "AdvancedOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AdvancedOptionsStatus"
+        },
+        {
+          "description": "Specifies the <code>AdvancedOptions</code> for the domain. See <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options\" target=\"_blank\">Configuring Advanced Options</a> for more information."
+        }
+      ]
+    },
+    "LogPublishingOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LogPublishingOptionsStatus"
+        },
+        {
+          "description": "Log publishing options for the given domain."
+        }
+      ]
+    },
+    "DomainEndpointOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainEndpointOptionsStatus"
+        },
+        {
+          "description": "Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "AdvancedSecurityOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AdvancedSecurityOptionsStatus"
+        },
+        {
+          "description": "Specifies <code>AdvancedSecurityOptions</code> for the domain. "
+        }
+      ]
+    },
+    "AutoTuneOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AutoTuneOptionsStatus"
+        },
+        {
+          "description": "Specifies <code>AutoTuneOptions</code> for the domain. "
+        }
+      ]
+    },
+    "ChangeProgressDetails": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeProgressDetails"
+        },
+        {
+          "description": "Specifies change details of the domain configuration change."
+        }
+      ]
+    }
+  }
+}

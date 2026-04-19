@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-reserved-elasticsearch-instances-request-structure.json",
+  "name": "DescribeReservedElasticsearchInstancesRequest",
+  "description": "Container for parameters to <code>DescribeReservedElasticsearchInstances</code>",
+  "type": "object",
+  "properties": {}
+}

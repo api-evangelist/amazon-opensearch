@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-reserved-elasticsearch-instance-payment-option-structure.json",
+  "name": "ReservedElasticsearchInstancePaymentOption",
+  "description": "ReservedElasticsearchInstancePaymentOption schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "ALL_UPFRONT",
+    "PARTIAL_UPFRONT",
+    "NO_UPFRONT"
+  ]
+}

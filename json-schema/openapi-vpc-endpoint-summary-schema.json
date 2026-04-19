@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-vpc-endpoint-summary-schema.json",
+  "title": "VpcEndpointSummary",
+  "description": "Summary information for an Amazon OpenSearch Service-managed VPC endpoint.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointId"
+        },
+        {
+          "description": "The unique identifier of the endpoint."
+        }
+      ]
+    },
+    "VpcEndpointOwner": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The creator of the endpoint."
+        }
+      ]
+    },
+    "DomainArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the domain associated with the endpoint."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointStatus"
+        },
+        {
+          "description": "The current status of the endpoint."
+        }
+      ]
+    }
+  }
+}

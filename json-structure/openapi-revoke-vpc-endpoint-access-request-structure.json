@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-revoke-vpc-endpoint-access-request-structure.json",
+  "name": "RevokeVpcEndpointAccessRequest",
+  "description": "Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.",
+  "type": "object",
+  "properties": {
+    "Account": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AWSAccount"
+        },
+        {
+          "description": "The account ID to revoke access from."
+        }
+      ]
+    }
+  },
+  "required": [
+    "Account"
+  ]
+}

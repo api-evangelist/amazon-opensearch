@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-domain-info-list-structure.json",
+  "name": "DomainInfoList",
+  "description": " Contains the list of Elasticsearch domain information.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/DomainInfo"
+  }
+}

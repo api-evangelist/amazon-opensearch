@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-vpc-endpoint-error-structure.json",
+  "name": "VpcEndpointError",
+  "description": "Error information when attempting to describe an Amazon OpenSearch Service-managed VPC endpoint.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointId"
+        },
+        {
+          "description": "The unique identifier of the endpoint. "
+        }
+      ]
+    },
+    "ErrorCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointErrorCode"
+        },
+        {
+          "description": "The code associated with the error."
+        }
+      ]
+    },
+    "ErrorMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "A message describing the error."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-reserved-elasticsearch-instance-payment-option-schema.json",
+  "title": "ReservedElasticsearchInstancePaymentOption",
+  "description": "ReservedElasticsearchInstancePaymentOption schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "ALL_UPFRONT",
+    "PARTIAL_UPFRONT",
+    "NO_UPFRONT"
+  ]
+}

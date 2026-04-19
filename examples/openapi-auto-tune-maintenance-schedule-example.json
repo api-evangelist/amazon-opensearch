@@ -1,0 +1,5 @@
+{
+  "StartAt": "example-string",
+  "Duration": "example-string",
+  "CronExpressionForRecurrence": "example-string"
+}

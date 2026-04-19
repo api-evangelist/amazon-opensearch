@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-delete-vpc-endpoint-request-structure.json",
+  "name": "DeleteVpcEndpointRequest",
+  "description": "Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.",
+  "type": "object",
+  "properties": {}
+}

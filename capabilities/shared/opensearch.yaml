@@ -1,0 +1,309 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon Elasticsearch Service
+  description: <fullname>Amazon Elasticsearch Configuration Service</fullname> <p>Use the Amazon Elasticsearch Configuration API to create, configure, and manage Elasticsearch domains.</p> <p>For 
+    sample code that us
+  tags:
+  - Amazon OpenSearch Service API
+  - AWS
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_SIGV4_AUTH: AWS_SIGV4_AUTH
+capability:
+  consumes:
+  - type: http
+    namespace: openapi.yml
+    baseUri: http://es.{region}.amazonaws.com
+    description: <fullname>Amazon Elasticsearch Configuration Service</fullname> <p>Use the Amazon Elasticsearch Conf
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{AWS_SIGV4_AUTH}}'
+      placement: header
+    resources:
+    - name: default
+      path: /default
+      description: Default operations for Amazon Elasticsearch Service
+      operations:
+      - name: AcceptInboundCrossClusterSearchConnection
+        method: PUT
+        description: AcceptInboundCrossClusterSearchConnection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConnectionId
+          in: path
+          type: string
+          required: true
+          description: The id of the inbound connection that you want to accept.
+      - name: AddTags
+        method: POST
+        description: AddTags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: AssociatePackage
+        method: POST
+        description: AssociatePackage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PackageID
+          in: path
+          type: string
+          required: true
+          description: Internal ID of the package that you want to associate with a domain. Use <code>DescribePackages</cod
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+          description: Name of the domain that you want to associate the package with.
+      - name: AuthorizeVpcEndpointAccess
+        method: POST
+        description: AuthorizeVpcEndpointAccess
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+          description: The name of the OpenSearch Service domain to provide access to.
+        body:
+          type: json
+          data: {}
+      - name: CancelElasticsearchServiceSoftwareUpdate
+        method: POST
+        description: CancelElasticsearchServiceSoftwareUpdate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: CreateElasticsearchDomain
+        method: POST
+        description: CreateElasticsearchDomain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: CreateOutboundCrossClusterSearchConnection
+        method: POST
+        description: CreateOutboundCrossClusterSearchConnection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: CreatePackage
+        method: POST
+        description: CreatePackage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: ListVpcEndpoints
+        method: GET
+        description: ListVpcEndpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Identifier to allow retrieval of paginated results.
+      - name: CreateVpcEndpoint
+        method: POST
+        description: CreateVpcEndpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: DescribeElasticsearchDomain
+        method: GET
+        description: DescribeElasticsearchDomain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+          description: The name of the Elasticsearch domain for which you want information.
+      - name: DeleteElasticsearchDomain
+        method: DELETE
+        description: DeleteElasticsearchDomain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+          description: The name of the Elasticsearch domain that you want to permanently delete.
+      - name: DeleteElasticsearchServiceRole
+        method: DELETE
+        description: DeleteElasticsearchServiceRole
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: DeleteInboundCrossClusterSearchConnection
+        method: DELETE
+        description: DeleteInboundCrossClusterSearchConnection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConnectionId
+          in: path
+          type: string
+          required: true
+          description: The id of the inbound connection that you want to permanently delete.
+      - name: DeleteOutboundCrossClusterSearchConnection
+        method: DELETE
+        description: DeleteOutboundCrossClusterSearchConnection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConnectionId
+          in: path
+          type: string
+          required: true
+          description: The id of the outbound connection that you want to permanently delete.
+      - name: DeletePackage
+        method: DELETE
+        description: DeletePackage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PackageID
+          in: path
+          type: string
+          required: true
+          description: Internal ID of the package that you want to delete. Use <code>DescribePackages</code> to find this v
+      - name: DeleteVpcEndpoint
+        method: DELETE
+        description: DeleteVpcEndpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: VpcEndpointId
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the endpoint to be deleted.
+      - name: DescribeDomainAutoTunes
+        method: GET
+        description: DescribeDomainAutoTunes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+          description: Specifies the domain name for which you want Auto-Tune action details.
+        - name: MaxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+      - name: DescribeDomainChangeProgress
+        method: GET
+        description: DescribeDomainChangeProgress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+          description: The domain you want to get the progress information about.
+        - name: changeid
+          in: query
+          type: string
+          required: false
+          description: The specific change ID for which you want to get progress information. This is an optional parameter
+      - name: DescribeElasticsearchDomainConfig
+        method: GET
+        description: DescribeElasticsearchDomainConfig
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+          description: The Elasticsearch domain that you want to get information about.

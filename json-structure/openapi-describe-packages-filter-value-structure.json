@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-packages-filter-value-structure.json",
+  "name": "DescribePackagesFilterValue",
+  "description": "DescribePackagesFilterValue schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "pattern": "^[0-9a-zA-Z\\*\\.\\\\/\\?-]*$"
+}

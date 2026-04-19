@@ -1,0 +1,7 @@
+{
+  "EnforceHTTPS": "example-string",
+  "TLSSecurityPolicy": "example-string",
+  "CustomEndpointEnabled": "example-string",
+  "CustomEndpoint": "example-string",
+  "CustomEndpointCertificateArn": "arn:aws:service:us-east-1:123456789012:resource/example"
+}

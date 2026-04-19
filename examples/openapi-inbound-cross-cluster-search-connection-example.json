@@ -1,0 +1,6 @@
+{
+  "SourceDomainInfo": "example-string",
+  "DestinationDomainInfo": "example-string",
+  "CrossClusterSearchConnectionId": "resource-abc123",
+  "ConnectionStatus": "active"
+}

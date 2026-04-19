@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-upgrade-elasticsearch-domain-request-structure.json",
+  "name": "UpgradeElasticsearchDomainRequest",
+  "description": " Container for request parameters to <code> <a>UpgradeElasticsearchDomain</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "DomainName": {
+      "$ref": "#/components/schemas/DomainName"
+    },
+    "TargetVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchVersionString"
+        },
+        {
+          "description": "The version of Elasticsearch that you intend to upgrade the domain to."
+        }
+      ]
+    },
+    "PerformCheckOnly": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": " This flag, when set to True, indicates that an Upgrade Eligibility Check needs to be performed. This will not actually perform the Upgrade. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "DomainName",
+    "TargetVersion"
+  ]
+}

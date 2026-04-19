@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-update-elasticsearch-domain-config-response-structure.json",
+  "name": "UpdateElasticsearchDomainConfigResponse",
+  "description": "The result of an <code>UpdateElasticsearchDomain</code> request. Contains the status of the Elasticsearch domain being updated.",
+  "type": "object",
+  "properties": {
+    "DomainConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchDomainConfig"
+        },
+        {
+          "description": "The status of the updated Elasticsearch domain. "
+        }
+      ]
+    },
+    "DryRunResults": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DryRunResults"
+        },
+        {
+          "description": "Contains result of DryRun. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "DomainConfig"
+  ]
+}

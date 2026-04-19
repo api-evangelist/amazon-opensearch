@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-instance-limits-schema.json",
+  "title": "InstanceLimits",
+  "description": "InstanceLimits represents the list of instance related attributes that are available for given InstanceType. ",
+  "type": "object",
+  "properties": {
+    "InstanceCountLimits": {
+      "$ref": "#/components/schemas/InstanceCountLimits"
+    }
+  }
+}

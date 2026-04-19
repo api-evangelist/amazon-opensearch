@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-endpoints-map-structure.json",
+  "name": "EndpointsMap",
+  "description": "EndpointsMap schema from Amazon OpenSearch Service API",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/ServiceUrl"
+  }
+}

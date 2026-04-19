@@ -1,0 +1,53 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon OpenSearch Service API
+  description: Unified vocabulary for Amazon OpenSearch Service API APIs.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon Elasticsearch Service
+    namespace: openapi.yml
+    version: '2015-01-01'
+    baseUrl: http://es.{region}.amazonaws.com
+    status: active
+  actions:
+  - name: update
+    method: PUT
+    pattern: write
+  - name: create
+    method: POST
+    pattern: write
+  - name: list
+    method: GET
+    pattern: read
+  - name: get
+    method: GET
+    pattern: read
+  - name: delete
+    method: DELETE
+    pattern: destructive
+capability:
+  workflows:
+  - name: Amazon OpenSearch Service API API Workflow
+    file: capabilities/amazon-opensearch-workflow.yaml
+    description: Core API workflow
+    apis:
+    - openapi.yml
+    personas:
+    - Developer
+  personas:
+  - id: developer
+    name: Developer
+    description: Developer using Amazon OpenSearch Service API APIs
+  domains:
+  - Amazon OpenSearch Service API
+  - AWS
+crossReference:
+- resource: Amazon Elasticsearch Service
+  apis:
+  - openapi.yml
+  workflows:
+  - Amazon OpenSearch Service API API Workflow
+  personas:
+  - Developer

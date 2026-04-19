@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-domain-endpoint-options-status-schema.json",
+  "title": "DomainEndpointOptionsStatus",
+  "description": "The configured endpoint options for the domain and their current status.",
+  "type": "object",
+  "properties": {
+    "Options": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainEndpointOptions"
+        },
+        {
+          "description": "Options to configure endpoint for the Elasticsearch domain."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OptionStatus"
+        },
+        {
+          "description": "The status of the endpoint options for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that's included. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "Options",
+    "Status"
+  ]
+}

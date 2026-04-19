@@ -1,0 +1,13 @@
+{
+  "InstanceType": "standard",
+  "InstanceCount": "example-string",
+  "DedicatedMasterEnabled": "example-string",
+  "ZoneAwarenessEnabled": "example-string",
+  "ZoneAwarenessConfig": "example-string",
+  "DedicatedMasterType": "standard",
+  "DedicatedMasterCount": "example-string",
+  "WarmEnabled": "example-string",
+  "WarmType": "standard",
+  "WarmCount": "example-string",
+  "ColdStorageOptions": "example-string"
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-create-outbound-cross-cluster-search-connection-request-schema.json",
+  "title": "CreateOutboundCrossClusterSearchConnectionRequest",
+  "description": "Container for the parameters to the <code><a>CreateOutboundCrossClusterSearchConnection</a></code> operation.",
+  "type": "object",
+  "properties": {
+    "SourceDomainInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainInformation"
+        },
+        {
+          "description": "Specifies the <code><a>DomainInformation</a></code> for the source Elasticsearch domain."
+        }
+      ]
+    },
+    "DestinationDomainInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainInformation"
+        },
+        {
+          "description": "Specifies the <code><a>DomainInformation</a></code> for the destination Elasticsearch domain."
+        }
+      ]
+    },
+    "ConnectionAlias": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConnectionAlias"
+        },
+        {
+          "description": "Specifies the connection alias that will be used by the customer for this connection."
+        }
+      ]
+    }
+  },
+  "required": [
+    "SourceDomainInfo",
+    "DestinationDomainInfo",
+    "ConnectionAlias"
+  ]
+}

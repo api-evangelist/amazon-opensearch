@@ -1,0 +1,7 @@
+{
+  "EBSEnabled": "example-string",
+  "VolumeType": "standard",
+  "VolumeSize": "example-string",
+  "Iops": "example-string",
+  "Throughput": "example-string"
+}

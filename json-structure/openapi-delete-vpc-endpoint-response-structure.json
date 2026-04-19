@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-delete-vpc-endpoint-response-structure.json",
+  "name": "DeleteVpcEndpointResponse",
+  "description": "Container for response parameters to the <code><a>DeleteVpcEndpoint</a></code> operation. Contains the summarized detail of the VPC Endpoint being deleted.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointSummary": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointSummary"
+        },
+        {
+          "description": "Information about the deleted endpoint, including its current status (<code>DELETING</code> or <code>DELETE_FAILED</code>)."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpointSummary"
+  ]
+}

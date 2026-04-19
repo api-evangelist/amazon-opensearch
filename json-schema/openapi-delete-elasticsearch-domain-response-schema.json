@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-delete-elasticsearch-domain-response-schema.json",
+  "title": "DeleteElasticsearchDomainResponse",
+  "description": "The result of a <code>DeleteElasticsearchDomain</code> request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.",
+  "type": "object",
+  "properties": {
+    "DomainStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchDomainStatus"
+        },
+        {
+          "description": "The status of the Elasticsearch domain being deleted."
+        }
+      ]
+    }
+  }
+}

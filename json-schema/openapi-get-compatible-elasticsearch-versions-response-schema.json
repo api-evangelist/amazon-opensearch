@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-get-compatible-elasticsearch-versions-response-schema.json",
+  "title": "GetCompatibleElasticsearchVersionsResponse",
+  "description": " Container for response returned by <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "CompatibleElasticsearchVersions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CompatibleElasticsearchVersionsList"
+        },
+        {
+          "description": " A map of compatible Elasticsearch versions returned as part of the <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. "
+        }
+      ]
+    }
+  }
+}

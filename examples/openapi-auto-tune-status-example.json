@@ -1,0 +1,8 @@
+{
+  "CreationDate": "example-string",
+  "UpdateDate": "example-string",
+  "UpdateVersion": "1.0.0",
+  "State": "example-string",
+  "ErrorMessage": "example-string",
+  "PendingDeletion": "example-string"
+}

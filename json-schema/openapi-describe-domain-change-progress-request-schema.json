@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-domain-change-progress-request-schema.json",
+  "title": "DescribeDomainChangeProgressRequest",
+  "description": "Container for the parameters to the <code>DescribeDomainChangeProgress</code> operation. Specifies the domain name and optional change specific identity for which you want progress information. ",
+  "type": "object",
+  "properties": {}
+}

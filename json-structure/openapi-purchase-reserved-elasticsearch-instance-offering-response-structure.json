@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-purchase-reserved-elasticsearch-instance-offering-response-structure.json",
+  "name": "PurchaseReservedElasticsearchInstanceOfferingResponse",
+  "description": "Represents the output of a <code>PurchaseReservedElasticsearchInstanceOffering</code> operation.",
+  "type": "object",
+  "properties": {
+    "ReservedElasticsearchInstanceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GUID"
+        },
+        {
+          "description": "Details of the reserved Elasticsearch instance which was purchased."
+        }
+      ]
+    },
+    "ReservationName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReservationToken"
+        },
+        {
+          "description": "The customer-specified identifier used to track this reservation."
+        }
+      ]
+    }
+  }
+}

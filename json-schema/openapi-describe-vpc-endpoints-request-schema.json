@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-vpc-endpoints-request-schema.json",
+  "title": "DescribeVpcEndpointsRequest",
+  "description": "Container for request parameters to the <code><a>DescribeVpcEndpoints</a></code> operation. Specifies the list of VPC endpoints to be described.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointIdList"
+        },
+        {
+          "description": "The unique identifiers of the endpoints to get information about."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpointIds"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-start-elasticsearch-service-software-update-request-schema.json",
+  "title": "StartElasticsearchServiceSoftwareUpdateRequest",
+  "description": "Container for the parameters to the <code><a>StartElasticsearchServiceSoftwareUpdate</a></code> operation. Specifies the name of the Elasticsearch domain that you wish to schedule a service software update on.",
+  "type": "object",
+  "properties": {
+    "DomainName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainName"
+        },
+        {
+          "description": "The name of the domain that you want to update to the latest service software."
+        }
+      ]
+    }
+  },
+  "required": [
+    "DomainName"
+  ]
+}

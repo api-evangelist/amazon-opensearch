@@ -1,0 +1,5 @@
+{
+  "UpgradeStep": "example-string",
+  "StepStatus": "active",
+  "UpgradeName": "my-resource"
+}

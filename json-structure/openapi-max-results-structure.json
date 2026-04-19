@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-max-results-structure.json",
+  "name": "MaxResults",
+  "description": " Set this value to limit the number of results returned. ",
+  "type": "int32",
+  "maximum": 100
+}

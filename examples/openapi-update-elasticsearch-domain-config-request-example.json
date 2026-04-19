@@ -1,0 +1,16 @@
+{
+  "ElasticsearchClusterConfig": "example-string",
+  "EBSOptions": "example-string",
+  "SnapshotOptions": "example-string",
+  "VPCOptions": "example-string",
+  "CognitoOptions": "example-string",
+  "AdvancedOptions": "example-string",
+  "AccessPolicies": "example-string",
+  "LogPublishingOptions": "example-string",
+  "DomainEndpointOptions": "example-string",
+  "AdvancedSecurityOptions": "example-string",
+  "NodeToNodeEncryptionOptions": "example-string",
+  "EncryptionAtRestOptions": "example-string",
+  "AutoTuneOptions": "example-string",
+  "DryRun": "example-string"
+}

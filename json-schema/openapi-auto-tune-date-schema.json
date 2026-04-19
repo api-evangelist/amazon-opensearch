@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-auto-tune-date-schema.json",
+  "title": "AutoTuneDate",
+  "description": "Specifies timestamp for the Auto-Tune action scheduled for the domain. ",
+  "type": "string",
+  "format": "date-time"
+}

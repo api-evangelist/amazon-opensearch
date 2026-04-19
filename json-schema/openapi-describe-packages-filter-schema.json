@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-packages-filter-schema.json",
+  "title": "DescribePackagesFilter",
+  "description": "Filter to apply in <code>DescribePackage</code> response.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DescribePackagesFilterName"
+        },
+        {
+          "description": "Any field from <code>PackageDetails</code>."
+        }
+      ]
+    },
+    "Value": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DescribePackagesFilterValues"
+        },
+        {
+          "description": "A non-empty list of values for the specified field."
+        }
+      ]
+    }
+  }
+}

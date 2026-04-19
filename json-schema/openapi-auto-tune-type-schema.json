@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-auto-tune-type-schema.json",
+  "title": "AutoTuneType",
+  "description": "Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. ",
+  "type": "string",
+  "enum": [
+    "SCHEDULED_ACTION"
+  ]
+}

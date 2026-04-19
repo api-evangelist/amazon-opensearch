@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-describe-inbound-cross-cluster-search-connections-response-structure.json",
+  "name": "DescribeInboundCrossClusterSearchConnectionsResponse",
+  "description": "The result of a <code><a>DescribeInboundCrossClusterSearchConnections</a></code> request. Contains the list of connections matching the filter criteria.",
+  "type": "object",
+  "properties": {
+    "CrossClusterSearchConnections": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/InboundCrossClusterSearchConnections"
+        },
+        {
+          "description": "Consists of list of <code><a>InboundCrossClusterSearchConnection</a></code> matching the specified filter criteria."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "If more results are available and NextToken is present, make the next request to the same API with the received NextToken to paginate the remaining results. "
+        }
+      ]
+    }
+  }
+}

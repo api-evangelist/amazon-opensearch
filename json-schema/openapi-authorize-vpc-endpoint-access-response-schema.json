@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-authorize-vpc-endpoint-access-response-schema.json",
+  "title": "AuthorizeVpcEndpointAccessResponse",
+  "description": "Container for response parameters to the <code><a>AuthorizeVpcEndpointAccess</a></code> operation. Contains the account ID and the type of the account being authorized to access the VPC endpoint.",
+  "type": "object",
+  "properties": {
+    "AuthorizedPrincipal": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AuthorizedPrincipal"
+        },
+        {
+          "description": "Information about the account or service that was provided access to the domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "AuthorizedPrincipal"
+  ]
+}

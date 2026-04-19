@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-compatible-versions-map-schema.json",
+  "title": "CompatibleVersionsMap",
+  "description": " A map from an <code> <a>ElasticsearchVersion</a> </code> to a list of compatible <code> <a>ElasticsearchVersion</a> </code> s to which the domain can be upgraded. ",
+  "type": "object",
+  "properties": {
+    "SourceVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchVersionString"
+        },
+        {
+          "description": "The current version of Elasticsearch on which a domain is."
+        }
+      ]
+    },
+    "TargetVersions": {
+      "$ref": "#/components/schemas/ElasticsearchVersionList"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-domain-package-status-schema.json",
+  "title": "DomainPackageStatus",
+  "description": "DomainPackageStatus schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "ASSOCIATING",
+    "ASSOCIATION_FAILED",
+    "ACTIVE",
+    "DISSOCIATING",
+    "DISSOCIATION_FAILED"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-upgrade-step-item-schema.json",
+  "title": "UpgradeStepItem",
+  "description": "Represents a single step of the Upgrade or Upgrade Eligibility Check workflow.",
+  "type": "object",
+  "properties": {
+    "UpgradeStep": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeStep"
+        },
+        {
+          "description": " Represents one of 3 steps that an Upgrade or Upgrade Eligibility Check does through: <ul> <li>PreUpgradeCheck</li> <li>Snapshot</li> <li>Upgrade</li> </ul> "
+        }
+      ]
+    },
+    "UpgradeStepStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpgradeStatus"
+        },
+        {
+          "description": " The status of a particular step during an upgrade. The status can take one of the following values: <ul> <li>In Progress</li> <li>Succeeded</li> <li>Succeeded with Issues</li> <li>Failed</li> </ul> "
+        }
+      ]
+    },
+    "Issues": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Issues"
+        },
+        {
+          "description": "A list of strings containing detailed information about the errors encountered in a particular step."
+        }
+      ]
+    },
+    "ProgressPercent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "The Floating point value representing progress percentage of a particular step."
+        }
+      ]
+    }
+  }
+}

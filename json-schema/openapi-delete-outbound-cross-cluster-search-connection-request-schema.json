@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-delete-outbound-cross-cluster-search-connection-request-schema.json",
+  "title": "DeleteOutboundCrossClusterSearchConnectionRequest",
+  "description": "Container for the parameters to the <code><a>DeleteOutboundCrossClusterSearchConnection</a></code> operation.",
+  "type": "object",
+  "properties": {}
+}

@@ -1,0 +1,6 @@
+{
+  "UpgradeName": "my-resource",
+  "StartTimestamp": "example-string",
+  "UpgradeStatus": "active",
+  "StepsList": "example-string"
+}

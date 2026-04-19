@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-auto-tune-status-structure.json",
+  "name": "AutoTuneStatus",
+  "description": "Provides the current status of the Auto-Tune options. ",
+  "type": "object",
+  "properties": {
+    "CreationDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpdateTimestamp"
+        },
+        {
+          "description": "Timestamp which tells Auto-Tune options creation date ."
+        }
+      ]
+    },
+    "UpdateDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpdateTimestamp"
+        },
+        {
+          "description": "Timestamp which tells Auto-Tune options last updated time."
+        }
+      ]
+    },
+    "UpdateVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UIntValue"
+        },
+        {
+          "description": "Specifies the Auto-Tune options latest version."
+        }
+      ]
+    },
+    "State": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AutoTuneState"
+        },
+        {
+          "description": "Specifies the <code>AutoTuneState</code> for the Elasticsearch domain."
+        }
+      ]
+    },
+    "ErrorMessage": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Specifies the error message while enabling or disabling the Auto-Tune options."
+        }
+      ]
+    },
+    "PendingDeletion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Indicates whether the Elasticsearch domain is being deleted."
+        }
+      ]
+    }
+  },
+  "required": [
+    "CreationDate",
+    "UpdateDate",
+    "State"
+  ]
+}

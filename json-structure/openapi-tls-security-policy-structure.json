@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-tls-security-policy-structure.json",
+  "name": "TLSSecurityPolicy",
+  "description": "TLSSecurityPolicy schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "Policy-Min-TLS-1-0-2019-07",
+    "Policy-Min-TLS-1-2-2019-07"
+  ]
+}

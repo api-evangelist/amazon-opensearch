@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-outbound-cross-cluster-search-connection-schema.json",
+  "title": "OutboundCrossClusterSearchConnection",
+  "description": "Specifies details of an outbound connection.",
+  "type": "object",
+  "properties": {
+    "SourceDomainInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainInformation"
+        },
+        {
+          "description": "Specifies the <code><a>DomainInformation</a></code> for the source Elasticsearch domain."
+        }
+      ]
+    },
+    "DestinationDomainInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainInformation"
+        },
+        {
+          "description": "Specifies the <code><a>DomainInformation</a></code> for the destination Elasticsearch domain."
+        }
+      ]
+    },
+    "CrossClusterSearchConnectionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CrossClusterSearchConnectionId"
+        },
+        {
+          "description": "Specifies the connection id for the outbound cross-cluster search connection."
+        }
+      ]
+    },
+    "ConnectionAlias": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ConnectionAlias"
+        },
+        {
+          "description": "Specifies the connection alias for the outbound cross-cluster search connection."
+        }
+      ]
+    },
+    "ConnectionStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OutboundCrossClusterSearchConnectionStatus"
+        },
+        {
+          "description": "Specifies the <code><a>OutboundCrossClusterSearchConnectionStatus</a></code> for the outbound connection."
+        }
+      ]
+    }
+  }
+}

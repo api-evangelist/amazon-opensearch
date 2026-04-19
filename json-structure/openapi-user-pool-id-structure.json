@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-user-pool-id-structure.json",
+  "name": "UserPoolId",
+  "description": "UserPoolId schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "pattern": "[\\w-]+_[0-9a-zA-Z]+"
+}

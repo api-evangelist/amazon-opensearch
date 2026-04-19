@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-reserved-elasticsearch-instance-offering-structure.json",
+  "name": "ReservedElasticsearchInstanceOffering",
+  "description": "Details of a reserved Elasticsearch instance offering.",
+  "type": "object",
+  "properties": {
+    "ReservedElasticsearchInstanceOfferingId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GUID"
+        },
+        {
+          "description": "The Elasticsearch reserved instance offering identifier."
+        }
+      ]
+    },
+    "ElasticsearchInstanceType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ESPartitionInstanceType"
+        },
+        {
+          "description": "The Elasticsearch instance type offered by the reserved instance offering."
+        }
+      ]
+    },
+    "Duration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The duration, in seconds, for which the offering will reserve the Elasticsearch instance."
+        }
+      ]
+    },
+    "FixedPrice": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "The upfront fixed charge you will pay to purchase the specific reserved Elasticsearch instance offering. "
+        }
+      ]
+    },
+    "UsagePrice": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "The rate you are charged for each hour the domain that is using the offering is running."
+        }
+      ]
+    },
+    "CurrencyCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The currency code for the reserved Elasticsearch instance offering."
+        }
+      ]
+    },
+    "PaymentOption": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReservedElasticsearchInstancePaymentOption"
+        },
+        {
+          "description": "Payment option for the reserved Elasticsearch instance offering"
+        }
+      ]
+    },
+    "RecurringCharges": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RecurringChargeList"
+        },
+        {
+          "description": "The charge to your account regardless of whether you are creating any domains using the instance offering."
+        }
+      ]
+    }
+  }
+}

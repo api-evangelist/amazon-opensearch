@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-endpoint-schema.json",
+  "title": "Endpoint",
+  "description": "Endpoint schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "pattern": "^[A-Za-z0-9\\-\\.]+$"
+}

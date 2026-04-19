@@ -1,0 +1,4 @@
+{
+  "Enabled": "example-string",
+  "KmsKeyId": "resource-abc123"
+}

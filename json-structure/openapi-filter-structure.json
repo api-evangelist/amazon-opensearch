@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-filter-structure.json",
+  "name": "Filter",
+  "description": " A filter used to limit results when describing inbound or outbound cross-cluster search connections. Multiple values can be specified per filter. A cross-cluster search connection must match at least one of the specified values for it to be returned from an operation. ",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": " Specifies the name of the filter. "
+        }
+      ]
+    },
+    "Values": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ValueStringList"
+        },
+        {
+          "description": " Contains one or more values for the filter. "
+        }
+      ]
+    }
+  }
+}

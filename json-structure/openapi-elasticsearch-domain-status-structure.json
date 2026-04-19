@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-elasticsearch-domain-status-structure.json",
+  "name": "ElasticsearchDomainStatus",
+  "description": "The current status of an Elasticsearch domain.",
+  "type": "object",
+  "properties": {
+    "DomainId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainId"
+        },
+        {
+          "description": "The unique identifier for the specified Elasticsearch domain."
+        }
+      ]
+    },
+    "DomainName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainName"
+        },
+        {
+          "description": "The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen)."
+        }
+      ]
+    },
+    "ARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ARN"
+        },
+        {
+          "description": "The Amazon resource name (ARN) of an Elasticsearch domain. See <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html\" target=\"_blank\">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information."
+        }
+      ]
+    },
+    "Created": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "The domain creation status. <code>True</code> if the creation of an Elasticsearch domain is complete. <code>False</code> if domain creation is still in progress."
+        }
+      ]
+    },
+    "Deleted": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "The domain deletion status. <code>True</code> if a delete request has been received for the domain but resource cleanup is still in progress. <code>False</code> if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned."
+        }
+      ]
+    },
+    "Endpoint": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceUrl"
+        },
+        {
+          "description": "The Elasticsearch domain endpoint that you use to submit index and search requests."
+        }
+      ]
+    },
+    "Endpoints": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EndpointsMap"
+        },
+        {
+          "description": "Map containing the Elasticsearch domain endpoints used to submit index and search requests. Example <code>key, value</code>: <code>'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'</code>."
+        }
+      ]
+    },
+    "Processing": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "The status of the Elasticsearch domain configuration. <code>True</code> if Amazon Elasticsearch Service is processing configuration changes. <code>False</code> if the configuration is active."
+        }
+      ]
+    },
+    "UpgradeProcessing": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "The status of an Elasticsearch domain version upgrade. <code>True</code> if Amazon Elasticsearch Service is undergoing a version upgrade. <code>False</code> if the configuration is active."
+        }
+      ]
+    },
+    "ElasticsearchVersion": {
+      "$ref": "#/components/schemas/ElasticsearchVersionString"
+    },
+    "ElasticsearchClusterConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ElasticsearchClusterConfig"
+        },
+        {
+          "description": "The type and number of instances in the domain cluster."
+        }
+      ]
+    },
+    "EBSOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EBSOptions"
+        },
+        {
+          "description": "The <code>EBSOptions</code> for the specified domain. See <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs\" target=\"_blank\">Configuring EBS-based Storage</a> for more information."
+        }
+      ]
+    },
+    "AccessPolicies": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PolicyDocument"
+        },
+        {
+          "description": " IAM access policy as a JSON-formatted string."
+        }
+      ]
+    },
+    "SnapshotOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SnapshotOptions"
+        },
+        {
+          "description": "Specifies the status of the <code>SnapshotOptions</code>"
+        }
+      ]
+    },
+    "VPCOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VPCDerivedInfo"
+        },
+        {
+          "description": "The <code>VPCOptions</code> for the specified domain. For more information, see <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html\" target=\"_blank\">VPC Endpoints for Amazon Elasticsearch Service Domains</a>."
+        }
+      ]
+    },
+    "CognitoOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CognitoOptions"
+        },
+        {
+          "description": "The <code>CognitoOptions</code> for the specified domain. For more information, see <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html\" target=\"_blank\">Amazon Cognito Authentication for Kibana</a>."
+        }
+      ]
+    },
+    "EncryptionAtRestOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EncryptionAtRestOptions"
+        },
+        {
+          "description": " Specifies the status of the <code>EncryptionAtRestOptions</code>."
+        }
+      ]
+    },
+    "NodeToNodeEncryptionOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NodeToNodeEncryptionOptions"
+        },
+        {
+          "description": "Specifies the status of the <code>NodeToNodeEncryptionOptions</code>."
+        }
+      ]
+    },
+    "AdvancedOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AdvancedOptions"
+        },
+        {
+          "description": "Specifies the status of the <code>AdvancedOptions</code>"
+        }
+      ]
+    },
+    "LogPublishingOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LogPublishingOptions"
+        },
+        {
+          "description": "Log publishing options for the given domain."
+        }
+      ]
+    },
+    "ServiceSoftwareOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ServiceSoftwareOptions"
+        },
+        {
+          "description": "The current status of the Elasticsearch domain's service software."
+        }
+      ]
+    },
+    "DomainEndpointOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainEndpointOptions"
+        },
+        {
+          "description": "The current status of the Elasticsearch domain's endpoint options."
+        }
+      ]
+    },
+    "AdvancedSecurityOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AdvancedSecurityOptions"
+        },
+        {
+          "description": "The current status of the Elasticsearch domain's advanced security options."
+        }
+      ]
+    },
+    "AutoTuneOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AutoTuneOptionsOutput"
+        },
+        {
+          "description": "The current status of the Elasticsearch domain's Auto-Tune options."
+        }
+      ]
+    },
+    "ChangeProgressDetails": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeProgressDetails"
+        },
+        {
+          "description": "Specifies change details of the domain configuration change."
+        }
+      ]
+    }
+  },
+  "required": [
+    "DomainId",
+    "DomainName",
+    "ARN",
+    "ElasticsearchClusterConfig"
+  ]
+}

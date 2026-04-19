@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-package-status-schema.json",
+  "title": "PackageStatus",
+  "description": "PackageStatus schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "enum": [
+    "COPYING",
+    "COPY_FAILED",
+    "VALIDATING",
+    "VALIDATION_FAILED",
+    "AVAILABLE",
+    "DELETING",
+    "DELETED",
+    "DELETE_FAILED"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-master-user-options-structure.json",
+  "name": "MasterUserOptions",
+  "description": "Credentials for the master user: username and password, ARN, or both.",
+  "type": "object",
+  "properties": {
+    "MasterUserARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ARN"
+        },
+        {
+          "description": "ARN for the master user (if IAM is enabled)."
+        }
+      ]
+    },
+    "MasterUserName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Username"
+        },
+        {
+          "description": "The master user's username, which is stored in the Amazon Elasticsearch Service domain's internal database."
+        }
+      ]
+    },
+    "MasterUserPassword": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Password"
+        },
+        {
+          "description": "The master user's password, which is stored in the Amazon Elasticsearch Service domain's internal database."
+        }
+      ]
+    }
+  }
+}

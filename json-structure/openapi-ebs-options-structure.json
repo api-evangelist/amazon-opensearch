@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-ebs-options-structure.json",
+  "name": "EBSOptions",
+  "description": "Options to enable, disable, and specify the properties of EBS storage volumes. For more information, see <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs\" target=\"_blank\"> Configuring EBS-based Storage</a>.",
+  "type": "object",
+  "properties": {
+    "EBSEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Specifies whether EBS-based storage is enabled."
+        }
+      ]
+    },
+    "VolumeType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VolumeType"
+        },
+        {
+          "description": " Specifies the volume type for EBS-based storage."
+        }
+      ]
+    },
+    "VolumeSize": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IntegerClass"
+        },
+        {
+          "description": " Integer to specify the size of an EBS volume."
+        }
+      ]
+    },
+    "Iops": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IntegerClass"
+        },
+        {
+          "description": "Specifies the IOPS for Provisioned IOPS And GP3 EBS volume (SSD)."
+        }
+      ]
+    },
+    "Throughput": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/IntegerClass"
+        },
+        {
+          "description": "Specifies the Throughput for GP3 EBS volume (SSD)."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-list-vpc-endpoints-for-domain-request-structure.json",
+  "name": "ListVpcEndpointsForDomainRequest",
+  "description": "Container for request parameters to the <code><a>ListVpcEndpointsForDomain</a></code> operation. Specifies the domain whose VPC endpoints will be listed.",
+  "type": "object",
+  "properties": {}
+}

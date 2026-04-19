@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-update-vpc-endpoint-request-schema.json",
+  "title": "UpdateVpcEndpointRequest",
+  "description": "Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointId"
+        },
+        {
+          "description": "Unique identifier of the VPC endpoint to be updated."
+        }
+      ]
+    },
+    "VpcOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VPCOptions"
+        },
+        {
+          "description": "The security groups and/or subnets to add, remove, or modify."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpointId",
+    "VpcOptions"
+  ]
+}

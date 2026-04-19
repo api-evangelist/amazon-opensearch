@@ -1,0 +1,7 @@
+{
+  "Enabled": "example-string",
+  "Idp": "resource-abc123",
+  "SubjectKey": "example-string",
+  "RolesKey": "example-string",
+  "SessionTimeoutMinutes": "example-string"
+}

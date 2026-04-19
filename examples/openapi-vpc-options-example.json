@@ -1,0 +1,4 @@
+{
+  "SubnetIds": "resource-abc123",
+  "SecurityGroupIds": "resource-abc123"
+}

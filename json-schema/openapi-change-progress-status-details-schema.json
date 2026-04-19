@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-change-progress-status-details-schema.json",
+  "title": "ChangeProgressStatusDetails",
+  "description": "The progress details of a specific domain configuration change.",
+  "type": "object",
+  "properties": {
+    "ChangeId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/GUID"
+        },
+        {
+          "description": "The unique change identifier associated with a specific domain configuration change."
+        }
+      ]
+    },
+    "StartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UpdateTimestamp"
+        },
+        {
+          "description": "The time at which the configuration change is made on the domain."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OverallChangeStatus"
+        },
+        {
+          "description": "The overall status of the domain configuration change. This field can take the following values: <code>PENDING</code>, <code>PROCESSING</code>, <code>COMPLETED</code> and <code>FAILED</code>"
+        }
+      ]
+    },
+    "PendingProperties": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StringList"
+        },
+        {
+          "description": "The list of properties involved in the domain configuration change that are still in pending."
+        }
+      ]
+    },
+    "CompletedProperties": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StringList"
+        },
+        {
+          "description": "The list of properties involved in the domain configuration change that are completed."
+        }
+      ]
+    },
+    "TotalNumberOfStages": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TotalNumberOfStages"
+        },
+        {
+          "description": "The total number of stages required for the configuration change."
+        }
+      ]
+    },
+    "ChangeProgressStages": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeProgressStageList"
+        },
+        {
+          "description": "The specific stages that the domain is going through to perform the configuration change."
+        }
+      ]
+    }
+  }
+}

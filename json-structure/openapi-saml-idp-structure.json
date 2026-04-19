@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-saml-idp-structure.json",
+  "name": "SAMLIdp",
+  "description": "Specifies the SAML Identity Provider's information.",
+  "type": "object",
+  "properties": {
+    "MetadataContent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SAMLMetadata"
+        },
+        {
+          "description": "The Metadata of the SAML application in xml format."
+        }
+      ]
+    },
+    "EntityId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SAMLEntityId"
+        },
+        {
+          "description": "The unique Entity ID of the application in SAML Identity Provider."
+        }
+      ]
+    }
+  },
+  "required": [
+    "MetadataContent",
+    "EntityId"
+  ]
+}

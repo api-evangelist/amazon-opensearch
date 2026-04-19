@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-error-details-structure.json",
+  "name": "ErrorDetails",
+  "description": "ErrorDetails schema from Amazon OpenSearch Service API",
+  "type": "object",
+  "properties": {
+    "ErrorType": {
+      "$ref": "#/components/schemas/ErrorType"
+    },
+    "ErrorMessage": {
+      "$ref": "#/components/schemas/ErrorMessage"
+    }
+  }
+}

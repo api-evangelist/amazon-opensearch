@@ -1,0 +1,4 @@
+{
+  "S3BucketName": "my-resource",
+  "S3Key": "example-string"
+}

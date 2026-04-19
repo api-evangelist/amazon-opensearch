@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-overall-change-status-structure.json",
+  "name": "OverallChangeStatus",
+  "description": "The overall status value of the domain configuration change.",
+  "type": "string",
+  "enum": [
+    "PENDING",
+    "PROCESSING",
+    "COMPLETED",
+    "FAILED"
+  ]
+}

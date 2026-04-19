@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-vpc-endpoint-id-schema.json",
+  "title": "VpcEndpointId",
+  "description": "VpcEndpointId schema from Amazon OpenSearch Service API",
+  "type": "string",
+  "pattern": "^aos-[a-zA-Z0-9]*$"
+}

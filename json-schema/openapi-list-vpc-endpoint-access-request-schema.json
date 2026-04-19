@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-list-vpc-endpoint-access-request-schema.json",
+  "title": "ListVpcEndpointAccessRequest",
+  "description": "Retrieves information about each principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint",
+  "type": "object",
+  "properties": {}
+}

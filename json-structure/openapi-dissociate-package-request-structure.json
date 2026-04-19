@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-dissociate-package-request-structure.json",
+  "name": "DissociatePackageRequest",
+  "description": " Container for request parameters to <code> <a>DissociatePackage</a> </code> operation. ",
+  "type": "object",
+  "properties": {}
+}

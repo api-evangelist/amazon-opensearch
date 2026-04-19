@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-auto-tune-state-structure.json",
+  "name": "AutoTuneState",
+  "description": "Specifies the Auto-Tune state for the Elasticsearch domain. For valid states see the <a href=\"https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html\" target=\"_blank\">Developer Guide</a>.",
+  "type": "string",
+  "enum": [
+    "ENABLED",
+    "DISABLED",
+    "ENABLE_IN_PROGRESS",
+    "DISABLE_IN_PROGRESS",
+    "DISABLED_AND_ROLLBACK_SCHEDULED",
+    "DISABLED_AND_ROLLBACK_IN_PROGRESS",
+    "DISABLED_AND_ROLLBACK_COMPLETE",
+    "DISABLED_AND_ROLLBACK_ERROR",
+    "ERROR"
+  ]
+}

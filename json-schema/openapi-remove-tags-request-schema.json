@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-remove-tags-request-schema.json",
+  "title": "RemoveTagsRequest",
+  "description": "Container for the parameters to the <code><a>RemoveTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain from which you want to remove the specified <code>TagKey</code>.",
+  "type": "object",
+  "properties": {
+    "ARN": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ARN"
+        },
+        {
+          "description": "Specifies the <code>ARN</code> for the Elasticsearch domain from which you want to delete the specified tags."
+        }
+      ]
+    },
+    "TagKeys": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StringList"
+        },
+        {
+          "description": "Specifies the <code>TagKey</code> list which you want to remove from the Elasticsearch domain."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ARN",
+    "TagKeys"
+  ]
+}

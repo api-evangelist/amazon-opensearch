@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-change-progress-stage-list-schema.json",
+  "title": "ChangeProgressStageList",
+  "description": "The list of progress stages of a specific domain configuration change.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ChangeProgressStage"
+  }
+}

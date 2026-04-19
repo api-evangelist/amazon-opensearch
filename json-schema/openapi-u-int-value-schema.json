@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-u-int-value-schema.json",
+  "title": "UIntValue",
+  "description": "UIntValue schema from Amazon OpenSearch Service API",
+  "type": "integer",
+  "minimum": 0
+}

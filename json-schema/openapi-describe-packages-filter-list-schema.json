@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-describe-packages-filter-list-schema.json",
+  "title": "DescribePackagesFilterList",
+  "description": "A list of <code>DescribePackagesFilter</code> to filter the packages included in a <code>DescribePackages</code> response.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/DescribePackagesFilter"
+  }
+}

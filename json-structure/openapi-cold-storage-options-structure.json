@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-cold-storage-options-structure.json",
+  "name": "ColdStorageOptions",
+  "description": "Specifies the configuration for cold storage options such as enabled",
+  "type": "object",
+  "properties": {
+    "Enabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Enable cold storage option. Accepted values true or false"
+        }
+      ]
+    }
+  },
+  "required": [
+    "Enabled"
+  ]
+}

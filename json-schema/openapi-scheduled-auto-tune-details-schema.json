@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-scheduled-auto-tune-details-schema.json",
+  "title": "ScheduledAutoTuneDetails",
+  "description": "Specifies details of the scheduled Auto-Tune action. See the <a href=\"https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html\" target=\"_blank\">Developer Guide</a> for more information. ",
+  "type": "object",
+  "properties": {
+    "Date": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AutoTuneDate"
+        },
+        {
+          "description": "Specifies timestamp for the Auto-Tune action scheduled for the domain. "
+        }
+      ]
+    },
+    "ActionType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ScheduledAutoTuneActionType"
+        },
+        {
+          "description": "Specifies Auto-Tune action type. Valid values are JVM_HEAP_SIZE_TUNING and JVM_YOUNG_GEN_TUNING. "
+        }
+      ]
+    },
+    "Action": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ScheduledAutoTuneDescription"
+        },
+        {
+          "description": "Specifies Auto-Tune action description. "
+        }
+      ]
+    },
+    "Severity": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ScheduledAutoTuneSeverityType"
+        },
+        {
+          "description": "Specifies Auto-Tune action severity. Valid values are LOW, MEDIUM and HIGH. "
+        }
+      ]
+    }
+  }
+}

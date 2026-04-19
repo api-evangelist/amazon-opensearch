@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-option-state-schema.json",
+  "title": "OptionState",
+  "description": "<p>The state of a requested change. One of the following:</p> <ul> <li>Processing: The request change is still in-process.</li> <li>Active: The request change is processed and deployed to the Elasticsearch domain.</li> </ul>",
+  "type": "string",
+  "enum": [
+    "RequiresIndexDocuments",
+    "Processing",
+    "Active"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-create-vpc-endpoint-request-schema.json",
+  "title": "CreateVpcEndpointRequest",
+  "description": "Container for the parameters to the <code><a>CreateVpcEndpointRequest</a></code> operation.",
+  "type": "object",
+  "properties": {
+    "DomainArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DomainArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the domain to grant access to."
+        }
+      ]
+    },
+    "VpcOptions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VPCOptions"
+        },
+        {
+          "description": "Options to specify the subnets and security groups for the endpoint."
+        }
+      ]
+    },
+    "ClientToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientToken"
+        },
+        {
+          "description": "Unique, case-sensitive identifier to ensure idempotency of the request."
+        }
+      ]
+    }
+  },
+  "required": [
+    "DomainArn",
+    "VpcOptions"
+  ]
+}

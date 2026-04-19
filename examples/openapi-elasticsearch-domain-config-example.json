@@ -1,0 +1,17 @@
+{
+  "ElasticsearchVersion": "1.0.0",
+  "ElasticsearchClusterConfig": "example-string",
+  "EBSOptions": "example-string",
+  "AccessPolicies": "example-string",
+  "SnapshotOptions": "example-string",
+  "VPCOptions": "example-string",
+  "CognitoOptions": "example-string",
+  "EncryptionAtRestOptions": "example-string",
+  "NodeToNodeEncryptionOptions": "example-string",
+  "AdvancedOptions": "example-string",
+  "LogPublishingOptions": "example-string",
+  "DomainEndpointOptions": "example-string",
+  "AdvancedSecurityOptions": "example-string",
+  "AutoTuneOptions": "example-string",
+  "ChangeProgressDetails": "example-string"
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-change-progress-stage-structure.json",
+  "name": "ChangeProgressStage",
+  "description": "A progress stage details of a specific domain configuration change.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeProgressStageName"
+        },
+        {
+          "description": "The name of the specific progress stage."
+        }
+      ]
+    },
+    "Status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChangeProgressStageStatus"
+        },
+        {
+          "description": "The overall status of a specific progress stage."
+        }
+      ]
+    },
+    "Description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Description"
+        },
+        {
+          "description": "The description of the progress stage."
+        }
+      ]
+    },
+    "LastUpdated": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LastUpdated"
+        },
+        {
+          "description": "The last updated timestamp of the progress stage."
+        }
+      ]
+    }
+  }
+}

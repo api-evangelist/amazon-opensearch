@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-auto-tune-desired-state-schema.json",
+  "title": "AutoTuneDesiredState",
+  "description": "Specifies the Auto-Tune desired state. Valid values are ENABLED, DISABLED.",
+  "type": "string",
+  "enum": [
+    "ENABLED",
+    "DISABLED"
+  ]
+}

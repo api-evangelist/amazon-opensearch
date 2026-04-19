@@ -1,0 +1,5 @@
+{
+  "DesiredState": "example-string",
+  "RollbackOnDisable": "example-string",
+  "MaintenanceSchedules": "example-string"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-get-compatible-elasticsearch-versions-response-structure.json",
+  "name": "GetCompatibleElasticsearchVersionsResponse",
+  "description": " Container for response returned by <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. ",
+  "type": "object",
+  "properties": {
+    "CompatibleElasticsearchVersions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CompatibleElasticsearchVersionsList"
+        },
+        {
+          "description": " A map of compatible Elasticsearch versions returned as part of the <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. "
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-elasticsearch-domain-status-list-schema.json",
+  "title": "ElasticsearchDomainStatusList",
+  "description": "A list that contains the status of each requested Elasticsearch domain.",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ElasticsearchDomainStatus"
+  }
+}

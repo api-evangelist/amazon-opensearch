@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-rollback-on-disable-structure.json",
+  "name": "RollbackOnDisable",
+  "description": "Specifies the rollback state while disabling Auto-Tune for the domain. Valid values are NO_ROLLBACK, DEFAULT_ROLLBACK.",
+  "type": "string",
+  "enum": [
+    "NO_ROLLBACK",
+    "DEFAULT_ROLLBACK"
+  ]
+}

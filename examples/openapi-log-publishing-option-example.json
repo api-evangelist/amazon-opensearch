@@ -1,0 +1,4 @@
+{
+  "CloudWatchLogsLogGroupArn": "example-ref",
+  "Enabled": "example-string"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-schema/openapi-domain-information-schema.json",
+  "title": "DomainInformation",
+  "description": "DomainInformation schema from Amazon OpenSearch Service API",
+  "type": "object",
+  "properties": {
+    "OwnerId": {
+      "$ref": "#/components/schemas/OwnerId"
+    },
+    "DomainName": {
+      "$ref": "#/components/schemas/DomainName"
+    },
+    "Region": {
+      "$ref": "#/components/schemas/Region"
+    }
+  },
+  "required": [
+    "DomainName"
+  ]
+}

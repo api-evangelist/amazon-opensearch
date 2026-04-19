@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-opensearch/refs/heads/main/json-structure/openapi-list-vpc-endpoints-response-structure.json",
+  "name": "ListVpcEndpointsResponse",
+  "description": "Container for response parameters to the <code><a>ListVpcEndpoints</a></code> operation. Returns a list containing summarized details of the VPC endpoints.",
+  "type": "object",
+  "properties": {
+    "VpcEndpointSummaryList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcEndpointSummaryList"
+        },
+        {
+          "description": "Information about each endpoint."
+        }
+      ]
+    },
+    "NextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "Provides an identifier to allow retrieval of paginated results."
+        }
+      ]
+    }
+  },
+  "required": [
+    "VpcEndpointSummaryList",
+    "NextToken"
+  ]
+}
