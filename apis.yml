@@ -31,7 +31,7 @@ apis:
     url: openapi/amazon-opensearch-openapi.yml
   - type: Pricing
     url: https://aws.amazon.com/opensearch-service/pricing/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://aws.amazon.com/opensearch-service/getting-started/
   - type: FAQ
     url: https://aws.amazon.com/opensearch-service/faqs/
@@ -42,21 +42,21 @@ common:
   url: https://aws.amazon.com/opensearch-service/
 - type: Documentation
   url: https://docs.aws.amazon.com/opensearch-service/
-- type: Terms of Service
+- type: TermsOfService
   url: https://aws.amazon.com/service-terms/
-- type: Privacy Policy
+- type: PrivacyPolicy
   url: https://aws.amazon.com/privacy/
 - type: Support
   url: https://aws.amazon.com/premiumsupport/
-- type: GitHub Organization
+- type: GitHubOrganization
   url: https://github.com/aws
 - type: Console
   url: https://console.aws.amazon.com/opensearch/
-- type: Sign Up
+- type: SignUp
   url: https://signin.aws.amazon.com/signup?request_type=register
 - type: Login
   url: https://aws.amazon.com/console/
-- type: Status
+- type: StatusPage
   url: https://health.aws.amazon.com/health/status
 - type: Contact
   url: https://aws.amazon.com/contact-us/
@@ -66,7 +66,7 @@ common:
   url: vocabulary/amazon-opensearch-vocabulary.yaml
 - type: NaftikoCapability
   url: capabilities/amazon-opensearch-workflow.yaml
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-opensearch-openapi-context.jsonld
 - type: JSONSchema
   url: json-schema/openapi-accept-inbound-cross-cluster-search-connection-request-schema.json
