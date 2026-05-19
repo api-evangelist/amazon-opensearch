@@ -1,21 +1,18 @@
 name: Amazon OpenSearch Service API
-description: Amazon OpenSearch Service is a managed service that makes it easy to deploy, operate, and scale OpenSearch clusters in the AWS Cloud. It offers visualization capabilities powered by 
-  OpenSearch Dashboards and Kibana, and provides direct access to the OpenSearch API so that existing code and applications work seamlessly. It supports log analytics, full-text search, application 
-  monitoring, and clickstream analytics.
+description: Amazon OpenSearch Service is a managed service that makes it easy to deploy, operate, and scale OpenSearch clusters
+  in the AWS Cloud. It offers visualization capabilities powered by OpenSearch Dashboards and Kibana, and provides direct
+  access to the OpenSearch API so that existing code and applications work seamlessly. It supports log analytics, full-text
+  search, application monitoring, and clickstream analytics.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/opensearch-service/
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-05-19'
 apis:
 - name: Amazon OpenSearch Service API
-  description: >-
-    The Amazon OpenSearch Service API provides a managed service for deploying,
-    operating, and scaling OpenSearch clusters in the AWS Cloud. The API allows
-    you to create and configure domains, manage cluster settings, configure
-    access policies, set up automated snapshots, upgrade domain versions, and
-    monitor cluster health and performance. It supports log analytics, full-text
-    search, application monitoring, and clickstream analytics with built-in
-    visualization capabilities.
+  description: The Amazon OpenSearch Service API provides a managed service for deploying, operating, and scaling OpenSearch
+    clusters in the AWS Cloud. The API allows you to create and configure domains, manage cluster settings, configure access
+    policies, set up automated snapshots, upgrade domain versions, and monitor cluster health and performance. It supports
+    log analytics, full-text search, application monitoring, and clickstream analytics with built-in visualization capabilities.
   image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
   humanURL: https://aws.amazon.com/opensearch-service/
   baseURL: https://es.amazonaws.com
@@ -35,6 +32,8 @@ apis:
     url: https://aws.amazon.com/opensearch-service/getting-started/
   - type: FAQ
     url: https://aws.amazon.com/opensearch-service/faqs/
+  - type: NaftikoCapability
+    url: capabilities/amazon-opensearch.yaml
 common:
 - type: Portal
   url: https://aws.amazon.com/
@@ -64,8 +63,6 @@ common:
   url: rules/amazon-opensearch-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/amazon-opensearch-vocabulary.yaml
-- type: NaftikoCapability
-  url: capabilities/amazon-opensearch-workflow.yaml
 - type: JSONLD
   url: json-ld/amazon-opensearch-openapi-context.jsonld
 - type: JSONSchema
@@ -86,14 +83,14 @@ common:
 - type: Integrations
   url: https://aws.amazon.com/partners/
 integrations:
-  - name: Partner Programs
-  - name: Resources
-  - name: Success Stories
-  - name: Work with an AWS Partner
-  - name: AWS Marketplace
-  - name: AWS Partner Central
-  - name: Partner Paths
-  - name: co-sell with AWS
+- name: Partner Programs
+- name: Resources
+- name: Success Stories
+- name: Work with an AWS Partner
+- name: AWS Marketplace
+- name: AWS Partner Central
+- name: Partner Paths
+- name: co-sell with AWS
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

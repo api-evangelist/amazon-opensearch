@@ -1,0 +1,2429 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon Elasticsearch Service
+  description: 'Amazon Elasticsearch Service. 50 operations. Lead operation: Amazon OpenSearch List Domain Names. Self-contained
+    Naftiko capability covering one Amazon Opensearch business surface.'
+  tags:
+  - Amazon Opensearch
+  - Amazon Elasticsearch Service
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_OPENSEARCH_API_KEY: AMAZON_OPENSEARCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-opensearch
+    baseUri: http://es.{region}.amazonaws.com
+    description: Amazon Elasticsearch Service business capability. Self-contained, no shared references.
+    resources:
+    - name: 2015-01-01-domain
+      path: /2015-01-01/domain
+      operations:
+      - name: listdomainnames
+        method: GET
+        description: Amazon OpenSearch List Domain Names
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: engineType
+          in: query
+          type: string
+          description: Optional parameter to filter the output by domain engine type. Acceptable values are 'Elasticsearch'
+            and 'OpenSearch'.
+    - name: 2015-01-01-domain-DomainName-packages
+      path: /2015-01-01/domain/{DomainName}/packages
+      operations:
+      - name: listpackagesfordomain
+        method: GET
+        description: Amazon OpenSearch List Packages for Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The name of the domain for which you want to list associated packages.
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+          description: Limits results to a maximum number of packages.
+        - name: nextToken
+          in: query
+          type: string
+          description: Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If
+            provided, returns results for the next page.
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-es-ccs-inboundConnection-search
+      path: /2015-01-01/es/ccs/inboundConnection/search
+      operations:
+      - name: describeinboundcrossclustersearchconnections
+        method: POST
+        description: Amazon OpenSearch Describe Inbound Cross Cluster Search Connections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-ccs-inboundConnection-ConnectionId
+      path: /2015-01-01/es/ccs/inboundConnection/{ConnectionId}
+      operations:
+      - name: deleteinboundcrossclustersearchconnection
+        method: DELETE
+        description: Amazon OpenSearch Delete Inbound Cross Cluster Search Connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConnectionId
+          in: path
+          type: string
+          description: The id of the inbound connection that you want to permanently delete.
+          required: true
+    - name: 2015-01-01-es-ccs-inboundConnection-ConnectionId-accept
+      path: /2015-01-01/es/ccs/inboundConnection/{ConnectionId}/accept
+      operations:
+      - name: acceptinboundcrossclustersearchconnection
+        method: PUT
+        description: Amazon OpenSearch Accept Inbound Cross Cluster Search Connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConnectionId
+          in: path
+          type: string
+          description: The id of the inbound connection that you want to accept.
+          required: true
+    - name: 2015-01-01-es-ccs-inboundConnection-ConnectionId-reject
+      path: /2015-01-01/es/ccs/inboundConnection/{ConnectionId}/reject
+      operations:
+      - name: rejectinboundcrossclustersearchconnection
+        method: PUT
+        description: Amazon OpenSearch Reject Inbound Cross Cluster Search Connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConnectionId
+          in: path
+          type: string
+          description: The id of the inbound connection that you want to reject.
+          required: true
+    - name: 2015-01-01-es-ccs-outboundConnection
+      path: /2015-01-01/es/ccs/outboundConnection
+      operations:
+      - name: createoutboundcrossclustersearchconnection
+        method: POST
+        description: Amazon OpenSearch Create Outbound Cross Cluster Search Connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-ccs-outboundConnection-search
+      path: /2015-01-01/es/ccs/outboundConnection/search
+      operations:
+      - name: describeoutboundcrossclustersearchconnections
+        method: POST
+        description: Amazon OpenSearch Describe Outbound Cross Cluster Search Connections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-ccs-outboundConnection-ConnectionId
+      path: /2015-01-01/es/ccs/outboundConnection/{ConnectionId}
+      operations:
+      - name: deleteoutboundcrossclustersearchconnection
+        method: DELETE
+        description: Amazon OpenSearch Delete Outbound Cross Cluster Search Connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ConnectionId
+          in: path
+          type: string
+          description: The id of the outbound connection that you want to permanently delete.
+          required: true
+    - name: 2015-01-01-es-compatibleVersions
+      path: /2015-01-01/es/compatibleVersions
+      operations:
+      - name: getcompatibleelasticsearchversions
+        method: GET
+        description: Amazon OpenSearch Get Compatible Elasticsearch Versions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domainName
+          in: query
+          type: string
+    - name: 2015-01-01-es-domain
+      path: /2015-01-01/es/domain
+      operations:
+      - name: createelasticsearchdomain
+        method: POST
+        description: Amazon OpenSearch Create Elasticsearch Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-domain-info
+      path: /2015-01-01/es/domain-info
+      operations:
+      - name: describeelasticsearchdomains
+        method: POST
+        description: Amazon OpenSearch Describe Elasticsearch Domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-domain-DomainName
+      path: /2015-01-01/es/domain/{DomainName}
+      operations:
+      - name: deleteelasticsearchdomain
+        method: DELETE
+        description: Amazon OpenSearch Delete Elasticsearch Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The name of the Elasticsearch domain that you want to permanently delete.
+          required: true
+      - name: describeelasticsearchdomain
+        method: GET
+        description: Amazon OpenSearch Describe Elasticsearch Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The name of the Elasticsearch domain for which you want information.
+          required: true
+    - name: 2015-01-01-es-domain-DomainName-authorizeVpcEndpointAccess
+      path: /2015-01-01/es/domain/{DomainName}/authorizeVpcEndpointAccess
+      operations:
+      - name: authorizevpcendpointaccess
+        method: POST
+        description: Amazon OpenSearch Authorize Vpc Endpoint Access
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The name of the OpenSearch Service domain to provide access to.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-domain-DomainName-autoTunes
+      path: /2015-01-01/es/domain/{DomainName}/autoTunes
+      operations:
+      - name: describedomainautotunes
+        method: GET
+        description: Amazon OpenSearch Describe Domain Auto Tunes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: Specifies the domain name for which you want Auto-Tune action details.
+          required: true
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-domain-DomainName-config
+      path: /2015-01-01/es/domain/{DomainName}/config
+      operations:
+      - name: describeelasticsearchdomainconfig
+        method: GET
+        description: Amazon OpenSearch Describe Elasticsearch Domain Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The Elasticsearch domain that you want to get information about.
+          required: true
+      - name: updateelasticsearchdomainconfig
+        method: POST
+        description: Amazon OpenSearch Update Elasticsearch Domain Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The name of the Elasticsearch domain that you are updating.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-domain-DomainName-listVpcEndpointAccess
+      path: /2015-01-01/es/domain/{DomainName}/listVpcEndpointAccess
+      operations:
+      - name: listvpcendpointaccess
+        method: GET
+        description: Amazon OpenSearch List Vpc Endpoint Access
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The name of the OpenSearch Service domain to retrieve access information for.
+          required: true
+        - name: nextToken
+          in: query
+          type: string
+          description: Provides an identifier to allow retrieval of paginated results.
+    - name: 2015-01-01-es-domain-DomainName-progress
+      path: /2015-01-01/es/domain/{DomainName}/progress
+      operations:
+      - name: describedomainchangeprogress
+        method: GET
+        description: Amazon OpenSearch Describe Domain Change Progress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The domain you want to get the progress information about.
+          required: true
+        - name: changeid
+          in: query
+          type: string
+          description: The specific change ID for which you want to get progress information. This is an optional parameter.
+            If omitted, the service returns information about the most
+    - name: 2015-01-01-es-domain-DomainName-revokeVpcEndpointAccess
+      path: /2015-01-01/es/domain/{DomainName}/revokeVpcEndpointAccess
+      operations:
+      - name: revokevpcendpointaccess
+        method: POST
+        description: Amazon OpenSearch Revoke Vpc Endpoint Access
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: The name of the OpenSearch Service domain.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-domain-DomainName-vpcEndpoints
+      path: /2015-01-01/es/domain/{DomainName}/vpcEndpoints
+      operations:
+      - name: listvpcendpointsfordomain
+        method: GET
+        description: Amazon OpenSearch List Vpc Endpoints for Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          description: Name of the ElasticSearch domain whose VPC endpoints are to be listed.
+          required: true
+        - name: nextToken
+          in: query
+          type: string
+          description: Provides an identifier to allow retrieval of paginated results.
+    - name: 2015-01-01-es-instanceTypeLimits-ElasticsearchVersion-InstanceType
+      path: /2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}
+      operations:
+      - name: describeelasticsearchinstancetypelimits
+        method: GET
+        description: Amazon OpenSearch Describe Elasticsearch Instance Type Limits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domainName
+          in: query
+          type: string
+          description: DomainName represents the name of the Domain that we are trying to modify. This should be present only
+            if we are querying for Elasticsearch <code> <a>Limits</a>
+        - name: InstanceType
+          in: path
+          type: string
+          description: The instance type for an Elasticsearch cluster for which Elasticsearch <code> <a>Limits</a> </code>
+            are needed.
+          required: true
+        - name: ElasticsearchVersion
+          in: path
+          type: string
+          description: Version of Elasticsearch for which <code> <a>Limits</a> </code> are needed.
+          required: true
+    - name: 2015-01-01-es-instanceTypes-ElasticsearchVersion
+      path: /2015-01-01/es/instanceTypes/{ElasticsearchVersion}
+      operations:
+      - name: listelasticsearchinstancetypes
+        method: GET
+        description: Amazon OpenSearch List Elasticsearch Instance Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ElasticsearchVersion
+          in: path
+          type: string
+          description: Version of Elasticsearch for which list of supported elasticsearch instance types are needed.
+          required: true
+        - name: domainName
+          in: query
+          type: string
+          description: DomainName represents the name of the Domain that we are trying to modify. This should be present only
+            if we are querying for list of available Elasticsearch in
+        - name: maxResults
+          in: query
+          type: integer
+          description: Set this value to limit the number of results returned. Value provided must be greater than 30 else
+            it wont be honored.
+        - name: nextToken
+          in: query
+          type: string
+          description: NextToken should be sent in case if earlier API call produced result containing NextToken. It is used
+            for pagination.
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-es-purchaseReservedInstanceOffering
+      path: /2015-01-01/es/purchaseReservedInstanceOffering
+      operations:
+      - name: purchasereservedelasticsearchinstanceoffering
+        method: POST
+        description: Amazon OpenSearch Purchase Reserved Elasticsearch Instance Offering
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-reservedInstanceOfferings
+      path: /2015-01-01/es/reservedInstanceOfferings
+      operations:
+      - name: describereservedelasticsearchinstanceofferings
+        method: GET
+        description: Amazon OpenSearch Describe Reserved Elasticsearch Instance Offerings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: offeringId
+          in: query
+          type: string
+          description: The offering identifier filter value. Use this parameter to show only the available offering that matches
+            the specified reservation identifier.
+        - name: maxResults
+          in: query
+          type: integer
+          description: Set this value to limit the number of results returned. If not specified, defaults to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: NextToken should be sent in case if earlier API call produced result containing NextToken. It is used
+            for pagination.
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-es-reservedInstances
+      path: /2015-01-01/es/reservedInstances
+      operations:
+      - name: describereservedelasticsearchinstances
+        method: GET
+        description: Amazon OpenSearch Describe Reserved Elasticsearch Instances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: reservationId
+          in: query
+          type: string
+          description: The reserved instance identifier filter value. Use this parameter to show only the reservation that
+            matches the specified reserved Elasticsearch instance ID.
+        - name: maxResults
+          in: query
+          type: integer
+          description: Set this value to limit the number of results returned. If not specified, defaults to 100.
+        - name: nextToken
+          in: query
+          type: string
+          description: NextToken should be sent in case if earlier API call produced result containing NextToken. It is used
+            for pagination.
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-es-role
+      path: /2015-01-01/es/role
+      operations:
+      - name: deleteelasticsearchservicerole
+        method: DELETE
+        description: Amazon OpenSearch Delete Elasticsearch Service Role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: 2015-01-01-es-serviceSoftwareUpdate-cancel
+      path: /2015-01-01/es/serviceSoftwareUpdate/cancel
+      operations:
+      - name: cancelelasticsearchservicesoftwareupdate
+        method: POST
+        description: Amazon OpenSearch Cancel Elasticsearch Service Software Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-serviceSoftwareUpdate-start
+      path: /2015-01-01/es/serviceSoftwareUpdate/start
+      operations:
+      - name: startelasticsearchservicesoftwareupdate
+        method: POST
+        description: Amazon OpenSearch Start Elasticsearch Service Software Update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-upgradeDomain
+      path: /2015-01-01/es/upgradeDomain
+      operations:
+      - name: upgradeelasticsearchdomain
+        method: POST
+        description: Amazon OpenSearch Upgrade Elasticsearch Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-upgradeDomain-DomainName-history
+      path: /2015-01-01/es/upgradeDomain/{DomainName}/history
+      operations:
+      - name: getupgradehistory
+        method: GET
+        description: Amazon OpenSearch Get Upgrade History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+        - name: nextToken
+          in: query
+          type: string
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-es-upgradeDomain-DomainName-status
+      path: /2015-01-01/es/upgradeDomain/{DomainName}/status
+      operations:
+      - name: getupgradestatus
+        method: GET
+        description: Amazon OpenSearch Get Upgrade Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: DomainName
+          in: path
+          type: string
+          required: true
+    - name: 2015-01-01-es-versions
+      path: /2015-01-01/es/versions
+      operations:
+      - name: listelasticsearchversions
+        method: GET
+        description: Amazon OpenSearch List Elasticsearch Versions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: integer
+          description: Set this value to limit the number of results returned. Value provided must be greater than 10 else
+            it wont be honored.
+        - name: nextToken
+          in: query
+          type: string
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-es-vpcEndpoints
+      path: /2015-01-01/es/vpcEndpoints
+      operations:
+      - name: createvpcendpoint
+        method: POST
+        description: Amazon OpenSearch Create Vpc Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listvpcendpoints
+        method: GET
+        description: Amazon OpenSearch List Vpc Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          description: Identifier to allow retrieval of paginated results.
+    - name: 2015-01-01-es-vpcEndpoints-describe
+      path: /2015-01-01/es/vpcEndpoints/describe
+      operations:
+      - name: describevpcendpoints
+        method: POST
+        description: Amazon OpenSearch Describe Vpc Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-vpcEndpoints-update
+      path: /2015-01-01/es/vpcEndpoints/update
+      operations:
+      - name: updatevpcendpoint
+        method: POST
+        description: Amazon OpenSearch Update Vpc Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-es-vpcEndpoints-VpcEndpointId
+      path: /2015-01-01/es/vpcEndpoints/{VpcEndpointId}
+      operations:
+      - name: deletevpcendpoint
+        method: DELETE
+        description: Amazon OpenSearch Delete Vpc Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: VpcEndpointId
+          in: path
+          type: string
+          description: The unique identifier of the endpoint to be deleted.
+          required: true
+    - name: 2015-01-01-packages
+      path: /2015-01-01/packages
+      operations:
+      - name: createpackage
+        method: POST
+        description: Amazon OpenSearch Create Package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-packages-associate-PackageID-DomainName
+      path: /2015-01-01/packages/associate/{PackageID}/{DomainName}
+      operations:
+      - name: associatepackage
+        method: POST
+        description: Amazon OpenSearch Associate Package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PackageID
+          in: path
+          type: string
+          description: Internal ID of the package that you want to associate with a domain. Use <code>DescribePackages</code>
+            to find this value.
+          required: true
+        - name: DomainName
+          in: path
+          type: string
+          description: Name of the domain that you want to associate the package with.
+          required: true
+    - name: 2015-01-01-packages-describe
+      path: /2015-01-01/packages/describe
+      operations:
+      - name: describepackages
+        method: POST
+        description: Amazon OpenSearch Describe Packages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-packages-dissociate-PackageID-DomainName
+      path: /2015-01-01/packages/dissociate/{PackageID}/{DomainName}
+      operations:
+      - name: dissociatepackage
+        method: POST
+        description: Amazon OpenSearch Dissociate Package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PackageID
+          in: path
+          type: string
+          description: Internal ID of the package that you want to associate with a domain. Use <code>DescribePackages</code>
+            to find this value.
+          required: true
+        - name: DomainName
+          in: path
+          type: string
+          description: Name of the domain that you want to associate the package with.
+          required: true
+    - name: 2015-01-01-packages-update
+      path: /2015-01-01/packages/update
+      operations:
+      - name: updatepackage
+        method: POST
+        description: Amazon OpenSearch Update Package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-packages-PackageID
+      path: /2015-01-01/packages/{PackageID}
+      operations:
+      - name: deletepackage
+        method: DELETE
+        description: Amazon OpenSearch Delete Package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PackageID
+          in: path
+          type: string
+          description: Internal ID of the package that you want to delete. Use <code>DescribePackages</code> to find this
+            value.
+          required: true
+    - name: 2015-01-01-packages-PackageID-domains
+      path: /2015-01-01/packages/{PackageID}/domains
+      operations:
+      - name: listdomainsforpackage
+        method: GET
+        description: Amazon OpenSearch List Domains for Package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PackageID
+          in: path
+          type: string
+          description: The package for which to list domains.
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+          description: Limits results to a maximum number of domains.
+        - name: nextToken
+          in: query
+          type: string
+          description: Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If
+            provided, returns results for the next page.
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-packages-PackageID-history
+      path: /2015-01-01/packages/{PackageID}/history
+      operations:
+      - name: getpackageversionhistory
+        method: GET
+        description: Amazon OpenSearch Get Package Version History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PackageID
+          in: path
+          type: string
+          description: Returns an audit history of versions of the package.
+          required: true
+        - name: maxResults
+          in: query
+          type: integer
+          description: Limits results to a maximum number of versions.
+        - name: nextToken
+          in: query
+          type: string
+          description: Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If
+            provided, returns results for the next page.
+        - name: MaxResults
+          in: query
+          type: string
+          description: Pagination limit
+        - name: NextToken
+          in: query
+          type: string
+          description: Pagination token
+    - name: 2015-01-01-tags
+      path: /2015-01-01/tags
+      operations:
+      - name: addtags
+        method: POST
+        description: Amazon OpenSearch Add Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-tags-removal
+      path: /2015-01-01/tags-removal
+      operations:
+      - name: removetags
+        method: POST
+        description: Amazon OpenSearch Remove Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: 2015-01-01-tags-#arn
+      path: /2015-01-01/tags/#arn
+      operations:
+      - name: listtags
+        method: GET
+        description: Amazon OpenSearch List Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: arn
+          in: query
+          type: string
+          description: Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want
+            to view.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_OPENSEARCH_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-opensearch-rest
+    port: 8080
+    description: REST adapter for Amazon Elasticsearch Service. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/2015-01-01/domain
+      name: 2015-01-01-domain
+      description: REST surface for 2015-01-01-domain.
+      operations:
+      - method: GET
+        name: listdomainnames
+        description: Amazon OpenSearch List Domain Names
+        call: amazon-opensearch.listdomainnames
+        with:
+          engineType: rest.engineType
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/domain/{domainname}/packages
+      name: 2015-01-01-domain-domainname-packages
+      description: REST surface for 2015-01-01-domain-DomainName-packages.
+      operations:
+      - method: GET
+        name: listpackagesfordomain
+        description: Amazon OpenSearch List Packages for Domain
+        call: amazon-opensearch.listpackagesfordomain
+        with:
+          DomainName: rest.DomainName
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/ccs/inboundconnection/search
+      name: 2015-01-01-es-ccs-inboundconnection-search
+      description: REST surface for 2015-01-01-es-ccs-inboundConnection-search.
+      operations:
+      - method: POST
+        name: describeinboundcrossclustersearchconnections
+        description: Amazon OpenSearch Describe Inbound Cross Cluster Search Connections
+        call: amazon-opensearch.describeinboundcrossclustersearchconnections
+        with:
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/ccs/inboundconnection/{connectionid}
+      name: 2015-01-01-es-ccs-inboundconnection-connectionid
+      description: REST surface for 2015-01-01-es-ccs-inboundConnection-ConnectionId.
+      operations:
+      - method: DELETE
+        name: deleteinboundcrossclustersearchconnection
+        description: Amazon OpenSearch Delete Inbound Cross Cluster Search Connection
+        call: amazon-opensearch.deleteinboundcrossclustersearchconnection
+        with:
+          ConnectionId: rest.ConnectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/ccs/inboundconnection/{connectionid}/accept
+      name: 2015-01-01-es-ccs-inboundconnection-connectionid-accept
+      description: REST surface for 2015-01-01-es-ccs-inboundConnection-ConnectionId-accept.
+      operations:
+      - method: PUT
+        name: acceptinboundcrossclustersearchconnection
+        description: Amazon OpenSearch Accept Inbound Cross Cluster Search Connection
+        call: amazon-opensearch.acceptinboundcrossclustersearchconnection
+        with:
+          ConnectionId: rest.ConnectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/ccs/inboundconnection/{connectionid}/reject
+      name: 2015-01-01-es-ccs-inboundconnection-connectionid-reject
+      description: REST surface for 2015-01-01-es-ccs-inboundConnection-ConnectionId-reject.
+      operations:
+      - method: PUT
+        name: rejectinboundcrossclustersearchconnection
+        description: Amazon OpenSearch Reject Inbound Cross Cluster Search Connection
+        call: amazon-opensearch.rejectinboundcrossclustersearchconnection
+        with:
+          ConnectionId: rest.ConnectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/ccs/outboundconnection
+      name: 2015-01-01-es-ccs-outboundconnection
+      description: REST surface for 2015-01-01-es-ccs-outboundConnection.
+      operations:
+      - method: POST
+        name: createoutboundcrossclustersearchconnection
+        description: Amazon OpenSearch Create Outbound Cross Cluster Search Connection
+        call: amazon-opensearch.createoutboundcrossclustersearchconnection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/ccs/outboundconnection/search
+      name: 2015-01-01-es-ccs-outboundconnection-search
+      description: REST surface for 2015-01-01-es-ccs-outboundConnection-search.
+      operations:
+      - method: POST
+        name: describeoutboundcrossclustersearchconnections
+        description: Amazon OpenSearch Describe Outbound Cross Cluster Search Connections
+        call: amazon-opensearch.describeoutboundcrossclustersearchconnections
+        with:
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/ccs/outboundconnection/{connectionid}
+      name: 2015-01-01-es-ccs-outboundconnection-connectionid
+      description: REST surface for 2015-01-01-es-ccs-outboundConnection-ConnectionId.
+      operations:
+      - method: DELETE
+        name: deleteoutboundcrossclustersearchconnection
+        description: Amazon OpenSearch Delete Outbound Cross Cluster Search Connection
+        call: amazon-opensearch.deleteoutboundcrossclustersearchconnection
+        with:
+          ConnectionId: rest.ConnectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/compatibleversions
+      name: 2015-01-01-es-compatibleversions
+      description: REST surface for 2015-01-01-es-compatibleVersions.
+      operations:
+      - method: GET
+        name: getcompatibleelasticsearchversions
+        description: Amazon OpenSearch Get Compatible Elasticsearch Versions
+        call: amazon-opensearch.getcompatibleelasticsearchversions
+        with:
+          domainName: rest.domainName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain
+      name: 2015-01-01-es-domain
+      description: REST surface for 2015-01-01-es-domain.
+      operations:
+      - method: POST
+        name: createelasticsearchdomain
+        description: Amazon OpenSearch Create Elasticsearch Domain
+        call: amazon-opensearch.createelasticsearchdomain
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain-info
+      name: 2015-01-01-es-domain-info
+      description: REST surface for 2015-01-01-es-domain-info.
+      operations:
+      - method: POST
+        name: describeelasticsearchdomains
+        description: Amazon OpenSearch Describe Elasticsearch Domains
+        call: amazon-opensearch.describeelasticsearchdomains
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}
+      name: 2015-01-01-es-domain-domainname
+      description: REST surface for 2015-01-01-es-domain-DomainName.
+      operations:
+      - method: DELETE
+        name: deleteelasticsearchdomain
+        description: Amazon OpenSearch Delete Elasticsearch Domain
+        call: amazon-opensearch.deleteelasticsearchdomain
+        with:
+          DomainName: rest.DomainName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: describeelasticsearchdomain
+        description: Amazon OpenSearch Describe Elasticsearch Domain
+        call: amazon-opensearch.describeelasticsearchdomain
+        with:
+          DomainName: rest.DomainName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}/authorizevpcendpointaccess
+      name: 2015-01-01-es-domain-domainname-authorizevpcendpointaccess
+      description: REST surface for 2015-01-01-es-domain-DomainName-authorizeVpcEndpointAccess.
+      operations:
+      - method: POST
+        name: authorizevpcendpointaccess
+        description: Amazon OpenSearch Authorize Vpc Endpoint Access
+        call: amazon-opensearch.authorizevpcendpointaccess
+        with:
+          DomainName: rest.DomainName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}/autotunes
+      name: 2015-01-01-es-domain-domainname-autotunes
+      description: REST surface for 2015-01-01-es-domain-DomainName-autoTunes.
+      operations:
+      - method: GET
+        name: describedomainautotunes
+        description: Amazon OpenSearch Describe Domain Auto Tunes
+        call: amazon-opensearch.describedomainautotunes
+        with:
+          DomainName: rest.DomainName
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}/config
+      name: 2015-01-01-es-domain-domainname-config
+      description: REST surface for 2015-01-01-es-domain-DomainName-config.
+      operations:
+      - method: GET
+        name: describeelasticsearchdomainconfig
+        description: Amazon OpenSearch Describe Elasticsearch Domain Config
+        call: amazon-opensearch.describeelasticsearchdomainconfig
+        with:
+          DomainName: rest.DomainName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateelasticsearchdomainconfig
+        description: Amazon OpenSearch Update Elasticsearch Domain Config
+        call: amazon-opensearch.updateelasticsearchdomainconfig
+        with:
+          DomainName: rest.DomainName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}/listvpcendpointaccess
+      name: 2015-01-01-es-domain-domainname-listvpcendpointaccess
+      description: REST surface for 2015-01-01-es-domain-DomainName-listVpcEndpointAccess.
+      operations:
+      - method: GET
+        name: listvpcendpointaccess
+        description: Amazon OpenSearch List Vpc Endpoint Access
+        call: amazon-opensearch.listvpcendpointaccess
+        with:
+          DomainName: rest.DomainName
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}/progress
+      name: 2015-01-01-es-domain-domainname-progress
+      description: REST surface for 2015-01-01-es-domain-DomainName-progress.
+      operations:
+      - method: GET
+        name: describedomainchangeprogress
+        description: Amazon OpenSearch Describe Domain Change Progress
+        call: amazon-opensearch.describedomainchangeprogress
+        with:
+          DomainName: rest.DomainName
+          changeid: rest.changeid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}/revokevpcendpointaccess
+      name: 2015-01-01-es-domain-domainname-revokevpcendpointaccess
+      description: REST surface for 2015-01-01-es-domain-DomainName-revokeVpcEndpointAccess.
+      operations:
+      - method: POST
+        name: revokevpcendpointaccess
+        description: Amazon OpenSearch Revoke Vpc Endpoint Access
+        call: amazon-opensearch.revokevpcendpointaccess
+        with:
+          DomainName: rest.DomainName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/domain/{domainname}/vpcendpoints
+      name: 2015-01-01-es-domain-domainname-vpcendpoints
+      description: REST surface for 2015-01-01-es-domain-DomainName-vpcEndpoints.
+      operations:
+      - method: GET
+        name: listvpcendpointsfordomain
+        description: Amazon OpenSearch List Vpc Endpoints for Domain
+        call: amazon-opensearch.listvpcendpointsfordomain
+        with:
+          DomainName: rest.DomainName
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/instancetypelimits/{elasticsearchversion}/{instancetype}
+      name: 2015-01-01-es-instancetypelimits-elasticsearchversion-instancetype
+      description: REST surface for 2015-01-01-es-instanceTypeLimits-ElasticsearchVersion-InstanceType.
+      operations:
+      - method: GET
+        name: describeelasticsearchinstancetypelimits
+        description: Amazon OpenSearch Describe Elasticsearch Instance Type Limits
+        call: amazon-opensearch.describeelasticsearchinstancetypelimits
+        with:
+          domainName: rest.domainName
+          InstanceType: rest.InstanceType
+          ElasticsearchVersion: rest.ElasticsearchVersion
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/instancetypes/{elasticsearchversion}
+      name: 2015-01-01-es-instancetypes-elasticsearchversion
+      description: REST surface for 2015-01-01-es-instanceTypes-ElasticsearchVersion.
+      operations:
+      - method: GET
+        name: listelasticsearchinstancetypes
+        description: Amazon OpenSearch List Elasticsearch Instance Types
+        call: amazon-opensearch.listelasticsearchinstancetypes
+        with:
+          ElasticsearchVersion: rest.ElasticsearchVersion
+          domainName: rest.domainName
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/purchasereservedinstanceoffering
+      name: 2015-01-01-es-purchasereservedinstanceoffering
+      description: REST surface for 2015-01-01-es-purchaseReservedInstanceOffering.
+      operations:
+      - method: POST
+        name: purchasereservedelasticsearchinstanceoffering
+        description: Amazon OpenSearch Purchase Reserved Elasticsearch Instance Offering
+        call: amazon-opensearch.purchasereservedelasticsearchinstanceoffering
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/reservedinstanceofferings
+      name: 2015-01-01-es-reservedinstanceofferings
+      description: REST surface for 2015-01-01-es-reservedInstanceOfferings.
+      operations:
+      - method: GET
+        name: describereservedelasticsearchinstanceofferings
+        description: Amazon OpenSearch Describe Reserved Elasticsearch Instance Offerings
+        call: amazon-opensearch.describereservedelasticsearchinstanceofferings
+        with:
+          offeringId: rest.offeringId
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/reservedinstances
+      name: 2015-01-01-es-reservedinstances
+      description: REST surface for 2015-01-01-es-reservedInstances.
+      operations:
+      - method: GET
+        name: describereservedelasticsearchinstances
+        description: Amazon OpenSearch Describe Reserved Elasticsearch Instances
+        call: amazon-opensearch.describereservedelasticsearchinstances
+        with:
+          reservationId: rest.reservationId
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/role
+      name: 2015-01-01-es-role
+      description: REST surface for 2015-01-01-es-role.
+      operations:
+      - method: DELETE
+        name: deleteelasticsearchservicerole
+        description: Amazon OpenSearch Delete Elasticsearch Service Role
+        call: amazon-opensearch.deleteelasticsearchservicerole
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/servicesoftwareupdate/cancel
+      name: 2015-01-01-es-servicesoftwareupdate-cancel
+      description: REST surface for 2015-01-01-es-serviceSoftwareUpdate-cancel.
+      operations:
+      - method: POST
+        name: cancelelasticsearchservicesoftwareupdate
+        description: Amazon OpenSearch Cancel Elasticsearch Service Software Update
+        call: amazon-opensearch.cancelelasticsearchservicesoftwareupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/servicesoftwareupdate/start
+      name: 2015-01-01-es-servicesoftwareupdate-start
+      description: REST surface for 2015-01-01-es-serviceSoftwareUpdate-start.
+      operations:
+      - method: POST
+        name: startelasticsearchservicesoftwareupdate
+        description: Amazon OpenSearch Start Elasticsearch Service Software Update
+        call: amazon-opensearch.startelasticsearchservicesoftwareupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/upgradedomain
+      name: 2015-01-01-es-upgradedomain
+      description: REST surface for 2015-01-01-es-upgradeDomain.
+      operations:
+      - method: POST
+        name: upgradeelasticsearchdomain
+        description: Amazon OpenSearch Upgrade Elasticsearch Domain
+        call: amazon-opensearch.upgradeelasticsearchdomain
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/upgradedomain/{domainname}/history
+      name: 2015-01-01-es-upgradedomain-domainname-history
+      description: REST surface for 2015-01-01-es-upgradeDomain-DomainName-history.
+      operations:
+      - method: GET
+        name: getupgradehistory
+        description: Amazon OpenSearch Get Upgrade History
+        call: amazon-opensearch.getupgradehistory
+        with:
+          DomainName: rest.DomainName
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/upgradedomain/{domainname}/status
+      name: 2015-01-01-es-upgradedomain-domainname-status
+      description: REST surface for 2015-01-01-es-upgradeDomain-DomainName-status.
+      operations:
+      - method: GET
+        name: getupgradestatus
+        description: Amazon OpenSearch Get Upgrade Status
+        call: amazon-opensearch.getupgradestatus
+        with:
+          DomainName: rest.DomainName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/versions
+      name: 2015-01-01-es-versions
+      description: REST surface for 2015-01-01-es-versions.
+      operations:
+      - method: GET
+        name: listelasticsearchversions
+        description: Amazon OpenSearch List Elasticsearch Versions
+        call: amazon-opensearch.listelasticsearchversions
+        with:
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/vpcendpoints
+      name: 2015-01-01-es-vpcendpoints
+      description: REST surface for 2015-01-01-es-vpcEndpoints.
+      operations:
+      - method: POST
+        name: createvpcendpoint
+        description: Amazon OpenSearch Create Vpc Endpoint
+        call: amazon-opensearch.createvpcendpoint
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listvpcendpoints
+        description: Amazon OpenSearch List Vpc Endpoints
+        call: amazon-opensearch.listvpcendpoints
+        with:
+          nextToken: rest.nextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/vpcendpoints/describe
+      name: 2015-01-01-es-vpcendpoints-describe
+      description: REST surface for 2015-01-01-es-vpcEndpoints-describe.
+      operations:
+      - method: POST
+        name: describevpcendpoints
+        description: Amazon OpenSearch Describe Vpc Endpoints
+        call: amazon-opensearch.describevpcendpoints
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/vpcendpoints/update
+      name: 2015-01-01-es-vpcendpoints-update
+      description: REST surface for 2015-01-01-es-vpcEndpoints-update.
+      operations:
+      - method: POST
+        name: updatevpcendpoint
+        description: Amazon OpenSearch Update Vpc Endpoint
+        call: amazon-opensearch.updatevpcendpoint
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/es/vpcendpoints/{vpcendpointid}
+      name: 2015-01-01-es-vpcendpoints-vpcendpointid
+      description: REST surface for 2015-01-01-es-vpcEndpoints-VpcEndpointId.
+      operations:
+      - method: DELETE
+        name: deletevpcendpoint
+        description: Amazon OpenSearch Delete Vpc Endpoint
+        call: amazon-opensearch.deletevpcendpoint
+        with:
+          VpcEndpointId: rest.VpcEndpointId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages
+      name: 2015-01-01-packages
+      description: REST surface for 2015-01-01-packages.
+      operations:
+      - method: POST
+        name: createpackage
+        description: Amazon OpenSearch Create Package
+        call: amazon-opensearch.createpackage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages/associate/{packageid}/{domainname}
+      name: 2015-01-01-packages-associate-packageid-domainname
+      description: REST surface for 2015-01-01-packages-associate-PackageID-DomainName.
+      operations:
+      - method: POST
+        name: associatepackage
+        description: Amazon OpenSearch Associate Package
+        call: amazon-opensearch.associatepackage
+        with:
+          PackageID: rest.PackageID
+          DomainName: rest.DomainName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages/describe
+      name: 2015-01-01-packages-describe
+      description: REST surface for 2015-01-01-packages-describe.
+      operations:
+      - method: POST
+        name: describepackages
+        description: Amazon OpenSearch Describe Packages
+        call: amazon-opensearch.describepackages
+        with:
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages/dissociate/{packageid}/{domainname}
+      name: 2015-01-01-packages-dissociate-packageid-domainname
+      description: REST surface for 2015-01-01-packages-dissociate-PackageID-DomainName.
+      operations:
+      - method: POST
+        name: dissociatepackage
+        description: Amazon OpenSearch Dissociate Package
+        call: amazon-opensearch.dissociatepackage
+        with:
+          PackageID: rest.PackageID
+          DomainName: rest.DomainName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages/update
+      name: 2015-01-01-packages-update
+      description: REST surface for 2015-01-01-packages-update.
+      operations:
+      - method: POST
+        name: updatepackage
+        description: Amazon OpenSearch Update Package
+        call: amazon-opensearch.updatepackage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages/{packageid}
+      name: 2015-01-01-packages-packageid
+      description: REST surface for 2015-01-01-packages-PackageID.
+      operations:
+      - method: DELETE
+        name: deletepackage
+        description: Amazon OpenSearch Delete Package
+        call: amazon-opensearch.deletepackage
+        with:
+          PackageID: rest.PackageID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages/{packageid}/domains
+      name: 2015-01-01-packages-packageid-domains
+      description: REST surface for 2015-01-01-packages-PackageID-domains.
+      operations:
+      - method: GET
+        name: listdomainsforpackage
+        description: Amazon OpenSearch List Domains for Package
+        call: amazon-opensearch.listdomainsforpackage
+        with:
+          PackageID: rest.PackageID
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/packages/{packageid}/history
+      name: 2015-01-01-packages-packageid-history
+      description: REST surface for 2015-01-01-packages-PackageID-history.
+      operations:
+      - method: GET
+        name: getpackageversionhistory
+        description: Amazon OpenSearch Get Package Version History
+        call: amazon-opensearch.getpackageversionhistory
+        with:
+          PackageID: rest.PackageID
+          maxResults: rest.maxResults
+          nextToken: rest.nextToken
+          MaxResults: rest.MaxResults
+          NextToken: rest.NextToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/tags
+      name: 2015-01-01-tags
+      description: REST surface for 2015-01-01-tags.
+      operations:
+      - method: POST
+        name: addtags
+        description: Amazon OpenSearch Add Tags
+        call: amazon-opensearch.addtags
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/tags-removal
+      name: 2015-01-01-tags-removal
+      description: REST surface for 2015-01-01-tags-removal.
+      operations:
+      - method: POST
+        name: removetags
+        description: Amazon OpenSearch Remove Tags
+        call: amazon-opensearch.removetags
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-01-01/tags/arn
+      name: 2015-01-01-tags-arn
+      description: REST surface for 2015-01-01-tags-#arn.
+      operations:
+      - method: GET
+        name: listtags
+        description: Amazon OpenSearch List Tags
+        call: amazon-opensearch.listtags
+        with:
+          arn: rest.arn
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-opensearch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon Elasticsearch Service. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: amazon-opensearch-list-domain-names
+      description: Amazon OpenSearch List Domain Names
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listdomainnames
+      with:
+        engineType: tools.engineType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-packages-domain
+      description: Amazon OpenSearch List Packages for Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listpackagesfordomain
+      with:
+        DomainName: tools.DomainName
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-inbound-cross
+      description: Amazon OpenSearch Describe Inbound Cross Cluster Search Connections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.describeinboundcrossclustersearchconnections
+      with:
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-delete-inbound-cross
+      description: Amazon OpenSearch Delete Inbound Cross Cluster Search Connection
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-opensearch.deleteinboundcrossclustersearchconnection
+      with:
+        ConnectionId: tools.ConnectionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-accept-inbound-cross
+      description: Amazon OpenSearch Accept Inbound Cross Cluster Search Connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.acceptinboundcrossclustersearchconnection
+      with:
+        ConnectionId: tools.ConnectionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-reject-inbound-cross
+      description: Amazon OpenSearch Reject Inbound Cross Cluster Search Connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.rejectinboundcrossclustersearchconnection
+      with:
+        ConnectionId: tools.ConnectionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-create-outbound-cross
+      description: Amazon OpenSearch Create Outbound Cross Cluster Search Connection
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.createoutboundcrossclustersearchconnection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-outbound-cross
+      description: Amazon OpenSearch Describe Outbound Cross Cluster Search Connections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.describeoutboundcrossclustersearchconnections
+      with:
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-delete-outbound-cross
+      description: Amazon OpenSearch Delete Outbound Cross Cluster Search Connection
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-opensearch.deleteoutboundcrossclustersearchconnection
+      with:
+        ConnectionId: tools.ConnectionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-get-compatible-elasticsearch
+      description: Amazon OpenSearch Get Compatible Elasticsearch Versions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.getcompatibleelasticsearchversions
+      with:
+        domainName: tools.domainName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-create-elasticsearch-domain
+      description: Amazon OpenSearch Create Elasticsearch Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.createelasticsearchdomain
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-elasticsearch-domains
+      description: Amazon OpenSearch Describe Elasticsearch Domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.describeelasticsearchdomains
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-delete-elasticsearch-domain
+      description: Amazon OpenSearch Delete Elasticsearch Domain
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-opensearch.deleteelasticsearchdomain
+      with:
+        DomainName: tools.DomainName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-elasticsearch-domain
+      description: Amazon OpenSearch Describe Elasticsearch Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.describeelasticsearchdomain
+      with:
+        DomainName: tools.DomainName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-authorize-vpc-endpoint
+      description: Amazon OpenSearch Authorize Vpc Endpoint Access
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.authorizevpcendpointaccess
+      with:
+        DomainName: tools.DomainName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-domain-auto
+      description: Amazon OpenSearch Describe Domain Auto Tunes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.describedomainautotunes
+      with:
+        DomainName: tools.DomainName
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-elasticsearch-domain-2
+      description: Amazon OpenSearch Describe Elasticsearch Domain Config
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.describeelasticsearchdomainconfig
+      with:
+        DomainName: tools.DomainName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-update-elasticsearch-domain
+      description: Amazon OpenSearch Update Elasticsearch Domain Config
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.updateelasticsearchdomainconfig
+      with:
+        DomainName: tools.DomainName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-vpc-endpoint
+      description: Amazon OpenSearch List Vpc Endpoint Access
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listvpcendpointaccess
+      with:
+        DomainName: tools.DomainName
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-domain-change
+      description: Amazon OpenSearch Describe Domain Change Progress
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.describedomainchangeprogress
+      with:
+        DomainName: tools.DomainName
+        changeid: tools.changeid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-revoke-vpc-endpoint
+      description: Amazon OpenSearch Revoke Vpc Endpoint Access
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.revokevpcendpointaccess
+      with:
+        DomainName: tools.DomainName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-vpc-endpoints
+      description: Amazon OpenSearch List Vpc Endpoints for Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listvpcendpointsfordomain
+      with:
+        DomainName: tools.DomainName
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-elasticsearch-instance
+      description: Amazon OpenSearch Describe Elasticsearch Instance Type Limits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.describeelasticsearchinstancetypelimits
+      with:
+        domainName: tools.domainName
+        InstanceType: tools.InstanceType
+        ElasticsearchVersion: tools.ElasticsearchVersion
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-elasticsearch-instance
+      description: Amazon OpenSearch List Elasticsearch Instance Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listelasticsearchinstancetypes
+      with:
+        ElasticsearchVersion: tools.ElasticsearchVersion
+        domainName: tools.domainName
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-purchase-reserved-elasticsearch
+      description: Amazon OpenSearch Purchase Reserved Elasticsearch Instance Offering
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.purchasereservedelasticsearchinstanceoffering
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-reserved-elasticsearch
+      description: Amazon OpenSearch Describe Reserved Elasticsearch Instance Offerings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.describereservedelasticsearchinstanceofferings
+      with:
+        offeringId: tools.offeringId
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-reserved-elasticsearch-2
+      description: Amazon OpenSearch Describe Reserved Elasticsearch Instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.describereservedelasticsearchinstances
+      with:
+        reservationId: tools.reservationId
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-delete-elasticsearch-service
+      description: Amazon OpenSearch Delete Elasticsearch Service Role
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-opensearch.deleteelasticsearchservicerole
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-cancel-elasticsearch-service
+      description: Amazon OpenSearch Cancel Elasticsearch Service Software Update
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.cancelelasticsearchservicesoftwareupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-start-elasticsearch-service
+      description: Amazon OpenSearch Start Elasticsearch Service Software Update
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.startelasticsearchservicesoftwareupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-upgrade-elasticsearch-domain
+      description: Amazon OpenSearch Upgrade Elasticsearch Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.upgradeelasticsearchdomain
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-get-upgrade-history
+      description: Amazon OpenSearch Get Upgrade History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.getupgradehistory
+      with:
+        DomainName: tools.DomainName
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-get-upgrade-status
+      description: Amazon OpenSearch Get Upgrade Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.getupgradestatus
+      with:
+        DomainName: tools.DomainName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-elasticsearch-versions
+      description: Amazon OpenSearch List Elasticsearch Versions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listelasticsearchversions
+      with:
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-create-vpc-endpoint
+      description: Amazon OpenSearch Create Vpc Endpoint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.createvpcendpoint
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-vpc-endpoints-2
+      description: Amazon OpenSearch List Vpc Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listvpcendpoints
+      with:
+        nextToken: tools.nextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-vpc-endpoints
+      description: Amazon OpenSearch Describe Vpc Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.describevpcendpoints
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-update-vpc-endpoint
+      description: Amazon OpenSearch Update Vpc Endpoint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.updatevpcendpoint
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-delete-vpc-endpoint
+      description: Amazon OpenSearch Delete Vpc Endpoint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-opensearch.deletevpcendpoint
+      with:
+        VpcEndpointId: tools.VpcEndpointId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-create-package
+      description: Amazon OpenSearch Create Package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.createpackage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-associate-package
+      description: Amazon OpenSearch Associate Package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.associatepackage
+      with:
+        PackageID: tools.PackageID
+        DomainName: tools.DomainName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-describe-packages
+      description: Amazon OpenSearch Describe Packages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.describepackages
+      with:
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-dissociate-package
+      description: Amazon OpenSearch Dissociate Package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.dissociatepackage
+      with:
+        PackageID: tools.PackageID
+        DomainName: tools.DomainName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-update-package
+      description: Amazon OpenSearch Update Package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.updatepackage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-delete-package
+      description: Amazon OpenSearch Delete Package
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-opensearch.deletepackage
+      with:
+        PackageID: tools.PackageID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-domains-package
+      description: Amazon OpenSearch List Domains for Package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listdomainsforpackage
+      with:
+        PackageID: tools.PackageID
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-get-package-version
+      description: Amazon OpenSearch Get Package Version History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.getpackageversionhistory
+      with:
+        PackageID: tools.PackageID
+        maxResults: tools.maxResults
+        nextToken: tools.nextToken
+        MaxResults: tools.MaxResults
+        NextToken: tools.NextToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-add-tags
+      description: Amazon OpenSearch Add Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.addtags
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-remove-tags
+      description: Amazon OpenSearch Remove Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amazon-opensearch.removetags
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-opensearch-list-tags
+      description: Amazon OpenSearch List Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-opensearch.listtags
+      with:
+        arn: tools.arn
+      outputParameters:
+      - type: object
+        mapping: $.
