@@ -36,6 +36,14 @@ apis:
       - type: FAQ
         url: https://aws.amazon.com/opensearch-service/faqs/
 common:
+  - type: TrustCenter
+    url: security/amazon-opensearch-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-opensearch-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-opensearch-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-opensearch-authentication.yml
   - type: Portal
     url: https://aws.amazon.com/
   - type: Website
