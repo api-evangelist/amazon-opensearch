@@ -1,0 +1,1193 @@
+openapi: 3.0.0
+info:
+  version: '2015-01-01'
+  x-release: v4
+  title: Amazon Elasticsearch Service Domain Packages API
+  description: '<fullname>Amazon Elasticsearch Configuration Service</fullname> <p>Use the Amazon Elasticsearch Configuration API to create, configure, and manage Elasticsearch domains.</p> <p>For sample code that uses the Configuration API, see the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html">Amazon Elasticsearch Service Developer Guide</a>. The guide also contains <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html">sample code for sending signed HTTP requests to the Elasticsearch APIs</a>.</p> <p>The endpoint for configuration service requests is region-specific: es.<i>region</i>.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a current list of supported regions and endpoints, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions" target="_blank">Regions and Endpoints</a>.</p>'
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: es
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/es-2015-01-01.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://es.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon Elasticsearch Service multi-region endpoint
+- url: https://es.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon Elasticsearch Service multi-region endpoint
+- url: http://es.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon Elasticsearch Service endpoint for China (Beijing) and China (Ningxia)
+- url: https://es.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon Elasticsearch Service endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Packages
+paths:
+  /2015-01-01/packages/associate/{PackageID}/{DomainName}:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: AssociatePackage
+      description: Associates a package with an Amazon ES domain.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociatePackageResponse'
+              examples:
+                AssociatePackage200Example:
+                  summary: Default AssociatePackage 200 response
+                  x-microcks-default: true
+                  value:
+                    DomainPackageDetails: example-string
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '484':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '485':
+          description: ConflictException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictException'
+      parameters:
+      - name: PackageID
+        in: path
+        required: true
+        description: Internal ID of the package that you want to associate with a domain. Use <code>DescribePackages</code> to find this value.
+        schema:
+          type: string
+      - name: DomainName
+        in: path
+        required: true
+        description: Name of the domain that you want to associate the package with.
+        schema:
+          type: string
+          pattern: '[a-z][a-z0-9\-]+'
+          description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
+          minLength: 3
+          maxLength: 28
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch Associate Package
+      tags:
+      - Packages
+  /2015-01-01/packages:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreatePackage
+      description: Create a package for use with Amazon ES domains.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePackageResponse'
+              examples:
+                CreatePackage200Example:
+                  summary: Default CreatePackage 200 response
+                  x-microcks-default: true
+                  value:
+                    PackageDetails: example-string
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: LimitExceededException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitExceededException'
+        '483':
+          description: InvalidTypeException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidTypeException'
+        '484':
+          description: ResourceAlreadyExistsException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAlreadyExistsException'
+        '485':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '486':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - PackageName
+              - PackageType
+              - PackageSource
+              properties:
+                PackageName:
+                  description: Unique identifier for the package.
+                  type: string
+                  pattern: '[a-z][a-z0-9\-]+'
+                  minLength: 3
+                  maxLength: 28
+                PackageType:
+                  description: Type of package. Currently supports only TXT-DICTIONARY.
+                  type: string
+                  enum:
+                  - TXT-DICTIONARY
+                PackageDescription:
+                  description: Description of the package.
+                  type: string
+                  maxLength: 1024
+                PackageSource:
+                  description: The S3 location for importing the package specified as <code>S3BucketName</code> and <code>S3Key</code>
+                  type: object
+                  properties:
+                    S3BucketName:
+                      allOf:
+                      - $ref: '#/components/schemas/S3BucketName'
+                      - description: Name of the bucket containing the package.
+                    S3Key:
+                      allOf:
+                      - $ref: '#/components/schemas/S3Key'
+                      - description: Key (file name) of the package.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch Create Package
+      tags:
+      - Packages
+  /2015-01-01/packages/{PackageID}:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    delete:
+      operationId: DeletePackage
+      description: Delete the package.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePackageResponse'
+              examples:
+                DeletePackage200Example:
+                  summary: Default DeletePackage 200 response
+                  x-microcks-default: true
+                  value:
+                    PackageDetails: example-string
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '484':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '485':
+          description: ConflictException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictException'
+      parameters:
+      - name: PackageID
+        in: path
+        required: true
+        description: Internal ID of the package that you want to delete. Use <code>DescribePackages</code> to find this value.
+        schema:
+          type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch Delete Package
+      tags:
+      - Packages
+  /2015-01-01/packages/describe:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: DescribePackages
+      description: Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribePackagesResponse'
+              examples:
+                DescribePackages200Example:
+                  summary: Default DescribePackages 200 response
+                  x-microcks-default: true
+                  value:
+                    PackageDetailsList: example-string
+                    NextToken: example-ref
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '484':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+      parameters:
+      - name: MaxResults
+        in: query
+        schema:
+          type: string
+        description: Pagination limit
+        required: false
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Filters:
+                  description: A list of <code>DescribePackagesFilter</code> to filter the packages included in a <code>DescribePackages</code> response.
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/DescribePackagesFilter'
+                MaxResults:
+                  description: ' Set this value to limit the number of results returned. '
+                  type: integer
+                  maximum: 100
+                NextToken:
+                  description: ' Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. '
+                  type: string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch Describe Packages
+      tags:
+      - Packages
+  /2015-01-01/packages/dissociate/{PackageID}/{DomainName}:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: DissociatePackage
+      description: Dissociates a package from the Amazon ES domain.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DissociatePackageResponse'
+              examples:
+                DissociatePackage200Example:
+                  summary: Default DissociatePackage 200 response
+                  x-microcks-default: true
+                  value:
+                    DomainPackageDetails: example-string
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '484':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+        '485':
+          description: ConflictException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictException'
+      parameters:
+      - name: PackageID
+        in: path
+        required: true
+        description: Internal ID of the package that you want to associate with a domain. Use <code>DescribePackages</code> to find this value.
+        schema:
+          type: string
+      - name: DomainName
+        in: path
+        required: true
+        description: Name of the domain that you want to associate the package with.
+        schema:
+          type: string
+          pattern: '[a-z][a-z0-9\-]+'
+          description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
+          minLength: 3
+          maxLength: 28
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch Dissociate Package
+      tags:
+      - Packages
+  /2015-01-01/packages/{PackageID}/history:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GetPackageVersionHistory
+      description: Returns a list of versions of the package, along with their creation time and commit message.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPackageVersionHistoryResponse'
+              examples:
+                GetPackageVersionHistory200Example:
+                  summary: Default GetPackageVersionHistory 200 response
+                  x-microcks-default: true
+                  value:
+                    PackageID: example-ref
+                    PackageVersionHistoryList: 1.0.0
+                    NextToken: example-ref
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '484':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+      parameters:
+      - name: PackageID
+        in: path
+        required: true
+        description: Returns an audit history of versions of the package.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        required: false
+        description: Limits results to a maximum number of versions.
+        schema:
+          type: integer
+          description: ' Set this value to limit the number of results returned. '
+          maximum: 100
+      - name: nextToken
+        in: query
+        required: false
+        description: Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If provided, returns results for the next page.
+        schema:
+          type: string
+          description: ' Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. '
+      - name: MaxResults
+        in: query
+        schema:
+          type: string
+        description: Pagination limit
+        required: false
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch Get Package Version History
+      tags:
+      - Packages
+  /2015-01-01/packages/{PackageID}/domains:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: ListDomainsForPackage
+      description: Lists all Amazon ES domains associated with the package.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDomainsForPackageResponse'
+              examples:
+                ListDomainsForPackage200Example:
+                  summary: Default ListDomainsForPackage 200 response
+                  x-microcks-default: true
+                  value:
+                    DomainPackageDetailsList: example-string
+                    NextToken: example-ref
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '484':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+      parameters:
+      - name: PackageID
+        in: path
+        required: true
+        description: The package for which to list domains.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        required: false
+        description: Limits results to a maximum number of domains.
+        schema:
+          type: integer
+          description: ' Set this value to limit the number of results returned. '
+          maximum: 100
+      - name: nextToken
+        in: query
+        required: false
+        description: Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If provided, returns results for the next page.
+        schema:
+          type: string
+          description: ' Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. '
+      - name: MaxResults
+        in: query
+        schema:
+          type: string
+        description: Pagination limit
+        required: false
+      - name: NextToken
+        in: query
+        schema:
+          type: string
+        description: Pagination token
+        required: false
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch List Domains for Package
+      tags:
+      - Packages
+  /2015-01-01/packages/update:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: UpdatePackage
+      description: Updates a package for use with Amazon ES domains.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePackageResponse'
+              examples:
+                UpdatePackage200Example:
+                  summary: Default UpdatePackage 200 response
+                  x-microcks-default: true
+                  value:
+                    PackageDetails: example-string
+        '480':
+          description: BaseException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseException'
+        '481':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '482':
+          description: LimitExceededException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitExceededException'
+        '483':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '484':
+          description: AccessDeniedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedException'
+        '485':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - PackageID
+              - PackageSource
+              properties:
+                PackageID:
+                  description: Unique identifier for the package.
+                  type: string
+                PackageSource:
+                  description: The S3 location for importing the package specified as <code>S3BucketName</code> and <code>S3Key</code>
+                  type: object
+                  properties:
+                    S3BucketName:
+                      allOf:
+                      - $ref: '#/components/schemas/S3BucketName'
+                      - description: Name of the bucket containing the package.
+                    S3Key:
+                      allOf:
+                      - $ref: '#/components/schemas/S3Key'
+                      - description: Key (file name) of the package.
+                PackageDescription:
+                  description: New description of the package.
+                  type: string
+                  maxLength: 1024
+                CommitMessage:
+                  description: An info message for the new version which will be shown as part of <code>GetPackageVersionHistoryResponse</code>.
+                  type: string
+                  maxLength: 160
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      summary: Amazon OpenSearch Update Package
+      tags:
+      - Packages
+components:
+  schemas:
+    ErrorType:
+      type: string
+    CreatedAt:
+      type: string
+      format: date-time
+    DescribePackagesResponse:
+      type: object
+      properties:
+        PackageDetailsList:
+          allOf:
+          - $ref: '#/components/schemas/PackageDetailsList'
+          - description: List of <code>PackageDetails</code> objects.
+        NextToken:
+          $ref: '#/components/schemas/String'
+      description: ' Container for response returned by <code> <a>DescribePackages</a> </code> operation. '
+    DomainName:
+      type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
+      minLength: 3
+      maxLength: 28
+    PackageVersion:
+      type: string
+    DescribePackagesFilterValue:
+      type: string
+      pattern: ^[0-9a-zA-Z\*\.\\/\?-]*$
+    DeletePackageResponse:
+      type: object
+      properties:
+        PackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/PackageDetails'
+          - description: <code>PackageDetails</code>
+      description: ' Container for response parameters to <code> <a>DeletePackage</a> </code> operation. '
+    ReferencePath:
+      type: string
+    CommitMessage:
+      type: string
+      maxLength: 160
+    AssociatePackageResponse:
+      type: object
+      properties:
+        DomainPackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/DomainPackageDetails'
+          - description: <code>DomainPackageDetails</code>
+      description: ' Container for response returned by <code> <a>AssociatePackage</a> </code> operation. '
+    PackageVersionHistoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PackageVersionHistory'
+    DomainPackageDetailsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DomainPackageDetails'
+    DomainPackageStatus:
+      type: string
+      enum:
+      - ASSOCIATING
+      - ASSOCIATION_FAILED
+      - ACTIVE
+      - DISSOCIATING
+      - DISSOCIATION_FAILED
+    BaseException: {}
+    UpdatePackageResponse:
+      type: object
+      properties:
+        PackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/PackageDetails'
+          - description: Information about the package <code>PackageDetails</code>.
+      description: ' Container for response returned by <code> <a>UpdatePackage</a> </code> operation. '
+    DescribePackagesFilterName:
+      type: string
+      enum:
+      - PackageID
+      - PackageName
+      - PackageStatus
+    S3BucketName:
+      type: string
+      minLength: 3
+      maxLength: 63
+    InvalidTypeException: {}
+    LimitExceededException: {}
+    DescribePackagesFilterValues:
+      type: array
+      items:
+        $ref: '#/components/schemas/DescribePackagesFilterValue'
+      minItems: 1
+    DomainPackageDetails:
+      type: object
+      properties:
+        PackageID:
+          allOf:
+          - $ref: '#/components/schemas/PackageID'
+          - description: Internal ID of the package.
+        PackageName:
+          allOf:
+          - $ref: '#/components/schemas/PackageName'
+          - description: User specified name of the package.
+        PackageType:
+          allOf:
+          - $ref: '#/components/schemas/PackageType'
+          - description: Currently supports only TXT-DICTIONARY.
+        LastUpdated:
+          allOf:
+          - $ref: '#/components/schemas/LastUpdated'
+          - description: Timestamp of the most-recent update to the association status.
+        DomainName:
+          allOf:
+          - $ref: '#/components/schemas/DomainName'
+          - description: Name of the domain you've associated a package with.
+        DomainPackageStatus:
+          allOf:
+          - $ref: '#/components/schemas/DomainPackageStatus'
+          - description: State of the association. Values are ASSOCIATING/ASSOCIATION_FAILED/ACTIVE/DISSOCIATING/DISSOCIATION_FAILED.
+        PackageVersion:
+          $ref: '#/components/schemas/PackageVersion'
+        ReferencePath:
+          allOf:
+          - $ref: '#/components/schemas/ReferencePath'
+          - description: The relative path on Amazon ES nodes, which can be used as synonym_path when the package is synonym file.
+        ErrorDetails:
+          allOf:
+          - $ref: '#/components/schemas/ErrorDetails'
+          - description: Additional information if the package is in an error state. Null otherwise.
+      description: Information on a package that is associated with a domain.
+    AccessDeniedException: {}
+    ListDomainsForPackageResponse:
+      type: object
+      properties:
+        DomainPackageDetailsList:
+          allOf:
+          - $ref: '#/components/schemas/DomainPackageDetailsList'
+          - description: List of <code>DomainPackageDetails</code> objects.
+        NextToken:
+          $ref: '#/components/schemas/String'
+      description: ' Container for response parameters to <code> <a>ListDomainsForPackage</a> </code> operation. '
+    PackageVersionHistory:
+      type: object
+      properties:
+        PackageVersion:
+          allOf:
+          - $ref: '#/components/schemas/PackageVersion'
+          - description: Version of the package.
+        CommitMessage:
+          allOf:
+          - $ref: '#/components/schemas/CommitMessage'
+          - description: A message associated with the version.
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/CreatedAt'
+          - description: Timestamp which tells creation time of the package version.
+      description: Details of a package version.
+    InternalException: {}
+    LastUpdated:
+      type: string
+      format: date-time
+    PackageDetailsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PackageDetails'
+    CreatePackageResponse:
+      type: object
+      properties:
+        PackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/PackageDetails'
+          - description: Information about the package <code>PackageDetails</code>.
+      description: ' Container for response returned by <code> <a>CreatePackage</a> </code> operation. '
+    S3Key:
+      type: string
+    ResourceAlreadyExistsException: {}
+    GetPackageVersionHistoryResponse:
+      type: object
+      properties:
+        PackageID:
+          $ref: '#/components/schemas/PackageID'
+        PackageVersionHistoryList:
+          allOf:
+          - $ref: '#/components/schemas/PackageVersionHistoryList'
+          - description: List of <code>PackageVersionHistory</code> objects.
+        NextToken:
+          $ref: '#/components/schemas/String'
+      description: ' Container for response returned by <code> <a>GetPackageVersionHistory</a> </code> operation. '
+    ConflictException: {}
+    ErrorDetails:
+      type: object
+      properties:
+        ErrorType:
+          $ref: '#/components/schemas/ErrorType'
+        ErrorMessage:
+          $ref: '#/components/schemas/ErrorMessage'
+    ErrorMessage:
+      type: string
+    DissociatePackageResponse:
+      type: object
+      properties:
+        DomainPackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/DomainPackageDetails'
+          - description: <code>DomainPackageDetails</code>
+      description: ' Container for response returned by <code> <a>DissociatePackage</a> </code> operation. '
+    PackageName:
+      type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      minLength: 3
+      maxLength: 28
+    String:
+      type: string
+    PackageID:
+      type: string
+    PackageDescription:
+      type: string
+      maxLength: 1024
+    DescribePackagesFilter:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/DescribePackagesFilterName'
+          - description: Any field from <code>PackageDetails</code>.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/DescribePackagesFilterValues'
+          - description: A non-empty list of values for the specified field.
+      description: Filter to apply in <code>DescribePackage</code> response.
+    PackageType:
+      type: string
+      enum:
+      - TXT-DICTIONARY
+    PackageStatus:
+      type: string
+      enum:
+      - COPYING
+      - COPY_FAILED
+      - VALIDATING
+      - VALIDATION_FAILED
+      - AVAILABLE
+      - DELETING
+      - DELETED
+      - DELETE_FAILED
+    PackageDetails:
+      type: object
+      properties:
+        PackageID:
+          allOf:
+          - $ref: '#/components/schemas/PackageID'
+          - description: Internal ID of the package.
+        PackageName:
+          allOf:
+          - $ref: '#/components/schemas/PackageName'
+          - description: User specified name of the package.
+        PackageType:
+          allOf:
+          - $ref: '#/components/schemas/PackageType'
+          - description: Currently supports only TXT-DICTIONARY.
+        PackageDescription:
+          allOf:
+          - $ref: '#/components/schemas/PackageDescription'
+          - description: User-specified description of the package.
+        PackageStatus:
+          allOf:
+          - $ref: '#/components/schemas/PackageStatus'
+          - description: Current state of the package. Values are COPYING/COPY_FAILED/AVAILABLE/DELETING/DELETE_FAILED
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/CreatedAt'
+          - description: Timestamp which tells creation date of the package.
+        LastUpdatedAt:
+          $ref: '#/components/schemas/LastUpdated'
+        AvailablePackageVersion:
+          $ref: '#/components/schemas/PackageVersion'
+        ErrorDetails:
+          allOf:
+          - $ref: '#/components/schemas/ErrorDetails'
+          - description: Additional information if the package is in an error state. Null otherwise.
+      description: Basic information about a package.
+    ResourceNotFoundException: {}
+    ValidationException: {}
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/es/
