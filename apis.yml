@@ -4,38 +4,118 @@ description: >-
   the AWS Cloud. It offers visualization capabilities powered by OpenSearch Dashboards and Kibana, and provides direct
   access to the OpenSearch API so that existing code and applications work seamlessly. It supports log analytics,
   full-text search, application monitoring, and clickstream analytics.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/opensearch-service/
 created: '2024-01-15'
 modified: '2026-05-19'
 apis:
-  - name: Amazon OpenSearch Service API
-    description: >-
-      The Amazon OpenSearch Service API provides a managed service for deploying, operating, and scaling OpenSearch
-      clusters in the AWS Cloud. The API allows you to create and configure domains, manage cluster settings, configure
-      access policies, set up automated snapshots, upgrade domain versions, and monitor cluster health and performance.
-      It supports log analytics, full-text search, application monitoring, and clickstream analytics with built-in
-      visualization capabilities.
-    image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
-    humanURL: https://aws.amazon.com/opensearch-service/
-    baseURL: https://es.amazonaws.com
-    tags:
-      - Analytics
-      - AWS
-      - Elasticsearch
-      - Search
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/opensearch-service/
-      - type: OpenAPI
-        url: openapi/amazon-opensearch-openapi.yml
-      - type: Pricing
-        url: https://aws.amazon.com/opensearch-service/pricing/
-      - type: GettingStarted
-        url: https://aws.amazon.com/opensearch-service/getting-started/
-      - type: FAQ
-        url: https://aws.amazon.com/opensearch-service/faqs/
+- aid: amazon-opensearch:amazon-opensearch-domain-api
+  name: Amazon OpenSearch Service API Domain API
+  description: The Domain API from Amazon OpenSearch Service API — 2 operation(s) for domain.
+  humanURL: https://aws.amazon.com/opensearch-service/
+  baseURL: https://es.amazonaws.com
+  tags:
+  - Domain
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-opensearch-domain-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/opensearch-service/
+  - type: Pricing
+    url: https://aws.amazon.com/opensearch-service/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/opensearch-service/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/opensearch-service/faqs/
+- aid: amazon-opensearch:amazon-opensearch-es-api
+  name: Amazon OpenSearch Service API Es API
+  description: The Es API from Amazon OpenSearch Service API — 34 operation(s) for es.
+  humanURL: https://aws.amazon.com/opensearch-service/
+  baseURL: https://es.amazonaws.com
+  tags:
+  - Es
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-opensearch-es-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/opensearch-service/
+  - type: Pricing
+    url: https://aws.amazon.com/opensearch-service/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/opensearch-service/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/opensearch-service/faqs/
+- aid: amazon-opensearch:amazon-opensearch-packages-api
+  name: Amazon OpenSearch Service API Packages API
+  description: The Packages API from Amazon OpenSearch Service API — 8 operation(s) for packages.
+  humanURL: https://aws.amazon.com/opensearch-service/
+  baseURL: https://es.amazonaws.com
+  tags:
+  - Packages
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-opensearch-packages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/opensearch-service/
+  - type: Pricing
+    url: https://aws.amazon.com/opensearch-service/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/opensearch-service/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/opensearch-service/faqs/
+- aid: amazon-opensearch:amazon-opensearch-tags-api
+  name: Amazon OpenSearch Service API Tags API
+  description: The Tags API from Amazon OpenSearch Service API — 2 operation(s) for tags.
+  humanURL: https://aws.amazon.com/opensearch-service/
+  baseURL: https://es.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-opensearch-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/opensearch-service/
+  - type: Pricing
+    url: https://aws.amazon.com/opensearch-service/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/opensearch-service/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/opensearch-service/faqs/
+- aid: amazon-opensearch:amazon-opensearch-tags-removal-api
+  name: Amazon OpenSearch Service API Tags Removal API
+  description: >-
+    The Tags Removal API from Amazon OpenSearch Service API — 1 operation(s) for tags removal.
+  humanURL: https://aws.amazon.com/opensearch-service/
+  baseURL: https://es.amazonaws.com
+  tags:
+  - Tags Removal
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-opensearch-tags-removal-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/opensearch-service/
+  - type: Pricing
+    url: https://aws.amazon.com/opensearch-service/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/opensearch-service/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/opensearch-service/faqs/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/amazon-opensearch-service-api/overview
   - type: AgenticAccess
     url: agentic-access/amazon-opensearch-agentic-access.yml
   - type: TrustCenter
