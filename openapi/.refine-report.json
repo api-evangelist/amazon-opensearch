@@ -1,0 +1,22 @@
+{
+  "provider": "amazon-opensearch",
+  "sources": [
+    "amazon-opensearch-domain-api-openapi.yml",
+    "amazon-opensearch-es-api-openapi.yml",
+    "amazon-opensearch-packages-api-openapi.yml",
+    "amazon-opensearch-tags-api-openapi.yml",
+    "amazon-opensearch-tags-removal-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-opensearch-domain-api-openapi.yml",
+    "amazon-opensearch-es-api-openapi.yml",
+    "amazon-opensearch-packages-api-openapi.yml",
+    "amazon-opensearch-tags-api-openapi.yml",
+    "amazon-opensearch-tags-removal-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
