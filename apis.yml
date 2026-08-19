@@ -4,6 +4,7 @@ description: >-
   the AWS Cloud. It offers visualization capabilities powered by OpenSearch Dashboards and Kibana, and provides direct
   access to the OpenSearch API so that existing code and applications work seamlessly. It supports log analytics,
   full-text search, application monitoring, and clickstream analytics.
+specificationVersion: '0.23'
 accessModel:
   pricing: freemium
   onboarding: self-serve
