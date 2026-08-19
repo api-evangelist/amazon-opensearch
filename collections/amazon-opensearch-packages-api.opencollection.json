@@ -1,0 +1,480 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Elasticsearch Service Domain Packages API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon OpenSearch Associate Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages/associate/:PackageID/:DomainName",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PackageID",
+                "value": "",
+                "type": "path",
+                "description": "Internal ID of the package that you want to associate with a domain. Use <code>DescribePackages</code> to find this value."
+              },
+              {
+                "name": "DomainName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the domain that you want to associate the package with."
+              }
+            ]
+          },
+          "docs": "Associates a package with an Amazon ES domain."
+        },
+        {
+          "info": {
+            "name": "Amazon OpenSearch Create Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a package for use with Amazon ES domains."
+        },
+        {
+          "info": {
+            "name": "Amazon OpenSearch Delete Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages/:PackageID",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PackageID",
+                "value": "",
+                "type": "path",
+                "description": "Internal ID of the package that you want to delete. Use <code>DescribePackages</code> to find this value."
+              }
+            ]
+          },
+          "docs": "Delete the package."
+        },
+        {
+          "info": {
+            "name": "Amazon OpenSearch Describe Packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages/describe",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "MaxResults",
+                "value": "",
+                "type": "query",
+                "description": "Pagination limit"
+              },
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination."
+        },
+        {
+          "info": {
+            "name": "Amazon OpenSearch Dissociate Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages/dissociate/:PackageID/:DomainName",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PackageID",
+                "value": "",
+                "type": "path",
+                "description": "Internal ID of the package that you want to associate with a domain. Use <code>DescribePackages</code> to find this value."
+              },
+              {
+                "name": "DomainName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the domain that you want to associate the package with."
+              }
+            ]
+          },
+          "docs": "Dissociates a package from the Amazon ES domain."
+        },
+        {
+          "info": {
+            "name": "Amazon OpenSearch Get Package Version History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages/:PackageID/history",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PackageID",
+                "value": "",
+                "type": "path",
+                "description": "Returns an audit history of versions of the package."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Limits results to a maximum number of versions."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If provided, returns results for the next page."
+              },
+              {
+                "name": "MaxResults",
+                "value": "",
+                "type": "query",
+                "description": "Pagination limit"
+              },
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              }
+            ]
+          },
+          "docs": "Returns a list of versions of the package, along with their creation time and commit message."
+        },
+        {
+          "info": {
+            "name": "Amazon OpenSearch List Domains for Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages/:PackageID/domains",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PackageID",
+                "value": "",
+                "type": "path",
+                "description": "The package for which to list domains."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Limits results to a maximum number of domains."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Used for pagination. Only necessary if a previous API call includes a non-null NextToken value. If provided, returns results for the next page."
+              },
+              {
+                "name": "MaxResults",
+                "value": "",
+                "type": "query",
+                "description": "Pagination limit"
+              },
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              }
+            ]
+          },
+          "docs": "Lists all Amazon ES domains associated with the package."
+        },
+        {
+          "info": {
+            "name": "Amazon OpenSearch Update Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://es.{region}.amazonaws.com/2015-01-01/packages/update",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a package for use with Amazon ES domains."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
