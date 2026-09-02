@@ -204,3 +204,5 @@ tags:
   - AWS
   - Elasticsearch
   - Search
+x-parent: aws
+x-relationship: product
