@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2015-01-01'
   x-release: v4
   title: Amazon Elasticsearch Service Domain API
-  description: '<fullname>Amazon Elasticsearch Configuration Service</fullname> <p>Use the Amazon Elasticsearch Configuration API to create, configure, and manage Elasticsearch domains.</p> <p>For sample code that uses the Configuration API, see the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html">Amazon Elasticsearch Service Developer Guide</a>. The guide also contains <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html">sample code for sending signed HTTP requests to the Elasticsearch APIs</a>.</p> <p>The endpoint for configuration service requests is region-specific: es.<i>region</i>.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a current list of supported regions and endpoints, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions" target="_blank">Regions and Endpoints</a>.</p>'
+  description: 'Amazon Elasticsearch Configuration Service
+
+    Use the Amazon Elasticsearch Configuration API to create, configure, and manage Elasticsearch domains.'
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -23,6 +25,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/es-2015-01-01.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -124,7 +127,7 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListDomainNames
-      description: 'Returns the name of all Elasticsearch domains owned by the current user''s account. '
+      description: Returns the name of all Elasticsearch domains owned by the current user's account.
       responses:
         '200':
           description: Success
@@ -267,33 +270,85 @@ paths:
       tags:
       - Domain
 components:
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    ListDomainNamesResponse:
-      type: object
-      properties:
-        DomainNames:
-          allOf:
-          - $ref: '#/components/schemas/DomainInfoList'
-          - description: List of domain names and respective engine types.
-      description: The result of a <code>ListDomainNames</code> operation. Contains the names of all domains owned by this account and their respective engine types.
     DomainName:
       type: string
       pattern: '[a-z][a-z0-9\-]+'
       description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
       minLength: 3
       maxLength: 28
+    ValidationException: {}
+    ResourceNotFoundException: {}
+    String:
+      type: string
+    PackageType:
+      type: string
+      enum:
+      - TXT-DICTIONARY
+    DomainInfoList:
+      type: array
+      description: ' Contains the list of Elasticsearch domain information.'
+      items:
+        $ref: '#/components/schemas/DomainInfo'
     PackageName:
       type: string
       pattern: '[a-z][a-z0-9\-]+'
       minLength: 3
       maxLength: 28
-    PackageVersion:
-      type: string
-    EngineType:
-      type: string
-      enum:
-      - OpenSearch
-      - Elasticsearch
+    DomainInfo:
+      type: object
+      properties:
+        DomainName:
+          allOf:
+          - $ref: '#/components/schemas/DomainName'
+          - description: ' Specifies the <code>DomainName</code>.'
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - description: ' Specifies the <code>EngineType</code> of the domain.'
     ListPackagesForDomainResponse:
       type: object
       properties:
@@ -306,8 +361,39 @@ components:
           - $ref: '#/components/schemas/String'
           - description: Pagination token that needs to be supplied to the next call to get the next page of results.
       description: ' Container for response parameters to <code> <a>ListPackagesForDomain</a> </code> operation. '
-    PackageID:
+    ListDomainNamesResponse:
+      type: object
+      properties:
+        DomainNames:
+          allOf:
+          - $ref: '#/components/schemas/DomainInfoList'
+          - description: List of domain names and respective engine types.
+      description: The result of a <code>ListDomainNames</code> operation. Contains the names of all domains owned by this account and their respective engine types.
+    ErrorType:
       type: string
+    BaseException: {}
+    ReferencePath:
+      type: string
+    PackageVersion:
+      type: string
+    ErrorDetails:
+      type: object
+      properties:
+        ErrorType:
+          $ref: '#/components/schemas/ErrorType'
+        ErrorMessage:
+          $ref: '#/components/schemas/ErrorMessage'
+    ErrorMessage:
+      type: string
+    DomainPackageDetailsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DomainPackageDetails'
+    EngineType:
+      type: string
+      enum:
+      - OpenSearch
+      - Elasticsearch
     DomainPackageDetails:
       type: object
       properties:
@@ -346,47 +432,7 @@ components:
           - $ref: '#/components/schemas/ErrorDetails'
           - description: Additional information if the package is in an error state. Null otherwise.
       description: Information on a package that is associated with a domain.
-    ResourceNotFoundException: {}
-    ErrorMessage:
-      type: string
-    DomainPackageDetailsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DomainPackageDetails'
-    String:
-      type: string
-    LastUpdated:
-      type: string
-      format: date-time
-    ErrorDetails:
-      type: object
-      properties:
-        ErrorType:
-          $ref: '#/components/schemas/ErrorType'
-        ErrorMessage:
-          $ref: '#/components/schemas/ErrorMessage'
-    ReferencePath:
-      type: string
-    ErrorType:
-      type: string
-    AccessDeniedException: {}
-    ValidationException: {}
-    BaseException: {}
-    PackageType:
-      type: string
-      enum:
-      - TXT-DICTIONARY
-    DomainInfo:
-      type: object
-      properties:
-        DomainName:
-          allOf:
-          - $ref: '#/components/schemas/DomainName'
-          - description: ' Specifies the <code>DomainName</code>.'
-        EngineType:
-          allOf:
-          - $ref: '#/components/schemas/EngineType'
-          - description: ' Specifies the <code>EngineType</code> of the domain.'
+    InternalException: {}
     DomainPackageStatus:
       type: string
       enum:
@@ -395,55 +441,12 @@ components:
       - ACTIVE
       - DISSOCIATING
       - DISSOCIATION_FAILED
-    InternalException: {}
-    DomainInfoList:
-      type: array
-      description: ' Contains the list of Elasticsearch domain information.'
-      items:
-        $ref: '#/components/schemas/DomainInfo'
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
+    PackageID:
+      type: string
+    LastUpdated:
+      type: string
+      format: date-time
+    AccessDeniedException: {}
   securitySchemes:
     hmac:
       type: apiKey
