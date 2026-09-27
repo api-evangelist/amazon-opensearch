@@ -3411,99 +3411,35 @@ paths:
       tags:
       - Es
 components:
-  parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    RecurringCharge:
+    UIntValue:
+      type: integer
+      minimum: 0
+    DescribeDomainAutoTunesResponse:
       type: object
       properties:
-        RecurringChargeAmount:
+        AutoTunes:
           allOf:
-          - $ref: '#/components/schemas/Double'
-          - description: The monetary amount of the recurring charge.
-        RecurringChargeFrequency:
+          - $ref: '#/components/schemas/AutoTuneList'
+          - description: Specifies the list of setting adjustments that Auto-Tune has made to the domain. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
+        NextToken:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The frequency of the recurring charge.
-      description: Contains the specific price and frequency of a recurring charges for a reserved Elasticsearch instance, or for a reserved Elasticsearch instance offering.
-    DomainName:
-      type: string
-      pattern: '[a-z][a-z0-9\-]+'
-      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
-      minLength: 3
-      maxLength: 28
-    PolicyDocument:
-      type: string
-      description: Access policy rules for an Elasticsearch domain service endpoints. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank">Configuring Access Policies</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>. The maximum size of a policy document is 100 KB.
-    ScheduledAutoTuneActionType:
-      type: string
-      enum:
-      - JVM_HEAP_SIZE_TUNING
-      - JVM_YOUNG_GEN_TUNING
-      description: 'Specifies Auto-Tune action type. Valid values are JVM_HEAP_SIZE_TUNING and JVM_YOUNG_GEN_TUNING. '
-    ChangeProgressStageStatus:
-      type: string
-      minLength: 1
-      maxLength: 256
-    StringList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    StartElasticsearchServiceSoftwareUpdateResponse:
+          - $ref: '#/components/schemas/NextToken'
+          - description: Specifies an identifier to allow retrieval of paginated results.
+      description: 'The result of <code>DescribeDomainAutoTunes</code> request. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
+    EncryptionAtRestOptions:
       type: object
       properties:
-        ServiceSoftwareOptions:
+        Enabled:
           allOf:
-          - $ref: '#/components/schemas/ServiceSoftwareOptions'
-          - description: The current status of the Elasticsearch service software update.
-      description: The result of a <code>StartElasticsearchServiceSoftwareUpdate</code> operation. Contains the status of the update.
-    ElasticsearchInstanceTypeList:
-      type: array
-      description: ' List of instance types supported by Amazon Elasticsearch service. '
-      items:
-        $ref: '#/components/schemas/ESPartitionInstanceType'
-    SnapshotOptionsStatus:
+          - $ref: '#/components/schemas/Boolean'
+          - description: Specifies the option to enable Encryption At Rest.
+        KmsKeyId:
+          allOf:
+          - $ref: '#/components/schemas/KmsKeyId'
+          - description: ' Specifies the KMS Key ID for Encryption At Rest options.'
+      description: Specifies the Encryption At Rest Options.
+    EBSOptionsStatus:
       type: object
       required:
       - Options
@@ -3511,44 +3447,13 @@ components:
       properties:
         Options:
           allOf:
-          - $ref: '#/components/schemas/SnapshotOptions'
-          - description: Specifies the daily snapshot options specified for the Elasticsearch domain.
+          - $ref: '#/components/schemas/EBSOptions'
+          - description: ' Specifies the EBS options for the specified Elasticsearch domain.'
         Status:
           allOf:
           - $ref: '#/components/schemas/OptionStatus'
-          - description: Specifies the status of a daily automated snapshot.
-      description: Status of a daily automated snapshot.
-    ResourceNotFoundException: {}
-    AuthorizedPrincipal:
-      type: object
-      properties:
-        PrincipalType:
-          allOf:
-          - $ref: '#/components/schemas/PrincipalType'
-          - description: The type of principal.
-        Principal:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The IAM principal that is allowed access to the domain.
-      description: Information about an account or service that has access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
-    DescribeElasticsearchDomainResponse:
-      type: object
-      required:
-      - DomainStatus
-      properties:
-        DomainStatus:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchDomainStatus'
-          - description: The current status of the Elasticsearch domain.
-      description: The result of a <code>DescribeElasticsearchDomain</code> request. Contains the status of the domain specified in the request.
-    ListElasticsearchVersionsResponse:
-      type: object
-      properties:
-        ElasticsearchVersions:
-          $ref: '#/components/schemas/ElasticsearchVersionList'
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-      description: ' Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. '
+          - description: ' Specifies the status of the EBS options for the specified Elasticsearch domain.'
+      description: ' Status of the EBS options for the specified Elasticsearch domain.'
     UpgradeStepItem:
       type: object
       properties:
@@ -3569,117 +3474,20 @@ components:
           - $ref: '#/components/schemas/Double'
           - description: The Floating point value representing progress percentage of a particular step.
       description: Represents a single step of the Upgrade or Upgrade Eligibility Check workflow.
-    VpcEndpoint:
-      type: object
-      properties:
-        VpcEndpointId:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointId'
-          - description: The unique identifier of the endpoint.
-        VpcEndpointOwner:
-          allOf:
-          - $ref: '#/components/schemas/AWSAccount'
-          - description: The creator of the endpoint.
-        DomainArn:
-          allOf:
-          - $ref: '#/components/schemas/DomainArn'
-          - description: The Amazon Resource Name (ARN) of the domain associated with the endpoint.
-        VpcOptions:
-          allOf:
-          - $ref: '#/components/schemas/VPCDerivedInfo'
-          - description: Options to specify the subnets and security groups for an Amazon OpenSearch Service VPC endpoint.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointStatus'
-          - description: The current status of the endpoint.
-        Endpoint:
-          allOf:
-          - $ref: '#/components/schemas/Endpoint'
-          - description: The connection endpoint ID for connecting to the domain.
-      description: The connection endpoint for connecting to an Amazon OpenSearch Service domain through a proxy.
-    ScheduledAutoTuneSeverityType:
-      type: string
-      enum:
-      - LOW
-      - MEDIUM
-      - HIGH
-      description: 'Specifies Auto-Tune action severity. Valid values are LOW, MEDIUM and HIGH. '
-    DisableTimestamp:
+    StartTimestamp:
       type: string
       format: date-time
-    String:
-      type: string
-    CrossClusterSearchConnectionId:
-      type: string
-    VPCDerivedInfo:
-      type: object
-      properties:
-        VPCId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The VPC Id for the Elasticsearch domain. Exists only if the domain was created with VPCOptions.
-        SubnetIds:
-          allOf:
-          - $ref: '#/components/schemas/StringList'
-          - description: Specifies the subnets for VPC endpoint.
-        AvailabilityZones:
-          allOf:
-          - $ref: '#/components/schemas/StringList'
-          - description: The availability zones for the Elasticsearch domain. Exists only if the domain was created with VPCOptions.
-        SecurityGroupIds:
-          allOf:
-          - $ref: '#/components/schemas/StringList'
-          - description: Specifies the security groups for VPC endpoint.
-      description: Options to specify the subnets and security groups for VPC endpoint. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html" target="_blank"> VPC Endpoints for Amazon Elasticsearch Service Domains</a>.
-    SAMLIdp:
-      type: object
-      required:
-      - MetadataContent
-      - EntityId
-      properties:
-        MetadataContent:
-          allOf:
-          - $ref: '#/components/schemas/SAMLMetadata'
-          - description: The Metadata of the SAML application in xml format.
-        EntityId:
-          allOf:
-          - $ref: '#/components/schemas/SAMLEntityId'
-          - description: The unique Entity ID of the application in SAML Identity Provider.
-      description: Specifies the SAML Identity Provider's information.
-    VolumeType:
+    AdditionalLimitList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AdditionalLimit'
+    TLSSecurityPolicy:
       type: string
       enum:
-      - standard
-      - gp2
-      - io1
-      - gp3
-      description: ' The type of EBS volume, standard, gp2, gp3 or io1. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a>for more information.'
-    TimeUnit:
+      - Policy-Min-TLS-1-0-2019-07
+      - Policy-Min-TLS-1-2-2019-07
+    LimitName:
       type: string
-      enum:
-      - HOURS
-      description: Specifies the unit of a maintenance schedule duration. Valid value is HOUR. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
-    PrincipalType:
-      type: string
-      enum:
-      - AWS_ACCOUNT
-      - AWS_SERVICE
-      description: 'Specifies the type of AWS account permitted to manage VPC endpoints.: <ul> <li>AWS_ACCOUNT: Indicates that the account is owned by an AWS user.</li> <li>AWS_SERVICE: Indicates the the account is owned by an AWS service.</li> </ul> '
-    AdvancedOptionsStatus:
-      type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/AdvancedOptions'
-          - description: ' Specifies the status of advanced options for the specified Elasticsearch domain.'
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: ' Specifies the status of <code>OptionStatus</code> for advanced options for the specified Elasticsearch domain.'
-      description: <p> Status of the advanced options for the specified Elasticsearch domain. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
     OutboundCrossClusterSearchConnection:
       type: object
       properties:
@@ -3704,109 +3512,275 @@ components:
           - $ref: '#/components/schemas/OutboundCrossClusterSearchConnectionStatus'
           - description: Specifies the <code><a>OutboundCrossClusterSearchConnectionStatus</a></code> for the outbound connection.
       description: Specifies details of an outbound connection.
-    ServiceUrl:
+    MaximumInstanceCount:
+      type: integer
+      description: ' Maximum number of Instances that can be instantiated for given InstanceType. '
+    ESPartitionInstanceType:
       type: string
-      description: The endpoint to which service requests are submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code>.
-    InboundCrossClusterSearchConnection:
+      enum:
+      - m3.medium.elasticsearch
+      - m3.large.elasticsearch
+      - m3.xlarge.elasticsearch
+      - m3.2xlarge.elasticsearch
+      - m4.large.elasticsearch
+      - m4.xlarge.elasticsearch
+      - m4.2xlarge.elasticsearch
+      - m4.4xlarge.elasticsearch
+      - m4.10xlarge.elasticsearch
+      - m5.large.elasticsearch
+      - m5.xlarge.elasticsearch
+      - m5.2xlarge.elasticsearch
+      - m5.4xlarge.elasticsearch
+      - m5.12xlarge.elasticsearch
+      - r5.large.elasticsearch
+      - r5.xlarge.elasticsearch
+      - r5.2xlarge.elasticsearch
+      - r5.4xlarge.elasticsearch
+      - r5.12xlarge.elasticsearch
+      - c5.large.elasticsearch
+      - c5.xlarge.elasticsearch
+      - c5.2xlarge.elasticsearch
+      - c5.4xlarge.elasticsearch
+      - c5.9xlarge.elasticsearch
+      - c5.18xlarge.elasticsearch
+      - ultrawarm1.medium.elasticsearch
+      - ultrawarm1.large.elasticsearch
+      - t2.micro.elasticsearch
+      - t2.small.elasticsearch
+      - t2.medium.elasticsearch
+      - r3.large.elasticsearch
+      - r3.xlarge.elasticsearch
+      - r3.2xlarge.elasticsearch
+      - r3.4xlarge.elasticsearch
+      - r3.8xlarge.elasticsearch
+      - i2.xlarge.elasticsearch
+      - i2.2xlarge.elasticsearch
+      - d2.xlarge.elasticsearch
+      - d2.2xlarge.elasticsearch
+      - d2.4xlarge.elasticsearch
+      - d2.8xlarge.elasticsearch
+      - c4.large.elasticsearch
+      - c4.xlarge.elasticsearch
+      - c4.2xlarge.elasticsearch
+      - c4.4xlarge.elasticsearch
+      - c4.8xlarge.elasticsearch
+      - r4.large.elasticsearch
+      - r4.xlarge.elasticsearch
+      - r4.2xlarge.elasticsearch
+      - r4.4xlarge.elasticsearch
+      - r4.8xlarge.elasticsearch
+      - r4.16xlarge.elasticsearch
+      - i3.large.elasticsearch
+      - i3.xlarge.elasticsearch
+      - i3.2xlarge.elasticsearch
+      - i3.4xlarge.elasticsearch
+      - i3.8xlarge.elasticsearch
+      - i3.16xlarge.elasticsearch
+    UpgradeHistory:
       type: object
       properties:
-        SourceDomainInfo:
+        UpgradeName:
           allOf:
-          - $ref: '#/components/schemas/DomainInformation'
-          - description: Specifies the <code><a>DomainInformation</a></code> for the source Elasticsearch domain.
-        DestinationDomainInfo:
+          - $ref: '#/components/schemas/UpgradeName'
+          - description: A string that describes the update briefly
+        StartTimestamp:
           allOf:
-          - $ref: '#/components/schemas/DomainInformation'
-          - description: Specifies the <code><a>DomainInformation</a></code> for the destination Elasticsearch domain.
-        CrossClusterSearchConnectionId:
+          - $ref: '#/components/schemas/StartTimestamp'
+          - description: UTC Timestamp at which the Upgrade API call was made in "yyyy-MM-ddTHH:mm:ssZ" format.
+        UpgradeStatus:
           allOf:
-          - $ref: '#/components/schemas/CrossClusterSearchConnectionId'
-          - description: Specifies the connection id for the inbound cross-cluster search connection.
-        ConnectionStatus:
+          - $ref: '#/components/schemas/UpgradeStatus'
+          - description: ' The overall status of the update. The status can take one of the following values: <ul> <li>In Progress</li> <li>Succeeded</li> <li>Succeeded with Issues</li> <li>Failed</li> </ul> '
+        StepsList:
           allOf:
-          - $ref: '#/components/schemas/InboundCrossClusterSearchConnectionStatus'
-          - description: Specifies the <code><a>InboundCrossClusterSearchConnectionStatus</a></code> for the outbound connection.
-      description: Specifies details of an inbound connection.
-    DescribeReservedElasticsearchInstanceOfferingsResponse:
+          - $ref: '#/components/schemas/UpgradeStepsList'
+          - description: ' A list of <code> <a>UpgradeStepItem</a> </code> s representing information about each step performed as pard of a specific Upgrade or Upgrade Eligibility Check. '
+      description: History of the last 10 Upgrades and Upgrade Eligibility Checks.
+    PolicyDocument:
+      type: string
+      description: Access policy rules for an Elasticsearch domain service endpoints. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank">Configuring Access Policies</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>. The maximum size of a policy document is 100 KB.
+    VpcEndpointSummary:
       type: object
       properties:
-        NextToken:
+        VpcEndpointId:
           allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: Provides an identifier to allow retrieval of paginated results.
-        ReservedElasticsearchInstanceOfferings:
+          - $ref: '#/components/schemas/VpcEndpointId'
+          - description: The unique identifier of the endpoint.
+        VpcEndpointOwner:
           allOf:
-          - $ref: '#/components/schemas/ReservedElasticsearchInstanceOfferingList'
-          - description: List of reserved Elasticsearch instance offerings
-      description: Container for results from <code>DescribeReservedElasticsearchInstanceOfferings</code>
-    UpgradeStepsList:
+          - $ref: '#/components/schemas/String'
+          - description: The creator of the endpoint.
+        DomainArn:
+          allOf:
+          - $ref: '#/components/schemas/DomainArn'
+          - description: The Amazon Resource Name (ARN) of the domain associated with the endpoint.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpointStatus'
+          - description: The current status of the endpoint.
+      description: Summary information for an Amazon OpenSearch Service-managed VPC endpoint.
+    AcceptInboundCrossClusterSearchConnectionResponse:
+      type: object
+      properties:
+        CrossClusterSearchConnection:
+          allOf:
+          - $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
+          - description: 'Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of accepted inbound connection. '
+      description: The result of a <code><a>AcceptInboundCrossClusterSearchConnection</a></code> operation. Contains details of accepted inbound connection.
+    VPCDerivedInfoStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/VPCDerivedInfo'
+          - description: ' Specifies the VPC options for the specified Elasticsearch domain.'
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: ' Specifies the status of the VPC options for the specified Elasticsearch domain.'
+      description: ' Status of the VPC options for the specified Elasticsearch domain.'
+    SAMLIdp:
+      type: object
+      required:
+      - MetadataContent
+      - EntityId
+      properties:
+        MetadataContent:
+          allOf:
+          - $ref: '#/components/schemas/SAMLMetadata'
+          - description: The Metadata of the SAML application in xml format.
+        EntityId:
+          allOf:
+          - $ref: '#/components/schemas/SAMLEntityId'
+          - description: The unique Entity ID of the application in SAML Identity Provider.
+      description: Specifies the SAML Identity Provider's information.
+    ChangeProgressStageList:
       type: array
+      description: The list of progress stages of a specific domain configuration change.
       items:
-        $ref: '#/components/schemas/UpgradeStepItem'
-    AutoTuneDetails:
+        $ref: '#/components/schemas/ChangeProgressStage'
+    ScheduledAutoTuneSeverityType:
+      type: string
+      enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+      description: 'Specifies Auto-Tune action severity. Valid values are LOW, MEDIUM and HIGH. '
+    ReservedElasticsearchInstancePaymentOption:
+      type: string
+      enum:
+      - ALL_UPFRONT
+      - PARTIAL_UPFRONT
+      - NO_UPFRONT
+    StorageType:
       type: object
       properties:
-        ScheduledAutoTuneDetails:
-          $ref: '#/components/schemas/ScheduledAutoTuneDetails'
-      description: 'Specifies details of the Auto-Tune action. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
+        StorageTypeName:
+          $ref: '#/components/schemas/StorageTypeName'
+        StorageSubTypeName:
+          $ref: '#/components/schemas/StorageSubTypeName'
+        StorageTypeLimits:
+          allOf:
+          - $ref: '#/components/schemas/StorageTypeLimitList'
+          - description: 'List of limits that are applicable for given storage type. '
+      description: 'StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. '
+    StartElasticsearchServiceSoftwareUpdateResponse:
+      type: object
+      properties:
+        ServiceSoftwareOptions:
+          allOf:
+          - $ref: '#/components/schemas/ServiceSoftwareOptions'
+          - description: The current status of the Elasticsearch service software update.
+      description: The result of a <code>StartElasticsearchServiceSoftwareUpdate</code> operation. Contains the status of the update.
+    Password:
+      type: string
+      minLength: 8
+      format: password
     StorageTypeName:
       type: string
       description: ' Type of the storage. List of available storage options: <ol> <li>instance</li> Inbuilt storage available for the given Instance <li>ebs</li> Elastic block storage that would be attached to the given Instance </ol> '
-    InstanceLimits:
-      type: object
-      properties:
-        InstanceCountLimits:
-          $ref: '#/components/schemas/InstanceCountLimits'
-      description: 'InstanceLimits represents the list of instance related attributes that are available for given InstanceType. '
-    InboundCrossClusterSearchConnectionStatusCode:
+    OverallChangeStatus:
       type: string
       enum:
-      - PENDING_ACCEPTANCE
-      - APPROVED
-      - REJECTING
-      - REJECTED
-      - DELETING
-      - DELETED
-    NodeToNodeEncryptionOptions:
+      - PENDING
+      - PROCESSING
+      - COMPLETED
+      - FAILED
+      description: The overall status value of the domain configuration change.
+    PrincipalType:
+      type: string
+      enum:
+      - AWS_ACCOUNT
+      - AWS_SERVICE
+      description: 'Specifies the type of AWS account permitted to manage VPC endpoints.: <ul> <li>AWS_ACCOUNT: Indicates that the account is owned by an AWS user.</li> <li>AWS_SERVICE: Indicates the the account is owned by an AWS service.</li> </ul> '
+    TagValue:
+      type: string
+      description: A string of length from 0 to 256 characters that specifies the value for a Tag. Tag values can be null and do not have to be unique in a tag set.
+      minLength: 0
+      maxLength: 256
+    AutoTuneOptionsStatus:
       type: object
       properties:
-        Enabled:
+        Options:
           allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Specify true to enable node-to-node encryption.
-      description: Specifies the node-to-node encryption options.
-    EncryptionAtRestOptions:
+          - $ref: '#/components/schemas/AutoTuneOptions'
+          - description: ' Specifies Auto-Tune options for the specified Elasticsearch domain.'
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/AutoTuneStatus'
+          - description: ' Specifies Status of the Auto-Tune options for the specified Elasticsearch domain.'
+      description: ' Specifies the status of Auto-Tune options for the specified Elasticsearch domain.'
+    VpcEndpointSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/VpcEndpointSummary'
+    DescribeElasticsearchDomainResponse:
       type: object
+      required:
+      - DomainStatus
       properties:
-        Enabled:
+        DomainStatus:
           allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Specifies the option to enable Encryption At Rest.
-        KmsKeyId:
-          allOf:
-          - $ref: '#/components/schemas/KmsKeyId'
-          - description: ' Specifies the KMS Key ID for Encryption At Rest options.'
-      description: Specifies the Encryption At Rest Options.
-    RevokeVpcEndpointAccessResponse:
+          - $ref: '#/components/schemas/ElasticsearchDomainStatus'
+          - description: The current status of the Elasticsearch domain.
+      description: The result of a <code>DescribeElasticsearchDomain</code> request. Contains the status of the domain specified in the request.
+    OptionStatus:
       type: object
-      properties: {}
-      description: Container for response parameters to the <code><a>RevokeVpcEndpointAccess</a></code> operation. The response body for this operation is empty.
-    UpgradeElasticsearchDomainResponse:
-      type: object
+      required:
+      - CreationDate
+      - UpdateDate
+      - State
       properties:
-        DomainName:
-          $ref: '#/components/schemas/DomainName'
-        TargetVersion:
+        CreationDate:
           allOf:
-          - $ref: '#/components/schemas/ElasticsearchVersionString'
-          - description: The version of Elasticsearch that you intend to upgrade the domain to.
-        PerformCheckOnly:
+          - $ref: '#/components/schemas/UpdateTimestamp'
+          - description: Timestamp which tells the creation date for the entity.
+        UpdateDate:
+          allOf:
+          - $ref: '#/components/schemas/UpdateTimestamp'
+          - description: Timestamp which tells the last updated time for the entity.
+        UpdateVersion:
+          allOf:
+          - $ref: '#/components/schemas/UIntValue'
+          - description: Specifies the latest version for the entity.
+        State:
+          allOf:
+          - $ref: '#/components/schemas/OptionState'
+          - description: Provides the <code>OptionState</code> for the Elasticsearch domain.
+        PendingDeletion:
           allOf:
           - $ref: '#/components/schemas/Boolean'
-          - description: ' This flag, when set to True, indicates that an Upgrade Eligibility Check needs to be performed. This will not actually perform the Upgrade. '
-        ChangeProgressDetails:
-          $ref: '#/components/schemas/ChangeProgressDetails'
-      description: ' Container for response returned by <code> <a>UpgradeElasticsearchDomain</a> </code> operation. '
+          - description: Indicates whether the Elasticsearch domain is being deleted.
+      description: Provides the current status of the entity.
+    DomainName:
+      type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
+      minLength: 3
+      maxLength: 28
     ReservedElasticsearchInstance:
       type: object
       properties:
@@ -3863,123 +3837,798 @@ components:
           - $ref: '#/components/schemas/RecurringChargeList'
           - description: The charge to your account regardless of whether you are creating any domains using the instance offering.
       description: Details of a reserved Elasticsearch instance.
-    ElasticsearchClusterConfig:
+    ChangeProgressDetails:
       type: object
       properties:
-        InstanceType:
+        ChangeId:
           allOf:
-          - $ref: '#/components/schemas/ESPartitionInstanceType'
-          - description: The instance type for an Elasticsearch cluster. UltraWarm instance types are not supported for data instances.
-        InstanceCount:
+          - $ref: '#/components/schemas/GUID'
+          - description: The unique change identifier associated with a specific domain configuration change.
+        Message:
           allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: The number of instances in the specified domain cluster.
-        DedicatedMasterEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: A boolean value to indicate whether a dedicated master node is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes" target="_blank">About Dedicated Master Nodes</a> for more information.
-        ZoneAwarenessEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: A boolean value to indicate whether zone awareness is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness" target="_blank">About Zone Awareness</a> for more information.
-        ZoneAwarenessConfig:
-          allOf:
-          - $ref: '#/components/schemas/ZoneAwarenessConfig'
-          - description: Specifies the zone awareness configuration for a domain when zone awareness is enabled.
-        DedicatedMasterType:
-          allOf:
-          - $ref: '#/components/schemas/ESPartitionInstanceType'
-          - description: The instance type for a dedicated master node.
-        DedicatedMasterCount:
-          allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: Total number of dedicated master nodes, active and on standby, for the cluster.
-        WarmEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: True to enable warm storage.
-        WarmType:
-          allOf:
-          - $ref: '#/components/schemas/ESWarmPartitionInstanceType'
-          - description: The instance type for the Elasticsearch cluster's warm nodes.
-        WarmCount:
-          allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: The number of warm nodes in the cluster.
-        ColdStorageOptions:
-          allOf:
-          - $ref: '#/components/schemas/ColdStorageOptions'
-          - description: Specifies the <code>ColdStorageOptions</code> config for Elasticsearch Domain
-      description: Specifies the configuration for the domain cluster, such as the type and number of instances.
-    ReservedElasticsearchInstanceOfferingList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ReservedElasticsearchInstanceOffering'
-    Region:
-      type: string
-    OutboundCrossClusterSearchConnections:
-      type: array
-      items:
-        $ref: '#/components/schemas/OutboundCrossClusterSearchConnection'
-    UIntValue:
-      type: integer
-      minimum: 0
-    AdditionalLimit:
+          - $ref: '#/components/schemas/Message'
+          - description: Contains an optional message associated with the domain configuration change.
+      description: Specifies change details of the domain configuration change.
+    DescribeReservedElasticsearchInstancesResponse:
       type: object
       properties:
-        LimitName:
-          allOf:
-          - $ref: '#/components/schemas/LimitName'
-          - description: ' Name of Additional Limit is specific to a given InstanceType and for each of it''s <code> <a>InstanceRole</a> </code> etc. <br/> Attributes and their details: <br/> <ul> <li>MaximumNumberOfDataNodesSupported</li> This attribute will be present in Master node only to specify how much data nodes upto which given <code> <a>ESPartitionInstanceType</a> </code> can support as master node. <li>MaximumNumberOfDataNodesWithoutMasterNode</li> This attribute will be present in Data node only to specify how much data nodes of given <code> <a>ESPartitionInstanceType</a> </code> upto which you don''t need any master nodes to govern them. </ul> '
-        LimitValues:
-          allOf:
-          - $ref: '#/components/schemas/LimitValueList'
-          - description: ' Value for given <code> <a>AdditionalLimit$LimitName</a> </code> . '
-      description: ' List of limits that are specific to a given InstanceType and for each of it''s <code> <a>InstanceRole</a> </code> . '
-    DescribeOutboundCrossClusterSearchConnectionsResponse:
-      type: object
-      properties:
-        CrossClusterSearchConnections:
-          allOf:
-          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnections'
-          - description: Consists of list of <code><a>OutboundCrossClusterSearchConnection</a></code> matching the specified filter criteria.
         NextToken:
           allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: 'If more results are available and NextToken is present, make the next request to the same API with the received NextToken to paginate the remaining results. '
-      description: The result of a <code><a>DescribeOutboundCrossClusterSearchConnections</a></code> request. Contains the list of connections matching the filter criteria.
-    ElasticsearchVersionString:
-      type: string
-      pattern: ^[0-9]{1}\.[0-9]{1,2}$|^OpenSearch_[0-9]{1,2}\.[0-9]{1,2}$|^OS_[0-9]{1,2}\.[0-9]{1,2}$
-    LastUpdated:
-      type: string
-      format: date-time
-    DomainInformation:
+          - $ref: '#/components/schemas/String'
+          - description: Provides an identifier to allow retrieval of paginated results.
+        ReservedElasticsearchInstances:
+          allOf:
+          - $ref: '#/components/schemas/ReservedElasticsearchInstanceList'
+          - description: List of reserved Elasticsearch instances.
+      description: Container for results from <code>DescribeReservedElasticsearchInstances</code>
+    DurationValue:
+      type: integer
+      description: ' Integer to specify the value of a maintenance schedule duration. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
+      minimum: 1
+      maximum: 24
+    Tag:
       type: object
       required:
-      - DomainName
+      - Key
+      - Value
       properties:
-        OwnerId:
-          $ref: '#/components/schemas/OwnerId'
-        DomainName:
-          $ref: '#/components/schemas/DomainName'
-        Region:
-          $ref: '#/components/schemas/Region'
-    OwnerId:
-      type: string
-      minLength: 12
-      maxLength: 12
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: Specifies the <code>TagKey</code>, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: 'Specifies the <code>TagValue</code>, the value assigned to the corresponding tag key. Tag values can be null and do not have to be unique in a tag set. For example, you can have a key value pair in a tag set of <code>project : Trinity</code> and <code>cost-center : Trinity</code>'
+      description: Specifies a key value pair for a resource tag.
+    AdvancedOptionsStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/AdvancedOptions'
+          - description: ' Specifies the status of advanced options for the specified Elasticsearch domain.'
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: ' Specifies the status of <code>OptionStatus</code> for advanced options for the specified Elasticsearch domain.'
+      description: <p> Status of the advanced options for the specified Elasticsearch domain. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
+    AutoTuneStatus:
+      type: object
+      required:
+      - CreationDate
+      - UpdateDate
+      - State
+      properties:
+        CreationDate:
+          allOf:
+          - $ref: '#/components/schemas/UpdateTimestamp'
+          - description: Timestamp which tells Auto-Tune options creation date .
+        UpdateDate:
+          allOf:
+          - $ref: '#/components/schemas/UpdateTimestamp'
+          - description: Timestamp which tells Auto-Tune options last updated time.
+        UpdateVersion:
+          allOf:
+          - $ref: '#/components/schemas/UIntValue'
+          - description: Specifies the Auto-Tune options latest version.
+        State:
+          allOf:
+          - $ref: '#/components/schemas/AutoTuneState'
+          - description: Specifies the <code>AutoTuneState</code> for the Elasticsearch domain.
+        ErrorMessage:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Specifies the error message while enabling or disabling the Auto-Tune options.
+        PendingDeletion:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: Indicates whether the Elasticsearch domain is being deleted.
+      description: 'Provides the current status of the Auto-Tune options. '
     AutoTuneDesiredState:
       type: string
       enum:
       - ENABLED
       - DISABLED
       description: Specifies the Auto-Tune desired state. Valid values are ENABLED, DISABLED.
-    TagValue:
+    LimitValueList:
+      type: array
+      items:
+        $ref: '#/components/schemas/LimitValue'
+    ChangeProgressStageName:
       type: string
-      description: A string of length from 0 to 256 characters that specifies the value for a Tag. Tag values can be null and do not have to be unique in a tag set.
-      minLength: 0
+      minLength: 1
+      maxLength: 64
+    DeploymentType:
+      type: string
+      minLength: 2
+      maxLength: 128
+    PurchaseReservedElasticsearchInstanceOfferingResponse:
+      type: object
+      properties:
+        ReservedElasticsearchInstanceId:
+          allOf:
+          - $ref: '#/components/schemas/GUID'
+          - description: Details of the reserved Elasticsearch instance which was purchased.
+        ReservationName:
+          allOf:
+          - $ref: '#/components/schemas/ReservationToken'
+          - description: The customer-specified identifier used to track this reservation.
+      description: Represents the output of a <code>PurchaseReservedElasticsearchInstanceOffering</code> operation.
+    IntegerClass:
+      type: integer
+    DisabledOperationException: {}
+    String:
+      type: string
+    ScheduledAutoTuneDetails:
+      type: object
+      properties:
+        Date:
+          allOf:
+          - $ref: '#/components/schemas/AutoTuneDate'
+          - description: 'Specifies timestamp for the Auto-Tune action scheduled for the domain. '
+        ActionType:
+          allOf:
+          - $ref: '#/components/schemas/ScheduledAutoTuneActionType'
+          - description: 'Specifies Auto-Tune action type. Valid values are JVM_HEAP_SIZE_TUNING and JVM_YOUNG_GEN_TUNING. '
+        Action:
+          allOf:
+          - $ref: '#/components/schemas/ScheduledAutoTuneDescription'
+          - description: 'Specifies Auto-Tune action description. '
+        Severity:
+          allOf:
+          - $ref: '#/components/schemas/ScheduledAutoTuneSeverityType'
+          - description: 'Specifies Auto-Tune action severity. Valid values are LOW, MEDIUM and HIGH. '
+      description: 'Specifies details of the scheduled Auto-Tune action. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
+    LastUpdated:
+      type: string
+      format: date-time
+    EBSOptions:
+      type: object
+      properties:
+        EBSEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: Specifies whether EBS-based storage is enabled.
+        VolumeType:
+          allOf:
+          - $ref: '#/components/schemas/VolumeType'
+          - description: ' Specifies the volume type for EBS-based storage.'
+        VolumeSize:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: ' Integer to specify the size of an EBS volume.'
+        Iops:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: Specifies the IOPS for Provisioned IOPS And GP3 EBS volume (SSD).
+        Throughput:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: Specifies the Throughput for GP3 EBS volume (SSD).
+      description: Options to enable, disable, and specify the properties of EBS storage volumes. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank"> Configuring EBS-based Storage</a>.
+    StorageSubTypeName:
+      type: string
+      description: ' SubType of the given storage type. List of available sub-storage options: For "instance" storageType we wont have any storageSubType, in case of "ebs" storageType we will have following valid storageSubTypes <ol> <li>standard</li> <li>gp2</li> <li>gp3</li> <li>io1</li> </ol> Refer <code><a>VolumeType</a></code> for more information regarding above EBS storage options. '
+    AuthorizeVpcEndpointAccessResponse:
+      type: object
+      required:
+      - AuthorizedPrincipal
+      properties:
+        AuthorizedPrincipal:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizedPrincipal'
+          - description: Information about the account or service that was provided access to the domain.
+      description: Container for response parameters to the <code><a>AuthorizeVpcEndpointAccess</a></code> operation. Contains the account ID and the type of the account being authorized to access the VPC endpoint.
+    VpcEndpoints:
+      type: array
+      items:
+        $ref: '#/components/schemas/VpcEndpoint'
+    CreateVpcEndpointResponse:
+      type: object
+      required:
+      - VpcEndpoint
+      properties:
+        VpcEndpoint:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpoint'
+          - description: Information about the newly created VPC endpoint.
+      description: Container for response parameters to the <code><a>CreateVpcEndpoint</a></code> operation. Contains the configuration and status of the VPC Endpoint being created.
+    LogPublishingOptionsStatus:
+      type: object
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/LogPublishingOptions'
+          - description: The log publishing options configured for the Elasticsearch domain.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: 'The status of the log publishing options for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that''s included. '
+      description: The configured log publishing options for the domain and their current status.
+    ListVpcEndpointsForDomainResponse:
+      type: object
+      required:
+      - VpcEndpointSummaryList
+      - NextToken
+      properties:
+        VpcEndpointSummaryList:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpointSummaryList'
+          - description: Provides list of <code>VpcEndpointSummary</code> summarizing details of the VPC endpoints.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: Information about each endpoint associated with the domain.
+      description: Container for response parameters to the <code><a>ListVpcEndpointsForDomain</a></code> operation. Returns a list containing summarized details of the VPC endpoints.
+    OutboundCrossClusterSearchConnections:
+      type: array
+      items:
+        $ref: '#/components/schemas/OutboundCrossClusterSearchConnection'
+    GetUpgradeHistoryResponse:
+      type: object
+      properties:
+        UpgradeHistories:
+          allOf:
+          - $ref: '#/components/schemas/UpgradeHistoryList'
+          - description: ' A list of <code> <a>UpgradeHistory</a> </code> objects corresponding to each Upgrade or Upgrade Eligibility Check performed on a domain returned as part of <code> <a>GetUpgradeHistoryResponse</a> </code> object. '
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Pagination token that needs to be supplied to the next call to get the next page of results
+      description: ' Container for response returned by <code> <a>GetUpgradeHistory</a> </code> operation. '
+    Boolean:
+      type: boolean
+    BackendRole:
+      type: string
+      minLength: 1
       maxLength: 256
+    AdvancedSecurityOptionsStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/AdvancedSecurityOptions'
+          - description: ' Specifies advanced security options for the specified Elasticsearch domain.'
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: ' Status of the advanced security options for the specified Elasticsearch domain.'
+      description: ' Specifies the status of advanced security options for the specified Elasticsearch domain.'
+    ZoneAwarenessConfig:
+      type: object
+      properties:
+        AvailabilityZoneCount:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: An integer value to indicate the number of availability zones for a domain when zone awareness is enabled. This should be equal to number of subnets if VPC endpoints is enabled
+      description: Specifies the zone awareness configuration for the domain cluster, such as the number of availability zones.
+    UserPoolId:
+      type: string
+      pattern: '[\w-]+_[0-9a-zA-Z]+'
+      minLength: 1
+      maxLength: 55
+    ResourceAlreadyExistsException: {}
+    ListVpcEndpointsResponse:
+      type: object
+      required:
+      - VpcEndpointSummaryList
+      - NextToken
+      properties:
+        VpcEndpointSummaryList:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpointSummaryList'
+          - description: Information about each endpoint.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: Provides an identifier to allow retrieval of paginated results.
+      description: Container for response parameters to the <code><a>ListVpcEndpoints</a></code> operation. Returns a list containing summarized details of the VPC endpoints.
+    InvalidTypeException: {}
+    Endpoint:
+      type: string
+      pattern: ^[A-Za-z0-9\-\.]+$
+    UpgradeStep:
+      type: string
+      enum:
+      - PRE_UPGRADE_CHECK
+      - SNAPSHOT
+      - UPGRADE
+    NodeToNodeEncryptionOptionsStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/NodeToNodeEncryptionOptions'
+          - description: Specifies the node-to-node encryption options for the specified Elasticsearch domain.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: Specifies the status of the node-to-node encryption options for the specified Elasticsearch domain.
+      description: Status of the node-to-node encryption options for the specified Elasticsearch domain.
+    RejectInboundCrossClusterSearchConnectionResponse:
+      type: object
+      properties:
+        CrossClusterSearchConnection:
+          allOf:
+          - $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
+          - description: 'Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of rejected inbound connection. '
+      description: The result of a <code><a>RejectInboundCrossClusterSearchConnection</a></code> operation. Contains details of rejected inbound connection.
+    VpcEndpointId:
+      type: string
+      pattern: ^aos-[a-zA-Z0-9]*$
+      minLength: 5
+      maxLength: 256
+    LogPublishingOptions:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/LogPublishingOption'
+    InstanceLimits:
+      type: object
+      properties:
+        InstanceCountLimits:
+          $ref: '#/components/schemas/InstanceCountLimits'
+      description: 'InstanceLimits represents the list of instance related attributes that are available for given InstanceType. '
+    VpcEndpointError:
+      type: object
+      properties:
+        VpcEndpointId:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpointId'
+          - description: 'The unique identifier of the endpoint. '
+        ErrorCode:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpointErrorCode'
+          - description: The code associated with the error.
+        ErrorMessage:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: A message describing the error.
+      description: Error information when attempting to describe an Amazon OpenSearch Service-managed VPC endpoint.
+    ElasticsearchClusterConfigStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchClusterConfig'
+          - description: ' Specifies the cluster configuration for the specified Elasticsearch domain.'
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: ' Specifies the status of the configuration for the specified Elasticsearch domain.'
+      description: ' Specifies the configuration status for the specified Elasticsearch domain.'
+    DomainId:
+      type: string
+      description: Unique identifier for an Elasticsearch domain.
+      minLength: 1
+      maxLength: 64
+    InboundCrossClusterSearchConnections:
+      type: array
+      items:
+        $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
+    ColdStorageOptions:
+      type: object
+      required:
+      - Enabled
+      properties:
+        Enabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: Enable cold storage option. Accepted values true or false
+      description: Specifies the configuration for cold storage options such as enabled
+    OwnerId:
+      type: string
+      minLength: 12
+      maxLength: 12
+    SAMLMetadata:
+      type: string
+      minLength: 1
+      maxLength: 1048576
+    AuthorizedPrincipal:
+      type: object
+      properties:
+        PrincipalType:
+          allOf:
+          - $ref: '#/components/schemas/PrincipalType'
+          - description: The type of principal.
+        Principal:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The IAM principal that is allowed access to the domain.
+      description: Information about an account or service that has access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+    VpcEndpointStatus:
+      type: string
+      enum:
+      - CREATING
+      - CREATE_FAILED
+      - ACTIVE
+      - UPDATING
+      - UPDATE_FAILED
+      - DELETING
+      - DELETE_FAILED
+      description: 'Specifies the current status of the VPC endpoint: <ul> <li>CREATING: Indicates that the VPC endpoint is currently being created.</li> <li>CREATE_FAILED: Indicates that the VPC endpoint creation failed.</li> <li>ACTIVE: Indicates that the VPC endpoint is currently active.</li> <li>UPDATING: Indicates that the VPC endpoint is currently being updated.</li> <li>UPDATE_FAILED: Indicates that the VPC endpoint update failed.</li> <li>DELETING: Indicates that the VPC endpoint is currently being deleted.</li> <li>DELETE_FAILED: Indicates that the VPC endpoint deletion failed.</li> </ul> '
+    ChangeProgressStage:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/ChangeProgressStageName'
+          - description: The name of the specific progress stage.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/ChangeProgressStageStatus'
+          - description: The overall status of a specific progress stage.
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/Description'
+          - description: The description of the progress stage.
+        LastUpdated:
+          allOf:
+          - $ref: '#/components/schemas/LastUpdated'
+          - description: The last updated timestamp of the progress stage.
+      description: A progress stage details of a specific domain configuration change.
+    ServiceSoftwareOptions:
+      type: object
+      properties:
+        CurrentVersion:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The current service software version that is present on the domain.
+        NewVersion:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The new service software version if one is available.
+        UpdateAvailable:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: '<code>True</code> if you are able to update you service software version. <code>False</code> if you are not able to update your service software version. '
+        Cancellable:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: '<code>True</code> if you are able to cancel your service software version update. <code>False</code> if you are not able to cancel your service software version. '
+        UpdateStatus:
+          allOf:
+          - $ref: '#/components/schemas/DeploymentStatus'
+          - description: 'The status of your service software update. This field can take the following values: <code>ELIGIBLE</code>, <code>PENDING_UPDATE</code>, <code>IN_PROGRESS</code>, <code>COMPLETED</code>, and <code>NOT_ELIGIBLE</code>.'
+        Description:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The description of the <code>UpdateStatus</code>.
+        AutomatedUpdateDate:
+          allOf:
+          - $ref: '#/components/schemas/DeploymentCloseDateTimeStamp'
+          - description: Timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.
+        OptionalDeployment:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: '<code>True</code> if a service software is never automatically updated. <code>False</code> if a service software is automatically updated after <code>AutomatedUpdateDate</code>. '
+      description: The current options of an Elasticsearch domain service software options.
+    StorageTypeLimit:
+      type: object
+      properties:
+        LimitName:
+          allOf:
+          - $ref: '#/components/schemas/LimitName'
+          - description: ' Name of storage limits that are applicable for given storage type. If <code> <a>StorageType</a> </code> is ebs, following storage options are applicable <ol> <li>MinimumVolumeSize</li> Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumVolumeSize</li> Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumIops</li> Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumIops</li> Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumThroughput</li> Maximum amount of Throughput that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumThroughput</li> Minimum amount of Throughput that is applicable for given storage type.It can be empty if it is not applicable. </ol> '
+        LimitValues:
+          allOf:
+          - $ref: '#/components/schemas/LimitValueList'
+          - description: ' Values for the <code> <a>StorageTypeLimit$LimitName</a> </code> . '
+      description: 'Limits that are applicable for given storage type. '
+    Filter:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/NonEmptyString'
+          - description: ' Specifies the name of the filter. '
+        Values:
+          allOf:
+          - $ref: '#/components/schemas/ValueStringList'
+          - description: ' Contains one or more values for the filter. '
+      description: ' A filter used to limit results when describing inbound or outbound cross-cluster search connections. Multiple values can be specified per filter. A cross-cluster search connection must match at least one of the specified values for it to be returned from an operation. '
+    CancelElasticsearchServiceSoftwareUpdateResponse:
+      type: object
+      properties:
+        ServiceSoftwareOptions:
+          allOf:
+          - $ref: '#/components/schemas/ServiceSoftwareOptions'
+          - description: The current status of the Elasticsearch service software update.
+      description: The result of a <code>CancelElasticsearchServiceSoftwareUpdate</code> operation. Contains the status of the update.
+    AutoTuneDetails:
+      type: object
+      properties:
+        ScheduledAutoTuneDetails:
+          $ref: '#/components/schemas/ScheduledAutoTuneDetails'
+      description: 'Specifies details of the Auto-Tune action. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
+    SnapshotOptions:
+      type: object
+      properties:
+        AutomatedSnapshotStartHour:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.
+      description: Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.
+    RecurringCharge:
+      type: object
+      properties:
+        RecurringChargeAmount:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The monetary amount of the recurring charge.
+        RecurringChargeFrequency:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The frequency of the recurring charge.
+      description: Contains the specific price and frequency of a recurring charges for a reserved Elasticsearch instance, or for a reserved Elasticsearch instance offering.
+    LimitExceededException: {}
+    TotalNumberOfStages:
+      type: integer
+    SAMLOptionsOutput:
+      type: object
+      properties:
+        Enabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: True if SAML is enabled.
+        Idp:
+          allOf:
+          - $ref: '#/components/schemas/SAMLIdp'
+          - description: Describes the SAML Identity Provider's information.
+        SubjectKey:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The key used for matching the SAML Subject attribute.
+        RolesKey:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The key used for matching the SAML Roles attribute.
+        SessionTimeoutMinutes:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: The duration, in minutes, after which a user session becomes inactive.
+      description: Describes the SAML application configured for the domain.
+    AutoTuneList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AutoTune'
+    CreateElasticsearchDomainResponse:
+      type: object
+      properties:
+        DomainStatus:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchDomainStatus'
+          - description: 'The status of the newly created Elasticsearch domain. '
+      description: The result of a <code>CreateElasticsearchDomain</code> operation. Contains the status of the newly created Elasticsearch domain.
+    StartAt:
+      type: string
+      format: date-time
+    ResourceNotFoundException: {}
+    ElasticsearchVersionList:
+      type: array
+      description: 'List of supported elastic search versions. '
+      items:
+        $ref: '#/components/schemas/ElasticsearchVersionString'
+    DescribeElasticsearchDomainConfigResponse:
+      type: object
+      required:
+      - DomainConfig
+      properties:
+        DomainConfig:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchDomainConfig'
+          - description: The configuration information of the domain requested in the <code>DescribeElasticsearchDomainConfig</code> request.
+      description: The result of a <code>DescribeElasticsearchDomainConfig</code> request. Contains the configuration information of the requested domain.
+    ElasticsearchDomainStatusList:
+      type: array
+      description: A list that contains the status of each requested Elasticsearch domain.
+      items:
+        $ref: '#/components/schemas/ElasticsearchDomainStatus'
+    DomainEndpointOptions:
+      type: object
+      properties:
+        EnforceHTTPS:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: Specify if only HTTPS endpoint should be enabled for the Elasticsearch domain.
+        TLSSecurityPolicy:
+          allOf:
+          - $ref: '#/components/schemas/TLSSecurityPolicy'
+          - description: 'Specify the TLS security policy that needs to be applied to the HTTPS endpoint of Elasticsearch domain. <br/> It can be one of the following values: <ul> <li><b>Policy-Min-TLS-1-0-2019-07: </b> TLS security policy which supports TLSv1.0 and higher.</li> <li><b>Policy-Min-TLS-1-2-2019-07: </b> TLS security policy which supports only TLSv1.2</li> </ul> '
+        CustomEndpointEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: Specify if custom endpoint should be enabled for the Elasticsearch domain.
+        CustomEndpoint:
+          allOf:
+          - $ref: '#/components/schemas/DomainNameFqdn'
+          - description: Specify the fully qualified domain for your custom endpoint.
+        CustomEndpointCertificateArn:
+          allOf:
+          - $ref: '#/components/schemas/ARN'
+          - description: Specify ACM certificate ARN for your custom endpoint.
+      description: Options to configure endpoint for the Elasticsearch domain.
+    DeploymentCloseDateTimeStamp:
+      type: string
+      format: date-time
+    InboundCrossClusterSearchConnectionStatus:
+      type: object
+      properties:
+        StatusCode:
+          allOf:
+          - $ref: '#/components/schemas/InboundCrossClusterSearchConnectionStatusCode'
+          - description: '<p>The state code for inbound connection. This can be one of the following:</p> <ul> <li>PENDING_ACCEPTANCE: Inbound connection is not yet accepted by destination domain owner.</li> <li>APPROVED: Inbound connection is pending acceptance by destination domain owner.</li> <li>REJECTING: Inbound connection rejection is in process.</li> <li>REJECTED: Inbound connection is rejected.</li> <li>DELETING: Inbound connection deletion is in progress.</li> <li>DELETED: Inbound connection is deleted and cannot be used further.</li> </ul>'
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/CrossClusterSearchConnectionStatusMessage'
+          - description: Specifies verbose information for the inbound connection status.
+      description: Specifies the coonection status of an inbound cross-cluster search connection.
+    Message:
+      type: string
+      minLength: 0
+      maxLength: 1024
+    SnapshotOptionsStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/SnapshotOptions'
+          - description: Specifies the daily snapshot options specified for the Elasticsearch domain.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: Specifies the status of a daily automated snapshot.
+      description: Status of a daily automated snapshot.
+    GUID:
+      type: string
+      pattern: \p{XDigit}{8}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{12}
+    DomainNameFqdn:
+      type: string
+      pattern: ^(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
+      minLength: 1
+      maxLength: 255
+    DescribeInboundCrossClusterSearchConnectionsResponse:
+      type: object
+      properties:
+        CrossClusterSearchConnections:
+          allOf:
+          - $ref: '#/components/schemas/InboundCrossClusterSearchConnections'
+          - description: Consists of list of <code><a>InboundCrossClusterSearchConnection</a></code> matching the specified filter criteria.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: 'If more results are available and NextToken is present, make the next request to the same API with the received NextToken to paginate the remaining results. '
+      description: The result of a <code><a>DescribeInboundCrossClusterSearchConnections</a></code> request. Contains the list of connections matching the filter criteria.
+    KmsKeyId:
+      type: string
+      minLength: 1
+      maxLength: 500
+    ElasticsearchVersionStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchVersionString'
+          - description: ' Specifies the Elasticsearch version for the specified Elasticsearch domain.'
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: ' Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain.'
+      description: ' Status of the Elasticsearch version options for the specified Elasticsearch domain.'
+    ListElasticsearchVersionsResponse:
+      type: object
+      properties:
+        ElasticsearchVersions:
+          $ref: '#/components/schemas/ElasticsearchVersionList'
+        NextToken:
+          $ref: '#/components/schemas/NextToken'
+      description: ' Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. '
+    DescribeReservedElasticsearchInstanceOfferingsResponse:
+      type: object
+      properties:
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: Provides an identifier to allow retrieval of paginated results.
+        ReservedElasticsearchInstanceOfferings:
+          allOf:
+          - $ref: '#/components/schemas/ReservedElasticsearchInstanceOfferingList'
+          - description: List of reserved Elasticsearch instance offerings
+      description: Container for results from <code>DescribeReservedElasticsearchInstanceOfferings</code>
+    DescribeDomainChangeProgressResponse:
+      type: object
+      properties:
+        ChangeProgressStatus:
+          allOf:
+          - $ref: '#/components/schemas/ChangeProgressStatusDetails'
+          - description: 'Progress information for the configuration change that is requested in the <code>DescribeDomainChangeProgress</code> request. '
+      description: 'The result of a <code>DescribeDomainChangeProgress</code> request. Contains the progress information of the requested domain change. '
+    NonEmptyString:
+      type: string
+      minLength: 1
+    ConflictException: {}
+    AdvancedSecurityOptions:
+      type: object
+      properties:
+        Enabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: True if advanced security is enabled.
+        InternalUserDatabaseEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: True if the internal user database is enabled.
+        SAMLOptions:
+          allOf:
+          - $ref: '#/components/schemas/SAMLOptionsOutput'
+          - description: Describes the SAML application configured for a domain.
+        AnonymousAuthDisableDate:
+          allOf:
+          - $ref: '#/components/schemas/DisableTimestamp'
+          - description: Specifies the Anonymous Auth Disable Date when Anonymous Auth is enabled.
+        AnonymousAuthEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: True if Anonymous auth is enabled. Anonymous auth can be enabled only when AdvancedSecurity is enabled on existing domains.
+      description: 'Specifies the advanced security configuration: whether advanced security is enabled, whether the internal database option is enabled.'
+    UpgradeName:
+      type: string
+    UpdateTimestamp:
+      type: string
+      format: date-time
+    ListVpcEndpointAccessResponse:
+      type: object
+      required:
+      - AuthorizedPrincipalList
+      - NextToken
+      properties:
+        AuthorizedPrincipalList:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizedPrincipalList'
+          - description: List of <code>AuthorizedPrincipal</code> describing the details of the permissions to manage VPC endpoints against the specified domain.
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: Provides an identifier to allow retrieval of paginated results.
+      description: Container for response parameters to the <code><a>ListVpcEndpointAccess</a></code> operation. Returns a list of accounts id and account type authorized to manage VPC endpoints.
+    NextToken:
+      type: string
+      description: ' Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. '
+    CloudWatchLogsLogGroupArn:
+      type: string
+      description: ARN of the Cloudwatch log group to which log needs to be published.
+    ChangeProgressStageStatus:
+      type: string
+      minLength: 1
+      maxLength: 256
+    InvalidPaginationTokenException: {}
+    ValidationException: {}
+    DeploymentStatus:
+      type: string
+      enum:
+      - PENDING_UPDATE
+      - IN_PROGRESS
+      - COMPLETED
+      - NOT_ELIGIBLE
+      - ELIGIBLE
     SAMLOptionsInput:
       type: object
       properties:
@@ -4012,223 +4661,82 @@ components:
           - $ref: '#/components/schemas/IntegerClass'
           - description: The duration, in minutes, after which a user session becomes inactive. Acceptable values are between 1 and 1440, and the default value is 60.
       description: Specifies the SAML application configuration for the domain.
-    DescribeVpcEndpointsResponse:
+    DeleteVpcEndpointResponse:
       type: object
       required:
-      - VpcEndpoints
-      - VpcEndpointErrors
+      - VpcEndpointSummary
       properties:
-        VpcEndpoints:
+        VpcEndpointSummary:
           allOf:
-          - $ref: '#/components/schemas/VpcEndpoints'
-          - description: Information about each requested VPC endpoint.
-        VpcEndpointErrors:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointErrorList'
-          - description: Any errors associated with the request.
-      description: Container for response parameters to the <code><a>DescribeVpcEndpoints</a></code> operation. Returns a list containing configuration details and status of the VPC Endpoints as well as a list containing error responses of the endpoints that could not be described
-    RejectInboundCrossClusterSearchConnectionResponse:
+          - $ref: '#/components/schemas/VpcEndpointSummary'
+          - description: Information about the deleted endpoint, including its current status (<code>DELETING</code> or <code>DELETE_FAILED</code>).
+      description: Container for response parameters to the <code><a>DeleteVpcEndpoint</a></code> operation. Contains the summarized detail of the VPC Endpoint being deleted.
+    ValueStringList:
+      type: array
+      items:
+        $ref: '#/components/schemas/NonEmptyString'
+      minItems: 1
+    DomainArn:
+      type: string
+      pattern: arn:aws[a-z\-]*:[a-z]+:[a-z0-9\-]+:[0-9]+:domain\/[a-z0-9\-]+
+      minLength: 1
+      maxLength: 512
+    UpgradeElasticsearchDomainResponse:
       type: object
       properties:
-        CrossClusterSearchConnection:
+        DomainName:
+          $ref: '#/components/schemas/DomainName'
+        TargetVersion:
           allOf:
-          - $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
-          - description: 'Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of rejected inbound connection. '
-      description: The result of a <code><a>RejectInboundCrossClusterSearchConnection</a></code> operation. Contains details of rejected inbound connection.
-    IntegerClass:
-      type: integer
-    ReservedElasticsearchInstanceOffering:
-      type: object
-      properties:
-        ReservedElasticsearchInstanceOfferingId:
-          allOf:
-          - $ref: '#/components/schemas/GUID'
-          - description: The Elasticsearch reserved instance offering identifier.
-        ElasticsearchInstanceType:
-          allOf:
-          - $ref: '#/components/schemas/ESPartitionInstanceType'
-          - description: The Elasticsearch instance type offered by the reserved instance offering.
-        Duration:
-          allOf:
-          - $ref: '#/components/schemas/Integer'
-          - description: The duration, in seconds, for which the offering will reserve the Elasticsearch instance.
-        FixedPrice:
-          allOf:
-          - $ref: '#/components/schemas/Double'
-          - description: 'The upfront fixed charge you will pay to purchase the specific reserved Elasticsearch instance offering. '
-        UsagePrice:
-          allOf:
-          - $ref: '#/components/schemas/Double'
-          - description: The rate you are charged for each hour the domain that is using the offering is running.
-        CurrencyCode:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The currency code for the reserved Elasticsearch instance offering.
-        PaymentOption:
-          allOf:
-          - $ref: '#/components/schemas/ReservedElasticsearchInstancePaymentOption'
-          - description: Payment option for the reserved Elasticsearch instance offering
-        RecurringCharges:
-          allOf:
-          - $ref: '#/components/schemas/RecurringChargeList'
-          - description: The charge to your account regardless of whether you are creating any domains using the instance offering.
-      description: Details of a reserved Elasticsearch instance offering.
-    Filter:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/NonEmptyString'
-          - description: ' Specifies the name of the filter. '
-        Values:
-          allOf:
-          - $ref: '#/components/schemas/ValueStringList'
-          - description: ' Contains one or more values for the filter. '
-      description: ' A filter used to limit results when describing inbound or outbound cross-cluster search connections. Multiple values can be specified per filter. A cross-cluster search connection must match at least one of the specified values for it to be returned from an operation. '
-    ColdStorageOptions:
-      type: object
-      required:
-      - Enabled
-      properties:
-        Enabled:
+          - $ref: '#/components/schemas/ElasticsearchVersionString'
+          - description: The version of Elasticsearch that you intend to upgrade the domain to.
+        PerformCheckOnly:
           allOf:
           - $ref: '#/components/schemas/Boolean'
-          - description: Enable cold storage option. Accepted values true or false
-      description: Specifies the configuration for cold storage options such as enabled
-    AdditionalLimitList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AdditionalLimit'
-    UpgradeStatus:
+          - description: ' This flag, when set to True, indicates that an Upgrade Eligibility Check needs to be performed. This will not actually perform the Upgrade. '
+        ChangeProgressDetails:
+          $ref: '#/components/schemas/ChangeProgressDetails'
+      description: ' Container for response returned by <code> <a>UpgradeElasticsearchDomain</a> </code> operation. '
+    DeleteElasticsearchDomainResponse:
+      type: object
+      properties:
+        DomainStatus:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchDomainStatus'
+          - description: The status of the Elasticsearch domain being deleted.
+      description: The result of a <code>DeleteElasticsearchDomain</code> request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.
+    Username:
+      type: string
+      minLength: 1
+      format: password
+    BaseException: {}
+    ESWarmPartitionInstanceType:
       type: string
       enum:
-      - IN_PROGRESS
-      - SUCCEEDED
-      - SUCCEEDED_WITH_ISSUES
-      - FAILED
-    LogPublishingOptions:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/LogPublishingOption'
-    ElasticsearchDomainConfig:
-      type: object
-      properties:
-        ElasticsearchVersion:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchVersionStatus'
-          - description: String of format X.Y to specify version for the Elasticsearch domain.
-        ElasticsearchClusterConfig:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchClusterConfigStatus'
-          - description: Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch domain.
-        EBSOptions:
-          allOf:
-          - $ref: '#/components/schemas/EBSOptionsStatus'
-          - description: Specifies the <code>EBSOptions</code> for the Elasticsearch domain.
-        AccessPolicies:
-          allOf:
-          - $ref: '#/components/schemas/AccessPoliciesStatus'
-          - description: IAM access policy as a JSON-formatted string.
-        SnapshotOptions:
-          allOf:
-          - $ref: '#/components/schemas/SnapshotOptionsStatus'
-          - description: Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.
-        VPCOptions:
-          allOf:
-          - $ref: '#/components/schemas/VPCDerivedInfoStatus'
-          - description: The <code>VPCOptions</code> for the specified domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html" target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.
-        CognitoOptions:
-          allOf:
-          - $ref: '#/components/schemas/CognitoOptionsStatus'
-          - description: The <code>CognitoOptions</code> for the specified domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html" target="_blank">Amazon Cognito Authentication for Kibana</a>.
-        EncryptionAtRestOptions:
-          allOf:
-          - $ref: '#/components/schemas/EncryptionAtRestOptionsStatus'
-          - description: Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch domain.
-        NodeToNodeEncryptionOptions:
-          allOf:
-          - $ref: '#/components/schemas/NodeToNodeEncryptionOptionsStatus'
-          - description: Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch domain.
-        AdvancedOptions:
-          allOf:
-          - $ref: '#/components/schemas/AdvancedOptionsStatus'
-          - description: Specifies the <code>AdvancedOptions</code> for the domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuring Advanced Options</a> for more information.
-        LogPublishingOptions:
-          allOf:
-          - $ref: '#/components/schemas/LogPublishingOptionsStatus'
-          - description: Log publishing options for the given domain.
-        DomainEndpointOptions:
-          allOf:
-          - $ref: '#/components/schemas/DomainEndpointOptionsStatus'
-          - description: Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
-        AdvancedSecurityOptions:
-          allOf:
-          - $ref: '#/components/schemas/AdvancedSecurityOptionsStatus'
-          - description: 'Specifies <code>AdvancedSecurityOptions</code> for the domain. '
-        AutoTuneOptions:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneOptionsStatus'
-          - description: 'Specifies <code>AutoTuneOptions</code> for the domain. '
-        ChangeProgressDetails:
-          allOf:
-          - $ref: '#/components/schemas/ChangeProgressDetails'
-          - description: Specifies change details of the domain configuration change.
-      description: The configuration of an Elasticsearch domain.
-    AdvancedOptions:
-      type: object
-      description: <p> Exposes select native Elasticsearch configuration values from <code>elasticsearch.yml</code>. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
-      additionalProperties:
-        $ref: '#/components/schemas/String'
-    RecurringChargeList:
+      - ultrawarm1.medium.elasticsearch
+      - ultrawarm1.large.elasticsearch
+    ConnectionAlias:
+      type: string
+      maxLength: 20
+    AutoTuneMaintenanceScheduleList:
       type: array
       items:
-        $ref: '#/components/schemas/RecurringCharge'
-    DescribeElasticsearchDomainConfigResponse:
-      type: object
-      required:
-      - DomainConfig
-      properties:
-        DomainConfig:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchDomainConfig'
-          - description: The configuration information of the domain requested in the <code>DescribeElasticsearchDomainConfig</code> request.
-      description: The result of a <code>DescribeElasticsearchDomainConfig</code> request. Contains the configuration information of the requested domain.
-    LimitName:
+        $ref: '#/components/schemas/AutoTuneMaintenanceSchedule'
+      maxItems: 100
+    Region:
       type: string
-    DeleteInboundCrossClusterSearchConnectionResponse:
+    DescribeOutboundCrossClusterSearchConnectionsResponse:
       type: object
       properties:
-        CrossClusterSearchConnection:
+        CrossClusterSearchConnections:
           allOf:
-          - $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
-          - description: 'Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of deleted inbound connection. '
-      description: The result of a <code><a>DeleteInboundCrossClusterSearchConnection</a></code> operation. Contains details of deleted inbound connection.
-    Boolean:
-      type: boolean
-    ChangeProgressStageList:
-      type: array
-      description: The list of progress stages of a specific domain configuration change.
-      items:
-        $ref: '#/components/schemas/ChangeProgressStage'
-    AutoTuneMaintenanceSchedule:
-      type: object
-      properties:
-        StartAt:
+          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnections'
+          - description: Consists of list of <code><a>OutboundCrossClusterSearchConnection</a></code> matching the specified filter criteria.
+        NextToken:
           allOf:
-          - $ref: '#/components/schemas/StartAt'
-          - description: 'Specifies timestamp at which Auto-Tune maintenance schedule start. '
-        Duration:
-          allOf:
-          - $ref: '#/components/schemas/Duration'
-          - description: 'Specifies maintenance schedule duration: duration value and duration unit. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
-        CronExpressionForRecurrence:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Specifies cron expression for a recurring maintenance schedule. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
-      description: Specifies Auto-Tune maitenance schedule. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
-    ARN:
-      type: string
-      description: The Amazon Resource Name (ARN) of the Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.
+          - $ref: '#/components/schemas/NextToken'
+          - description: 'If more results are available and NextToken is present, make the next request to the same API with the received NextToken to paginate the remaining results. '
+      description: The result of a <code><a>DescribeOutboundCrossClusterSearchConnections</a></code> request. Contains the list of connections matching the filter criteria.
     DomainEndpointOptionsStatus:
       type: object
       required:
@@ -4244,43 +4752,102 @@ components:
           - $ref: '#/components/schemas/OptionStatus'
           - description: 'The status of the endpoint options for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that''s included. '
       description: The configured endpoint options for the domain and their current status.
-    NextToken:
+    EndpointsMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ServiceUrl'
+    ElasticsearchVersionString:
       type: string
-      description: ' Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. '
-    UpgradeStep:
-      type: string
-      enum:
-      - PRE_UPGRADE_CHECK
-      - SNAPSHOT
-      - UPGRADE
-    DisabledOperationException: {}
-    SAMLOptionsOutput:
+      pattern: ^[0-9]{1}\.[0-9]{1,2}$|^OpenSearch_[0-9]{1,2}\.[0-9]{1,2}$|^OS_[0-9]{1,2}\.[0-9]{1,2}$
+    DeleteInboundCrossClusterSearchConnectionResponse:
+      type: object
+      properties:
+        CrossClusterSearchConnection:
+          allOf:
+          - $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
+          - description: 'Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of deleted inbound connection. '
+      description: The result of a <code><a>DeleteInboundCrossClusterSearchConnection</a></code> operation. Contains details of deleted inbound connection.
+    StorageTypeLimitList:
+      type: array
+      items:
+        $ref: '#/components/schemas/StorageTypeLimit'
+    CreateOutboundCrossClusterSearchConnectionResponse:
+      type: object
+      properties:
+        SourceDomainInfo:
+          allOf:
+          - $ref: '#/components/schemas/DomainInformation'
+          - description: Specifies the <code><a>DomainInformation</a></code> for the source Elasticsearch domain.
+        DestinationDomainInfo:
+          allOf:
+          - $ref: '#/components/schemas/DomainInformation'
+          - description: Specifies the <code><a>DomainInformation</a></code> for the destination Elasticsearch domain.
+        ConnectionAlias:
+          allOf:
+          - $ref: '#/components/schemas/ConnectionAlias'
+          - description: Specifies the connection alias provided during the create connection request.
+        ConnectionStatus:
+          allOf:
+          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnectionStatus'
+          - description: Specifies the <code><a>OutboundCrossClusterSearchConnectionStatus</a></code> for the newly created connection.
+        CrossClusterSearchConnectionId:
+          allOf:
+          - $ref: '#/components/schemas/CrossClusterSearchConnectionId'
+          - description: Unique id for the created outbound connection, which is used for subsequent operations on connection.
+      description: The result of a <code><a>CreateOutboundCrossClusterSearchConnection</a></code> request. Contains the details of the newly created cross-cluster search connection.
+    DescribeElasticsearchInstanceTypeLimitsResponse:
+      type: object
+      properties:
+        LimitsByRole:
+          $ref: '#/components/schemas/LimitsByRole'
+      description: ' Container for the parameters received from <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. '
+    CognitoOptionsStatus:
+      type: object
+      required:
+      - Options
+      - Status
+      properties:
+        Options:
+          allOf:
+          - $ref: '#/components/schemas/CognitoOptions'
+          - description: Specifies the Cognito options for the specified Elasticsearch domain.
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/OptionStatus'
+          - description: Specifies the status of the Cognito options for the specified Elasticsearch domain.
+      description: Status of the Cognito options for the specified Elasticsearch domain.
+    AutoTuneOptionsOutput:
+      type: object
+      properties:
+        State:
+          allOf:
+          - $ref: '#/components/schemas/AutoTuneState'
+          - description: Specifies the <code>AutoTuneState</code> for the Elasticsearch domain.
+        ErrorMessage:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Specifies the error message while enabling or disabling the Auto-Tune.
+      description: 'Specifies the Auto-Tune options: the Auto-Tune desired state for the domain and list of maintenance schedules.'
+    CognitoOptions:
       type: object
       properties:
         Enabled:
           allOf:
           - $ref: '#/components/schemas/Boolean'
-          - description: True if SAML is enabled.
-        Idp:
+          - description: Specifies the option to enable Cognito for Kibana authentication.
+        UserPoolId:
           allOf:
-          - $ref: '#/components/schemas/SAMLIdp'
-          - description: Describes the SAML Identity Provider's information.
-        SubjectKey:
+          - $ref: '#/components/schemas/UserPoolId'
+          - description: Specifies the Cognito user pool ID for Kibana authentication.
+        IdentityPoolId:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The key used for matching the SAML Subject attribute.
-        RolesKey:
+          - $ref: '#/components/schemas/IdentityPoolId'
+          - description: Specifies the Cognito identity pool ID for Kibana authentication.
+        RoleArn:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The key used for matching the SAML Roles attribute.
-        SessionTimeoutMinutes:
-          allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: The duration, in minutes, after which a user session becomes inactive.
-      description: Describes the SAML application configured for the domain.
-    StartTimestamp:
-      type: string
-      format: date-time
+          - $ref: '#/components/schemas/RoleArn'
+          - description: Specifies the role ARN that provides Elasticsearch permissions for accessing Cognito resources.
+      description: Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html" target="_blank">Amazon Cognito Authentication for Kibana</a>.
     ElasticsearchDomainStatus:
       type: object
       required:
@@ -4388,115 +4955,44 @@ components:
           - $ref: '#/components/schemas/ChangeProgressDetails'
           - description: Specifies change details of the domain configuration change.
       description: The current status of an Elasticsearch domain.
-    ConflictException: {}
-    DurationValue:
-      type: integer
-      description: ' Integer to specify the value of a maintenance schedule duration. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
-      minimum: 1
-      maximum: 24
-    AuthorizeVpcEndpointAccessResponse:
-      type: object
-      required:
-      - AuthorizedPrincipal
-      properties:
-        AuthorizedPrincipal:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizedPrincipal'
-          - description: Information about the account or service that was provided access to the domain.
-      description: Container for response parameters to the <code><a>AuthorizeVpcEndpointAccess</a></code> operation. Contains the account ID and the type of the account being authorized to access the VPC endpoint.
-    AutoTuneDate:
-      type: string
-      description: 'Specifies timestamp for the Auto-Tune action scheduled for the domain. '
-      format: date-time
-    UpgradeHistory:
+    AdditionalLimit:
       type: object
       properties:
-        UpgradeName:
+        LimitName:
           allOf:
-          - $ref: '#/components/schemas/UpgradeName'
-          - description: A string that describes the update briefly
-        StartTimestamp:
+          - $ref: '#/components/schemas/LimitName'
+          - description: ' Name of Additional Limit is specific to a given InstanceType and for each of it''s <code> <a>InstanceRole</a> </code> etc. <br/> Attributes and their details: <br/> <ul> <li>MaximumNumberOfDataNodesSupported</li> This attribute will be present in Master node only to specify how much data nodes upto which given <code> <a>ESPartitionInstanceType</a> </code> can support as master node. <li>MaximumNumberOfDataNodesWithoutMasterNode</li> This attribute will be present in Data node only to specify how much data nodes of given <code> <a>ESPartitionInstanceType</a> </code> upto which you don''t need any master nodes to govern them. </ul> '
+        LimitValues:
           allOf:
-          - $ref: '#/components/schemas/StartTimestamp'
-          - description: UTC Timestamp at which the Upgrade API call was made in "yyyy-MM-ddTHH:mm:ssZ" format.
-        UpgradeStatus:
-          allOf:
-          - $ref: '#/components/schemas/UpgradeStatus'
-          - description: ' The overall status of the update. The status can take one of the following values: <ul> <li>In Progress</li> <li>Succeeded</li> <li>Succeeded with Issues</li> <li>Failed</li> </ul> '
-        StepsList:
-          allOf:
-          - $ref: '#/components/schemas/UpgradeStepsList'
-          - description: ' A list of <code> <a>UpgradeStepItem</a> </code> s representing information about each step performed as pard of a specific Upgrade or Upgrade Eligibility Check. '
-      description: History of the last 10 Upgrades and Upgrade Eligibility Checks.
-    LimitValue:
-      type: string
-    BackendRole:
-      type: string
-      minLength: 1
-      maxLength: 256
-    AutoTuneOptionsStatus:
-      type: object
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneOptions'
-          - description: ' Specifies Auto-Tune options for the specified Elasticsearch domain.'
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneStatus'
-          - description: ' Specifies Status of the Auto-Tune options for the specified Elasticsearch domain.'
-      description: ' Specifies the status of Auto-Tune options for the specified Elasticsearch domain.'
-    ChangeProgressStageName:
-      type: string
-      minLength: 1
-      maxLength: 64
-    Tag:
-      type: object
-      required:
-      - Key
-      - Value
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: Specifies the <code>TagKey</code>, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: 'Specifies the <code>TagValue</code>, the value assigned to the corresponding tag key. Tag values can be null and do not have to be unique in a tag set. For example, you can have a key value pair in a tag set of <code>project : Trinity</code> and <code>cost-center : Trinity</code>'
-      description: Specifies a key value pair for a resource tag.
-    Description:
-      type: string
-    InstanceCountLimits:
-      type: object
-      properties:
-        MinimumInstanceCount:
-          $ref: '#/components/schemas/MinimumInstanceCount'
-        MaximumInstanceCount:
-          $ref: '#/components/schemas/MaximumInstanceCount'
-      description: ' InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. '
-    LogPublishingOption:
-      type: object
-      properties:
-        CloudWatchLogsLogGroupArn:
-          $ref: '#/components/schemas/CloudWatchLogsLogGroupArn'
-        Enabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: ' Specifies whether given log publishing option is enabled or not.'
-      description: 'Log Publishing option that is set for given domain. <br/>Attributes and their details: <ul> <li>CloudWatchLogsLogGroupArn: ARN of the Cloudwatch log group to which log needs to be published.</li> <li>Enabled: Whether the log publishing for given log type is enabled or not</li> </ul> '
-    DeploymentStatus:
+          - $ref: '#/components/schemas/LimitValueList'
+          - description: ' Value for given <code> <a>AdditionalLimit$LimitName</a> </code> . '
+      description: ' List of limits that are specific to a given InstanceType and for each of it''s <code> <a>InstanceRole</a> </code> . '
+    ScheduledAutoTuneActionType:
       type: string
       enum:
-      - PENDING_UPDATE
-      - IN_PROGRESS
-      - COMPLETED
-      - NOT_ELIGIBLE
-      - ELIGIBLE
-    DeploymentCloseDateTimeStamp:
+      - JVM_HEAP_SIZE_TUNING
+      - JVM_YOUNG_GEN_TUNING
+      description: 'Specifies Auto-Tune action type. Valid values are JVM_HEAP_SIZE_TUNING and JVM_YOUNG_GEN_TUNING. '
+    AWSAccount:
       type: string
-      format: date-time
-    ElasticsearchVersionStatus:
+      pattern: ^[0-9]+$
+    AutoTuneType:
+      type: string
+      enum:
+      - SCHEDULED_ACTION
+      description: 'Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. '
+    DomainInformation:
+      type: object
+      required:
+      - DomainName
+      properties:
+        OwnerId:
+          $ref: '#/components/schemas/OwnerId'
+        DomainName:
+          $ref: '#/components/schemas/DomainName'
+        Region:
+          $ref: '#/components/schemas/Region'
+    AccessPoliciesStatus:
       type: object
       required:
       - Options
@@ -4504,61 +5000,67 @@ components:
       properties:
         Options:
           allOf:
-          - $ref: '#/components/schemas/ElasticsearchVersionString'
-          - description: ' Specifies the Elasticsearch version for the specified Elasticsearch domain.'
+          - $ref: '#/components/schemas/PolicyDocument'
+          - description: The access policy configured for the Elasticsearch domain. Access policies may be resource-based, IP-based, or IAM-based. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank"> Configuring Access Policies</a>for more information.
         Status:
           allOf:
           - $ref: '#/components/schemas/OptionStatus'
-          - description: ' Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain.'
-      description: ' Status of the Elasticsearch version options for the specified Elasticsearch domain.'
-    NonEmptyString:
-      type: string
-      minLength: 1
-    Duration:
-      type: object
-      properties:
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/DurationValue'
-          - description: ' Integer to specify the value of a maintenance schedule duration. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
-        Unit:
-          allOf:
-          - $ref: '#/components/schemas/TimeUnit'
-          - description: Specifies the unit of a maintenance schedule duration. Valid value is HOURS. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
-      description: 'Specifies maintenance schedule duration: duration value and duration unit. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
-    StorageTypeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/StorageType'
-    MasterUserOptions:
-      type: object
-      properties:
-        MasterUserARN:
-          allOf:
-          - $ref: '#/components/schemas/ARN'
-          - description: ARN for the master user (if IAM is enabled).
-        MasterUserName:
-          allOf:
-          - $ref: '#/components/schemas/Username'
-          - description: The master user's username, which is stored in the Amazon Elasticsearch Service domain's internal database.
-        MasterUserPassword:
-          allOf:
-          - $ref: '#/components/schemas/Password'
-          - description: The master user's password, which is stored in the Amazon Elasticsearch Service domain's internal database.
-      description: 'Credentials for the master user: username and password, ARN, or both.'
-    ESWarmPartitionInstanceType:
+          - description: 'The status of the access policy for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that''s included. '
+      description: The configured access rules for the domain's document and search endpoints, and the current status of those rules.
+    UpgradeStatus:
       type: string
       enum:
-      - ultrawarm1.medium.elasticsearch
-      - ultrawarm1.large.elasticsearch
-    DeleteOutboundCrossClusterSearchConnectionResponse:
+      - IN_PROGRESS
+      - SUCCEEDED
+      - SUCCEEDED_WITH_ISSUES
+      - FAILED
+    UpgradeStepsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/UpgradeStepItem'
+    AuthorizedPrincipalList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AuthorizedPrincipal'
+    CrossClusterSearchConnectionId:
+      type: string
+    ReservedElasticsearchInstanceOfferingList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReservedElasticsearchInstanceOffering'
+    ListElasticsearchInstanceTypesResponse:
       type: object
       properties:
-        CrossClusterSearchConnection:
+        ElasticsearchInstanceTypes:
           allOf:
-          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnection'
-          - description: 'Specifies the <code><a>OutboundCrossClusterSearchConnection</a></code> of deleted outbound connection. '
-      description: The result of a <code><a>DeleteOutboundCrossClusterSearchConnection</a></code> operation. Contains details of deleted outbound connection.
+          - $ref: '#/components/schemas/ElasticsearchInstanceTypeList'
+          - description: ' List of instance types supported by Amazon Elasticsearch service for given <code> <a>ElasticsearchVersion</a> </code> '
+        NextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: 'In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results. '
+      description: ' Container for the parameters returned by <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. '
+    UpgradeHistoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/UpgradeHistory'
+    IdentityPoolId:
+      type: string
+      pattern: '[\w-]+:[0-9a-f-]+'
+      minLength: 1
+      maxLength: 55
+    AutoTune:
+      type: object
+      properties:
+        AutoTuneType:
+          allOf:
+          - $ref: '#/components/schemas/AutoTuneType'
+          - description: 'Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. '
+        AutoTuneDetails:
+          allOf:
+          - $ref: '#/components/schemas/AutoTuneDetails'
+          - description: 'Specifies details of the Auto-Tune action. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
+      description: 'Specifies Auto-Tune type and Auto-Tune action details. '
     ChangeProgressStatusDetails:
       type: object
       properties:
@@ -4591,184 +5093,60 @@ components:
           - $ref: '#/components/schemas/ChangeProgressStageList'
           - description: The specific stages that the domain is going through to perform the configuration change.
       description: The progress details of a specific domain configuration change.
-    SAMLMetadata:
-      type: string
-      minLength: 1
-      maxLength: 1048576
-    StorageTypeLimitList:
+    CompatibleVersionsMap:
+      type: object
+      properties:
+        SourceVersion:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchVersionString'
+          - description: The current version of Elasticsearch on which a domain is.
+        TargetVersions:
+          $ref: '#/components/schemas/ElasticsearchVersionList'
+      description: ' A map from an <code> <a>ElasticsearchVersion</a> </code> to a list of compatible <code> <a>ElasticsearchVersion</a> </code> s to which the domain can be upgraded. '
+    ElasticsearchInstanceTypeList:
       type: array
+      description: ' List of instance types supported by Amazon Elasticsearch service. '
       items:
-        $ref: '#/components/schemas/StorageTypeLimit'
-    ReservationToken:
+        $ref: '#/components/schemas/ESPartitionInstanceType'
+    ScheduledAutoTuneDescription:
       type: string
-      minLength: 5
-      maxLength: 64
-    DescribeReservedElasticsearchInstancesResponse:
+      description: 'Specifies Auto-Tune action description. '
+    DeleteOutboundCrossClusterSearchConnectionResponse:
       type: object
       properties:
-        NextToken:
+        CrossClusterSearchConnection:
           allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Provides an identifier to allow retrieval of paginated results.
-        ReservedElasticsearchInstances:
-          allOf:
-          - $ref: '#/components/schemas/ReservedElasticsearchInstanceList'
-          - description: List of reserved Elasticsearch instances.
-      description: Container for results from <code>DescribeReservedElasticsearchInstances</code>
-    Issue:
-      type: string
-    UpgradeName:
-      type: string
-    CreateElasticsearchDomainResponse:
+          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnection'
+          - description: 'Specifies the <code><a>OutboundCrossClusterSearchConnection</a></code> of deleted outbound connection. '
+      description: The result of a <code><a>DeleteOutboundCrossClusterSearchConnection</a></code> operation. Contains details of deleted outbound connection.
+    VpcEndpoint:
       type: object
       properties:
-        DomainStatus:
+        VpcEndpointId:
           allOf:
-          - $ref: '#/components/schemas/ElasticsearchDomainStatus'
-          - description: 'The status of the newly created Elasticsearch domain. '
-      description: The result of a <code>CreateElasticsearchDomain</code> operation. Contains the status of the newly created Elasticsearch domain.
-    CognitoOptions:
-      type: object
-      properties:
-        Enabled:
+          - $ref: '#/components/schemas/VpcEndpointId'
+          - description: The unique identifier of the endpoint.
+        VpcEndpointOwner:
           allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Specifies the option to enable Cognito for Kibana authentication.
-        UserPoolId:
+          - $ref: '#/components/schemas/AWSAccount'
+          - description: The creator of the endpoint.
+        DomainArn:
           allOf:
-          - $ref: '#/components/schemas/UserPoolId'
-          - description: Specifies the Cognito user pool ID for Kibana authentication.
-        IdentityPoolId:
+          - $ref: '#/components/schemas/DomainArn'
+          - description: The Amazon Resource Name (ARN) of the domain associated with the endpoint.
+        VpcOptions:
           allOf:
-          - $ref: '#/components/schemas/IdentityPoolId'
-          - description: Specifies the Cognito identity pool ID for Kibana authentication.
-        RoleArn:
-          allOf:
-          - $ref: '#/components/schemas/RoleArn'
-          - description: Specifies the role ARN that provides Elasticsearch permissions for accessing Cognito resources.
-      description: Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html" target="_blank">Amazon Cognito Authentication for Kibana</a>.
-    AutoTuneType:
-      type: string
-      enum:
-      - SCHEDULED_ACTION
-      description: 'Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. '
-    UpdateTimestamp:
-      type: string
-      format: date-time
-    PurchaseReservedElasticsearchInstanceOfferingResponse:
-      type: object
-      properties:
-        ReservedElasticsearchInstanceId:
-          allOf:
-          - $ref: '#/components/schemas/GUID'
-          - description: Details of the reserved Elasticsearch instance which was purchased.
-        ReservationName:
-          allOf:
-          - $ref: '#/components/schemas/ReservationToken'
-          - description: The customer-specified identifier used to track this reservation.
-      description: Represents the output of a <code>PurchaseReservedElasticsearchInstanceOffering</code> operation.
-    OptionStatus:
-      type: object
-      required:
-      - CreationDate
-      - UpdateDate
-      - State
-      properties:
-        CreationDate:
-          allOf:
-          - $ref: '#/components/schemas/UpdateTimestamp'
-          - description: Timestamp which tells the creation date for the entity.
-        UpdateDate:
-          allOf:
-          - $ref: '#/components/schemas/UpdateTimestamp'
-          - description: Timestamp which tells the last updated time for the entity.
-        UpdateVersion:
-          allOf:
-          - $ref: '#/components/schemas/UIntValue'
-          - description: Specifies the latest version for the entity.
-        State:
-          allOf:
-          - $ref: '#/components/schemas/OptionState'
-          - description: Provides the <code>OptionState</code> for the Elasticsearch domain.
-        PendingDeletion:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Indicates whether the Elasticsearch domain is being deleted.
-      description: Provides the current status of the entity.
-    ConnectionAlias:
-      type: string
-      maxLength: 20
-    ChangeProgressDetails:
-      type: object
-      properties:
-        ChangeId:
-          allOf:
-          - $ref: '#/components/schemas/GUID'
-          - description: The unique change identifier associated with a specific domain configuration change.
-        Message:
-          allOf:
-          - $ref: '#/components/schemas/Message'
-          - description: Contains an optional message associated with the domain configuration change.
-      description: Specifies change details of the domain configuration change.
-    IdentityPoolId:
-      type: string
-      pattern: '[\w-]+:[0-9a-f-]+'
-      minLength: 1
-      maxLength: 55
-    CompatibleElasticsearchVersionsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/CompatibleVersionsMap'
-    Endpoint:
-      type: string
-      pattern: ^[A-Za-z0-9\-\.]+$
-    AdvancedSecurityOptions:
-      type: object
-      properties:
-        Enabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: True if advanced security is enabled.
-        InternalUserDatabaseEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: True if the internal user database is enabled.
-        SAMLOptions:
-          allOf:
-          - $ref: '#/components/schemas/SAMLOptionsOutput'
-          - description: Describes the SAML application configured for a domain.
-        AnonymousAuthDisableDate:
-          allOf:
-          - $ref: '#/components/schemas/DisableTimestamp'
-          - description: Specifies the Anonymous Auth Disable Date when Anonymous Auth is enabled.
-        AnonymousAuthEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: True if Anonymous auth is enabled. Anonymous auth can be enabled only when AdvancedSecurity is enabled on existing domains.
-      description: 'Specifies the advanced security configuration: whether advanced security is enabled, whether the internal database option is enabled.'
-    EncryptionAtRestOptionsStatus:
-      type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/EncryptionAtRestOptions'
-          - description: ' Specifies the Encryption At Rest options for the specified Elasticsearch domain.'
+          - $ref: '#/components/schemas/VPCDerivedInfo'
+          - description: Options to specify the subnets and security groups for an Amazon OpenSearch Service VPC endpoint.
         Status:
           allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: ' Specifies the status of the Encryption At Rest options for the specified Elasticsearch domain.'
-      description: ' Status of the Encryption At Rest options for the specified Elasticsearch domain.'
-    DomainArn:
-      type: string
-      pattern: arn:aws[a-z\-]*:[a-z]+:[a-z0-9\-]+:[0-9]+:domain\/[a-z0-9\-]+
-      minLength: 1
-      maxLength: 512
-    StartAt:
-      type: string
-      format: date-time
+          - $ref: '#/components/schemas/VpcEndpointStatus'
+          - description: The current status of the endpoint.
+        Endpoint:
+          allOf:
+          - $ref: '#/components/schemas/Endpoint'
+          - description: The connection endpoint ID for connecting to the domain.
+      description: The connection endpoint for connecting to an Amazon OpenSearch Service domain through a proxy.
     GetUpgradeStatusResponse:
       type: object
       properties:
@@ -4785,122 +5163,124 @@ components:
           - $ref: '#/components/schemas/UpgradeName'
           - description: A string that describes the update briefly
       description: ' Container for response returned by <code> <a>GetUpgradeStatus</a> </code> operation. '
-    DryRunResults:
+    InboundCrossClusterSearchConnection:
       type: object
       properties:
-        DeploymentType:
+        SourceDomainInfo:
           allOf:
-          - $ref: '#/components/schemas/DeploymentType'
-          - description: ' Specifies the deployment mechanism through which the update shall be applied on the domain. Possible responses are <code>Blue/Green</code> (The update will require a blue/green deployment.) <code>DynamicUpdate</code> (The update can be applied in-place without a Blue/Green deployment required.) <code>Undetermined</code> (The domain is undergoing an update which needs to complete before the deployment type can be predicted.) <code>None</code> (The configuration change matches the current configuration and will not result in any update.) '
-        Message:
+          - $ref: '#/components/schemas/DomainInformation'
+          - description: Specifies the <code><a>DomainInformation</a></code> for the source Elasticsearch domain.
+        DestinationDomainInfo:
           allOf:
-          - $ref: '#/components/schemas/Message'
-          - description: Contains an optional message associated with the DryRunResults.
-    SnapshotOptions:
+          - $ref: '#/components/schemas/DomainInformation'
+          - description: Specifies the <code><a>DomainInformation</a></code> for the destination Elasticsearch domain.
+        CrossClusterSearchConnectionId:
+          allOf:
+          - $ref: '#/components/schemas/CrossClusterSearchConnectionId'
+          - description: Specifies the connection id for the inbound cross-cluster search connection.
+        ConnectionStatus:
+          allOf:
+          - $ref: '#/components/schemas/InboundCrossClusterSearchConnectionStatus'
+          - description: Specifies the <code><a>InboundCrossClusterSearchConnectionStatus</a></code> for the outbound connection.
+      description: Specifies details of an inbound connection.
+    LogPublishingOption:
       type: object
       properties:
-        AutomatedSnapshotStartHour:
+        CloudWatchLogsLogGroupArn:
+          $ref: '#/components/schemas/CloudWatchLogsLogGroupArn'
+        Enabled:
           allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.
-      description: Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.
-    UserPoolId:
+          - $ref: '#/components/schemas/Boolean'
+          - description: ' Specifies whether given log publishing option is enabled or not.'
+      description: 'Log Publishing option that is set for given domain. <br/>Attributes and their details: <ul> <li>CloudWatchLogsLogGroupArn: ARN of the Cloudwatch log group to which log needs to be published.</li> <li>Enabled: Whether the log publishing for given log type is enabled or not</li> </ul> '
+    InstanceCountLimits:
+      type: object
+      properties:
+        MinimumInstanceCount:
+          $ref: '#/components/schemas/MinimumInstanceCount'
+        MaximumInstanceCount:
+          $ref: '#/components/schemas/MaximumInstanceCount'
+      description: ' InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. '
+    Issue:
       type: string
-      pattern: '[\w-]+_[0-9a-zA-Z]+'
-      minLength: 1
-      maxLength: 55
-    Username:
-      type: string
-      minLength: 1
-      format: password
-    RollbackOnDisable:
+    VpcEndpointErrorCode:
       type: string
       enum:
-      - NO_ROLLBACK
-      - DEFAULT_ROLLBACK
-      description: Specifies the rollback state while disabling Auto-Tune for the domain. Valid values are NO_ROLLBACK, DEFAULT_ROLLBACK.
-    InboundCrossClusterSearchConnectionStatus:
+      - ENDPOINT_NOT_FOUND
+      - SERVER_ERROR
+      description: 'Specifies the error code of the failure encountered while describing the VPC endpoint: <ul> <li>ENDPOINT_NOT_FOUND: Indicates that the requested VPC endpoint does not exist.</li> <li>SERVER_ERROR: Indicates the describe endpoint operation failed due to an internal server error.</li> </ul> '
+    ReservationToken:
+      type: string
+      minLength: 5
+      maxLength: 64
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+    StorageTypeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/StorageType'
+    OutboundCrossClusterSearchConnectionStatus:
       type: object
       properties:
         StatusCode:
           allOf:
-          - $ref: '#/components/schemas/InboundCrossClusterSearchConnectionStatusCode'
-          - description: '<p>The state code for inbound connection. This can be one of the following:</p> <ul> <li>PENDING_ACCEPTANCE: Inbound connection is not yet accepted by destination domain owner.</li> <li>APPROVED: Inbound connection is pending acceptance by destination domain owner.</li> <li>REJECTING: Inbound connection rejection is in process.</li> <li>REJECTED: Inbound connection is rejected.</li> <li>DELETING: Inbound connection deletion is in progress.</li> <li>DELETED: Inbound connection is deleted and cannot be used further.</li> </ul>'
+          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnectionStatusCode'
+          - description: '<p>The state code for outbound connection. This can be one of the following:</p> <ul> <li>VALIDATING: The outbound connection request is being validated.</li> <li>VALIDATION_FAILED: Validation failed for the connection request.</li> <li>PENDING_ACCEPTANCE: Outbound connection request is validated and is not yet accepted by destination domain owner.</li> <li>PROVISIONING: Outbound connection request is in process.</li> <li>ACTIVE: Outbound connection is active and ready to use.</li> <li>REJECTED: Outbound connection request is rejected by destination domain owner.</li> <li>DELETING: Outbound connection deletion is in progress.</li> <li>DELETED: Outbound connection is deleted and cannot be used further.</li> </ul>'
         Message:
           allOf:
           - $ref: '#/components/schemas/CrossClusterSearchConnectionStatusMessage'
-          - description: Specifies verbose information for the inbound connection status.
-      description: Specifies the coonection status of an inbound cross-cluster search connection.
-    AutoTuneList:
+          - description: Specifies verbose information for the outbound connection status.
+      description: Specifies the connection status of an outbound cross-cluster search connection.
+    MinimumInstanceCount:
+      type: integer
+      description: ' Minimum number of Instances that can be instantiated for given InstanceType. '
+    Double:
+      type: number
+      format: double
+    ARN:
+      type: string
+      description: The Amazon Resource Name (ARN) of the Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.
+    AutoTuneState:
+      type: string
+      enum:
+      - ENABLED
+      - DISABLED
+      - ENABLE_IN_PROGRESS
+      - DISABLE_IN_PROGRESS
+      - DISABLED_AND_ROLLBACK_SCHEDULED
+      - DISABLED_AND_ROLLBACK_IN_PROGRESS
+      - DISABLED_AND_ROLLBACK_COMPLETE
+      - DISABLED_AND_ROLLBACK_ERROR
+      - ERROR
+      description: Specifies the Auto-Tune state for the Elasticsearch domain. For valid states see the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a>.
+    LimitValue:
+      type: string
+    Integer:
+      type: integer
+    AutoTuneDate:
+      type: string
+      description: 'Specifies timestamp for the Auto-Tune action scheduled for the domain. '
+      format: date-time
+    OutboundCrossClusterSearchConnectionStatusCode:
+      type: string
+      enum:
+      - PENDING_ACCEPTANCE
+      - VALIDATING
+      - VALIDATION_FAILED
+      - PROVISIONING
+      - ACTIVE
+      - REJECTED
+      - DELETING
+      - DELETED
+    RecurringChargeList:
       type: array
       items:
-        $ref: '#/components/schemas/AutoTune'
-    EndpointsMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ServiceUrl'
-    DescribeElasticsearchInstanceTypeLimitsResponse:
-      type: object
-      properties:
-        LimitsByRole:
-          $ref: '#/components/schemas/LimitsByRole'
-      description: ' Container for the parameters received from <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. '
-    StorageType:
-      type: object
-      properties:
-        StorageTypeName:
-          $ref: '#/components/schemas/StorageTypeName'
-        StorageSubTypeName:
-          $ref: '#/components/schemas/StorageSubTypeName'
-        StorageTypeLimits:
-          allOf:
-          - $ref: '#/components/schemas/StorageTypeLimitList'
-          - description: 'List of limits that are applicable for given storage type. '
-      description: 'StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. '
-    VpcEndpointSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/VpcEndpointSummary'
-    UpdateElasticsearchDomainConfigResponse:
-      type: object
-      required:
-      - DomainConfig
-      properties:
-        DomainConfig:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchDomainConfig'
-          - description: 'The status of the updated Elasticsearch domain. '
-        DryRunResults:
-          allOf:
-          - $ref: '#/components/schemas/DryRunResults'
-          - description: 'Contains result of DryRun. '
-      description: The result of an <code>UpdateElasticsearchDomain</code> request. Contains the status of the Elasticsearch domain being updated.
-    CreateVpcEndpointResponse:
-      type: object
-      required:
-      - VpcEndpoint
-      properties:
-        VpcEndpoint:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpoint'
-          - description: Information about the newly created VPC endpoint.
-      description: Container for response parameters to the <code><a>CreateVpcEndpoint</a></code> operation. Contains the configuration and status of the VPC Endpoint being created.
-    ListVpcEndpointsResponse:
-      type: object
-      required:
-      - VpcEndpointSummaryList
-      - NextToken
-      properties:
-        VpcEndpointSummaryList:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointSummaryList'
-          - description: Information about each endpoint.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: Provides an identifier to allow retrieval of paginated results.
-      description: Container for response parameters to the <code><a>ListVpcEndpoints</a></code> operation. Returns a list containing summarized details of the VPC endpoints.
-    NodeToNodeEncryptionOptionsStatus:
+        $ref: '#/components/schemas/RecurringCharge'
+    Description:
+      type: string
+    EncryptionAtRestOptionsStatus:
       type: object
       required:
       - Options
@@ -4908,13 +5288,123 @@ components:
       properties:
         Options:
           allOf:
-          - $ref: '#/components/schemas/NodeToNodeEncryptionOptions'
-          - description: Specifies the node-to-node encryption options for the specified Elasticsearch domain.
+          - $ref: '#/components/schemas/EncryptionAtRestOptions'
+          - description: ' Specifies the Encryption At Rest options for the specified Elasticsearch domain.'
         Status:
           allOf:
           - $ref: '#/components/schemas/OptionStatus'
-          - description: Specifies the status of the node-to-node encryption options for the specified Elasticsearch domain.
-      description: Status of the node-to-node encryption options for the specified Elasticsearch domain.
+          - description: ' Specifies the status of the Encryption At Rest options for the specified Elasticsearch domain.'
+      description: ' Status of the Encryption At Rest options for the specified Elasticsearch domain.'
+    UpdateVpcEndpointResponse:
+      type: object
+      required:
+      - VpcEndpoint
+      properties:
+        VpcEndpoint:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpoint'
+          - description: The endpoint to be updated.
+      description: Contains the configuration and status of the VPC endpoint being updated.
+    ElasticsearchDomainConfig:
+      type: object
+      properties:
+        ElasticsearchVersion:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchVersionStatus'
+          - description: String of format X.Y to specify version for the Elasticsearch domain.
+        ElasticsearchClusterConfig:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchClusterConfigStatus'
+          - description: Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch domain.
+        EBSOptions:
+          allOf:
+          - $ref: '#/components/schemas/EBSOptionsStatus'
+          - description: Specifies the <code>EBSOptions</code> for the Elasticsearch domain.
+        AccessPolicies:
+          allOf:
+          - $ref: '#/components/schemas/AccessPoliciesStatus'
+          - description: IAM access policy as a JSON-formatted string.
+        SnapshotOptions:
+          allOf:
+          - $ref: '#/components/schemas/SnapshotOptionsStatus'
+          - description: Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.
+        VPCOptions:
+          allOf:
+          - $ref: '#/components/schemas/VPCDerivedInfoStatus'
+          - description: The <code>VPCOptions</code> for the specified domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html" target="_blank">VPC Endpoints for Amazon Elasticsearch Service Domains</a>.
+        CognitoOptions:
+          allOf:
+          - $ref: '#/components/schemas/CognitoOptionsStatus'
+          - description: The <code>CognitoOptions</code> for the specified domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html" target="_blank">Amazon Cognito Authentication for Kibana</a>.
+        EncryptionAtRestOptions:
+          allOf:
+          - $ref: '#/components/schemas/EncryptionAtRestOptionsStatus'
+          - description: Specifies the <code>EncryptionAtRestOptions</code> for the Elasticsearch domain.
+        NodeToNodeEncryptionOptions:
+          allOf:
+          - $ref: '#/components/schemas/NodeToNodeEncryptionOptionsStatus'
+          - description: Specifies the <code>NodeToNodeEncryptionOptions</code> for the Elasticsearch domain.
+        AdvancedOptions:
+          allOf:
+          - $ref: '#/components/schemas/AdvancedOptionsStatus'
+          - description: Specifies the <code>AdvancedOptions</code> for the domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuring Advanced Options</a> for more information.
+        LogPublishingOptions:
+          allOf:
+          - $ref: '#/components/schemas/LogPublishingOptionsStatus'
+          - description: Log publishing options for the given domain.
+        DomainEndpointOptions:
+          allOf:
+          - $ref: '#/components/schemas/DomainEndpointOptionsStatus'
+          - description: Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+        AdvancedSecurityOptions:
+          allOf:
+          - $ref: '#/components/schemas/AdvancedSecurityOptionsStatus'
+          - description: 'Specifies <code>AdvancedSecurityOptions</code> for the domain. '
+        AutoTuneOptions:
+          allOf:
+          - $ref: '#/components/schemas/AutoTuneOptionsStatus'
+          - description: 'Specifies <code>AutoTuneOptions</code> for the domain. '
+        ChangeProgressDetails:
+          allOf:
+          - $ref: '#/components/schemas/ChangeProgressDetails'
+          - description: Specifies change details of the domain configuration change.
+      description: The configuration of an Elasticsearch domain.
+    VPCDerivedInfo:
+      type: object
+      properties:
+        VPCId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The VPC Id for the Elasticsearch domain. Exists only if the domain was created with VPCOptions.
+        SubnetIds:
+          allOf:
+          - $ref: '#/components/schemas/StringList'
+          - description: Specifies the subnets for VPC endpoint.
+        AvailabilityZones:
+          allOf:
+          - $ref: '#/components/schemas/StringList'
+          - description: The availability zones for the Elasticsearch domain. Exists only if the domain was created with VPCOptions.
+        SecurityGroupIds:
+          allOf:
+          - $ref: '#/components/schemas/StringList'
+          - description: Specifies the security groups for VPC endpoint.
+      description: Options to specify the subnets and security groups for VPC endpoint. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html" target="_blank"> VPC Endpoints for Amazon Elasticsearch Service Domains</a>.
+    DisableTimestamp:
+      type: string
+      format: date-time
+    InboundCrossClusterSearchConnectionStatusCode:
+      type: string
+      enum:
+      - PENDING_ACCEPTANCE
+      - APPROVED
+      - REJECTING
+      - REJECTED
+      - DELETING
+      - DELETED
+    CompatibleElasticsearchVersionsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/CompatibleVersionsMap'
     Limits:
       type: object
       properties:
@@ -4929,44 +5419,206 @@ components:
           - $ref: '#/components/schemas/AdditionalLimitList'
           - description: ' List of additional limits that are specific to a given InstanceType and for each of it''s <code> <a>InstanceRole</a> </code> . '
       description: ' Limits for given InstanceType and for each of it''s role. <br/> Limits contains following <code> <a>StorageTypes,</a> </code> <code> <a>InstanceLimits</a> </code> and <code> <a>AdditionalLimits</a> </code> '
-    ZoneAwarenessConfig:
-      type: object
-      properties:
-        AvailabilityZoneCount:
-          allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: An integer value to indicate the number of availability zones for a domain when zone awareness is enabled. This should be equal to number of subnets if VPC endpoints is enabled
-      description: Specifies the zone awareness configuration for the domain cluster, such as the number of availability zones.
-    StorageSubTypeName:
-      type: string
-      description: ' SubType of the given storage type. List of available sub-storage options: For "instance" storageType we wont have any storageSubType, in case of "ebs" storageType we will have following valid storageSubTypes <ol> <li>standard</li> <li>gp2</li> <li>gp3</li> <li>io1</li> </ol> Refer <code><a>VolumeType</a></code> for more information regarding above EBS storage options. '
-    EBSOptionsStatus:
-      type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/EBSOptions'
-          - description: ' Specifies the EBS options for the specified Elasticsearch domain.'
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: ' Specifies the status of the EBS options for the specified Elasticsearch domain.'
-      description: ' Status of the EBS options for the specified Elasticsearch domain.'
-    DeleteElasticsearchDomainResponse:
-      type: object
-      properties:
-        DomainStatus:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchDomainStatus'
-          - description: The status of the Elasticsearch domain being deleted.
-      description: The result of a <code>DeleteElasticsearchDomain</code> request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.
-    LimitValueList:
+    Issues:
       type: array
       items:
-        $ref: '#/components/schemas/LimitValue'
+        $ref: '#/components/schemas/Issue'
+    ServiceUrl:
+      type: string
+      description: The endpoint to which service requests are submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code>.
+    DescribeVpcEndpointsResponse:
+      type: object
+      required:
+      - VpcEndpoints
+      - VpcEndpointErrors
+      properties:
+        VpcEndpoints:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpoints'
+          - description: Information about each requested VPC endpoint.
+        VpcEndpointErrors:
+          allOf:
+          - $ref: '#/components/schemas/VpcEndpointErrorList'
+          - description: Any errors associated with the request.
+      description: Container for response parameters to the <code><a>DescribeVpcEndpoints</a></code> operation. Returns a list containing configuration details and status of the VPC Endpoints as well as a list containing error responses of the endpoints that could not be described
+    VolumeType:
+      type: string
+      enum:
+      - standard
+      - gp2
+      - io1
+      - gp3
+      description: ' The type of EBS volume, standard, gp2, gp3 or io1. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a>for more information.'
+    AdvancedOptions:
+      type: object
+      description: <p> Exposes select native Elasticsearch configuration values from <code>elasticsearch.yml</code>. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
+      additionalProperties:
+        $ref: '#/components/schemas/String'
+    DescribeElasticsearchDomainsResponse:
+      type: object
+      required:
+      - DomainStatusList
+      properties:
+        DomainStatusList:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchDomainStatusList'
+          - description: The status of the domains requested in the <code>DescribeElasticsearchDomains</code> request.
+      description: The result of a <code>DescribeElasticsearchDomains</code> request. Contains the status of the specified domains or all domains owned by the account.
+    Duration:
+      type: object
+      properties:
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/DurationValue'
+          - description: ' Integer to specify the value of a maintenance schedule duration. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
+        Unit:
+          allOf:
+          - $ref: '#/components/schemas/TimeUnit'
+          - description: Specifies the unit of a maintenance schedule duration. Valid value is HOURS. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
+      description: 'Specifies maintenance schedule duration: duration value and duration unit. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
+    MasterUserOptions:
+      type: object
+      properties:
+        MasterUserARN:
+          allOf:
+          - $ref: '#/components/schemas/ARN'
+          - description: ARN for the master user (if IAM is enabled).
+        MasterUserName:
+          allOf:
+          - $ref: '#/components/schemas/Username'
+          - description: The master user's username, which is stored in the Amazon Elasticsearch Service domain's internal database.
+        MasterUserPassword:
+          allOf:
+          - $ref: '#/components/schemas/Password'
+          - description: The master user's password, which is stored in the Amazon Elasticsearch Service domain's internal database.
+      description: 'Credentials for the master user: username and password, ARN, or both.'
+    CrossClusterSearchConnectionStatusMessage:
+      type: string
+    TimeUnit:
+      type: string
+      enum:
+      - HOURS
+      description: Specifies the unit of a maintenance schedule duration. Valid value is HOUR. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
+    DryRunResults:
+      type: object
+      properties:
+        DeploymentType:
+          allOf:
+          - $ref: '#/components/schemas/DeploymentType'
+          - description: ' Specifies the deployment mechanism through which the update shall be applied on the domain. Possible responses are <code>Blue/Green</code> (The update will require a blue/green deployment.) <code>DynamicUpdate</code> (The update can be applied in-place without a Blue/Green deployment required.) <code>Undetermined</code> (The domain is undergoing an update which needs to complete before the deployment type can be predicted.) <code>None</code> (The configuration change matches the current configuration and will not result in any update.) '
+        Message:
+          allOf:
+          - $ref: '#/components/schemas/Message'
+          - description: Contains an optional message associated with the DryRunResults.
+    GetCompatibleElasticsearchVersionsResponse:
+      type: object
+      properties:
+        CompatibleElasticsearchVersions:
+          allOf:
+          - $ref: '#/components/schemas/CompatibleElasticsearchVersionsList'
+          - description: ' A map of compatible Elasticsearch versions returned as part of the <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. '
+      description: ' Container for response returned by <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. '
+    RevokeVpcEndpointAccessResponse:
+      type: object
+      properties: {}
+      description: Container for response parameters to the <code><a>RevokeVpcEndpointAccess</a></code> operation. The response body for this operation is empty.
+    UpdateElasticsearchDomainConfigResponse:
+      type: object
+      required:
+      - DomainConfig
+      properties:
+        DomainConfig:
+          allOf:
+          - $ref: '#/components/schemas/ElasticsearchDomainConfig'
+          - description: 'The status of the updated Elasticsearch domain. '
+        DryRunResults:
+          allOf:
+          - $ref: '#/components/schemas/DryRunResults'
+          - description: 'Contains result of DryRun. '
+      description: The result of an <code>UpdateElasticsearchDomain</code> request. Contains the status of the Elasticsearch domain being updated.
+    ElasticsearchClusterConfig:
+      type: object
+      properties:
+        InstanceType:
+          allOf:
+          - $ref: '#/components/schemas/ESPartitionInstanceType'
+          - description: The instance type for an Elasticsearch cluster. UltraWarm instance types are not supported for data instances.
+        InstanceCount:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: The number of instances in the specified domain cluster.
+        DedicatedMasterEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: A boolean value to indicate whether a dedicated master node is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes" target="_blank">About Dedicated Master Nodes</a> for more information.
+        ZoneAwarenessEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: A boolean value to indicate whether zone awareness is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness" target="_blank">About Zone Awareness</a> for more information.
+        ZoneAwarenessConfig:
+          allOf:
+          - $ref: '#/components/schemas/ZoneAwarenessConfig'
+          - description: Specifies the zone awareness configuration for a domain when zone awareness is enabled.
+        DedicatedMasterType:
+          allOf:
+          - $ref: '#/components/schemas/ESPartitionInstanceType'
+          - description: The instance type for a dedicated master node.
+        DedicatedMasterCount:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: Total number of dedicated master nodes, active and on standby, for the cluster.
+        WarmEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: True to enable warm storage.
+        WarmType:
+          allOf:
+          - $ref: '#/components/schemas/ESWarmPartitionInstanceType'
+          - description: The instance type for the Elasticsearch cluster's warm nodes.
+        WarmCount:
+          allOf:
+          - $ref: '#/components/schemas/IntegerClass'
+          - description: The number of warm nodes in the cluster.
+        ColdStorageOptions:
+          allOf:
+          - $ref: '#/components/schemas/ColdStorageOptions'
+          - description: Specifies the <code>ColdStorageOptions</code> config for Elasticsearch Domain
+      description: Specifies the configuration for the domain cluster, such as the type and number of instances.
+    RollbackOnDisable:
+      type: string
+      enum:
+      - NO_ROLLBACK
+      - DEFAULT_ROLLBACK
+      description: Specifies the rollback state while disabling Auto-Tune for the domain. Valid values are NO_ROLLBACK, DEFAULT_ROLLBACK.
+    NodeToNodeEncryptionOptions:
+      type: object
+      properties:
+        Enabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: Specify true to enable node-to-node encryption.
+      description: Specifies the node-to-node encryption options.
+    AutoTuneMaintenanceSchedule:
+      type: object
+      properties:
+        StartAt:
+          allOf:
+          - $ref: '#/components/schemas/StartAt'
+          - description: 'Specifies timestamp at which Auto-Tune maintenance schedule start. '
+        Duration:
+          allOf:
+          - $ref: '#/components/schemas/Duration'
+          - description: 'Specifies maintenance schedule duration: duration value and duration unit. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.'
+        CronExpressionForRecurrence:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: Specifies cron expression for a recurring maintenance schedule. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
+      description: Specifies Auto-Tune maitenance schedule. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
+    StringList:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    InternalException: {}
     AutoTuneOptions:
       type: object
       properties:
@@ -4983,206 +5635,47 @@ components:
           - $ref: '#/components/schemas/AutoTuneMaintenanceScheduleList'
           - description: Specifies list of maitenance schedules. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
       description: 'Specifies the Auto-Tune options: the Auto-Tune desired state for the domain, rollback state when disabling Auto-Tune options and list of maintenance schedules.'
-    CognitoOptionsStatus:
+    LimitsByRole:
       type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/CognitoOptions'
-          - description: Specifies the Cognito options for the specified Elasticsearch domain.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: Specifies the status of the Cognito options for the specified Elasticsearch domain.
-      description: Status of the Cognito options for the specified Elasticsearch domain.
-    AuthorizedPrincipalList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AuthorizedPrincipal'
-    AutoTuneStatus:
+      description: ' Map of Role of the Instance and Limits that are applicable. Role performed by given Instance in Elasticsearch can be one of the following: <ul> <li>data: If the given InstanceType is used as data node</li> <li>master: If the given InstanceType is used as master node</li> <li>ultra_warm: If the given InstanceType is used as warm node</li> </ul> '
+      additionalProperties:
+        $ref: '#/components/schemas/Limits'
+    ReservedElasticsearchInstanceOffering:
       type: object
-      required:
-      - CreationDate
-      - UpdateDate
-      - State
       properties:
-        CreationDate:
+        ReservedElasticsearchInstanceOfferingId:
           allOf:
-          - $ref: '#/components/schemas/UpdateTimestamp'
-          - description: Timestamp which tells Auto-Tune options creation date .
-        UpdateDate:
+          - $ref: '#/components/schemas/GUID'
+          - description: The Elasticsearch reserved instance offering identifier.
+        ElasticsearchInstanceType:
           allOf:
-          - $ref: '#/components/schemas/UpdateTimestamp'
-          - description: Timestamp which tells Auto-Tune options last updated time.
-        UpdateVersion:
+          - $ref: '#/components/schemas/ESPartitionInstanceType'
+          - description: The Elasticsearch instance type offered by the reserved instance offering.
+        Duration:
           allOf:
-          - $ref: '#/components/schemas/UIntValue'
-          - description: Specifies the Auto-Tune options latest version.
-        State:
+          - $ref: '#/components/schemas/Integer'
+          - description: The duration, in seconds, for which the offering will reserve the Elasticsearch instance.
+        FixedPrice:
           allOf:
-          - $ref: '#/components/schemas/AutoTuneState'
-          - description: Specifies the <code>AutoTuneState</code> for the Elasticsearch domain.
-        ErrorMessage:
+          - $ref: '#/components/schemas/Double'
+          - description: 'The upfront fixed charge you will pay to purchase the specific reserved Elasticsearch instance offering. '
+        UsagePrice:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The rate you are charged for each hour the domain that is using the offering is running.
+        CurrencyCode:
           allOf:
           - $ref: '#/components/schemas/String'
-          - description: Specifies the error message while enabling or disabling the Auto-Tune options.
-        PendingDeletion:
+          - description: The currency code for the reserved Elasticsearch instance offering.
+        PaymentOption:
           allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Indicates whether the Elasticsearch domain is being deleted.
-      description: 'Provides the current status of the Auto-Tune options. '
-    Message:
-      type: string
-      minLength: 0
-      maxLength: 1024
-    BaseException: {}
-    MaximumInstanceCount:
-      type: integer
-      description: ' Maximum number of Instances that can be instantiated for given InstanceType. '
-    GetUpgradeHistoryResponse:
-      type: object
-      properties:
-        UpgradeHistories:
+          - $ref: '#/components/schemas/ReservedElasticsearchInstancePaymentOption'
+          - description: Payment option for the reserved Elasticsearch instance offering
+        RecurringCharges:
           allOf:
-          - $ref: '#/components/schemas/UpgradeHistoryList'
-          - description: ' A list of <code> <a>UpgradeHistory</a> </code> objects corresponding to each Upgrade or Upgrade Eligibility Check performed on a domain returned as part of <code> <a>GetUpgradeHistoryResponse</a> </code> object. '
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Pagination token that needs to be supplied to the next call to get the next page of results
-      description: ' Container for response returned by <code> <a>GetUpgradeHistory</a> </code> operation. '
-    CloudWatchLogsLogGroupArn:
-      type: string
-      description: ARN of the Cloudwatch log group to which log needs to be published.
-    Password:
-      type: string
-      minLength: 8
-      format: password
-    VpcEndpointErrorList:
-      type: array
-      items:
-        $ref: '#/components/schemas/VpcEndpointError'
-    VpcEndpoints:
-      type: array
-      items:
-        $ref: '#/components/schemas/VpcEndpoint'
-    DescribeInboundCrossClusterSearchConnectionsResponse:
-      type: object
-      properties:
-        CrossClusterSearchConnections:
-          allOf:
-          - $ref: '#/components/schemas/InboundCrossClusterSearchConnections'
-          - description: Consists of list of <code><a>InboundCrossClusterSearchConnection</a></code> matching the specified filter criteria.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: 'If more results are available and NextToken is present, make the next request to the same API with the received NextToken to paginate the remaining results. '
-      description: The result of a <code><a>DescribeInboundCrossClusterSearchConnections</a></code> request. Contains the list of connections matching the filter criteria.
-    AdvancedSecurityOptionsStatus:
-      type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/AdvancedSecurityOptions'
-          - description: ' Specifies advanced security options for the specified Elasticsearch domain.'
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: ' Status of the advanced security options for the specified Elasticsearch domain.'
-      description: ' Specifies the status of advanced security options for the specified Elasticsearch domain.'
-    ListVpcEndpointsForDomainResponse:
-      type: object
-      required:
-      - VpcEndpointSummaryList
-      - NextToken
-      properties:
-        VpcEndpointSummaryList:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointSummaryList'
-          - description: Provides list of <code>VpcEndpointSummary</code> summarizing details of the VPC endpoints.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: Information about each endpoint associated with the domain.
-      description: Container for response parameters to the <code><a>ListVpcEndpointsForDomain</a></code> operation. Returns a list containing summarized details of the VPC endpoints.
-    DescribeElasticsearchDomainsResponse:
-      type: object
-      required:
-      - DomainStatusList
-      properties:
-        DomainStatusList:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchDomainStatusList'
-          - description: The status of the domains requested in the <code>DescribeElasticsearchDomains</code> request.
-      description: The result of a <code>DescribeElasticsearchDomains</code> request. Contains the status of the specified domains or all domains owned by the account.
-    AcceptInboundCrossClusterSearchConnectionResponse:
-      type: object
-      properties:
-        CrossClusterSearchConnection:
-          allOf:
-          - $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
-          - description: 'Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of accepted inbound connection. '
-      description: The result of a <code><a>AcceptInboundCrossClusterSearchConnection</a></code> operation. Contains details of accepted inbound connection.
-    AutoTuneOptionsOutput:
-      type: object
-      properties:
-        State:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneState'
-          - description: Specifies the <code>AutoTuneState</code> for the Elasticsearch domain.
-        ErrorMessage:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: Specifies the error message while enabling or disabling the Auto-Tune.
-      description: 'Specifies the Auto-Tune options: the Auto-Tune desired state for the domain and list of maintenance schedules.'
-    SAMLEntityId:
-      type: string
-      minLength: 8
-      maxLength: 512
-    ChangeProgressStage:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/ChangeProgressStageName'
-          - description: The name of the specific progress stage.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/ChangeProgressStageStatus'
-          - description: The overall status of a specific progress stage.
-        Description:
-          allOf:
-          - $ref: '#/components/schemas/Description'
-          - description: The description of the progress stage.
-        LastUpdated:
-          allOf:
-          - $ref: '#/components/schemas/LastUpdated'
-          - description: The last updated timestamp of the progress stage.
-      description: A progress stage details of a specific domain configuration change.
-    UpdateVpcEndpointResponse:
-      type: object
-      required:
-      - VpcEndpoint
-      properties:
-        VpcEndpoint:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpoint'
-          - description: The endpoint to be updated.
-      description: Contains the configuration and status of the VPC endpoint being updated.
-    CancelElasticsearchServiceSoftwareUpdateResponse:
-      type: object
-      properties:
-        ServiceSoftwareOptions:
-          allOf:
-          - $ref: '#/components/schemas/ServiceSoftwareOptions'
-          - description: The current status of the Elasticsearch service software update.
-      description: The result of a <code>CancelElasticsearchServiceSoftwareUpdate</code> operation. Contains the status of the update.
+          - $ref: '#/components/schemas/RecurringChargeList'
+          - description: The charge to your account regardless of whether you are creating any domains using the instance offering.
+      description: Details of a reserved Elasticsearch instance offering.
     OptionState:
       type: string
       enum:
@@ -5190,559 +5683,66 @@ components:
       - Processing
       - Active
       description: '<p>The state of a requested change. One of the following:</p> <ul> <li>Processing: The request change is still in-process.</li> <li>Active: The request change is processed and deployed to the Elasticsearch domain.</li> </ul>'
-    InvalidTypeException: {}
-    LimitExceededException: {}
-    AutoTuneState:
+    SAMLEntityId:
       type: string
-      enum:
-      - ENABLED
-      - DISABLED
-      - ENABLE_IN_PROGRESS
-      - DISABLE_IN_PROGRESS
-      - DISABLED_AND_ROLLBACK_SCHEDULED
-      - DISABLED_AND_ROLLBACK_IN_PROGRESS
-      - DISABLED_AND_ROLLBACK_COMPLETE
-      - DISABLED_AND_ROLLBACK_ERROR
-      - ERROR
-      description: Specifies the Auto-Tune state for the Elasticsearch domain. For valid states see the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a>.
-    InboundCrossClusterSearchConnections:
-      type: array
-      items:
-        $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
-    StorageTypeLimit:
-      type: object
-      properties:
-        LimitName:
-          allOf:
-          - $ref: '#/components/schemas/LimitName'
-          - description: ' Name of storage limits that are applicable for given storage type. If <code> <a>StorageType</a> </code> is ebs, following storage options are applicable <ol> <li>MinimumVolumeSize</li> Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumVolumeSize</li> Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumIops</li> Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumIops</li> Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumThroughput</li> Maximum amount of Throughput that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumThroughput</li> Minimum amount of Throughput that is applicable for given storage type.It can be empty if it is not applicable. </ol> '
-        LimitValues:
-          allOf:
-          - $ref: '#/components/schemas/LimitValueList'
-          - description: ' Values for the <code> <a>StorageTypeLimit$LimitName</a> </code> . '
-      description: 'Limits that are applicable for given storage type. '
-    CompatibleVersionsMap:
-      type: object
-      properties:
-        SourceVersion:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchVersionString'
-          - description: The current version of Elasticsearch on which a domain is.
-        TargetVersions:
-          $ref: '#/components/schemas/ElasticsearchVersionList'
-      description: ' A map from an <code> <a>ElasticsearchVersion</a> </code> to a list of compatible <code> <a>ElasticsearchVersion</a> </code> s to which the domain can be upgraded. '
-    DeleteVpcEndpointResponse:
-      type: object
-      required:
-      - VpcEndpointSummary
-      properties:
-        VpcEndpointSummary:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointSummary'
-          - description: Information about the deleted endpoint, including its current status (<code>DELETING</code> or <code>DELETE_FAILED</code>).
-      description: Container for response parameters to the <code><a>DeleteVpcEndpoint</a></code> operation. Contains the summarized detail of the VPC Endpoint being deleted.
-    MinimumInstanceCount:
-      type: integer
-      description: ' Minimum number of Instances that can be instantiated for given InstanceType. '
-    DescribeDomainAutoTunesResponse:
-      type: object
-      properties:
-        AutoTunes:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneList'
-          - description: Specifies the list of setting adjustments that Auto-Tune has made to the domain. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: Specifies an identifier to allow retrieval of paginated results.
-      description: 'The result of <code>DescribeDomainAutoTunes</code> request. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
-    GetCompatibleElasticsearchVersionsResponse:
-      type: object
-      properties:
-        CompatibleElasticsearchVersions:
-          allOf:
-          - $ref: '#/components/schemas/CompatibleElasticsearchVersionsList'
-          - description: ' A map of compatible Elasticsearch versions returned as part of the <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. '
-      description: ' Container for response returned by <code> <a>GetCompatibleElasticsearchVersions</a> </code> operation. '
-    LogPublishingOptionsStatus:
-      type: object
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/LogPublishingOptions'
-          - description: The log publishing options configured for the Elasticsearch domain.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: 'The status of the log publishing options for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that''s included. '
-      description: The configured log publishing options for the domain and their current status.
-    ElasticsearchDomainStatusList:
-      type: array
-      description: A list that contains the status of each requested Elasticsearch domain.
-      items:
-        $ref: '#/components/schemas/ElasticsearchDomainStatus'
-    ValidationException: {}
-    DeploymentType:
-      type: string
-      minLength: 2
-      maxLength: 128
-    CreateOutboundCrossClusterSearchConnectionResponse:
-      type: object
-      properties:
-        SourceDomainInfo:
-          allOf:
-          - $ref: '#/components/schemas/DomainInformation'
-          - description: Specifies the <code><a>DomainInformation</a></code> for the source Elasticsearch domain.
-        DestinationDomainInfo:
-          allOf:
-          - $ref: '#/components/schemas/DomainInformation'
-          - description: Specifies the <code><a>DomainInformation</a></code> for the destination Elasticsearch domain.
-        ConnectionAlias:
-          allOf:
-          - $ref: '#/components/schemas/ConnectionAlias'
-          - description: Specifies the connection alias provided during the create connection request.
-        ConnectionStatus:
-          allOf:
-          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnectionStatus'
-          - description: Specifies the <code><a>OutboundCrossClusterSearchConnectionStatus</a></code> for the newly created connection.
-        CrossClusterSearchConnectionId:
-          allOf:
-          - $ref: '#/components/schemas/CrossClusterSearchConnectionId'
-          - description: Unique id for the created outbound connection, which is used for subsequent operations on connection.
-      description: The result of a <code><a>CreateOutboundCrossClusterSearchConnection</a></code> request. Contains the details of the newly created cross-cluster search connection.
-    Double:
-      type: number
-      format: double
-    InvalidPaginationTokenException: {}
-    ServiceSoftwareOptions:
-      type: object
-      properties:
-        CurrentVersion:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The current service software version that is present on the domain.
-        NewVersion:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The new service software version if one is available.
-        UpdateAvailable:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: '<code>True</code> if you are able to update you service software version. <code>False</code> if you are not able to update your service software version. '
-        Cancellable:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: '<code>True</code> if you are able to cancel your service software version update. <code>False</code> if you are not able to cancel your service software version. '
-        UpdateStatus:
-          allOf:
-          - $ref: '#/components/schemas/DeploymentStatus'
-          - description: 'The status of your service software update. This field can take the following values: <code>ELIGIBLE</code>, <code>PENDING_UPDATE</code>, <code>IN_PROGRESS</code>, <code>COMPLETED</code>, and <code>NOT_ELIGIBLE</code>.'
-        Description:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The description of the <code>UpdateStatus</code>.
-        AutomatedUpdateDate:
-          allOf:
-          - $ref: '#/components/schemas/DeploymentCloseDateTimeStamp'
-          - description: Timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.
-        OptionalDeployment:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: '<code>True</code> if a service software is never automatically updated. <code>False</code> if a service software is automatically updated after <code>AutomatedUpdateDate</code>. '
-      description: The current options of an Elasticsearch domain service software options.
-    VpcEndpointErrorCode:
-      type: string
-      enum:
-      - ENDPOINT_NOT_FOUND
-      - SERVER_ERROR
-      description: 'Specifies the error code of the failure encountered while describing the VPC endpoint: <ul> <li>ENDPOINT_NOT_FOUND: Indicates that the requested VPC endpoint does not exist.</li> <li>SERVER_ERROR: Indicates the describe endpoint operation failed due to an internal server error.</li> </ul> '
-    LimitsByRole:
-      type: object
-      description: ' Map of Role of the Instance and Limits that are applicable. Role performed by given Instance in Elasticsearch can be one of the following: <ul> <li>data: If the given InstanceType is used as data node</li> <li>master: If the given InstanceType is used as master node</li> <li>ultra_warm: If the given InstanceType is used as warm node</li> </ul> '
-      additionalProperties:
-        $ref: '#/components/schemas/Limits'
-    ResourceAlreadyExistsException: {}
-    VpcEndpointSummary:
-      type: object
-      properties:
-        VpcEndpointId:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointId'
-          - description: The unique identifier of the endpoint.
-        VpcEndpointOwner:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The creator of the endpoint.
-        DomainArn:
-          allOf:
-          - $ref: '#/components/schemas/DomainArn'
-          - description: The Amazon Resource Name (ARN) of the domain associated with the endpoint.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointStatus'
-          - description: The current status of the endpoint.
-      description: Summary information for an Amazon OpenSearch Service-managed VPC endpoint.
-    ReservedElasticsearchInstancePaymentOption:
-      type: string
-      enum:
-      - ALL_UPFRONT
-      - PARTIAL_UPFRONT
-      - NO_UPFRONT
-    OutboundCrossClusterSearchConnectionStatus:
-      type: object
-      properties:
-        StatusCode:
-          allOf:
-          - $ref: '#/components/schemas/OutboundCrossClusterSearchConnectionStatusCode'
-          - description: '<p>The state code for outbound connection. This can be one of the following:</p> <ul> <li>VALIDATING: The outbound connection request is being validated.</li> <li>VALIDATION_FAILED: Validation failed for the connection request.</li> <li>PENDING_ACCEPTANCE: Outbound connection request is validated and is not yet accepted by destination domain owner.</li> <li>PROVISIONING: Outbound connection request is in process.</li> <li>ACTIVE: Outbound connection is active and ready to use.</li> <li>REJECTED: Outbound connection request is rejected by destination domain owner.</li> <li>DELETING: Outbound connection deletion is in progress.</li> <li>DELETED: Outbound connection is deleted and cannot be used further.</li> </ul>'
-        Message:
-          allOf:
-          - $ref: '#/components/schemas/CrossClusterSearchConnectionStatusMessage'
-          - description: Specifies verbose information for the outbound connection status.
-      description: Specifies the connection status of an outbound cross-cluster search connection.
-    RoleArn:
-      type: string
-      minLength: 20
-      maxLength: 2048
-    ScheduledAutoTuneDetails:
-      type: object
-      properties:
-        Date:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneDate'
-          - description: 'Specifies timestamp for the Auto-Tune action scheduled for the domain. '
-        ActionType:
-          allOf:
-          - $ref: '#/components/schemas/ScheduledAutoTuneActionType'
-          - description: 'Specifies Auto-Tune action type. Valid values are JVM_HEAP_SIZE_TUNING and JVM_YOUNG_GEN_TUNING. '
-        Action:
-          allOf:
-          - $ref: '#/components/schemas/ScheduledAutoTuneDescription'
-          - description: 'Specifies Auto-Tune action description. '
-        Severity:
-          allOf:
-          - $ref: '#/components/schemas/ScheduledAutoTuneSeverityType'
-          - description: 'Specifies Auto-Tune action severity. Valid values are LOW, MEDIUM and HIGH. '
-      description: 'Specifies details of the scheduled Auto-Tune action. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
-    ElasticsearchClusterConfigStatus:
-      type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchClusterConfig'
-          - description: ' Specifies the cluster configuration for the specified Elasticsearch domain.'
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: ' Specifies the status of the configuration for the specified Elasticsearch domain.'
-      description: ' Specifies the configuration status for the specified Elasticsearch domain.'
-    CrossClusterSearchConnectionStatusMessage:
-      type: string
-    UpgradeHistoryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/UpgradeHistory'
-    ElasticsearchVersionList:
-      type: array
-      description: 'List of supported elastic search versions. '
-      items:
-        $ref: '#/components/schemas/ElasticsearchVersionString'
-    TotalNumberOfStages:
-      type: integer
-    AWSAccount:
-      type: string
-      pattern: ^[0-9]+$
-    ReservedElasticsearchInstanceList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ReservedElasticsearchInstance'
-    VPCDerivedInfoStatus:
-      type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/VPCDerivedInfo'
-          - description: ' Specifies the VPC options for the specified Elasticsearch domain.'
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: ' Specifies the status of the VPC options for the specified Elasticsearch domain.'
-      description: ' Status of the VPC options for the specified Elasticsearch domain.'
-    Issues:
-      type: array
-      items:
-        $ref: '#/components/schemas/Issue'
-    AutoTune:
-      type: object
-      properties:
-        AutoTuneType:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneType'
-          - description: 'Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. '
-        AutoTuneDetails:
-          allOf:
-          - $ref: '#/components/schemas/AutoTuneDetails'
-          - description: 'Specifies details of the Auto-Tune action. See the <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/auto-tune.html" target="_blank">Developer Guide</a> for more information. '
-      description: 'Specifies Auto-Tune type and Auto-Tune action details. '
-    VpcEndpointStatus:
-      type: string
-      enum:
-      - CREATING
-      - CREATE_FAILED
-      - ACTIVE
-      - UPDATING
-      - UPDATE_FAILED
-      - DELETING
-      - DELETE_FAILED
-      description: 'Specifies the current status of the VPC endpoint: <ul> <li>CREATING: Indicates that the VPC endpoint is currently being created.</li> <li>CREATE_FAILED: Indicates that the VPC endpoint creation failed.</li> <li>ACTIVE: Indicates that the VPC endpoint is currently active.</li> <li>UPDATING: Indicates that the VPC endpoint is currently being updated.</li> <li>UPDATE_FAILED: Indicates that the VPC endpoint update failed.</li> <li>DELETING: Indicates that the VPC endpoint is currently being deleted.</li> <li>DELETE_FAILED: Indicates that the VPC endpoint deletion failed.</li> </ul> '
-    TLSSecurityPolicy:
-      type: string
-      enum:
-      - Policy-Min-TLS-1-0-2019-07
-      - Policy-Min-TLS-1-2-2019-07
-    VpcEndpointId:
-      type: string
-      pattern: ^aos-[a-zA-Z0-9]*$
-      minLength: 5
-      maxLength: 256
-    GUID:
-      type: string
-      pattern: \p{XDigit}{8}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{4}-\p{XDigit}{12}
-    AccessPoliciesStatus:
-      type: object
-      required:
-      - Options
-      - Status
-      properties:
-        Options:
-          allOf:
-          - $ref: '#/components/schemas/PolicyDocument'
-          - description: The access policy configured for the Elasticsearch domain. Access policies may be resource-based, IP-based, or IAM-based. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank"> Configuring Access Policies</a>for more information.
-        Status:
-          allOf:
-          - $ref: '#/components/schemas/OptionStatus'
-          - description: 'The status of the access policy for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that''s included. '
-      description: The configured access rules for the domain's document and search endpoints, and the current status of those rules.
+      minLength: 8
+      maxLength: 512
     TagKey:
       type: string
       description: A string of length from 1 to 128 characters that specifies the key for a Tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.
       minLength: 1
       maxLength: 128
-    AutoTuneMaintenanceScheduleList:
+    ReservedElasticsearchInstanceList:
       type: array
       items:
-        $ref: '#/components/schemas/AutoTuneMaintenanceSchedule'
-      maxItems: 100
-    DescribeDomainChangeProgressResponse:
-      type: object
-      properties:
-        ChangeProgressStatus:
-          allOf:
-          - $ref: '#/components/schemas/ChangeProgressStatusDetails'
-          - description: 'Progress information for the configuration change that is requested in the <code>DescribeDomainChangeProgress</code> request. '
-      description: 'The result of a <code>DescribeDomainChangeProgress</code> request. Contains the progress information of the requested domain change. '
-    KmsKeyId:
-      type: string
-      minLength: 1
-      maxLength: 500
-    VpcEndpointError:
-      type: object
-      properties:
-        VpcEndpointId:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointId'
-          - description: 'The unique identifier of the endpoint. '
-        ErrorCode:
-          allOf:
-          - $ref: '#/components/schemas/VpcEndpointErrorCode'
-          - description: The code associated with the error.
-        ErrorMessage:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: A message describing the error.
-      description: Error information when attempting to describe an Amazon OpenSearch Service-managed VPC endpoint.
-    DomainEndpointOptions:
-      type: object
-      properties:
-        EnforceHTTPS:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Specify if only HTTPS endpoint should be enabled for the Elasticsearch domain.
-        TLSSecurityPolicy:
-          allOf:
-          - $ref: '#/components/schemas/TLSSecurityPolicy'
-          - description: 'Specify the TLS security policy that needs to be applied to the HTTPS endpoint of Elasticsearch domain. <br/> It can be one of the following values: <ul> <li><b>Policy-Min-TLS-1-0-2019-07: </b> TLS security policy which supports TLSv1.0 and higher.</li> <li><b>Policy-Min-TLS-1-2-2019-07: </b> TLS security policy which supports only TLSv1.2</li> </ul> '
-        CustomEndpointEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Specify if custom endpoint should be enabled for the Elasticsearch domain.
-        CustomEndpoint:
-          allOf:
-          - $ref: '#/components/schemas/DomainNameFqdn'
-          - description: Specify the fully qualified domain for your custom endpoint.
-        CustomEndpointCertificateArn:
-          allOf:
-          - $ref: '#/components/schemas/ARN'
-          - description: Specify ACM certificate ARN for your custom endpoint.
-      description: Options to configure endpoint for the Elasticsearch domain.
-    OutboundCrossClusterSearchConnectionStatusCode:
-      type: string
-      enum:
-      - PENDING_ACCEPTANCE
-      - VALIDATING
-      - VALIDATION_FAILED
-      - PROVISIONING
-      - ACTIVE
-      - REJECTED
-      - DELETING
-      - DELETED
-    InternalException: {}
-    EBSOptions:
-      type: object
-      properties:
-        EBSEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: Specifies whether EBS-based storage is enabled.
-        VolumeType:
-          allOf:
-          - $ref: '#/components/schemas/VolumeType'
-          - description: ' Specifies the volume type for EBS-based storage.'
-        VolumeSize:
-          allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: ' Integer to specify the size of an EBS volume.'
-        Iops:
-          allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: Specifies the IOPS for Provisioned IOPS And GP3 EBS volume (SSD).
-        Throughput:
-          allOf:
-          - $ref: '#/components/schemas/IntegerClass'
-          - description: Specifies the Throughput for GP3 EBS volume (SSD).
-      description: Options to enable, disable, and specify the properties of EBS storage volumes. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank"> Configuring EBS-based Storage</a>.
-    DomainId:
-      type: string
-      description: Unique identifier for an Elasticsearch domain.
-      minLength: 1
-      maxLength: 64
-    OverallChangeStatus:
-      type: string
-      enum:
-      - PENDING
-      - PROCESSING
-      - COMPLETED
-      - FAILED
-      description: The overall status value of the domain configuration change.
-    ESPartitionInstanceType:
-      type: string
-      enum:
-      - m3.medium.elasticsearch
-      - m3.large.elasticsearch
-      - m3.xlarge.elasticsearch
-      - m3.2xlarge.elasticsearch
-      - m4.large.elasticsearch
-      - m4.xlarge.elasticsearch
-      - m4.2xlarge.elasticsearch
-      - m4.4xlarge.elasticsearch
-      - m4.10xlarge.elasticsearch
-      - m5.large.elasticsearch
-      - m5.xlarge.elasticsearch
-      - m5.2xlarge.elasticsearch
-      - m5.4xlarge.elasticsearch
-      - m5.12xlarge.elasticsearch
-      - r5.large.elasticsearch
-      - r5.xlarge.elasticsearch
-      - r5.2xlarge.elasticsearch
-      - r5.4xlarge.elasticsearch
-      - r5.12xlarge.elasticsearch
-      - c5.large.elasticsearch
-      - c5.xlarge.elasticsearch
-      - c5.2xlarge.elasticsearch
-      - c5.4xlarge.elasticsearch
-      - c5.9xlarge.elasticsearch
-      - c5.18xlarge.elasticsearch
-      - ultrawarm1.medium.elasticsearch
-      - ultrawarm1.large.elasticsearch
-      - t2.micro.elasticsearch
-      - t2.small.elasticsearch
-      - t2.medium.elasticsearch
-      - r3.large.elasticsearch
-      - r3.xlarge.elasticsearch
-      - r3.2xlarge.elasticsearch
-      - r3.4xlarge.elasticsearch
-      - r3.8xlarge.elasticsearch
-      - i2.xlarge.elasticsearch
-      - i2.2xlarge.elasticsearch
-      - d2.xlarge.elasticsearch
-      - d2.2xlarge.elasticsearch
-      - d2.4xlarge.elasticsearch
-      - d2.8xlarge.elasticsearch
-      - c4.large.elasticsearch
-      - c4.xlarge.elasticsearch
-      - c4.2xlarge.elasticsearch
-      - c4.4xlarge.elasticsearch
-      - c4.8xlarge.elasticsearch
-      - r4.large.elasticsearch
-      - r4.xlarge.elasticsearch
-      - r4.2xlarge.elasticsearch
-      - r4.4xlarge.elasticsearch
-      - r4.8xlarge.elasticsearch
-      - r4.16xlarge.elasticsearch
-      - i3.large.elasticsearch
-      - i3.xlarge.elasticsearch
-      - i3.2xlarge.elasticsearch
-      - i3.4xlarge.elasticsearch
-      - i3.8xlarge.elasticsearch
-      - i3.16xlarge.elasticsearch
-    DomainNameFqdn:
-      type: string
-      pattern: ^(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
-      minLength: 1
-      maxLength: 255
-    Integer:
-      type: integer
-    ValueStringList:
+        $ref: '#/components/schemas/ReservedElasticsearchInstance'
+    VpcEndpointErrorList:
       type: array
       items:
-        $ref: '#/components/schemas/NonEmptyString'
-      minItems: 1
-    ListElasticsearchInstanceTypesResponse:
-      type: object
-      properties:
-        ElasticsearchInstanceTypes:
-          allOf:
-          - $ref: '#/components/schemas/ElasticsearchInstanceTypeList'
-          - description: ' List of instance types supported by Amazon Elasticsearch service for given <code> <a>ElasticsearchVersion</a> </code> '
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: 'In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results. '
-      description: ' Container for the parameters returned by <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. '
-    ScheduledAutoTuneDescription:
-      type: string
-      description: 'Specifies Auto-Tune action description. '
-    ListVpcEndpointAccessResponse:
-      type: object
-      required:
-      - AuthorizedPrincipalList
-      - NextToken
-      properties:
-        AuthorizedPrincipalList:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizedPrincipalList'
-          - description: List of <code>AuthorizedPrincipal</code> describing the details of the permissions to manage VPC endpoints against the specified domain.
-        NextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: Provides an identifier to allow retrieval of paginated results.
-      description: Container for response parameters to the <code><a>ListVpcEndpointAccess</a></code> operation. Returns a list of accounts id and account type authorized to manage VPC endpoints.
+        $ref: '#/components/schemas/VpcEndpointError'
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
