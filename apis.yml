@@ -126,6 +126,9 @@ apis:
   - type: FAQ
     url: https://aws.amazon.com/opensearch-service/faqs/
 common:
+- type: CapabilityMap
+  url: capabilities/amazon-opensearch-capability-edges.yml
+  name: Amazon OpenSearch Service API Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/amazon-opensearch-service-api/overview
 - type: AgenticAccess
