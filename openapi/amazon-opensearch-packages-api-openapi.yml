@@ -860,97 +860,23 @@ paths:
       - Packages
 components:
   schemas:
-    PackageDescription:
+    LastUpdated:
       type: string
-      maxLength: 1024
-    ErrorDetails:
-      type: object
-      properties:
-        ErrorType:
-          $ref: '#/components/schemas/ErrorType'
-        ErrorMessage:
-          $ref: '#/components/schemas/ErrorMessage'
-    String:
+      format: date-time
+    ConflictException: {}
+    ResourceAlreadyExistsException: {}
+    ResourceNotFoundException: {}
+    PackageName:
+      type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      minLength: 3
+      maxLength: 28
+    ErrorType:
       type: string
     CommitMessage:
       type: string
       maxLength: 160
-    PackageVersion:
-      type: string
-    CreatePackageResponse:
-      type: object
-      properties:
-        PackageDetails:
-          allOf:
-          - $ref: '#/components/schemas/PackageDetails'
-          - description: Information about the package <code>PackageDetails</code>.
-      description: ' Container for response returned by <code> <a>CreatePackage</a> </code> operation. '
-    DescribePackagesFilter:
-      type: object
-      properties:
-        Name:
-          allOf:
-          - $ref: '#/components/schemas/DescribePackagesFilterName'
-          - description: Any field from <code>PackageDetails</code>.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/DescribePackagesFilterValues'
-          - description: A non-empty list of values for the specified field.
-      description: Filter to apply in <code>DescribePackage</code> response.
-    DescribePackagesFilterValue:
-      type: string
-      pattern: ^[0-9a-zA-Z\*\.\\/\?-]*$
     LimitExceededException: {}
-    S3Key:
-      type: string
-    PackageDetails:
-      type: object
-      properties:
-        PackageID:
-          allOf:
-          - $ref: '#/components/schemas/PackageID'
-          - description: Internal ID of the package.
-        PackageName:
-          allOf:
-          - $ref: '#/components/schemas/PackageName'
-          - description: User specified name of the package.
-        PackageType:
-          allOf:
-          - $ref: '#/components/schemas/PackageType'
-          - description: Currently supports only TXT-DICTIONARY.
-        PackageDescription:
-          allOf:
-          - $ref: '#/components/schemas/PackageDescription'
-          - description: User-specified description of the package.
-        PackageStatus:
-          allOf:
-          - $ref: '#/components/schemas/PackageStatus'
-          - description: Current state of the package. Values are COPYING/COPY_FAILED/AVAILABLE/DELETING/DELETE_FAILED
-        CreatedAt:
-          allOf:
-          - $ref: '#/components/schemas/CreatedAt'
-          - description: Timestamp which tells creation date of the package.
-        LastUpdatedAt:
-          $ref: '#/components/schemas/LastUpdated'
-        AvailablePackageVersion:
-          $ref: '#/components/schemas/PackageVersion'
-        ErrorDetails:
-          allOf:
-          - $ref: '#/components/schemas/ErrorDetails'
-          - description: Additional information if the package is in an error state. Null otherwise.
-      description: Basic information about a package.
-    GetPackageVersionHistoryResponse:
-      type: object
-      properties:
-        PackageID:
-          $ref: '#/components/schemas/PackageID'
-        PackageVersionHistoryList:
-          allOf:
-          - $ref: '#/components/schemas/PackageVersionHistoryList'
-          - description: List of <code>PackageVersionHistory</code> objects.
-        NextToken:
-          $ref: '#/components/schemas/String'
-      description: ' Container for response returned by <code> <a>GetPackageVersionHistory</a> </code> operation. '
     DomainPackageDetails:
       type: object
       properties:
@@ -989,20 +915,21 @@ components:
           - $ref: '#/components/schemas/ErrorDetails'
           - description: Additional information if the package is in an error state. Null otherwise.
       description: Information on a package that is associated with a domain.
-    DomainName:
+    PackageVersion:
       type: string
-      pattern: '[a-z][a-z0-9\-]+'
-      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
-      minLength: 3
-      maxLength: 28
-    DomainPackageStatus:
+    DeletePackageResponse:
+      type: object
+      properties:
+        PackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/PackageDetails'
+          - description: <code>PackageDetails</code>
+      description: ' Container for response parameters to <code> <a>DeletePackage</a> </code> operation. '
+    PackageID:
       type: string
-      enum:
-      - ASSOCIATING
-      - ASSOCIATION_FAILED
-      - ACTIVE
-      - DISSOCIATING
-      - DISSOCIATION_FAILED
+    CreatedAt:
+      type: string
+      format: date-time
     ListDomainsForPackageResponse:
       type: object
       properties:
@@ -1013,65 +940,6 @@ components:
         NextToken:
           $ref: '#/components/schemas/String'
       description: ' Container for response parameters to <code> <a>ListDomainsForPackage</a> </code> operation. '
-    PackageDetailsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PackageDetails'
-    PackageVersionHistoryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PackageVersionHistory'
-    ReferencePath:
-      type: string
-    ValidationException: {}
-    DescribePackagesFilterValues:
-      type: array
-      items:
-        $ref: '#/components/schemas/DescribePackagesFilterValue'
-      minItems: 1
-    BaseException: {}
-    DomainPackageDetailsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DomainPackageDetails'
-    LastUpdated:
-      type: string
-      format: date-time
-    DescribePackagesResponse:
-      type: object
-      properties:
-        PackageDetailsList:
-          allOf:
-          - $ref: '#/components/schemas/PackageDetailsList'
-          - description: List of <code>PackageDetails</code> objects.
-        NextToken:
-          $ref: '#/components/schemas/String'
-      description: ' Container for response returned by <code> <a>DescribePackages</a> </code> operation. '
-    DeletePackageResponse:
-      type: object
-      properties:
-        PackageDetails:
-          allOf:
-          - $ref: '#/components/schemas/PackageDetails'
-          - description: <code>PackageDetails</code>
-      description: ' Container for response parameters to <code> <a>DeletePackage</a> </code> operation. '
-    ErrorMessage:
-      type: string
-    DissociatePackageResponse:
-      type: object
-      properties:
-        DomainPackageDetails:
-          allOf:
-          - $ref: '#/components/schemas/DomainPackageDetails'
-          - description: <code>DomainPackageDetails</code>
-      description: ' Container for response returned by <code> <a>DissociatePackage</a> </code> operation. '
-    ErrorType:
-      type: string
-    AccessDeniedException: {}
-    PackageType:
-      type: string
-      enum:
-      - TXT-DICTIONARY
     PackageStatus:
       type: string
       enum:
@@ -1083,6 +951,15 @@ components:
       - DELETING
       - DELETED
       - DELETE_FAILED
+    BaseException: {}
+    PackageType:
+      type: string
+      enum:
+      - TXT-DICTIONARY
+    PackageVersionHistoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PackageVersionHistory'
     UpdatePackageResponse:
       type: object
       properties:
@@ -1091,38 +968,54 @@ components:
           - $ref: '#/components/schemas/PackageDetails'
           - description: Information about the package <code>PackageDetails</code>.
       description: ' Container for response returned by <code> <a>UpdatePackage</a> </code> operation. '
-    ResourceNotFoundException: {}
-    PackageName:
-      type: string
-      pattern: '[a-z][a-z0-9\-]+'
-      minLength: 3
-      maxLength: 28
-    CreatedAt:
-      type: string
-      format: date-time
-    ResourceAlreadyExistsException: {}
-    InternalException: {}
-    InvalidTypeException: {}
-    AssociatePackageResponse:
+    DomainPackageDetailsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DomainPackageDetails'
+    AccessDeniedException: {}
+    ErrorDetails:
       type: object
       properties:
-        DomainPackageDetails:
+        ErrorType:
+          $ref: '#/components/schemas/ErrorType'
+        ErrorMessage:
+          $ref: '#/components/schemas/ErrorMessage'
+    PackageDetails:
+      type: object
+      properties:
+        PackageID:
           allOf:
-          - $ref: '#/components/schemas/DomainPackageDetails'
-          - description: <code>DomainPackageDetails</code>
-      description: ' Container for response returned by <code> <a>AssociatePackage</a> </code> operation. '
-    S3BucketName:
-      type: string
-      minLength: 3
-      maxLength: 63
-    PackageID:
-      type: string
-    DescribePackagesFilterName:
-      type: string
-      enum:
-      - PackageID
-      - PackageName
-      - PackageStatus
+          - $ref: '#/components/schemas/PackageID'
+          - description: Internal ID of the package.
+        PackageName:
+          allOf:
+          - $ref: '#/components/schemas/PackageName'
+          - description: User specified name of the package.
+        PackageType:
+          allOf:
+          - $ref: '#/components/schemas/PackageType'
+          - description: Currently supports only TXT-DICTIONARY.
+        PackageDescription:
+          allOf:
+          - $ref: '#/components/schemas/PackageDescription'
+          - description: User-specified description of the package.
+        PackageStatus:
+          allOf:
+          - $ref: '#/components/schemas/PackageStatus'
+          - description: Current state of the package. Values are COPYING/COPY_FAILED/AVAILABLE/DELETING/DELETE_FAILED
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/CreatedAt'
+          - description: Timestamp which tells creation date of the package.
+        LastUpdatedAt:
+          $ref: '#/components/schemas/LastUpdated'
+        AvailablePackageVersion:
+          $ref: '#/components/schemas/PackageVersion'
+        ErrorDetails:
+          allOf:
+          - $ref: '#/components/schemas/ErrorDetails'
+          - description: Additional information if the package is in an error state. Null otherwise.
+      description: Basic information about a package.
     PackageVersionHistory:
       type: object
       properties:
@@ -1139,16 +1032,123 @@ components:
           - $ref: '#/components/schemas/CreatedAt'
           - description: Timestamp which tells creation time of the package version.
       description: Details of a package version.
-    ConflictException: {}
+    DescribePackagesFilterValues:
+      type: array
+      items:
+        $ref: '#/components/schemas/DescribePackagesFilterValue'
+      minItems: 1
+    AssociatePackageResponse:
+      type: object
+      properties:
+        DomainPackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/DomainPackageDetails'
+          - description: <code>DomainPackageDetails</code>
+      description: ' Container for response returned by <code> <a>AssociatePackage</a> </code> operation. '
+    DescribePackagesFilterName:
+      type: string
+      enum:
+      - PackageID
+      - PackageName
+      - PackageStatus
+    ReferencePath:
+      type: string
+    DescribePackagesResponse:
+      type: object
+      properties:
+        PackageDetailsList:
+          allOf:
+          - $ref: '#/components/schemas/PackageDetailsList'
+          - description: List of <code>PackageDetails</code> objects.
+        NextToken:
+          $ref: '#/components/schemas/String'
+      description: ' Container for response returned by <code> <a>DescribePackages</a> </code> operation. '
+    DescribePackagesFilterValue:
+      type: string
+      pattern: ^[0-9a-zA-Z\*\.\\/\?-]*$
+    PackageDetailsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PackageDetails'
+    InvalidTypeException: {}
+    GetPackageVersionHistoryResponse:
+      type: object
+      properties:
+        PackageID:
+          $ref: '#/components/schemas/PackageID'
+        PackageVersionHistoryList:
+          allOf:
+          - $ref: '#/components/schemas/PackageVersionHistoryList'
+          - description: List of <code>PackageVersionHistory</code> objects.
+        NextToken:
+          $ref: '#/components/schemas/String'
+      description: ' Container for response returned by <code> <a>GetPackageVersionHistory</a> </code> operation. '
+    DomainPackageStatus:
+      type: string
+      enum:
+      - ASSOCIATING
+      - ASSOCIATION_FAILED
+      - ACTIVE
+      - DISSOCIATING
+      - DISSOCIATION_FAILED
+    ErrorMessage:
+      type: string
+    CreatePackageResponse:
+      type: object
+      properties:
+        PackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/PackageDetails'
+          - description: Information about the package <code>PackageDetails</code>.
+      description: ' Container for response returned by <code> <a>CreatePackage</a> </code> operation. '
+    S3Key:
+      type: string
+    ValidationException: {}
+    S3BucketName:
+      type: string
+      minLength: 3
+      maxLength: 63
+    DissociatePackageResponse:
+      type: object
+      properties:
+        DomainPackageDetails:
+          allOf:
+          - $ref: '#/components/schemas/DomainPackageDetails'
+          - description: <code>DomainPackageDetails</code>
+      description: ' Container for response returned by <code> <a>DissociatePackage</a> </code> operation. '
+    InternalException: {}
+    String:
+      type: string
+    DescribePackagesFilter:
+      type: object
+      properties:
+        Name:
+          allOf:
+          - $ref: '#/components/schemas/DescribePackagesFilterName'
+          - description: Any field from <code>PackageDetails</code>.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/DescribePackagesFilterValues'
+          - description: A non-empty list of values for the specified field.
+      description: Filter to apply in <code>DescribePackage</code> response.
+    DomainName:
+      type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
+      minLength: 3
+      maxLength: 28
+    PackageDescription:
+      type: string
+      maxLength: 1024
   parameters:
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -1159,14 +1159,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -1177,8 +1177,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

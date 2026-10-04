@@ -271,22 +271,17 @@ paths:
       - Domain
 components:
   schemas:
-    ErrorDetails:
-      type: object
-      properties:
-        ErrorType:
-          $ref: '#/components/schemas/ErrorType'
-        ErrorMessage:
-          $ref: '#/components/schemas/ErrorMessage'
-    String:
+    LastUpdated:
       type: string
-    PackageVersion:
+      format: date-time
+    ResourceNotFoundException: {}
+    PackageName:
       type: string
-    DomainInfoList:
-      type: array
-      description: ' Contains the list of Elasticsearch domain information.'
-      items:
-        $ref: '#/components/schemas/DomainInfo'
+      pattern: '[a-z][a-z0-9\-]+'
+      minLength: 3
+      maxLength: 28
+    ErrorType:
+      type: string
     ListDomainNamesResponse:
       type: object
       properties:
@@ -333,63 +328,10 @@ components:
           - $ref: '#/components/schemas/ErrorDetails'
           - description: Additional information if the package is in an error state. Null otherwise.
       description: Information on a package that is associated with a domain.
-    DomainPackageStatus:
+    PackageVersion:
       type: string
-      enum:
-      - ASSOCIATING
-      - ASSOCIATION_FAILED
-      - ACTIVE
-      - DISSOCIATING
-      - DISSOCIATION_FAILED
-    DomainName:
+    PackageID:
       type: string
-      pattern: '[a-z][a-z0-9\-]+'
-      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
-      minLength: 3
-      maxLength: 28
-    ReferencePath:
-      type: string
-    ValidationException: {}
-    BaseException: {}
-    DomainPackageDetailsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DomainPackageDetails'
-    LastUpdated:
-      type: string
-      format: date-time
-    AccessDeniedException: {}
-    ErrorMessage:
-      type: string
-    ErrorType:
-      type: string
-    PackageType:
-      type: string
-      enum:
-      - TXT-DICTIONARY
-    DomainInfo:
-      type: object
-      properties:
-        DomainName:
-          allOf:
-          - $ref: '#/components/schemas/DomainName'
-          - description: ' Specifies the <code>DomainName</code>.'
-        EngineType:
-          allOf:
-          - $ref: '#/components/schemas/EngineType'
-          - description: ' Specifies the <code>EngineType</code> of the domain.'
-    ResourceNotFoundException: {}
-    PackageName:
-      type: string
-      pattern: '[a-z][a-z0-9\-]+'
-      minLength: 3
-      maxLength: 28
-    InternalException: {}
-    EngineType:
-      type: string
-      enum:
-      - OpenSearch
-      - Elasticsearch
     ListPackagesForDomainResponse:
       type: object
       properties:
@@ -402,17 +344,75 @@ components:
           - $ref: '#/components/schemas/String'
           - description: Pagination token that needs to be supplied to the next call to get the next page of results.
       description: ' Container for response parameters to <code> <a>ListPackagesForDomain</a> </code> operation. '
-    PackageID:
+    DomainInfoList:
+      type: array
+      description: ' Contains the list of Elasticsearch domain information.'
+      items:
+        $ref: '#/components/schemas/DomainInfo'
+    BaseException: {}
+    PackageType:
       type: string
+      enum:
+      - TXT-DICTIONARY
+    AccessDeniedException: {}
+    ErrorDetails:
+      type: object
+      properties:
+        ErrorType:
+          $ref: '#/components/schemas/ErrorType'
+        ErrorMessage:
+          $ref: '#/components/schemas/ErrorMessage'
+    ReferencePath:
+      type: string
+    DomainInfo:
+      type: object
+      properties:
+        DomainName:
+          allOf:
+          - $ref: '#/components/schemas/DomainName'
+          - description: ' Specifies the <code>DomainName</code>.'
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - description: ' Specifies the <code>EngineType</code> of the domain.'
+    DomainPackageStatus:
+      type: string
+      enum:
+      - ASSOCIATING
+      - ASSOCIATION_FAILED
+      - ACTIVE
+      - DISSOCIATING
+      - DISSOCIATION_FAILED
+    DomainPackageDetailsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DomainPackageDetails'
+    ErrorMessage:
+      type: string
+    InternalException: {}
+    ValidationException: {}
+    String:
+      type: string
+    EngineType:
+      type: string
+      enum:
+      - OpenSearch
+      - Elasticsearch
+    DomainName:
+      type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
+      minLength: 3
+      maxLength: 28
   parameters:
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -423,14 +423,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -441,8 +435,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
