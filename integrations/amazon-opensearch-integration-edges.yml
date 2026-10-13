@@ -1,0 +1,37 @@
+edges:
+- partner_name: Elastic
+  partner: elastic
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: elasticsearch-api
+  type: docs
+  degree: full
+  evidence: https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/amazon-opensearch/blob/main/evidence/compatibility/amazon-opensearch-elasticsearch-api-1.md
+  quote: Amazon OpenSearch Service is a managed service that makes it easy to deploy, operate, and scale OpenSearch
+    clusters in the AWS Cloud. An OpenSearch Service domain is synonymous with an OpenSearch cluster. Domains are
+    clusters with the setti
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+- partner_name: OpenSearch
+  partner: opensearch
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: opensearch-api
+  type: docs
+  degree: full
+  evidence: https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/amazon-opensearch/blob/main/evidence/compatibility/amazon-opensearch-opensearch-api-1.md
+  quote: Amazon OpenSearch Service is a managed service that makes it easy to deploy, operate, and scale OpenSearch
+    clusters in the AWS Cloud. An OpenSearch Service domain is synonymous with an OpenSearch cluster. Domains are
+    clusters with the setti
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched

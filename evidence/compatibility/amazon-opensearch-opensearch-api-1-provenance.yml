@@ -1,0 +1,14 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html
+page: https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html
+file: amazon-opensearch-opensearch-api-1.md
+bytes: 16557
+sha256: 5ca32a0d527f154c69fe45a80308af2a6ba2b3a718074f2d783817a1f7d3d843
+anchor: opensearch
+shape: opensearch-api
+classification: declares-compatibility
+quote: 'Amazon OpenSearch Service is a managed service that makes it easy to deploy, operate, and scale OpenSearch
+  clusters in the AWS Cloud. An OpenSearch Service domain is synonymous with an OpenSearch cluster. Domains are
+  clusters with the settings, instance types, instance counts, and storage resources '
+note: text extracted from the provider's own page (tags stripped), saved for evidence
