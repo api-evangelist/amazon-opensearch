@@ -271,25 +271,62 @@ paths:
       - Domain
 components:
   schemas:
+    DomainInfoList:
+      type: array
+      description: ' Contains the list of Elasticsearch domain information.'
+      items:
+        $ref: '#/components/schemas/DomainInfo'
+    ErrorDetails:
+      type: object
+      properties:
+        ErrorType:
+          $ref: '#/components/schemas/ErrorType'
+        ErrorMessage:
+          $ref: '#/components/schemas/ErrorMessage'
+    ErrorMessage:
+      type: string
+    BaseException: {}
+    ErrorType:
+      type: string
+    DomainInfo:
+      type: object
+      properties:
+        DomainName:
+          allOf:
+          - $ref: '#/components/schemas/DomainName'
+          - description: ' Specifies the <code>DomainName</code>.'
+        EngineType:
+          allOf:
+          - $ref: '#/components/schemas/EngineType'
+          - description: ' Specifies the <code>EngineType</code> of the domain.'
+    DomainName:
+      type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
+      minLength: 3
+      maxLength: 28
+    String:
+      type: string
+    ReferencePath:
+      type: string
+    PackageType:
+      type: string
+      enum:
+      - TXT-DICTIONARY
     LastUpdated:
       type: string
       format: date-time
+    AccessDeniedException: {}
+    DomainPackageStatus:
+      type: string
+      enum:
+      - ASSOCIATING
+      - ASSOCIATION_FAILED
+      - ACTIVE
+      - DISSOCIATING
+      - DISSOCIATION_FAILED
     ResourceNotFoundException: {}
-    PackageName:
-      type: string
-      pattern: '[a-z][a-z0-9\-]+'
-      minLength: 3
-      maxLength: 28
-    ErrorType:
-      type: string
-    ListDomainNamesResponse:
-      type: object
-      properties:
-        DomainNames:
-          allOf:
-          - $ref: '#/components/schemas/DomainInfoList'
-          - description: List of domain names and respective engine types.
-      description: The result of a <code>ListDomainNames</code> operation. Contains the names of all domains owned by this account and their respective engine types.
+    ValidationException: {}
     DomainPackageDetails:
       type: object
       properties:
@@ -328,10 +365,26 @@ components:
           - $ref: '#/components/schemas/ErrorDetails'
           - description: Additional information if the package is in an error state. Null otherwise.
       description: Information on a package that is associated with a domain.
-    PackageVersion:
+    ListDomainNamesResponse:
+      type: object
+      properties:
+        DomainNames:
+          allOf:
+          - $ref: '#/components/schemas/DomainInfoList'
+          - description: List of domain names and respective engine types.
+      description: The result of a <code>ListDomainNames</code> operation. Contains the names of all domains owned by this account and their respective engine types.
+    PackageName:
       type: string
+      pattern: '[a-z][a-z0-9\-]+'
+      minLength: 3
+      maxLength: 28
+    DomainPackageDetailsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DomainPackageDetails'
     PackageID:
       type: string
+    InternalException: {}
     ListPackagesForDomainResponse:
       type: object
       properties:
@@ -344,66 +397,13 @@ components:
           - $ref: '#/components/schemas/String'
           - description: Pagination token that needs to be supplied to the next call to get the next page of results.
       description: ' Container for response parameters to <code> <a>ListPackagesForDomain</a> </code> operation. '
-    DomainInfoList:
-      type: array
-      description: ' Contains the list of Elasticsearch domain information.'
-      items:
-        $ref: '#/components/schemas/DomainInfo'
-    BaseException: {}
-    PackageType:
-      type: string
-      enum:
-      - TXT-DICTIONARY
-    AccessDeniedException: {}
-    ErrorDetails:
-      type: object
-      properties:
-        ErrorType:
-          $ref: '#/components/schemas/ErrorType'
-        ErrorMessage:
-          $ref: '#/components/schemas/ErrorMessage'
-    ReferencePath:
-      type: string
-    DomainInfo:
-      type: object
-      properties:
-        DomainName:
-          allOf:
-          - $ref: '#/components/schemas/DomainName'
-          - description: ' Specifies the <code>DomainName</code>.'
-        EngineType:
-          allOf:
-          - $ref: '#/components/schemas/EngineType'
-          - description: ' Specifies the <code>EngineType</code> of the domain.'
-    DomainPackageStatus:
-      type: string
-      enum:
-      - ASSOCIATING
-      - ASSOCIATION_FAILED
-      - ACTIVE
-      - DISSOCIATING
-      - DISSOCIATION_FAILED
-    DomainPackageDetailsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DomainPackageDetails'
-    ErrorMessage:
-      type: string
-    InternalException: {}
-    ValidationException: {}
-    String:
+    PackageVersion:
       type: string
     EngineType:
       type: string
       enum:
       - OpenSearch
       - Elasticsearch
-    DomainName:
-      type: string
-      pattern: '[a-z][a-z0-9\-]+'
-      description: 'The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).'
-      minLength: 3
-      maxLength: 28
   parameters:
     X-Amz-Signature:
       name: X-Amz-Signature
@@ -411,26 +411,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -441,8 +423,26 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
