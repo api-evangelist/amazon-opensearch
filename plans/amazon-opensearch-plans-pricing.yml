@@ -61,7 +61,7 @@ rate_limit_statements:
 - You will be billed at least for a minimum of 2 OCUs
 - PUT is subject to a minimum charge of 128KB per PUT.
 x-canonical:
-  generated: '2026-11-01'
+  generated: '2026-11-02'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
