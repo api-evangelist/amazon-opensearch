@@ -1,0 +1,130 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/opensearch-service/pricing/
+sources:
+- https://aws.amazon.com/opensearch-service/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T161713
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: Most live rate tables render via pricing widgets (placeholders in text), so actual per-hour/per-GB
+  figures are not in the captured text; numeric prices appear in the Extended Support regional table and
+  in the worked pricing examples (e.g. $0.24 per OCU-hour, $0.024 per GB per month). Reserved Instance
+  discounts stated as percentages (e.g. 31%, 48%).
+plan_count: 7
+currency: USD
+plans:
+- name: Extended Support (standard rate) - US East (N. Virginia)
+  price_text: $0.0065 per Normalized Instance Hour (NIH)
+  price: 0.0065
+  currency: USD
+  period: per-use
+  unit: Normalized Instance Hour
+- name: Extended Support - US West (N. California)
+  price_text: $0.0077
+  price: 0.0077
+  currency: USD
+  period: per-use
+  unit: per NIH
+- name: Extended Support - South America (Sao Paulo)
+  price_text: $0.0103
+  price: 0.0103
+  currency: USD
+  period: per-use
+  unit: per NIH
+- name: On-Demand Instance pricing (instance hours)
+  price_text: Price Per hour
+  period: per-use
+  unit: instance hour
+- name: Serverless OCU - Indexing
+  price_text: per OCU per hour
+  period: per-use
+  unit: OCU-hour
+- name: Serverless Managed Storage
+  price_text: per GB per month
+  period: month
+  unit: GB
+- name: Vector Auto-Optimize Job
+  price_text: per Job
+  period: per-use
+  unit: job
+rate_limit_statements:
+- There is no minimum OCU requirement - Indexing and Search OCUs scale to zero after 10 minutes of inactivity.
+- You will be billed at least for a minimum of 2 OCUs
+- PUT is subject to a minimum charge of 128KB per PUT.
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - compute
+  - data
+  - request
+  plans:
+  - name: Extended Support (standard rate) - US East (N. Virginia)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Extended Support - US West (N. California)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Extended Support - South America (Sao Paulo)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: On-Demand Instance pricing (instance hours)
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Serverless OCU - Indexing
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Serverless Managed Storage
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Vector Auto-Optimize Job
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
