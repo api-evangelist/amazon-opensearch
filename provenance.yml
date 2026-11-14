@@ -5,12 +5,27 @@ artifacts:
   agentic-access/amazon-opensearch-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/amazon-opensearch-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   authentication/amazon-opensearch-authentication.yml:
     method: derived
     evidence: declared in the artifact
   capabilities/amazon-opensearch-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
+  changelog/amazon-opensearch-changelog.yml:
+    method: searched
+    evidence: declared in the artifact
+  cli/amazon-opensearch-cli.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/amazon-opensearch-domain-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-opensearch-domain-api
@@ -47,6 +62,24 @@ artifacts:
   collections/amazon-opensearch.postman_collection.json:
     method: derived
     evidence: openapi/amazon-opensearch
+  compliance/amazon-opensearch-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
+  conformance/amazon-opensearch-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/amazon-opensearch-conventions.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/amazon-opensearch-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/amazon-opensearch-error-codes.yml:
+    method: searched
+    evidence: declared in the artifact
+  errors/amazon-opensearch-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/openapi-accept-inbound-cross-cluster-search-connection-request-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -1046,13 +1079,379 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-opensearch-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
   integrations/amazon-opensearch-integration-edges.yml:
     method: searched
     evidence: declared in the artifact
+  json-ld/amazon-opensearch-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
   json-ld/amazon-opensearch-openapi-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-add-data-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-add-replication-peer-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-add-replication-peer-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-add-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-aoss-create-index-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-aoss-delete-index-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-aoss-get-index-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-aoss-update-index-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-associate-package-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-attach-data-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-batch-get-collection-group-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-batch-get-collection-group-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-batch-get-collection-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-batch-get-lifecycle-policy-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-cancel-domain-config-change-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-cancel-domain-config-change-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-cancel-ingestion-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-cancel-ingestion-job-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-access-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-application-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-collection-group-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-collection-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-domain-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-elasticsearch-domain-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-index-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-ingestion-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-ingestion-stream-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-lifecycle-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-package-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-pipeline-endpoint-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-pipeline-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-security-config-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-create-security-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-access-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-collection-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-data-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-ingestion-stream-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-ingestion-stream-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-lifecycle-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-security-config-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-delete-security-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-deregister-capability-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-deregister-capability-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-describe-domain-health-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-describe-domain-replication-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-describe-elasticsearch-instance-type-limits-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-describe-inbound-cross-cluster-search-connections-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-describe-instance-type-limits-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-describe-outbound-cross-cluster-search-connections-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-describe-packages-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-add-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-cancel-domain-config-change-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-describe-packages-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-list-domain-names-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-list-domains-for-package-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-list-domains-for-package-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-list-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-es-remove-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-failover-replication-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-access-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-application-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-capability-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-capability-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-data-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-data-source-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-ingestion-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-ingestion-stream-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-security-config-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-get-security-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-access-policies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-access-policies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-collection-groups-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-collection-groups-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-collections-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-collections-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-data-sources-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-domain-maintenances-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-domain-names-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-domains-for-package-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-domains-for-package-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-elasticsearch-instance-types-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-elasticsearch-instance-types-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-ingestion-jobs-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-ingestion-jobs-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-ingestion-streams-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-ingestion-streams-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-lifecycle-policies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-lifecycle-policies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-packages-for-domain-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-pipeline-endpoint-connections-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-pipelines-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-pipelines-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-security-configs-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-security-configs-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-security-policies-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-security-policies-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-tags-for-resource-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-list-tags-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-register-capability-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-register-capability-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-remove-replication-peer-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-remove-tags-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-start-service-software-update-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-switchover-replication-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-access-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-collection-group-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-collection-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-data-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-direct-query-data-source-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-domain-config-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-domain-config-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-elasticsearch-domain-config-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-index-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-lifecycle-policy-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-package-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-pipeline-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-scheduled-action-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-security-config-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-opensearch-update-security-policy-request-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/openapi-accept-inbound-cross-cluster-search-connection-request-schema.json:
@@ -3044,7 +3443,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -3113,11 +3512,28 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/_original/amazon-opensearch-openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  llms/amazon-opensearch-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-opensearch-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-opensearch-mcp.yml:
+    method: derived
+    evidence: declared in the artifact
+  openapi/amazon-opensearch-access-policy-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-opensearch-capability-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-opensearch-collection-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-opensearch-collection-group-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
   openapi/amazon-opensearch-config-api-openapi.yml:
@@ -3135,13 +3551,34 @@ artifacts:
   openapi/amazon-opensearch-index-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
+  openapi/amazon-opensearch-ingestion-job-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-opensearch-ingestion-stream-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-opensearch-lifecycle-policy-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-opensearch-open-search-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
   openapi/amazon-opensearch-operations-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
+  openapi/amazon-opensearch-osis-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-opensearch-packages-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-opensearch-replication-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-opensearch-security-config-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-opensearch-security-policy-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
   openapi/amazon-opensearch-tags-api-openapi.yml:
@@ -3150,6 +3587,12 @@ artifacts:
   openapi/amazon-opensearch-tags-removal-api-openapi.yml:
     method: unknown
     evidence: no authorship recorded
+  packages/amazon-opensearch-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  patterns/amazon-opensearch-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/amazon-opensearch-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -3174,6 +3617,9 @@ artifacts:
   rules/amazon-opensearch-jsonschema-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
+  rules/amazon-opensearch-rules.yml:
+    method: generated
+    evidence: declared in the artifact
   rules/amazon-opensearch-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
@@ -3189,9 +3635,40 @@ artifacts:
   sla/amazon-opensearch-sla.yml:
     method: generated
     evidence: declared in the artifact
+  smithy/elasticsearch-service-2015-01-01.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/elasticsearch-service/service/2015-01-01/elasticsearch-service-2015-01-01.json
+      (sha256 310773ca2da9, fetched 2026-11-11T21:13:23+00:00)
   smithy/opensearch-2021-01-01.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/opensearch/service/2021-01-01/opensearch-2021-01-01.json
+      (sha256 28f6820de5af, fetched 2026-11-11T21:13:20+00:00)
+  smithy/opensearchserverless-2021-11-01.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/opensearchserverless/service/2021-11-01/opensearchserverless-2021-11-01.json
+      (sha256 a5bc0a5a93d0, fetched 2026-11-11T21:13:21+00:00)
+  smithy/osis-2022-01-01.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/osis/service/2022-01-01/osis-2022-01-01.json
+      (sha256 51ba0f20cbbc, fetched 2026-11-11T21:13:22+00:00)
+  terms/amazon-opensearch-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-opensearch-vendors.yml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-opensearch-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-opensearch-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-opensearch-midway-auth-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-opensearch-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-opensearch-well-known.yml:
     method: unknown
     evidence: no authorship recorded

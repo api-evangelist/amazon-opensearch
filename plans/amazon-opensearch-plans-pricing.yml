@@ -2,6 +2,7 @@
 generated: '2026-10-28'
 method: searched
 source: https://aws.amazon.com/opensearch-service/pricing/
+name: Amazon OpenSearch Service API API Plans
 sources:
 - https://aws.amazon.com/opensearch-service/pricing/
 provenance:
@@ -61,7 +62,7 @@ rate_limit_statements:
 - You will be billed at least for a minimum of 2 OCUs
 - PUT is subject to a minimum charge of 128KB per PUT.
 x-canonical:
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
